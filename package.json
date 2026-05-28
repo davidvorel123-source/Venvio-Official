@@ -2,8 +2,5 @@
   "name": "venvio-official",
   "version": "1.0.0",
   "description": "Venvio Official Website",
-  "main": "index.html",
-  "dependencies": {
-    "stripe": "^15.0.0"
-  }
+  "main": "index.html"
 }

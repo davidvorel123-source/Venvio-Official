@@ -359,63 +359,36 @@ if(closeModal) {
 }
 
 if(checkoutForm) {
-    checkoutForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        // Získání dat z formuláře
-        const inputs = checkoutForm.querySelectorAll('input, textarea');
-        const customerInfo = {
-            name: inputs[0].value,
-            email: inputs[1].value,
-            message: inputs[2].value
-        };
-
-        // Změna tlačítka na načítání
+    checkoutForm.addEventListener('submit', (e) => {
+        // Změna tlačítka na načítání (FormSubmit chvíli trvá)
         const submitBtn = checkoutForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerText;
-        submitBtn.innerText = translations[currentLang]['modal.redirect'];
-        submitBtn.disabled = true;
-
-        // Příprava dat pro backend (rozbalení cen z ID podle aktuální měny)
-        const cartWithPrices = cart.map(item => {
-            const price = productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0;
-            return {
-                name: currentLang === 'en' && item.nameEn ? item.nameEn : item.nameCs,
-                price: price
-            }
-        });
-
-        try {
-            // Odeslání požadavku na Vercel backend
-            const response = await fetch('/api/checkout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    cart: cartWithPrices,
-                    customerInfo: customerInfo,
-                    lang: currentLang,
-                    currency: currentCurrency
-                })
-            });
-
-            const data = await response.json();
-
-            if (response.ok && data.url) {
-                // Přesměrování na Stripe Checkout
-                window.location.href = data.url;
-            } else {
-                throw new Error(data.error || 'Neznámá chyba při vytváření platby.');
-            }
-        } catch (err) {
-            console.error(err);
-            alert(translations[currentLang]['modal.error'] + err.message);
-            submitBtn.innerText = originalText;
-            submitBtn.disabled = false;
+        submitBtn.innerText = translations[currentLang]['modal.redirect'] || "Odesílám...";
+        
+        // Zabalení položek z košíku do jednoho textového řetězce
+        const hiddenInput = document.getElementById('hidden-cart-data');
+        if(hiddenInput) {
+            let cartText = cart.map(item => {
+                const price = productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0;
+                const name = currentLang === 'en' && item.nameEn ? item.nameEn : item.nameCs;
+                return `${name} (${formatPriceDynamic(price)})`;
+            }).join(', ');
+            
+            cartText += ` | CELKEM: ${document.getElementById('cart-total-price').innerText}`;
+            hiddenInput.value = cartText;
         }
+
+        // Vymažeme košík (protože se formulář standardně odešle na FormSubmit a pak na success.html)
+        localStorage.removeItem('venvioCart');
+        
+        // Formulář se teď přirozeně odešle díky action="https://formsubmit.co/..."
     });
 }
+
+// Translations Dictionary (update modal submit text)
+translations.cs['modal.submit'] = "Odeslat objednávku";
+translations.en['modal.submit'] = "Submit Order";
+translations.cs['modal.redirect'] = "Odesílám...";
+translations.en['modal.redirect'] = "Sending...";
 
 // Initialize Language & Cart
 applyTranslations();

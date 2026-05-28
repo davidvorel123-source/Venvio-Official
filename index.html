@@ -292,28 +292,30 @@
 
     <!-- Checkout Modal -->
     <div class="modal-overlay" id="checkout-modal">
-        <div class="modal glass-panel">
-            <div class="modal-header">
-                <h2 data-i18n="modal.title">Dokončení objednávky</h2>
-                <button class="close-modal" id="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="checkout-form">
-                    <div class="form-group">
-                        <label data-i18n="modal.name">Jméno a Příjmení / Firma</label>
-                        <input type="text" required placeholder="Např. Jan Novák" data-i18n-ph="modal.name_ph">
-                    </div>
-                    <div class="form-group">
-                        <label>E-mail</label>
-                        <input type="email" required placeholder="jan@novak.cz">
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="modal.msg">Zpráva / Vaše představa o webu</label>
-                        <textarea rows="4" placeholder="Zde nám můžete popsat, co od webu očekáváte..." data-i18n-ph="modal.msg_ph"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block" data-i18n="modal.submit">Zaplatit kartou</button>
-                </form>
-            </div>
+        <div class="modal-content glass-panel fade-in-up">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h3 data-i18n="modal.title">Dokončení objednávky</h3>
+            <form id="checkout-form" action="https://formsubmit.co/davidvorel123@gmail.com" method="POST">
+                <!-- Hidden inputs for FormSubmit -->
+                <input type="hidden" name="_next" value="https://venvio.dev/success.html">
+                <input type="hidden" name="_subject" value="Nová objednávka Venvio!">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="Objednávka (Položky a cena)" id="hidden-cart-data" value="">
+                
+                <div class="form-group">
+                    <label data-i18n="modal.name">Jméno a Příjmení / Firma</label>
+                    <input type="text" name="Jméno" required placeholder="Např. Jan Novák" data-i18n-ph="modal.name_ph">
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" name="Email" required placeholder="vas@email.cz" value="davidvorel123@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="modal.msg">Zpráva / Vaše představa o webu</label>
+                    <textarea name="Zpráva" rows="4" placeholder="Zde nám můžete popsat, co od webu očekáváte..." data-i18n-ph="modal.msg_ph"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100" data-i18n="modal.submit">Odeslat objednávku</button>
+            </form>
         </div>
     </div>
 
