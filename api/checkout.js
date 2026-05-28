@@ -1,4 +1,7 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+// Sanitize the key to remove any accidental spaces or newlines the user might have pasted
+const rawKey = process.env.STRIPE_SECRET_KEY || '';
+const cleanKey = rawKey.replace(/\s+/g, ''); // Removes all spaces, tabs, and newlines
+const stripe = require('stripe')(cleanKey);
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
