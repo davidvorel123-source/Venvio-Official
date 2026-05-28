@@ -1661,31 +1661,6 @@ a {
     transform: translateX(0);
 }
 
-/* Interactive Card Tilt Glow */
-.pricing-card {
-    position: relative;
-    overflow: hidden;
-}
-
-.pricing-card::after {
-    content: '';
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(0, 210, 255, 0.08) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    top: var(--mouse-y, 50%);
-    left: var(--mouse-x, 50%);
-    transform: translate(-50%, -50%);
-}
-
-.pricing-card:hover::after {
-    opacity: 1;
-}
-
 /* Smooth section dividers */
 .section::before {
     content: '';
