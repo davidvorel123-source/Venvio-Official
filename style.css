@@ -213,7 +213,26 @@ a {
 .btn-primary {
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     color: #fff;
+    border: none;
+    position: relative;
+    overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 210, 255, 0.25);
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.btn-primary:hover::after {
+    left: 140%;
 }
 
 .btn-primary:hover {
@@ -767,8 +786,8 @@ a {
 }
 
 .portfolio-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     border-color: rgba(0, 210, 255, 0.3);
 }
 
@@ -946,6 +965,12 @@ a {
     position: relative;
     padding-left: 1.8rem;
     color: var(--color-text-muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.pricing-features li:hover {
+    transform: translateX(5px);
+    color: var(--color-text);
 }
 
 .pricing-features li::before {
@@ -1529,11 +1554,17 @@ a {
 .mb-2 { margin-bottom: 1rem; }
 .mb-4 { margin-bottom: 2rem; }
 .text-muted { color: var(--color-text-muted); }
-.gradient-text {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+.gradient-text, .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-primary));
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradient-text-flow 4s linear infinite;
+}
+
+@keyframes gradient-text-flow {
+    to { background-position: 200% center; }
 }
 
 /* Back to Top */
