@@ -399,7 +399,7 @@ if(checkoutForm) {
 
         try {
             // Odeslání přes AJAX
-            const response = await fetch("https://formsubmit.co/ajax/business.venvio2@gmail.com", {
+            const response = await fetch("https://formsubmit.co/ajax/info@venvio.dev", {
                 method: "POST",
                 headers: { 
                     'Content-Type': 'application/json',
