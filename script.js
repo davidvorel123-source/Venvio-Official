@@ -365,6 +365,15 @@ if(checkoutForm) {
         // Změna tlačítka na načítání
         const submitBtn = checkoutForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerText;
+        
+        // --- ANTI-SPAM OCHRANA ---
+        // Zabránění uživateli odeslat více objednávek během 5 minut
+        const lastOrderTime = localStorage.getItem('venvioLastOrderTime');
+        if (lastOrderTime && (Date.now() - parseInt(lastOrderTime)) < 5 * 60 * 1000) {
+            alert(currentLang === 'en' ? "Please wait 5 minutes before submitting another order." : "Z důvodu ochrany proti spamu můžete odeslat další objednávku až za 5 minut.");
+            return;
+        }
+
         submitBtn.innerText = translations[currentLang]['modal.redirect'] || "Odesílám...";
         submitBtn.disabled = true;
         
@@ -400,6 +409,9 @@ if(checkoutForm) {
             });
             
             if (response.ok) {
+                // Zapsat čas úspěšné objednávky pro anti-spam (5 minut blokace)
+                localStorage.setItem('venvioLastOrderTime', Date.now().toString());
+                
                 // Vymažeme košík
                 localStorage.removeItem('venvioCart');
                 // Přesměrujeme klienta přímo na děkovací stránku s bankou
