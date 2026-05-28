@@ -51,6 +51,6 @@ export default async function handler(req, res) {
         res.status(200).json({ url: session.url });
     } catch (err) {
         console.error('Chyba při platbě:', err);
-        res.status(500).json({ error: 'Interní chyba serveru při vytváření platby / Internal server error.' });
+        res.status(500).json({ error: err.message || 'Neznámá interní chyba serveru.' });
     }
 }

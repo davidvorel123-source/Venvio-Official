@@ -181,7 +181,7 @@ const productPrices = {
     'add-support': { czk: { val: 600, str: '600 Kč' }, eur: { val: 25, str: '25 €' }, usd: { val: 29, str: '$29' } },
     'add-identity': { czk: { val: 2500, str: '2 500 Kč' }, eur: { val: 99, str: '99 €' }, usd: { val: 109, str: '$109' } },
     'add-hourly': { czk: { val: 700, str: '700 Kč' }, eur: { val: 29, str: '29 €' }, usd: { val: 35, str: '$35' } },
-    'test-payment': { czk: { val: 1, str: '1 Kč' }, eur: { val: 1, str: '1 €' }, usd: { val: 1, str: '$1' } }
+    'test-payment': { czk: { val: 15, str: '15 Kč' }, eur: { val: 1, str: '1 €' }, usd: { val: 1, str: '$1' } }
 };
 
 // Current State
