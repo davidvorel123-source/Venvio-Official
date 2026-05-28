@@ -3,22 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Venvio – Expressní tvorba profesionálních webových stránek. Moderní, responzivní web do 24 hodin.">
     <title>Venvio | Express Web Solutions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Floating Particles Background -->
+    <div class="particles" id="particles"></div>
+
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">VENVIO</a>
-            <ul class="nav-links">
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
+                VENVIO
+            </a>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#vyhody" data-i18n="nav.why_us">Proč my</a></li>
                 <li><a href="#portfolio" data-i18n="nav.portfolio">Reference</a></li>
                 <li><a href="#cenik" data-i18n="nav.pricing">Ceník</a></li>
                 <li><a href="#doplnky" data-i18n="nav.addons">Doplňky</a></li>
+                <li><a href="#faq">FAQ</a></li>
             </ul>
             <div class="nav-actions">
                 <div class="lang-switcher">
@@ -27,9 +36,10 @@
                     <button class="lang-btn" data-lang="en" data-curr="usd">🇺🇸 USD</button>
                 </div>
                 <button id="cart-btn" class="cart-btn">
+                    <i class="fa-solid fa-bag-shopping"></i>
                     <span data-i18n="nav.cart">Košík</span> <span id="cart-count" class="cart-badge">0</span>
                 </button>
-                <div class="mobile-menu-toggle">
+                <div class="mobile-menu-toggle" id="mobile-menu-toggle">
                     <span></span><span></span><span></span>
                 </div>
             </div>
@@ -39,23 +49,125 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-bg-glow"></div>
+        <div class="hero-bg-glow hero-bg-glow-2"></div>
         <div class="container hero-content">
-            <h1 class="fade-in-up" data-i18n="hero.title">Tvoříme weby rychlostí<br><span class="text-gradient">vašeho podnikání.</span></h1>
-            <p class="fade-in-up delay-1" data-i18n="hero.desc">Expressní webová prezentace & marketing. Plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.</p>
-            <div class="hero-buttons fade-in-up delay-2">
-                <a href="#cenik" class="btn btn-primary" data-i18n="hero.btn_pkg">Vybrat balíček</a>
-                <a href="#portfolio" class="btn btn-outline" data-i18n="hero.btn_portfolio">Ukázky práce</a>
+            <span class="hero-badge fade-in-up" data-i18n="hero.badge">⚡ Express webové řešení</span>
+            <h1 class="fade-in-up delay-1" data-i18n="hero.title">Tvoříme weby rychlostí<br><span class="text-gradient">vašeho podnikání.</span></h1>
+            <p class="fade-in-up delay-2" data-i18n="hero.desc">Expressní webová prezentace & marketing. Plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.</p>
+            <div class="hero-buttons fade-in-up delay-3">
+                <a href="#cenik" class="btn btn-primary btn-glow"><i class="fa-solid fa-rocket"></i> <span data-i18n="hero.btn_pkg">Vybrat balíček</span></a>
+                <a href="#portfolio" class="btn btn-outline"><i class="fa-solid fa-eye"></i> <span data-i18n="hero.btn_portfolio">Ukázky práce</span></a>
             </div>
+            <div class="hero-trust fade-in-up delay-4">
+                <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="hero.trust1">SSL Zabezpečení</span></div>
+                <div class="trust-item"><i class="fa-solid fa-mobile-screen-button"></i> <span data-i18n="hero.trust2">100% Responzivní</span></div>
+                <div class="trust-item"><i class="fa-solid fa-gauge-high"></i> <span data-i18n="hero.trust3">Rychlé načítání</span></div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <i class="fa-solid fa-chevron-down"></i>
         </div>
     </header>
 
-    <!-- Naše hlavní výhoda -->
-    <section id="vyhody" class="section dark-section">
+    <!-- Stats Counter -->
+    <section class="stats-section">
         <div class="container">
-            <div class="feature-box glass-panel fade-in-up">
-                <div class="feature-icon">⚡</div>
+            <div class="stats-grid">
+                <div class="stat-item glass-panel fade-in-up">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-plus">+</div>
+                    <div class="stat-label" data-i18n="stats.projects">Dokončených projektů</div>
+                </div>
+                <div class="stat-item glass-panel fade-in-up delay-1">
+                    <div class="stat-number" data-count="24">0</div>
+                    <div class="stat-plus">h</div>
+                    <div class="stat-label" data-i18n="stats.delivery">Průměrná doba dodání</div>
+                </div>
+                <div class="stat-item glass-panel fade-in-up delay-2">
+                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-plus">%</div>
+                    <div class="stat-label" data-i18n="stats.satisfaction">Spokojenost klientů</div>
+                </div>
+                <div class="stat-item glass-panel fade-in-up delay-3">
+                    <div class="stat-number" data-count="3">0</div>
+                    <div class="stat-plus">+</div>
+                    <div class="stat-label" data-i18n="stats.years">Roky zkušeností</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Naše hlavní výhoda -->
+    <section id="vyhody" class="section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-badge" data-i18n="feature.badge">⚡ Naše výhoda</span>
                 <h2 data-i18n="feature.title">Naše hlavní výhoda: Web už do 24 hodin</h2>
                 <p data-i18n="feature.desc">Víme, že v podnikání rozhoduje rychlost. Zatímco běžné agentury tvoří weby týdny, my díky optimalizovanému vývoji a agilnímu nasazení dodáváme plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card glass-panel fade-in-up delay-1">
+                    <div class="feature-icon-box"><i class="fa-solid fa-bolt"></i></div>
+                    <h3 data-i18n="feature.speed_title">Bleskové dodání</h3>
+                    <p data-i18n="feature.speed_desc">Váš web bude online už do 24 hodin od dodání podkladů.</p>
+                </div>
+                <div class="feature-card glass-panel fade-in-up delay-2">
+                    <div class="feature-icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <h3 data-i18n="feature.responsive_title">Plně responzivní</h3>
+                    <p data-i18n="feature.responsive_desc">Perfektní zobrazení na všech zařízeních – mobil, tablet, desktop.</p>
+                </div>
+                <div class="feature-card glass-panel fade-in-up delay-3">
+                    <div class="feature-icon-box"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <h3 data-i18n="feature.seo_title">SEO optimalizace</h3>
+                    <p data-i18n="feature.seo_desc">Váš web bude viditelný v Google díky moderním SEO technikám.</p>
+                </div>
+                <div class="feature-card glass-panel fade-in-up delay-4">
+                    <div class="feature-icon-box"><i class="fa-solid fa-headset"></i></div>
+                    <h3 data-i18n="feature.support_title">Podpora</h3>
+                    <p data-i18n="feature.support_desc">Profesionální zákaznická podpora a pravidelné aktualizace.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jak to funguje (Process) -->
+    <section class="section dark-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-badge" data-i18n="process.badge">🛠️ Postup</span>
+                <h2 data-i18n="process.title">Jak to funguje?</h2>
+                <p data-i18n="process.desc">Jednoduché 4 kroky k vašemu novému webu.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step fade-in-up delay-1">
+                    <div class="step-number">01</div>
+                    <div class="step-content glass-panel">
+                        <h3 data-i18n="process.s1_title">Výběr balíčku</h3>
+                        <p data-i18n="process.s1_desc">Vyberte si z našich balíčků ten, který nejlépe odpovídá vašim potřebám a rozpočtu.</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in-up delay-2">
+                    <div class="step-number">02</div>
+                    <div class="step-content glass-panel">
+                        <h3 data-i18n="process.s2_title">Zaslání podkladů</h3>
+                        <p data-i18n="process.s2_desc">Pošlete nám texty, obrázky a představu o vašem budoucím webu.</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in-up delay-3">
+                    <div class="step-number">03</div>
+                    <div class="step-content glass-panel">
+                        <h3 data-i18n="process.s3_title">Tvorba webu</h3>
+                        <p data-i18n="process.s3_desc">Náš tým okamžitě začne pracovat na vašem profesionálním webu.</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in-up delay-4">
+                    <div class="step-number">04</div>
+                    <div class="step-content glass-panel">
+                        <h3 data-i18n="process.s4_title">Spuštění</h3>
+                        <p data-i18n="process.s4_desc">Váš web nasadíme online a předáme vám přístupy. Vše do 24 hodin!</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -64,6 +176,7 @@
     <section id="portfolio" class="section">
         <div class="container">
             <div class="section-header fade-in-up">
+                <span class="section-badge" data-i18n="portfolio.badge">🖼️ Portfolio</span>
                 <h2 data-i18n="portfolio.title">Naše Ukázky</h2>
                 <p data-i18n="portfolio.desc">Podívejte se na ukázkové projekty, které jsme připravili.</p>
             </div>
@@ -74,8 +187,9 @@
                     <div class="portfolio-img">
                         <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Crush Burger">
                         <div class="portfolio-overlay">
-                            <a href="https://venvio-crush-burger.vercel.app/" target="_blank" class="btn btn-sm" data-i18n="portfolio.btn">Zobrazit web</a>
+                            <a href="https://venvio-crush-burger.vercel.app/" target="_blank" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="portfolio.btn">Zobrazit web</span></a>
                         </div>
+                        <div class="portfolio-type-badge" data-i18n="portfolio.multi">Vícestránkový</div>
                     </div>
                     <div class="portfolio-info">
                         <h3>CRUSH Burger</h3>
@@ -88,8 +202,9 @@
                     <div class="portfolio-img">
                         <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lumiere Cafe">
                         <div class="portfolio-overlay">
-                            <a href="https://venvio-lumiere-cafe.vercel.app/" target="_blank" class="btn btn-sm" data-i18n="portfolio.btn">Zobrazit web</a>
+                            <a href="https://venvio-lumiere-cafe.vercel.app/" target="_blank" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="portfolio.btn">Zobrazit web</span></a>
                         </div>
+                        <div class="portfolio-type-badge" data-i18n="portfolio.onepage">One-page</div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Lumière Cafe</h3>
@@ -102,8 +217,9 @@
                     <div class="portfolio-img">
                         <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Aura Fine Dining">
                         <div class="portfolio-overlay">
-                            <a href="https://venvio-aura-fine-dinings.vercel.app/" target="_blank" class="btn btn-sm" data-i18n="portfolio.btn">Zobrazit web</a>
+                            <a href="https://venvio-aura-fine-dinings.vercel.app/" target="_blank" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="portfolio.btn">Zobrazit web</span></a>
                         </div>
+                        <div class="portfolio-type-badge" data-i18n="portfolio.onepage">One-page</div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Aura Fine Dining</h3>
@@ -118,6 +234,7 @@
     <section id="cenik" class="section dark-section">
         <div class="container">
             <div class="section-header fade-in-up">
+                <span class="section-badge" data-i18n="pricing.badge">💎 Ceník</span>
                 <h2 data-i18n="pricing.title">Hlavní balíčky služeb</h2>
                 <p data-i18n="pricing.desc">Vyberte si řešení, které odpovídá vašim potřebám.</p>
             </div>
@@ -185,6 +302,7 @@
     <section id="doplnky" class="section">
         <div class="container">
             <div class="section-header fade-in-up">
+                <span class="section-badge" data-i18n="addons.badge">🔧 Doplňky</span>
                 <h2 data-i18n="addons.title">Doplňkové služby a správa</h2>
                 <p data-i18n="addons.desc">Přizpůsobte si projekt svým potřebám.</p>
             </div>
@@ -192,6 +310,7 @@
             <div class="addons-list">
                 <!-- Addon 1 -->
                 <div class="addon-card glass-panel fade-in-up delay-1">
+                    <div class="addon-icon"><i class="fa-solid fa-globe"></i></div>
                     <div class="addon-info">
                         <h4 data-i18n="addon1.title">Vlastní doména (.cz, .com)</h4>
                         <p data-i18n="addon1.desc">Zajištění prémiové domény pro vaši značku na 1 rok včetně SSL certifikátu.</p>
@@ -204,6 +323,7 @@
 
                 <!-- Addon 2 -->
                 <div class="addon-card glass-panel fade-in-up delay-2">
+                    <div class="addon-icon"><i class="fa-solid fa-wrench"></i></div>
                     <div class="addon-info">
                         <h4 data-i18n="addon2.title">Měsíční správa a podpora</h4>
                         <p data-i18n="addon2.desc">Pravidelné zálohování webu, aktualizace systému, zabezpečení a drobné úpravy obsahu na přání.</p>
@@ -216,6 +336,7 @@
 
                 <!-- Addon 3 -->
                 <div class="addon-card glass-panel fade-in-up delay-3">
+                    <div class="addon-icon"><i class="fa-solid fa-palette"></i></div>
                     <div class="addon-info">
                         <h4 data-i18n="addon3.title">Tvorba vizuální identity</h4>
                         <p data-i18n="addon3.desc">Návrh minimalistického loga a definice firemních barev.</p>
@@ -228,6 +349,7 @@
                 
                 <!-- Addon 4 -->
                 <div class="addon-card glass-panel fade-in-up delay-4">
+                    <div class="addon-icon"><i class="fa-solid fa-clock"></i></div>
                     <div class="addon-info">
                         <h4 data-i18n="addon4.title">Hodinová sazba (Vícepráce)</h4>
                         <p data-i18n="addon4.desc">Práce nad rámec balíčků (rozšiřování webu, specifické animace a kódování). Uveďte počet hodin v košíku.</p>
@@ -237,18 +359,98 @@
                         <button class="btn btn-outline add-to-cart" data-id="add-hourly" data-name-cs="Vícepráce (1h)" data-name-en="Hourly Rate (1h)" data-i18n="addon.btn_add">Přidat</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Test Payment -->
-                <div class="addon-card glass-panel fade-in-up delay-5" style="border-color: var(--color-primary);">
-                    <div class="addon-info">
-                        <h4 data-i18n="test.title">Testovací platba pro ověření karty</h4>
-                        <p data-i18n="test.desc">Stojí pouze malou částku, abyste si mohli vyzkoušet reálný nákup na našem webu.</p>
-                    </div>
-                    <div class="addon-action">
-                        <div class="price"><span data-price-target="test-payment">15 Kč</span></div>
-                        <button class="btn btn-primary add-to-cart" data-id="test-payment" data-name-cs="Testovací platba" data-name-en="Test Payment" data-i18n="addon.btn_add">Přidat</button>
+    <!-- Testimonials -->
+    <section class="section dark-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-badge" data-i18n="testimonials.badge">⭐ Recenze</span>
+                <h2 data-i18n="testimonials.title">Co říkají naši klienti</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card glass-panel fade-in-up delay-1">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-i18n="testimonial.t1_text">"Web byl hotový za pouhý jeden den, přesně jak slíbili. Profesionální přístup a moderní design. Jedině doporučit!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div>
+                            <strong data-i18n="testimonial.t1_name">Martin K.</strong>
+                            <span data-i18n="testimonial.t1_role">Majitel restaurace</span>
+                        </div>
                     </div>
                 </div>
+                <div class="testimonial-card glass-panel fade-in-up delay-2">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-i18n="testimonial.t2_text">"Nejrychlejší a nejprofesionálnější webovka, kterou jsem kdy objednal. Zákazníci nás díky ní konečně najdou online."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div>
+                            <strong data-i18n="testimonial.t2_name">Jana P.</strong>
+                            <span data-i18n="testimonial.t2_role">Kavárnice</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-panel fade-in-up delay-3">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text" data-i18n="testimonial.t3_text">"Skvělá komunikace, přesně pochopili, co jsme potřebovali. Web vypadá luxusně a funguje bezchybně i na mobilu."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div>
+                            <strong data-i18n="testimonial.t3_name">Petr V.</strong>
+                            <span data-i18n="testimonial.t3_role">Živnostník</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-badge">❓ FAQ</span>
+                <h2 data-i18n="faq.title">Často kladené otázky</h2>
+            </div>
+            <div class="faq-list fade-in-up">
+                <div class="faq-item glass-panel">
+                    <button class="faq-question" data-i18n="faq.q1">Opravdu dostanu web do 24 hodin?</button>
+                    <div class="faq-answer">
+                        <p data-i18n="faq.a1">Ano! Jakmile obdržíme všechny potřebné podklady (texty, obrázky, logo), začneme okamžitě pracovat. V naprosté většině případů je web hotový a nasazený online do 24 hodin.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-panel">
+                    <button class="faq-question" data-i18n="faq.q2">Co když s webem nebudu spokojen?</button>
+                    <div class="faq-answer">
+                        <p data-i18n="faq.a2">Vaše spokojenost je pro nás prioritou. Provádíme bezplatné revize a úpravy, dokud nebudete s výsledkem naprosto spokojeni.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-panel">
+                    <button class="faq-question" data-i18n="faq.q3">Jaké podklady od mě budete potřebovat?</button>
+                    <div class="faq-answer">
+                        <p data-i18n="faq.a3">Stačí nám texty, které chcete na webu zobrazit, fotky (produkty, interiér, tým), logo (pokud máte) a vaše barevné preference. S čímkoli dalším vám rádi pomůžeme.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-panel">
+                    <button class="faq-question" data-i18n="faq.q4">Budu moct web sám upravovat?</button>
+                    <div class="faq-answer">
+                        <p data-i18n="faq.a4">Ano, předáme vám kompletní přístupy. Pro rozsáhlejší úpravy doporučujeme naši měsíční správu nebo hodinovou sazbu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box glass-panel fade-in-up">
+                <h2 data-i18n="cta.title">Připraveni na nový web?</h2>
+                <p data-i18n="cta.desc">Neváhejte a objednejte si svůj profesionální web ještě dnes. Výsledky uvidíte už zítra!</p>
+                <a href="#cenik" class="btn btn-primary btn-glow btn-lg"><i class="fa-solid fa-rocket"></i> <span data-i18n="cta.btn">Začít hned</span></a>
             </div>
         </div>
     </section>
@@ -258,13 +460,36 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h2>VENVIO</h2>
+                    <h2><span class="logo-icon"><i class="fa-solid fa-bolt"></i></span> VENVIO</h2>
                     <p data-i18n="footer.desc">Expressní webová prezentace & marketing.</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="mailto:business.venvio2@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
                 </div>
-                <div class="footer-text">
-                    <p data-i18n="footer.tax">Ceny jsou konečné. Nejsme plátci DPH.</p>
-                    <p>&copy; 2026 Venvio. <span data-i18n="footer.rights">Všechna práva vyhrazena.</span></p>
+                <div class="footer-links-grid">
+                    <div>
+                        <h4 data-i18n="footer.nav_title">Navigace</h4>
+                        <ul>
+                            <li><a href="#vyhody" data-i18n="nav.why_us">Proč my</a></li>
+                            <li><a href="#portfolio" data-i18n="nav.portfolio">Reference</a></li>
+                            <li><a href="#cenik" data-i18n="nav.pricing">Ceník</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 data-i18n="footer.contact_title">Kontakt</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-envelope"></i> business.venvio2@gmail.com</li>
+                            <li><i class="fa-solid fa-globe"></i> venvio.dev</li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.tax">Ceny jsou konečné. Nejsme plátci DPH.</p>
+                <p>&copy; 2026 Venvio. <span data-i18n="footer.rights">Všechna práva vyhrazena.</span></p>
             </div>
         </div>
     </footer>
@@ -273,11 +498,10 @@
     <div class="cart-overlay" id="cart-overlay"></div>
     <aside class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
-            <h2 data-i18n="cart.title">Váš Košík</h2>
+            <h2><i class="fa-solid fa-bag-shopping"></i> <span data-i18n="cart.title">Váš Košík</span></h2>
             <button class="close-cart" id="close-cart">&times;</button>
         </div>
         <div class="cart-body" id="cart-items-container">
-            <!-- Items injected via JS -->
             <div class="empty-cart-msg" data-i18n="cart.empty">Váš košík je zatím prázdný.</div>
         </div>
         <div class="cart-footer">
@@ -307,18 +531,21 @@
                         <label>E-mail</label>
                         <input type="email" name="Email" required placeholder="vas@email.cz">
                     </div>
-                    <input type="hidden" name="_subject" value="Nová objednávka Venvio!">
-                    <input type="hidden" name="_captcha" value="false">
                     <input type="text" name="_honey" style="display:none">
-                    <input type="hidden" name="Objednávka (Položky a cena)" id="hidden-cart-data" value="">
                     <div class="form-group">
                         <label data-i18n="modal.msg">Zpráva / Vaše představa o webu</label>
                         <textarea name="Zprava" rows="4" placeholder="Zde nám můžete popsat, co od webu očekáváte..." data-i18n-ph="modal.msg_ph"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block w-100" data-i18n="modal.submit">Odeslat objednávku</button>
+                    <button type="submit" class="btn btn-primary btn-block" data-i18n="modal.submit">Odeslat objednávku</button>
                 </form>
             </div>
         </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-check-circle"></i>
+        <span id="toast-message" data-i18n="toast.added">Přidáno do košíku!</span>
     </div>
 
     <!-- JS -->

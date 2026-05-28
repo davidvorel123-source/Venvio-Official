@@ -298,12 +298,11 @@ const updateCartUI = () => {
     localStorage.setItem('venvioCart', JSON.stringify(cart));
 };
 
+// Add to cart
 const addToCart = (id, nameCs, nameEn) => {
     cart.push({ id, nameCs, nameEn });
     updateCartUI();
     openCart();
-    // Show toast notification
-    showToast();
 };
 
 // Remove from cart (Global function for onclick)
@@ -448,102 +447,3 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-
-// === NEW INTERACTIVE FEATURES ===
-
-// Floating Particles
-const particlesContainer = document.getElementById('particles');
-if (particlesContainer) {
-    for (let i = 0; i < 30; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.width = (Math.random() * 3 + 1) + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
-        particle.style.animationDelay = (Math.random() * 10) + 's';
-        particle.style.opacity = Math.random() * 0.5 + 0.1;
-        particlesContainer.appendChild(particle);
-    }
-}
-
-// Navbar scroll effect
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    if (navbar) {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-});
-
-// Animated Stats Counter
-const statNumbers = document.querySelectorAll('.stat-number');
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = parseInt(el.getAttribute('data-count'));
-            let current = 0;
-            const increment = target / 60;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                el.innerText = Math.floor(current);
-            }, 25);
-            statsObserver.unobserve(el);
-        }
-    });
-}, { threshold: 0.5 });
-statNumbers.forEach(el => statsObserver.observe(el));
-
-// FAQ Accordion
-const faqItems = document.querySelectorAll('.faq-item');
-faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    if (question) {
-        question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            faqItems.forEach(i => i.classList.remove('active'));
-            if (!isActive) {
-                item.classList.add('active');
-            }
-        });
-    }
-});
-
-// Toast Notification
-const showToast = () => {
-    const toast = document.getElementById('toast');
-    if (!toast) return;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2500);
-};
-
-// Smooth Anchor Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        // Close mobile menu if open
-        const navLinks = document.getElementById('nav-links');
-        if (navLinks) navLinks.classList.remove('mobile-open');
-    });
-});
-
-// Mobile Menu Toggle
-const mobileToggle = document.getElementById('mobile-menu-toggle');
-const navLinksEl = document.getElementById('nav-links');
-if (mobileToggle && navLinksEl) {
-    mobileToggle.addEventListener('click', () => {
-        navLinksEl.classList.toggle('mobile-open');
-    });
-}
