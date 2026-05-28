@@ -180,8 +180,7 @@ const productPrices = {
     'add-domain': { czk: { val: 1800, str: '1 800 Kč' }, eur: { val: 75, str: '75 €' }, usd: { val: 85, str: '$85' } },
     'add-support': { czk: { val: 600, str: '600 Kč' }, eur: { val: 25, str: '25 €' }, usd: { val: 29, str: '$29' } },
     'add-identity': { czk: { val: 2500, str: '2 500 Kč' }, eur: { val: 99, str: '99 €' }, usd: { val: 109, str: '$109' } },
-    'add-hourly': { czk: { val: 700, str: '700 Kč' }, eur: { val: 29, str: '29 €' }, usd: { val: 35, str: '$35' } },
-    'test-payment': { czk: { val: 15, str: '15 Kč' }, eur: { val: 1, str: '1 €' }, usd: { val: 1, str: '$1' } }
+    'add-hourly': { czk: { val: 700, str: '700 Kč' }, eur: { val: 29, str: '29 €' }, usd: { val: 35, str: '$35' } }
 };
 
 // Current State
@@ -467,15 +466,45 @@ if (particlesContainer) {
     }
 }
 
-// Navbar scroll effect
+// Navbar scroll effect + smart hide/show
 const navbar = document.getElementById('navbar');
+let lastScrollY = window.scrollY;
+let ticking = false;
+
 window.addEventListener('scroll', () => {
-    if (navbar) {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            if (navbar) {
+                const currentScroll = window.scrollY;
+                // Scrolled state
+                if (currentScroll > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                    navbar.classList.remove('nav-hidden');
+                }
+                // Hide on scroll down, show on scroll up
+                if (currentScroll > lastScrollY && currentScroll > 300) {
+                    navbar.classList.add('nav-hidden');
+                } else {
+                    navbar.classList.remove('nav-hidden');
+                }
+                lastScrollY = currentScroll;
+            }
+
+            // Back to top button visibility
+            const backToTop = document.getElementById('back-to-top');
+            if (backToTop) {
+                if (window.scrollY > 600) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            }
+
+            ticking = false;
+        });
+        ticking = true;
     }
 });
 
@@ -547,3 +576,38 @@ if (mobileToggle && navLinksEl) {
         navLinksEl.classList.toggle('mobile-open');
     });
 }
+
+// === PREMIUM FEATURES ===
+
+// Preloader
+document.body.classList.add('loading');
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) preloader.classList.add('hidden');
+        document.body.classList.remove('loading');
+    }, 1400);
+});
+
+// Cursor Glow (desktop only)
+const cursorGlow = document.getElementById('cursor-glow');
+if (cursorGlow && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
+    });
+}
+
+// Back to Top
+const backToTopBtn = document.getElementById('back-to-top');
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// Translation additions for new elements
+translations.cs['modal.phone'] = 'Telefon (volitelné)';
+translations.en['modal.phone'] = 'Phone (optional)';
+translations.cs['toast.added'] = 'Přidáno do košíku!';
+translations.en['toast.added'] = 'Added to cart!';
