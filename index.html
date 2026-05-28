@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
     <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="preloader-inner">
@@ -70,7 +73,7 @@
         <div class="hero-bg-glow"></div>
         <div class="hero-bg-glow hero-bg-glow-2"></div>
         <div class="container hero-content">
-            <span class="hero-badge fade-in-up" data-i18n="hero.badge">⚡ Express webové řešení</span>
+            <span class="hero-badge fade-in-up" data-i18n="hero.badge"><span class="hero-badge-pulse"></span>⚡ Express webové řešení</span>
             <h1 class="fade-in-up delay-1" data-i18n="hero.title">Tvoříme weby rychlostí<br><span class="text-gradient">vašeho podnikání.</span></h1>
             <p class="fade-in-up delay-2" data-i18n="hero.desc">Expressní webová prezentace & marketing. Plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.</p>
             <div class="hero-buttons fade-in-up delay-3">
@@ -558,6 +561,14 @@
                 </form>
             </div>
         </div>
+    </div>
+
+    <!-- Floating Contact Button -->
+    <div class="floating-contact" id="floating-contact">
+        <a href="mailto:info@venvio.dev" class="floating-contact-btn" title="Napište nám">
+            <i class="fa-solid fa-envelope"></i>
+        </a>
+        <span class="floating-contact-label" data-i18n="floating.contact">Napište nám</span>
     </div>
 
     <!-- Back to Top -->

@@ -736,8 +736,67 @@ if (backToTopBtn) {
     });
 }
 
+// === SCROLL PROGRESS BAR ===
+const scrollProgress = document.getElementById('scroll-progress');
+if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        scrollProgress.style.width = scrollPercent + '%';
+    }, { passive: true });
+}
+
+// === PARALLAX HERO ===
+const heroContent = document.querySelector('.hero-content');
+const heroBgGlow = document.querySelector('.hero-bg-glow');
+if (heroContent && window.matchMedia('(hover: hover)').matches) {
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        if (scrollY < window.innerHeight) {
+            heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
+            heroContent.style.opacity = 1 - (scrollY / (window.innerHeight * 0.8));
+            if (heroBgGlow) {
+                heroBgGlow.style.transform = `translate(-50%, -50%) scale(${1 + scrollY * 0.001})`;
+            }
+        }
+    }, { passive: true });
+}
+
+// === CARD GLOW FOLLOW MOUSE ===
+document.querySelectorAll('.pricing-card, .feature-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
+    });
+});
+
+// === ACTIVE NAV LINK HIGHLIGHTING ===
+const sections = document.querySelectorAll('section[id]');
+const navLinksAll = document.querySelectorAll('.nav-links a[href^="#"]');
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinksAll.forEach(link => {
+                link.classList.remove('nav-active');
+                if (link.getAttribute('href') === '#' + id) {
+                    link.classList.add('nav-active');
+                }
+            });
+        }
+    });
+}, { threshold: 0.3 });
+sections.forEach(s => navObserver.observe(s));
+
 // Translation additions for new elements
 translations.cs['modal.phone'] = 'Telefon (volitelné)';
 translations.en['modal.phone'] = 'Phone (optional)';
 translations.cs['toast.added'] = 'Přidáno do košíku!';
 translations.en['toast.added'] = 'Added to cart!';
+translations.cs['floating.contact'] = 'Napište nám';
+translations.en['floating.contact'] = 'Contact Us';
+
