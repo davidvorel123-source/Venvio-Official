@@ -215,7 +215,16 @@ const applyTranslations = () => {
 
     // Update active lang button
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        if (btn.getAttribute('data-lang') === currentLang && btn.getAttribute('data-curr') === currentCurrency) {
+        if (btn.getAttribute('data-lang') === currentLang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // Update active curr button
+    document.querySelectorAll('.curr-btn').forEach(btn => {
+        if (btn.getAttribute('data-curr') === currentCurrency) {
             btn.classList.add('active');
         } else {
             btn.classList.remove('active');
@@ -228,8 +237,14 @@ const applyTranslations = () => {
 document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         currentLang = e.target.getAttribute('data-lang');
-        currentCurrency = e.target.getAttribute('data-curr');
         localStorage.setItem('venvioLang', currentLang);
+        applyTranslations();
+    });
+});
+
+document.querySelectorAll('.curr-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        currentCurrency = e.target.getAttribute('data-curr');
         localStorage.setItem('venvioCurr', currentCurrency);
         applyTranslations();
     });

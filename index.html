@@ -43,10 +43,16 @@
                 <li><a href="#faq">FAQ</a></li>
             </ul>
             <div class="nav-actions">
-                <div class="lang-switcher">
-                    <button class="lang-btn active" data-lang="cs" data-curr="czk">🇨🇿 CZ</button>
-                    <button class="lang-btn" data-lang="en" data-curr="eur">🇪🇺 EUR</button>
-                    <button class="lang-btn" data-lang="en" data-curr="usd">🇺🇸 USD</button>
+                <div style="display: flex; gap: 0.5rem;">
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="cs">🇨🇿 CZ</button>
+                        <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+                    </div>
+                    <div class="lang-switcher">
+                        <button class="curr-btn active" data-curr="czk">Kč</button>
+                        <button class="curr-btn" data-curr="eur">€</button>
+                        <button class="curr-btn" data-curr="usd">$</button>
+                    </div>
                 </div>
                 <button id="cart-btn" class="cart-btn">
                     <i class="fa-solid fa-bag-shopping"></i>
