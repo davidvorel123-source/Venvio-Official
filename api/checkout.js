@@ -6,10 +6,10 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { cart, customerInfo } = req.body;
+        const { cart, customerInfo, lang } = req.body;
 
         if (!cart || cart.length === 0) {
-            return res.status(400).json({ error: 'Košík je prázdný.' });
+            return res.status(400).json({ error: 'Košík je prázdný / Cart is empty.' });
         }
 
         // Vytvoření položek pro Stripe Checkout
@@ -36,12 +36,14 @@ export default async function handler(req, res) {
             payment_method_types: ['card'],
             line_items: lineItems,
             mode: 'payment',
+            locale: lang === 'en' ? 'en' : 'cs',
             success_url: `${baseUrl}/success.html?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${baseUrl}/cancel.html`,
             customer_email: customerInfo.email,
             metadata: {
                 customerName: customerInfo.name,
-                customerMessage: customerInfo.message
+                customerMessage: customerInfo.message,
+                language: lang
             }
         });
 
@@ -49,6 +51,6 @@ export default async function handler(req, res) {
         res.status(200).json({ url: session.url });
     } catch (err) {
         console.error('Chyba při platbě:', err);
-        res.status(500).json({ error: 'Interní chyba serveru při vytváření platby.' });
+        res.status(500).json({ error: 'Interní chyba serveru při vytváření platby / Internal server error.' });
     }
 }

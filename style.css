@@ -165,6 +165,34 @@ a {
     gap: 1.5rem;
 }
 
+/* Language Switcher */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-family: var(--font-body);
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lang-btn:hover {
+    color: var(--color-text);
+}
+
+.lang-btn.active {
+    color: var(--color-primary);
+}
+
 .cart-btn {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid var(--color-border);

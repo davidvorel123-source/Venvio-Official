@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venvio | Expressní Webová Prezentace</title>
-    <!-- Google Fonts -->
+    <title>Venvio | Express Web Solutions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,14 +15,19 @@
         <div class="nav-container">
             <a href="#" class="logo">VENVIO</a>
             <ul class="nav-links">
-                <li><a href="#vyhody">Proč my</a></li>
-                <li><a href="#portfolio">Reference</a></li>
-                <li><a href="#cenik">Ceník</a></li>
-                <li><a href="#doplnky">Doplňky</a></li>
+                <li><a href="#vyhody" data-i18n="nav.why_us">Proč my</a></li>
+                <li><a href="#portfolio" data-i18n="nav.portfolio">Reference</a></li>
+                <li><a href="#cenik" data-i18n="nav.pricing">Ceník</a></li>
+                <li><a href="#doplnky" data-i18n="nav.addons">Doplňky</a></li>
             </ul>
             <div class="nav-actions">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="cs">CZ</button>
+                    <span>|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
                 <button id="cart-btn" class="cart-btn">
-                    Košík <span id="cart-count" class="cart-badge">0</span>
+                    <span data-i18n="nav.cart">Košík</span> <span id="cart-count" class="cart-badge">0</span>
                 </button>
                 <div class="mobile-menu-toggle">
                     <span></span><span></span><span></span>
@@ -37,11 +40,11 @@
     <header class="hero">
         <div class="hero-bg-glow"></div>
         <div class="container hero-content">
-            <h1 class="fade-in-up">Tvoříme weby rychlostí<br><span class="text-gradient">vašeho podnikání.</span></h1>
-            <p class="fade-in-up delay-1">Expressní webová prezentace & marketing. Plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.</p>
+            <h1 class="fade-in-up" data-i18n="hero.title">Tvoříme weby rychlostí<br><span class="text-gradient">vašeho podnikání.</span></h1>
+            <p class="fade-in-up delay-1" data-i18n="hero.desc">Expressní webová prezentace & marketing. Plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.</p>
             <div class="hero-buttons fade-in-up delay-2">
-                <a href="#cenik" class="btn btn-primary">Vybrat balíček</a>
-                <a href="#portfolio" class="btn btn-outline">Ukázky práce</a>
+                <a href="#cenik" class="btn btn-primary" data-i18n="hero.btn_pkg">Vybrat balíček</a>
+                <a href="#portfolio" class="btn btn-outline" data-i18n="hero.btn_portfolio">Ukázky práce</a>
             </div>
         </div>
     </header>
@@ -51,8 +54,8 @@
         <div class="container">
             <div class="feature-box glass-panel fade-in-up">
                 <div class="feature-icon">⚡</div>
-                <h2>Naše hlavní výhoda: Web už do 24 hodin</h2>
-                <p>Víme, že v podnikání rozhoduje rychlost. Zatímco běžné agentury tvoří weby týdny, my díky optimalizovanému vývoji a agilnímu nasazení dodáváme plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.</p>
+                <h2 data-i18n="feature.title">Naše hlavní výhoda: Web už do 24 hodin</h2>
+                <p data-i18n="feature.desc">Víme, že v podnikání rozhoduje rychlost. Zatímco běžné agentury tvoří weby týdny, my díky optimalizovanému vývoji a agilnímu nasazení dodáváme plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.</p>
             </div>
         </div>
     </section>
@@ -61,8 +64,8 @@
     <section id="portfolio" class="section">
         <div class="container">
             <div class="section-header fade-in-up">
-                <h2>Naše Ukázky</h2>
-                <p>Podívejte se na ukázkové projekty, které jsme připravili.</p>
+                <h2 data-i18n="portfolio.title">Naše Ukázky</h2>
+                <p data-i18n="portfolio.desc">Podívejte se na ukázkové projekty, které jsme připravili.</p>
             </div>
             
             <div class="portfolio-grid">
@@ -71,12 +74,12 @@
                     <div class="portfolio-img">
                         <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Crush Burger">
                         <div class="portfolio-overlay">
-                            <a href="https://github.com/davidvorel123-source/Venvio-CrushBurger" target="_blank" class="btn btn-sm">Zdrojový kód</a>
+                            <a href="https://github.com/davidvorel123-source/Venvio-CrushBurger" target="_blank" class="btn btn-sm" data-i18n="portfolio.btn">Zdrojový kód</a>
                         </div>
                     </div>
                     <div class="portfolio-info">
                         <h3>CRUSH Burger</h3>
-                        <p>Moderní one-page bistro</p>
+                        <p data-i18n="portfolio.p1_desc">Moderní one-page bistro</p>
                     </div>
                 </div>
 
@@ -85,12 +88,12 @@
                     <div class="portfolio-img">
                         <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lumiere Cafe">
                         <div class="portfolio-overlay">
-                            <a href="https://github.com/davidvorel123-source/Venvio-LumiereCafe" target="_blank" class="btn btn-sm">Zdrojový kód</a>
+                            <a href="https://github.com/davidvorel123-source/Venvio-LumiereCafe" target="_blank" class="btn btn-sm" data-i18n="portfolio.btn">Zdrojový kód</a>
                         </div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Lumière Cafe</h3>
-                        <p>Elegantní prezentace kavárny</p>
+                        <p data-i18n="portfolio.p2_desc">Elegantní prezentace kavárny</p>
                     </div>
                 </div>
 
@@ -99,12 +102,12 @@
                     <div class="portfolio-img">
                         <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Aura Fine Dining">
                         <div class="portfolio-overlay">
-                            <a href="https://github.com/davidvorel123-source/Venvio-AuraFineDining" target="_blank" class="btn btn-sm">Zdrojový kód</a>
+                            <a href="https://github.com/davidvorel123-source/Venvio-AuraFineDining" target="_blank" class="btn btn-sm" data-i18n="portfolio.btn">Zdrojový kód</a>
                         </div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Aura Fine Dining</h3>
-                        <p>Luxusní vícestránkový web</p>
+                        <p data-i18n="portfolio.p3_desc">Luxusní vícestránkový web</p>
                     </div>
                 </div>
             </div>
@@ -115,64 +118,64 @@
     <section id="cenik" class="section dark-section">
         <div class="container">
             <div class="section-header fade-in-up">
-                <h2>Hlavní balíčky služeb</h2>
-                <p>Vyberte si řešení, které odpovídá vašim potřebám.</p>
+                <h2 data-i18n="pricing.title">Hlavní balíčky služeb</h2>
+                <p data-i18n="pricing.desc">Vyberte si řešení, které odpovídá vašim potřebám.</p>
             </div>
             
             <div class="pricing-grid">
                 <!-- Start -->
                 <div class="pricing-card glass-panel fade-in-up delay-1">
                     <div class="pricing-header">
-                        <span class="badge">DO 24 HODIN</span>
+                        <span class="badge" data-i18n="pricing.badge_24">DO 24 HODIN</span>
                         <h3>Express Start</h3>
                         <div class="price">5 900 Kč</div>
-                        <p class="ideal-for">Ideální pro: Restaurace, kavárny, řemeslníky a lokální služby, které potřebují okamžitou vizitku na internetu.</p>
+                        <p class="ideal-for" data-i18n="pkg.start.ideal">Ideální pro: Restaurace, kavárny, řemeslníky a lokální služby, které potřebují okamžitou vizitku na internetu.</p>
                     </div>
                     <ul class="pricing-features">
-                        <li>Moderní jednostránkový web (One-page) pro mobilní telefony</li>
-                        <li>Důležité sekce: O nás, Nabídka, Ceník, Kontakt</li>
-                        <li>Propojení na Google Mapy a sociální sítě</li>
-                        <li>Základní technické SEO</li>
-                        <li>Spuštění projektu do 24 hodin od podkladů</li>
+                        <li data-i18n="pkg.start.f1">Moderní jednostránkový web (One-page) pro mobilní telefony</li>
+                        <li data-i18n="pkg.start.f2">Důležité sekce: O nás, Nabídka, Ceník, Kontakt</li>
+                        <li data-i18n="pkg.start.f3">Propojení na Google Mapy a sociální sítě</li>
+                        <li data-i18n="pkg.start.f4">Základní technické SEO</li>
+                        <li data-i18n="pkg.start.f5">Spuštění projektu do 24 hodin od podkladů</li>
                     </ul>
-                    <button class="btn btn-primary btn-block add-to-cart" data-id="pkg-start" data-name="Express Start" data-price="5900">Přidat do košíku</button>
+                    <button class="btn btn-primary btn-block add-to-cart" data-i18n-btn="add_to_cart" data-id="pkg-start" data-name-cs="Express Start" data-name-en="Express Start" data-price="5900" data-i18n="pkg.btn_add">Přidat do košíku</button>
                 </div>
 
                 <!-- Standard -->
                 <div class="pricing-card glass-panel popular fade-in-up delay-2">
-                    <div class="popular-tag">Nejprodávanější</div>
+                    <div class="popular-tag" data-i18n="pricing.popular">Nejprodávanější</div>
                     <div class="pricing-header">
-                        <span class="badge">DO 48 HODIN</span>
+                        <span class="badge" data-i18n="pricing.badge_48">DO 48 HODIN</span>
                         <h3>Express Standard</h3>
                         <div class="price">12 500 Kč</div>
-                        <p class="ideal-for">Ideální pro: Rostoucí firmy a živnostníky, kteří chtějí detailně prezentovat více služeb nebo své reference.</p>
+                        <p class="ideal-for" data-i18n="pkg.std.ideal">Ideální pro: Rostoucí firmy a živnostníky, kteří chtějí detailně prezentovat více služeb nebo své reference.</p>
                     </div>
                     <ul class="pricing-features">
-                        <li>Vícestránkový web (rozsah až 5 samostatných podstránek)</li>
-                        <li>Pokročilý poptávkový či rezervační formulář</li>
-                        <li>Přehledná a logická navigace</li>
-                        <li>Nasazení analytických nástrojů (Google Analytics)</li>
-                        <li>Kompletní realizace a spuštění do 48 hodin</li>
+                        <li data-i18n="pkg.std.f1">Vícestránkový web (rozsah až 5 samostatných podstránek)</li>
+                        <li data-i18n="pkg.std.f2">Pokročilý poptávkový či rezervační formulář</li>
+                        <li data-i18n="pkg.std.f3">Přehledná a logická navigace</li>
+                        <li data-i18n="pkg.std.f4">Nasazení analytických nástrojů (Google Analytics)</li>
+                        <li data-i18n="pkg.std.f5">Kompletní realizace a spuštění do 48 hodin</li>
                     </ul>
-                    <button class="btn btn-primary btn-block add-to-cart" data-id="pkg-standard" data-name="Express Standard" data-price="12500">Přidat do košíku</button>
+                    <button class="btn btn-primary btn-block add-to-cart" data-i18n-btn="add_to_cart" data-id="pkg-standard" data-name-cs="Express Standard" data-name-en="Express Standard" data-price="12500" data-i18n="pkg.btn_add">Přidat do košíku</button>
                 </div>
 
                 <!-- Premium -->
                 <div class="pricing-card glass-panel fade-in-up delay-3">
                     <div class="pricing-header">
-                        <span class="badge">INDIVIDUÁLNÍ</span>
+                        <span class="badge" data-i18n="pricing.badge_ind">INDIVIDUÁLNÍ</span>
                         <h3>Express Premium</h3>
-                        <div class="price">od 18 900 Kč</div>
-                        <p class="ideal-for">Ideální pro: Náročnější klienty, kteří vyžadují neomezený rozsah obsahu a nadstandardní interaktivní funkce.</p>
+                        <div class="price" data-i18n="pkg.prem.price">od 18 900 Kč</div>
+                        <p class="ideal-for" data-i18n="pkg.prem.ideal">Ideální pro: Náročnější klienty, kteří vyžadují neomezený rozsah obsahu a nadstandardní interaktivní funkce.</p>
                     </div>
                     <ul class="pricing-features">
-                        <li>Neomezené množství podstránek s architekturou na míru</li>
-                        <li>Pokročilé dynamické prvky a animace pomocí JavaScriptu</li>
-                        <li>Vícejazyčné mutace webu (přepínání jazyků)</li>
-                        <li>Plné využití moderních technologií pro rychlost</li>
-                        <li>Rozšířená technická podpora a prioritní úpravy</li>
+                        <li data-i18n="pkg.prem.f1">Neomezené množství podstránek s architekturou na míru</li>
+                        <li data-i18n="pkg.prem.f2">Pokročilé dynamické prvky a animace pomocí JavaScriptu</li>
+                        <li data-i18n="pkg.prem.f3">Vícejazyčné mutace webu (přepínání jazyků)</li>
+                        <li data-i18n="pkg.prem.f4">Plné využití moderních technologií pro rychlost</li>
+                        <li data-i18n="pkg.prem.f5">Rozšířená technická podpora a prioritní úpravy</li>
                     </ul>
-                    <button class="btn btn-outline btn-block add-to-cart" data-id="pkg-premium" data-name="Express Premium" data-price="18900">Přidat do košíku</button>
+                    <button class="btn btn-outline btn-block add-to-cart" data-i18n-btn="add_to_cart" data-id="pkg-premium" data-name-cs="Express Premium" data-name-en="Express Premium" data-price="18900" data-i18n="pkg.btn_add">Přidat do košíku</button>
                 </div>
             </div>
         </div>
@@ -182,56 +185,56 @@
     <section id="doplnky" class="section">
         <div class="container">
             <div class="section-header fade-in-up">
-                <h2>Doplňkové služby a správa</h2>
-                <p>Přizpůsobte si projekt svým potřebám.</p>
+                <h2 data-i18n="addons.title">Doplňkové služby a správa</h2>
+                <p data-i18n="addons.desc">Přizpůsobte si projekt svým potřebám.</p>
             </div>
 
             <div class="addons-list">
                 <!-- Addon 1 -->
                 <div class="addon-card glass-panel fade-in-up delay-1">
                     <div class="addon-info">
-                        <h4>Vlastní doména (.cz, .com)</h4>
-                        <p>Zajištění prémiové domény pro vaši značku na 1 rok včetně SSL certifikátu.</p>
+                        <h4 data-i18n="addon1.title">Vlastní doména (.cz, .com)</h4>
+                        <p data-i18n="addon1.desc">Zajištění prémiové domény pro vaši značku na 1 rok včetně SSL certifikátu.</p>
                     </div>
                     <div class="addon-action">
-                        <div class="price">1 800 Kč <span>/ rok</span></div>
-                        <button class="btn btn-outline add-to-cart" data-id="add-domain" data-name="Vlastní doména" data-price="1800">Přidat</button>
+                        <div class="price">1 800 Kč <span data-i18n="addon.per_year">/ rok</span></div>
+                        <button class="btn btn-outline add-to-cart" data-id="add-domain" data-name-cs="Vlastní doména" data-name-en="Custom Domain" data-price="1800" data-i18n="addon.btn_add">Přidat</button>
                     </div>
                 </div>
 
                 <!-- Addon 2 -->
                 <div class="addon-card glass-panel fade-in-up delay-2">
                     <div class="addon-info">
-                        <h4>Měsíční správa a podpora</h4>
-                        <p>Pravidelné zálohování webu, aktualizace systému, zabezpečení a drobné úpravy obsahu na přání.</p>
+                        <h4 data-i18n="addon2.title">Měsíční správa a podpora</h4>
+                        <p data-i18n="addon2.desc">Pravidelné zálohování webu, aktualizace systému, zabezpečení a drobné úpravy obsahu na přání.</p>
                     </div>
                     <div class="addon-action">
-                        <div class="price">600 Kč <span>/ měsíc</span></div>
-                        <button class="btn btn-outline add-to-cart" data-id="add-support" data-name="Měsíční správa a podpora" data-price="600">Přidat</button>
+                        <div class="price">600 Kč <span data-i18n="addon.per_month">/ měsíc</span></div>
+                        <button class="btn btn-outline add-to-cart" data-id="add-support" data-name-cs="Měsíční správa" data-name-en="Monthly Support" data-price="600" data-i18n="addon.btn_add">Přidat</button>
                     </div>
                 </div>
 
                 <!-- Addon 3 -->
                 <div class="addon-card glass-panel fade-in-up delay-3">
                     <div class="addon-info">
-                        <h4>Tvorba vizuální identity</h4>
-                        <p>Návrh minimalistického loga a definice firemních barev.</p>
+                        <h4 data-i18n="addon3.title">Tvorba vizuální identity</h4>
+                        <p data-i18n="addon3.desc">Návrh minimalistického loga a definice firemních barev.</p>
                     </div>
                     <div class="addon-action">
                         <div class="price">2 500 Kč</div>
-                        <button class="btn btn-outline add-to-cart" data-id="add-identity" data-name="Tvorba vizuální identity" data-price="2500">Přidat</button>
+                        <button class="btn btn-outline add-to-cart" data-id="add-identity" data-name-cs="Vizuální identita" data-name-en="Visual Identity" data-price="2500" data-i18n="addon.btn_add">Přidat</button>
                     </div>
                 </div>
                 
                 <!-- Addon 4 -->
                 <div class="addon-card glass-panel fade-in-up delay-4">
                     <div class="addon-info">
-                        <h4>Hodinová sazba (Vícepráce)</h4>
-                        <p>Práce nad rámec balíčků (rozšiřování webu, specifické animace a kódování). Uveďte počet hodin v košíku.</p>
+                        <h4 data-i18n="addon4.title">Hodinová sazba (Vícepráce)</h4>
+                        <p data-i18n="addon4.desc">Práce nad rámec balíčků (rozšiřování webu, specifické animace a kódování). Uveďte počet hodin v košíku.</p>
                     </div>
                     <div class="addon-action">
-                        <div class="price">700 Kč <span>/ hod</span></div>
-                        <button class="btn btn-outline add-to-cart" data-id="add-hourly" data-name="Vícepráce (1 hodina)" data-price="700">Přidat</button>
+                        <div class="price">700 Kč <span data-i18n="addon.per_hour">/ hod</span></div>
+                        <button class="btn btn-outline add-to-cart" data-id="add-hourly" data-name-cs="Vícepráce (1h)" data-name-en="Hourly Rate (1h)" data-price="700" data-i18n="addon.btn_add">Přidat</button>
                     </div>
                 </div>
             </div>
@@ -244,11 +247,11 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <h2>VENVIO</h2>
-                    <p>Expressní webová prezentace & marketing.</p>
+                    <p data-i18n="footer.desc">Expressní webová prezentace & marketing.</p>
                 </div>
                 <div class="footer-text">
-                    <p>Ceny jsou konečné. Nejsme plátci DPH.</p>
-                    <p>&copy; 2026 Venvio. Všechna práva vyhrazena.</p>
+                    <p data-i18n="footer.tax">Ceny jsou konečné. Nejsme plátci DPH.</p>
+                    <p>&copy; 2026 Venvio. <span data-i18n="footer.rights">Všechna práva vyhrazena.</span></p>
                 </div>
             </div>
         </div>
@@ -258,20 +261,20 @@
     <div class="cart-overlay" id="cart-overlay"></div>
     <aside class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
-            <h2>Váš Košík</h2>
+            <h2 data-i18n="cart.title">Váš Košík</h2>
             <button class="close-cart" id="close-cart">&times;</button>
         </div>
         <div class="cart-body" id="cart-items-container">
             <!-- Items injected via JS -->
-            <div class="empty-cart-msg">Váš košík je zatím prázdný.</div>
+            <div class="empty-cart-msg" data-i18n="cart.empty">Váš košík je zatím prázdný.</div>
         </div>
         <div class="cart-footer">
             <div class="cart-total">
-                <span>Celkem:</span>
+                <span data-i18n="cart.total">Celkem:</span>
                 <strong id="cart-total-price">0 Kč</strong>
             </div>
-            <p class="tax-info">Nejsme plátci DPH. Ceny jsou konečné.</p>
-            <button class="btn btn-primary btn-block" id="checkout-btn">Přejít k objednávce</button>
+            <p class="tax-info" data-i18n="cart.tax_info">Nejsme plátci DPH. Ceny jsou konečné.</p>
+            <button class="btn btn-primary btn-block" id="checkout-btn" data-i18n="cart.checkout">Přejít k objednávce</button>
         </div>
     </aside>
 
@@ -279,24 +282,24 @@
     <div class="modal-overlay" id="checkout-modal">
         <div class="modal glass-panel">
             <div class="modal-header">
-                <h2>Dokončení objednávky</h2>
+                <h2 data-i18n="modal.title">Dokončení objednávky</h2>
                 <button class="close-modal" id="close-modal">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="checkout-form">
                     <div class="form-group">
-                        <label>Jméno a Příjmení / Firma</label>
-                        <input type="text" required placeholder="Např. Jan Novák">
+                        <label data-i18n="modal.name">Jméno a Příjmení / Firma</label>
+                        <input type="text" required placeholder="Např. Jan Novák" data-i18n-ph="modal.name_ph">
                     </div>
                     <div class="form-group">
                         <label>E-mail</label>
                         <input type="email" required placeholder="jan@novak.cz">
                     </div>
                     <div class="form-group">
-                        <label>Zpráva / Vaše představa o webu</label>
-                        <textarea rows="4" placeholder="Zde nám můžete popsat, co od webu očekáváte..."></textarea>
+                        <label data-i18n="modal.msg">Zpráva / Vaše představa o webu</label>
+                        <textarea rows="4" placeholder="Zde nám můžete popsat, co od webu očekáváte..." data-i18n-ph="modal.msg_ph"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Odeslat nezávaznou poptávku</button>
+                    <button type="submit" class="btn btn-primary btn-block" data-i18n="modal.submit">Zaplatit kartou</button>
                 </form>
             </div>
         </div>
