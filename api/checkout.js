@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { cart, customerInfo, lang } = req.body;
+        const { cart, customerInfo, lang, currency } = req.body;
 
         if (!cart || cart.length === 0) {
             return res.status(400).json({ error: 'Košík je prázdný / Cart is empty.' });
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
         const lineItems = cart.map(item => {
             return {
                 price_data: {
-                    currency: 'czk',
+                    currency: currency || 'czk',
                     product_data: {
                         name: item.name,
                     },

@@ -14,10 +14,10 @@ const translations = {
         "feature.desc": "Víme, že v podnikání rozhoduje rychlost. Zatímco běžné agentury tvoří weby týdny, my díky optimalizovanému vývoji a agilnímu nasazení dodáváme plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.",
         "portfolio.title": "Naše Ukázky",
         "portfolio.desc": "Podívejte se na ukázkové projekty, které jsme připravili.",
-        "portfolio.btn": "Zdrojový kód",
-        "portfolio.p1_desc": "Moderní one-page bistro",
+        "portfolio.btn": "Zobrazit web",
+        "portfolio.p1_desc": "Moderní vícestránkový web pro bistro",
         "portfolio.p2_desc": "Elegantní prezentace kavárny",
-        "portfolio.p3_desc": "Luxusní vícestránkový web",
+        "portfolio.p3_desc": "Luxusní one-page (jednostránkový) web",
         "pricing.title": "Hlavní balíčky služeb",
         "pricing.desc": "Vyberte si řešení, které odpovídá vašim potřebám.",
         "pricing.badge_24": "DO 24 HODIN",
@@ -58,6 +58,8 @@ const translations = {
         "addon.per_month": "/ měsíc",
         "addon.per_hour": "/ hod",
         "addon.btn_add": "Přidat",
+        "test.title": "Testovací platba pro ověření karty",
+        "test.desc": "Stojí pouze malou částku, abyste si mohli vyzkoušet reálný nákup na našem webu.",
         "footer.desc": "Expressní webová prezentace & marketing.",
         "footer.tax": "Ceny jsou konečné. Nejsme plátci DPH.",
         "footer.rights": "Všechna práva vyhrazena.",
@@ -97,10 +99,10 @@ const translations = {
         "feature.desc": "We know that speed is crucial in business. While regular agencies take weeks to build websites, thanks to optimized development and agile deployment, we deliver fully functional, modern, and responsive solutions within one day.",
         "portfolio.title": "Our Work",
         "portfolio.desc": "Take a look at the sample projects we have prepared.",
-        "portfolio.btn": "Source Code",
-        "portfolio.p1_desc": "Modern one-page bistro",
+        "portfolio.btn": "View Website",
+        "portfolio.p1_desc": "Modern multi-page website for a bistro",
         "portfolio.p2_desc": "Elegant cafe presentation",
-        "portfolio.p3_desc": "Luxury multi-page website",
+        "portfolio.p3_desc": "Luxury one-page website",
         "pricing.title": "Main Service Packages",
         "pricing.desc": "Choose the solution that fits your needs.",
         "pricing.badge_24": "WITHIN 24 HOURS",
@@ -141,6 +143,8 @@ const translations = {
         "addon.per_month": "/ month",
         "addon.per_hour": "/ hr",
         "addon.btn_add": "Add",
+        "test.title": "Test Payment to verify cards",
+        "test.desc": "Costs only a small amount so you can try a real purchase on our website.",
         "footer.desc": "Express web presentation & marketing.",
         "footer.tax": "Prices are final. We are not VAT payers.",
         "footer.rights": "All rights reserved.",
@@ -168,11 +172,25 @@ const translations = {
     }
 };
 
-// Current Language State
+// Products & Pricing Dictionary
+const productPrices = {
+    'pkg-start': { czk: { val: 5900, str: '5 900 Kč' }, eur: { val: 239, str: '239 €' }, usd: { val: 259, str: '$259' } },
+    'pkg-standard': { czk: { val: 12500, str: '12 500 Kč' }, eur: { val: 499, str: '499 €' }, usd: { val: 549, str: '$549' } },
+    'pkg-premium': { czk: { val: 18900, str: 'od 18 900 Kč' }, eur: { val: 749, str: 'from 749 €' }, usd: { val: 799, str: 'from $799' } },
+    'add-domain': { czk: { val: 1800, str: '1 800 Kč' }, eur: { val: 75, str: '75 €' }, usd: { val: 85, str: '$85' } },
+    'add-support': { czk: { val: 600, str: '600 Kč' }, eur: { val: 25, str: '25 €' }, usd: { val: 29, str: '$29' } },
+    'add-identity': { czk: { val: 2500, str: '2 500 Kč' }, eur: { val: 99, str: '99 €' }, usd: { val: 109, str: '$109' } },
+    'add-hourly': { czk: { val: 700, str: '700 Kč' }, eur: { val: 29, str: '29 €' }, usd: { val: 35, str: '$35' } },
+    'test-payment': { czk: { val: 1, str: '1 Kč' }, eur: { val: 1, str: '1 €' }, usd: { val: 1, str: '$1' } }
+};
+
+// Current State
 let currentLang = localStorage.getItem('venvioLang') || 'cs';
+let currentCurrency = localStorage.getItem('venvioCurr') || 'czk';
 
 // DOM Elements for Translation
 const applyTranslations = () => {
+    // Translate text
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[currentLang] && translations[currentLang][key]) {
@@ -180,6 +198,7 @@ const applyTranslations = () => {
         }
     });
 
+    // Translate placeholders
     document.querySelectorAll('[data-i18n-ph]').forEach(el => {
         const key = el.getAttribute('data-i18n-ph');
         if (translations[currentLang] && translations[currentLang][key]) {
@@ -187,27 +206,37 @@ const applyTranslations = () => {
         }
     });
 
+    // Update prices in HTML based on currency
+    document.querySelectorAll('[data-price-target]').forEach(el => {
+        const key = el.getAttribute('data-price-target');
+        if (productPrices[key] && productPrices[key][currentCurrency]) {
+            el.innerHTML = productPrices[key][currentCurrency].str;
+        }
+    });
+
     // Update active lang button
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        if (btn.getAttribute('data-lang') === currentLang) {
+        if (btn.getAttribute('data-lang') === currentLang && btn.getAttribute('data-curr') === currentCurrency) {
             btn.classList.add('active');
         } else {
             btn.classList.remove('active');
         }
     });
 
-    updateCartUI(); // Re-render cart with new language
+    updateCartUI(); // Re-render cart with new language & currency
 };
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         currentLang = e.target.getAttribute('data-lang');
+        currentCurrency = e.target.getAttribute('data-curr');
         localStorage.setItem('venvioLang', currentLang);
+        localStorage.setItem('venvioCurr', currentCurrency);
         applyTranslations();
     });
 });
 
-// State
+// State (Cart stores only item ID, names, and we calculate price on the fly)
 let cart = JSON.parse(localStorage.getItem('venvioCart')) || [];
 
 // DOM Elements
@@ -224,19 +253,22 @@ const checkoutModal = document.getElementById('checkout-modal');
 const closeModal = document.getElementById('close-modal');
 const checkoutForm = document.getElementById('checkout-form');
 
-// Helper formatting
-const formatPrice = (price) => {
-    return new Intl.NumberFormat('cs-CZ', { style: 'currency', currency: 'CZK', maximumFractionDigits: 0 }).format(price);
+// Helper formatting based on currency
+const formatPriceDynamic = (priceVal) => {
+    if (currentCurrency === 'czk') return priceVal + ' Kč';
+    if (currentCurrency === 'eur') return priceVal + ' €';
+    if (currentCurrency === 'usd') return '$' + priceVal;
+    return priceVal;
 };
 
 // Update UI
 const updateCartUI = () => {
-    if (!cartCount) return; // Might not exist on success/cancel pages
+    if (!cartCount) return; 
     cartCount.innerText = cart.length;
     
     if (cart.length === 0) {
         cartContainer.innerHTML = `<div class="empty-cart-msg">${translations[currentLang]['cart.empty']}</div>`;
-        cartTotalPrice.innerText = '0 Kč';
+        cartTotalPrice.innerText = '0';
         return;
     }
 
@@ -244,13 +276,16 @@ const updateCartUI = () => {
     cartContainer.innerHTML = '';
     
     cart.forEach((item, index) => {
-        total += item.price;
+        // Získání správné ceny podle měny
+        const itemPrice = productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0;
+        total += itemPrice;
+        
         const div = document.createElement('div');
         div.className = 'cart-item';
         div.innerHTML = `
             <div class="cart-item-info">
                 <h5>${currentLang === 'en' && item.nameEn ? item.nameEn : item.nameCs}</h5>
-                <p>${formatPrice(item.price)}</p>
+                <p>${formatPriceDynamic(itemPrice)}</p>
             </div>
             <div class="cart-item-actions">
                 <button class="remove-item" onclick="removeFromCart(${index})">${translations[currentLang]['cart.remove']}</button>
@@ -259,13 +294,13 @@ const updateCartUI = () => {
         cartContainer.appendChild(div);
     });
 
-    cartTotalPrice.innerText = formatPrice(total);
+    cartTotalPrice.innerText = formatPriceDynamic(total);
     localStorage.setItem('venvioCart', JSON.stringify(cart));
 };
 
 // Add to cart
-const addToCart = (id, nameCs, nameEn, price) => {
-    cart.push({ id, nameCs, nameEn, price: parseInt(price) });
+const addToCart = (id, nameCs, nameEn) => {
+    cart.push({ id, nameCs, nameEn });
     updateCartUI();
     openCart();
 };
@@ -299,8 +334,8 @@ if(cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
 if(addToCartBtns) {
     addToCartBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const { id, nameCs, nameEn, price } = e.target.dataset;
-            addToCart(id, nameCs, nameEn, price);
+            const { id, nameCs, nameEn } = e.target.dataset;
+            addToCart(id, nameCs, nameEn);
         });
     });
 }
@@ -341,6 +376,15 @@ if(checkoutForm) {
         submitBtn.innerText = translations[currentLang]['modal.redirect'];
         submitBtn.disabled = true;
 
+        // Příprava dat pro backend (rozbalení cen z ID podle aktuální měny)
+        const cartWithPrices = cart.map(item => {
+            const price = productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0;
+            return {
+                name: currentLang === 'en' && item.nameEn ? item.nameEn : item.nameCs,
+                price: price
+            }
+        });
+
         try {
             // Odeslání požadavku na Vercel backend
             const response = await fetch('/api/checkout', {
@@ -349,9 +393,10 @@ if(checkoutForm) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    cart: cart.map(i => ({ name: currentLang === 'en' && i.nameEn ? i.nameEn : i.nameCs, price: i.price })),
+                    cart: cartWithPrices,
                     customerInfo: customerInfo,
-                    lang: currentLang // pass language to stripe
+                    lang: currentLang,
+                    currency: currentCurrency
                 })
             });
 
