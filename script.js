@@ -359,28 +359,60 @@ if(closeModal) {
 }
 
 if(checkoutForm) {
-    checkoutForm.addEventListener('submit', (e) => {
-        // Změna tlačítka na načítání (FormSubmit chvíli trvá)
-        const submitBtn = checkoutForm.querySelector('button[type="submit"]');
-        submitBtn.innerText = translations[currentLang]['modal.redirect'] || "Odesílám...";
+    checkoutForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Zabrání výchozímu odeslání stránky
         
-        // Zabalení položek z košíku do jednoho textového řetězce
-        const hiddenInput = document.getElementById('hidden-cart-data');
-        if(hiddenInput) {
-            let cartText = cart.map(item => {
+        // Změna tlačítka na načítání
+        const submitBtn = checkoutForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerText;
+        submitBtn.innerText = translations[currentLang]['modal.redirect'] || "Odesílám...";
+        submitBtn.disabled = true;
+        
+        // Sestavení informací z košíku
+        let cartText = "PRÁZDNÝ KOŠÍK";
+        if (cart.length > 0) {
+            cartText = cart.map(item => {
                 const price = productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0;
                 const name = currentLang === 'en' && item.nameEn ? item.nameEn : item.nameCs;
                 return `${name} (${formatPriceDynamic(price)})`;
             }).join(', ');
-            
             cartText += ` | CELKEM: ${document.getElementById('cart-total-price').innerText}`;
-            hiddenInput.value = cartText;
         }
-
-        // Vymažeme košík (protože se formulář standardně odešle na FormSubmit a pak na success.html)
-        localStorage.removeItem('venvioCart');
         
-        // Formulář se teď přirozeně odešle díky action="https://formsubmit.co/..."
+        const formData = new FormData(checkoutForm);
+        const requestData = {
+            Jméno: formData.get('Jmeno'),
+            Email: formData.get('Email'),
+            Zpráva: formData.get('Zprava'),
+            Objednávka: cartText,
+            _subject: "Nová objednávka webu Venvio!"
+        };
+
+        try {
+            // Odeslání přes AJAX
+            const response = await fetch("https://formsubmit.co/ajax/business.venvio2@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            });
+            
+            if (response.ok) {
+                // Vymažeme košík
+                localStorage.removeItem('venvioCart');
+                // Přesměrujeme klienta přímo na děkovací stránku s bankou
+                window.location.href = "success.html";
+            } else {
+                throw new Error("Nepodařilo se odeslat.");
+            }
+        } catch (error) {
+            console.error("Chyba:", error);
+            alert("Omlouváme se, došlo k chybě při odesílání objednávky. Zkuste to prosím znovu.");
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+        }
     });
 }
 
