@@ -570,6 +570,16 @@ translations.en['modal.submit'] = "Submit Order";
 translations.cs['modal.redirect'] = "Odesílám...";
 translations.en['modal.redirect'] = "Sending...";
 
+// Translation additions for new elements
+translations.cs['modal.phone'] = 'Telefon (volitelné)';
+translations.en['modal.phone'] = 'Phone (optional)';
+translations.cs['toast.added'] = 'Přidáno do košíku!';
+translations.en['toast.added'] = 'Added to cart!';
+translations.cs['floating.contact'] = 'Napište nám';
+translations.en['floating.contact'] = 'Contact Us';
+translations.cs['pricing.popular_ribbon'] = 'Doporučujeme';
+translations.en['pricing.popular_ribbon'] = 'Best Value';
+
 // Initialize Language & Cart
 applyTranslations();
 
@@ -794,11 +804,5 @@ const navObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 sections.forEach(s => navObserver.observe(s));
 
-// Translation additions for new elements
-translations.cs['modal.phone'] = 'Telefon (volitelné)';
-translations.en['modal.phone'] = 'Phone (optional)';
-translations.cs['toast.added'] = 'Přidáno do košíku!';
-translations.en['toast.added'] = 'Added to cart!';
-translations.cs['floating.contact'] = 'Napište nám';
-translations.en['floating.contact'] = 'Contact Us';
+// End of script
 
