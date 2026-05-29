@@ -1679,3 +1679,118 @@ a {
     background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
     opacity: 0.3;
 }
+
+/* === ELEGANT UPGRADES === */
+
+/* FAQ Accordion Update */
+.faq-question i {
+    color: var(--color-primary);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+/* Best Value Ribbon */
+.ribbon-wrap {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    z-index: 10;
+}
+.ribbon {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 25px;
+    transform: rotate(45deg);
+    width: 200px;
+    position: absolute;
+    top: 30px;
+    right: -45px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    box-shadow: 0 5px 15px rgba(0,210,255,0.4);
+    letter-spacing: 1px;
+}
+.ribbon::before, .ribbon::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    border-top: 3px solid #005080;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+}
+.ribbon::before { left: 0; }
+.ribbon::after { right: 0; }
+
+/* Premium Toast UI */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(10, 15, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 600;
+    z-index: 5000;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    opacity: 0;
+}
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+.toast i {
+    color: #00d2ff;
+    font-size: 1.2rem;
+}
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    width: 100%;
+}
+.toast.show .toast-progress {
+    animation: toast-progress 3s linear forwards;
+}
+@keyframes toast-progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+/* Form Validation UX */
+.form-group input {
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-group input:not(:placeholder-shown):valid {
+    border-color: #00d2ff;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.1);
+}
+.form-group input:not(:placeholder-shown):invalid {
+    border-color: #ff4757;
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.1);
+}
+
+/* Touch Response */
+@media (max-width: 768px) {
+    .btn:active {
+        transform: scale(0.95) !important;
+        transition: transform 0.1s;
+    }
+}

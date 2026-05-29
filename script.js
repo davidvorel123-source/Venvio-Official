@@ -683,11 +683,18 @@ faqItems.forEach(item => {
 });
 
 // Toast Notification
+let toastTimeout;
 const showToast = () => {
     const toast = document.getElementById('toast');
-    if (!toast) return;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2500);
+    if(toast) {
+        toast.classList.remove('show');
+        void toast.offsetWidth; // Trigger reflow to restart animation
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
 };
 
 // Smooth Anchor Scrolling
