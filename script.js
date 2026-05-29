@@ -795,3 +795,129 @@ translations.en['toast.added'] = 'Added to cart!';
 translations.cs['floating.contact'] = 'Napište nám';
 translations.en['floating.contact'] = 'Contact Us';
 
+// === BRUTAL UPGRADES ===
+
+// 1. Custom Cursor & Magnetic Buttons
+const cursor = document.querySelector('.custom-cursor');
+const cursorFollower = document.querySelector('.custom-cursor-follower');
+
+if (cursor && cursorFollower && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
+    });
+    
+    // Smooth follower animation
+    const animateFollower = () => {
+        followerX += (mouseX - followerX) * 0.15;
+        followerY += (mouseY - followerY) * 0.15;
+        cursorFollower.style.left = followerX + 'px';
+        cursorFollower.style.top = followerY + 'px';
+        requestAnimationFrame(animateFollower);
+    };
+    animateFollower();
+    
+    // Hover states for links and buttons
+    const interactables = document.querySelectorAll('a, button, .btn, .portfolio-card, input, textarea');
+    interactables.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('hover');
+            cursorFollower.classList.add('hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+            cursorFollower.classList.remove('hover');
+            el.style.transform = ''; // reset magnetic
+        });
+        
+        // Magnetic effect for .btn
+        if (el.classList.contains('btn')) {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+        }
+    });
+}
+
+// 2. 3D Tilt for Portfolio Cards
+document.querySelectorAll('.portfolio-card').forEach(card => {
+    // Add glare element
+    const glare = document.createElement('div');
+    glare.classList.add('glare');
+    card.appendChild(glare);
+    
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.2) 0%, transparent 60%)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+    });
+});
+
+// 3. Word-by-word Reveal on H1
+const h1 = document.querySelector('.hero h1');
+if (h1 && !h1.classList.contains('revealed')) {
+    h1.classList.add('revealed');
+    // Save original HTML structure
+    const textNodes = Array.from(h1.childNodes);
+    h1.innerHTML = '';
+    
+    let delay = 0;
+    textNodes.forEach(node => {
+        if (node.nodeType === 3) { // Text node
+            const words = node.textContent.split(' ');
+            words.forEach(word => {
+                if (word.trim() !== '') {
+                    const span = document.createElement('span');
+                    span.className = 'word-reveal';
+                    span.style.animationDelay = `${delay}s`;
+                    span.textContent = word + ' ';
+                    h1.appendChild(span);
+                    delay += 0.05;
+                } else {
+                    h1.appendChild(document.createTextNode(' '));
+                }
+            });
+        } else { // HTML Element (like <br> or <span class="text-gradient">)
+            if (node.tagName && node.tagName.toLowerCase() === 'span') {
+                const words = node.textContent.split(' ');
+                const newSpan = document.createElement('span');
+                newSpan.className = node.className;
+                words.forEach(word => {
+                    if (word.trim() !== '') {
+                        const innerSpan = document.createElement('span');
+                        innerSpan.className = 'word-reveal';
+                        innerSpan.style.animationDelay = `${delay}s`;
+                        innerSpan.textContent = word + ' ';
+                        newSpan.appendChild(innerSpan);
+                        delay += 0.05;
+                    } else {
+                        newSpan.appendChild(document.createTextNode(' '));
+                    }
+                });
+                h1.appendChild(newSpan);
+            } else {
+                h1.appendChild(node);
+            }
+        }
+    });
+}
