@@ -464,7 +464,7 @@ if(cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
 if(addToCartBtns) {
     addToCartBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const { id, nameCs, nameEn } = e.target.dataset;
+            const { id, nameCs, nameEn } = e.currentTarget.dataset;
             addToCart(id, nameCs, nameEn);
         });
     });
