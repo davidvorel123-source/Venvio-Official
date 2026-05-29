@@ -45,7 +45,10 @@
                 <li><a href="#doplnky" data-i18n="nav.addons">Doplňky</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li class="mobile-switchers-container">
-                    <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                    <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; align-items: center;">
+                        <button id="theme-toggle-mobile" class="btn-icon" aria-label="Toggle Theme" style="background:transparent; border:none; color:var(--color-text); font-size:1.2rem; cursor:pointer;">
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
                         <div class="lang-switcher">
                             <button class="lang-btn active" data-lang="cs"><img src="https://flagcdn.com/w20/cz.png" alt="CZ" style="vertical-align: middle; margin-right: 5px;">CZ</button>
                             <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="EN" style="vertical-align: middle; margin-right: 5px;">EN</button>
@@ -59,8 +62,11 @@
                 </li>
             </ul>
             <div class="nav-actions">
-                <div style="display: flex; gap: 0.5rem;">
-                    <div class="lang-switcher">
+                  <div style="display: flex; gap: 0.5rem; align-items: center;">
+                      <button id="theme-toggle" class="btn-icon" aria-label="Toggle Theme" style="background:transparent; border:none; color:var(--color-text); font-size:1.2rem; cursor:pointer;">
+                          <i class="fa-solid fa-moon"></i>
+                      </button>
+                      <div class="lang-switcher">
                         <button class="lang-btn active" data-lang="cs"><img src="https://flagcdn.com/w20/cz.png" alt="CZ" style="vertical-align: middle; margin-right: 5px;">CZ</button>
                         <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="EN" style="vertical-align: middle; margin-right: 5px;">EN</button>
                     </div>

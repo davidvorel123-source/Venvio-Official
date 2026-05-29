@@ -1794,3 +1794,91 @@ a {
         transition: transform 0.1s;
     }
 }
+
+/* === OPTION B: FUNCTIONAL ELEGANCE === */
+
+/* Light Mode Variables */
+body.light-mode {
+    --color-bg-dark: #F1F5F9;
+    --color-bg-panel: rgba(255, 255, 255, 0.7);
+    --color-text: #0F172A;
+    --color-text-muted: #475569;
+    --color-border: rgba(0, 0, 0, 0.08);
+    --glow-primary: 0 5px 25px rgba(0, 210, 255, 0.3);
+}
+
+body.light-mode .navbar {
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+body.light-mode .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+}
+
+body.light-mode .hero-content h1 {
+    color: #0F172A;
+}
+
+body.light-mode .glass-panel {
+    background: var(--color-bg-panel);
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .btn-outline {
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+body.light-mode .btn-outline:hover {
+    border-color: var(--color-primary);
+    background: transparent;
+    color: var(--color-primary);
+}
+
+body.light-mode .footer {
+    border-top: 1px solid rgba(0,0,0,0.05);
+    background: #E2E8F0;
+}
+/* Testimonials/Portfolio Carousel */
+.portfolio-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    scrollbar-width: none; /* Firefox */
+}
+.portfolio-grid::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+.portfolio-card {
+    scroll-snap-align: center;
+    flex: 0 0 calc(33.333% - 1.33rem);
+    min-width: 300px;
+}
+
+/* Pricing Card Elevation */
+.pricing-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+.pricing-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 210, 255, 0.15);
+    border-color: rgba(0, 210, 255, 0.4);
+}
+.pricing-card.popular:hover {
+    box-shadow: 0 25px 50px rgba(123, 97, 255, 0.25);
+    border-color: rgba(123, 97, 255, 0.6);
+}
+
+body.light-mode .pricing-card:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Dynamic Hero Glow tracking mouse */
+.hero-bg-glow {
+    transition: left 0.1s ease-out, top 0.1s ease-out;
+}

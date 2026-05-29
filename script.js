@@ -804,5 +804,54 @@ const navObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 sections.forEach(s => navObserver.observe(s));
 
+// === OPTION B UPGRADES ===
+
+// 1. Theme Toggle (Light/Dark Mode)
+const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+const currentTheme = localStorage.getItem('theme') || 'dark';
+
+if (currentTheme === 'light') {
+    document.body.classList.add('light-mode');
+    themeToggles.forEach(t => {
+        if(t) t.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+    });
+}
+
+themeToggles.forEach(toggleBtn => {
+    if (!toggleBtn) return;
+    toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        let theme = 'dark';
+        if (document.body.classList.contains('light-mode')) {
+            theme = 'light';
+            themeToggles.forEach(t => t.querySelector('i').classList.replace('fa-moon', 'fa-sun'));
+        } else {
+            themeToggles.forEach(t => t.querySelector('i').classList.replace('fa-sun', 'fa-moon'));
+        }
+        localStorage.setItem('theme', theme);
+    });
+});
+
+// 2. Dynamic Hero Glow Tracking
+const heroHeader = document.querySelector('.hero');
+const heroGlow1 = document.querySelector('.hero-bg-glow');
+const heroGlow2 = document.querySelector('.hero-bg-glow-2');
+
+if (heroHeader && heroGlow1 && heroGlow2 && window.matchMedia('(hover: hover)').matches) {
+    heroHeader.addEventListener('mousemove', (e) => {
+        const rect = heroHeader.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Move glow 1 towards mouse
+        heroGlow1.style.left = `${x}px`;
+        heroGlow1.style.top = `${y}px`;
+        
+        // Move glow 2 in opposite direction for parallax depth
+        heroGlow2.style.left = `${rect.width - x}px`;
+        heroGlow2.style.top = `${rect.height - y}px`;
+    });
+}
+
 // End of script
 
