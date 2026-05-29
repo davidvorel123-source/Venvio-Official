@@ -324,7 +324,13 @@ const applyTranslations = () => {
     document.querySelectorAll('[data-price-target]').forEach(el => {
         const key = el.getAttribute('data-price-target');
         if (productPrices[key] && productPrices[key][currentCurrency]) {
-            el.innerHTML = productPrices[key][currentCurrency].str;
+            let priceStr = productPrices[key][currentCurrency].str;
+            if (currentLang === 'en' && currentCurrency === 'czk') {
+                priceStr = priceStr.replace('Kč', 'CZK').replace('od ', 'from ');
+            } else if (currentLang === 'cs' && currentCurrency !== 'czk') {
+                priceStr = priceStr.replace('from ', 'od ');
+            }
+            el.innerText = priceStr;
         }
     });
 
@@ -384,7 +390,7 @@ const checkoutForm = document.getElementById('checkout-form');
 
 // Helper formatting based on currency
 const formatPriceDynamic = (priceVal) => {
-    if (currentCurrency === 'czk') return priceVal + ' Kč';
+    if (currentCurrency === 'czk') return currentLang === 'en' ? priceVal + ' CZK' : priceVal + ' Kč';
     if (currentCurrency === 'eur') return priceVal + ' €';
     if (currentCurrency === 'usd') return '$' + priceVal;
     return priceVal;
