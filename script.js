@@ -1,3 +1,4 @@
+let pointsUsed = 0;
 // Translations Dictionary
 const translations = {
     cs: {
@@ -1153,7 +1154,7 @@ const cartPointsSection = document.getElementById('cart-points-section');
 const cartAvailPoints = document.getElementById('cart-avail-points');
 const applyPointsBtn = document.getElementById('apply-points-btn');
 const pointsMsg = document.getElementById('points-msg');
-let pointsUsed = 0;
+
 
 const updateAuthUI = () => {
     if (currentUser) {
