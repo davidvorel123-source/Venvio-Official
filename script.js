@@ -1021,32 +1021,18 @@ let currentCalcTotalRaw = 0;
 const calcEtaVal = document.getElementById('calc-eta-val');
 const calcAddToCartBtn = document.getElementById('calc-add-to-cart');
 
-const calculateEta = (pages, hasCms, hasEshop, hasChat) => {
-    let days = 0;
-    
-    // Base days by pages
-    if (pages === 1) days = 1;
-    else if (pages <= 3) days = pages + 1; // 2 pages = 3 days, 3 pages = 4 days
-    else if (pages <= 6) days = pages + 2;
-    else if (pages <= 10) days = 10;
-    else if (pages <= 15) days = 14;
-    else days = 21;
-
-    // Addons
-    if (hasCms) days += 3;
-    if (hasChat) days += 2;
-    if (hasEshop) days += 7;
-
-    // Format output
+const calculateEta = (days) => {
     if (currentLang === 'en') {
         if (days === 1) return 'under 24 hours';
+        if (days === 2) return 'under 48 hours';
         if (days <= 6) return `${days} days`;
         if (days <= 10) return '1-2 weeks';
         if (days <= 14) return '2 weeks';
         return `${Math.ceil(days / 7)} weeks`;
     } else {
         if (days === 1) return 'do 24 hodin!';
-        if (days >= 2 && days <= 4) return `${days} dny`;
+        if (days === 2) return 'do 48 hodin!';
+        if (days > 2 && days <= 4) return `${days} dny`;
         if (days > 4 && days <= 6) return `${days} dní`;
         if (days > 6 && days <= 10) return '1-2 týdny';
         if (days > 10 && days <= 14) return '2 týdny';
@@ -1061,25 +1047,37 @@ const updateCalculatorWithEta = () => {
     const calcTotalEl = document.getElementById('calc-total');
     if(!calcPagesEl || !calcTotalEl) return;
     
-    let basePrice = 5900;
     let pages = parseInt(calcPagesEl.value);
     document.getElementById('calc-pages-val').innerText = pages;
-    let total = basePrice + ((pages - 1) * 1500);
     
-    let hasCms = false, hasEshop = false, hasChat = false;
+    let basePrice = 0;
+    let days = 0;
+    
+    if (pages === 1) {
+        basePrice = 5900;
+        days = 1;
+    } else if (pages <= 5) {
+        basePrice = 12500 + ((pages - 2) * 500); // 2 pages = 12500, 5 pages = 14000
+        days = 2;
+    } else {
+        basePrice = 18900 + ((pages - 6) * 1500);
+        days = 5 + (pages - 5);
+    }
+    
+    let total = basePrice;
+    
     document.querySelectorAll('.calc-checkboxes input').forEach(cb => {
         if(cb.checked) {
             total += parseInt(cb.value);
-            if(cb.id === 'calc-cms') hasCms = true;
-            if(cb.id === 'calc-eshop') hasEshop = true;
-            if(cb.id === 'calc-chat') hasChat = true;
+            if(cb.id === 'calc-cms') days += 3;
+            if(cb.id === 'calc-eshop') days += 7;
+            if(cb.id === 'calc-chat') days += 2;
         }
     });
     currentCalcTotalRaw = total;
     
     if(calcEtaVal) {
-        let etaStr = calculateEta(pages, hasCms, hasEshop, hasChat);
-        calcEtaVal.innerText = currentLang === 'en' ? etaStr.replace('týdny', 'weeks').replace('týdnů', 'weeks') : etaStr;
+        calcEtaVal.innerText = calculateEta(days);
     }
     
     if(currentCurrency === 'eur') total = Math.round(total / 25);
