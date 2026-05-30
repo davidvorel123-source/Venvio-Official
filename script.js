@@ -581,6 +581,36 @@ translations.en['floating.contact'] = 'Contact Us';
 translations.cs['pricing.popular_ribbon'] = 'Doporučujeme';
 translations.en['pricing.popular_ribbon'] = 'Best Value';
 
+// Translation additions for new Služby
+translations.cs['nav.services'] = 'Služby';
+translations.en['nav.services'] = 'Services';
+translations.cs['services.badge'] = '💎 Premium';
+translations.en['services.badge'] = '💎 Premium';
+translations.cs['services.title'] = 'Softwarové služby na míru';
+translations.en['services.title'] = 'Custom Software Services';
+translations.cs['services.desc'] = 'Od jednoduchých webů po komplexní interní systémy a umělou inteligenci.';
+translations.en['services.desc'] = 'From simple websites to complex internal systems and AI.';
+
+translations.cs['svc1.title'] = 'Webové Aplikace & SaaS';
+translations.en['svc1.title'] = 'Web Applications & SaaS';
+translations.cs['svc1.desc'] = 'Vývoj plnohodnotných aplikací (React, Node.js), rezervačních systémů a klientských portálů na míru.';
+translations.en['svc1.desc'] = 'Development of full-featured applications (React, Node.js), booking systems, and custom client portals.';
+
+translations.cs['svc2.title'] = 'Inteligentní AI Chatboti';
+translations.en['svc2.title'] = 'Intelligent AI Chatbots';
+translations.cs['svc2.desc'] = 'Chytrý asistent napojený na ChatGPT, který zná vaše produkty, odpovídá 24/7 a zvyšuje prodeje.';
+translations.en['svc2.desc'] = 'A smart assistant connected to ChatGPT that knows your products, replies 24/7, and boosts sales.';
+
+translations.cs['svc3.title'] = 'Automatizace Procesů';
+translations.en['svc3.title'] = 'Process Automation';
+translations.cs['svc3.desc'] = 'Propojení systémů přes API (účetnictví, e-shopy). Zbavíme vás rutinní ruční práce a ušetříme čas.';
+translations.en['svc3.desc'] = 'API integrations between systems (accounting, e-shops). We eliminate routine manual work and save time.';
+
+translations.cs['svc4.title'] = 'Chrome Doplňky';
+translations.en['svc4.title'] = 'Chrome Extensions';
+translations.cs['svc4.desc'] = 'Vývoj privátních rozšíření do prohlížeče pro usnadnění práce vašich obchodníků a zaměstnanců.';
+translations.en['svc4.desc'] = 'Development of private browser extensions to streamline the work of your sales reps and employees.';
+
 // Initialize Language & Cart
 applyTranslations();
 
