@@ -900,16 +900,22 @@ if (heroHeader && heroGlow1 && heroGlow2 && window.matchMedia('(hover: hover)').
 
 
 // Preloader Logic
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        if(preloader) {
-            preloader.classList.add('fade-out');
-            setTimeout(() => {
-                document.body.classList.remove('loading');
-                preloader.style.display = 'none';
-            }, 800);
-        }
-    }, 500); // slight delay to ensure visual effect
-});
+const hidePreloader = () => {
+    const preloader = document.getElementById('preloader');
+    if(preloader && !preloader.classList.contains('fade-out')) {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+            document.body.classList.remove('loading');
+            preloader.style.display = 'none';
+        }, 800);
+    }
+};
+
+if (document.readyState === 'complete') {
+    setTimeout(hidePreloader, 200);
+} else {
+    window.addEventListener('load', () => setTimeout(hidePreloader, 200));
+    // Fallback in case load event gets stuck (e.g., slow image or ad blocker)
+    setTimeout(hidePreloader, 2000);
+}
 
