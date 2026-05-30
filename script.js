@@ -356,6 +356,27 @@ const applyTranslations = () => {
         } else {
             btn.classList.remove('active');
         }
+    });
+
+    updateCartUI(); // Re-render cart with new language & currency
+};
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        currentLang = e.currentTarget.getAttribute('data-lang');
+        localStorage.setItem('venvioLang', currentLang);
+        applyTranslations();
+    });
+});
+
+document.querySelectorAll('.curr-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        currentCurrency = e.currentTarget.getAttribute('data-curr');
+        localStorage.setItem('venvioCurr', currentCurrency);
+        applyTranslations();
+    });
+});
+
 // State (Cart stores only item ID, names, and we calculate price on the fly)
 let cart = JSON.parse(localStorage.getItem('venvioCart')) || [];
 
@@ -431,45 +452,6 @@ const updateCartUI = () => {
         
         const div = document.createElement('div');
         div.className = 'cart-item';
-        } else {
-            discountMultiplier = 1;
-            discountMsg.innerText = currentLang === 'en' ? 'Invalid code.' : 'Neplatný kód.';
-            discountMsg.style.color = '#FF6B6B';
-            discountMsg.style.display = 'block';
-            updateCartUI();
-        }
-    });
-}
-
-// Helper formatting based on currency
-const formatPriceDynamic = (priceVal) => {
-    if (currentCurrency === 'czk') return currentLang === 'en' ? priceVal + ' CZK' : priceVal + ' Kč';
-    if (currentCurrency === 'eur') return priceVal + ' €';
-    if (currentCurrency === 'usd') return '$' + priceVal;
-    return priceVal;
-};
-
-// Update UI
-const updateCartUI = () => {
-    if (!cartCount) return; 
-    cartCount.innerText = cart.length;
-    
-    if (cart.length === 0) {
-        cartContainer.innerHTML = `<div class="empty-cart-msg">${translations[currentLang]['cart.empty']}</div>`;
-        cartTotalPrice.innerText = '0';
-        return;
-    }
-
-    let total = 0;
-    cartContainer.innerHTML = '';
-    
-    cart.forEach((item, index) => {
-        // Získání správné ceny podle měny
-        const itemPrice = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0);
-        total += itemPrice;
-        
-        const div = document.createElement('div');
-        div.className = 'cart-item';
         div.innerHTML = `
             <div class="cart-item-info">
                 <h5>${currentLang === 'en' && item.nameEn ? item.nameEn : item.nameCs}</h5>
@@ -482,7 +464,13 @@ const updateCartUI = () => {
         cartContainer.appendChild(div);
     });
 
-    const finalTotal = total * discountMultiplier;
+    let finalTotal = total * discountMultiplier;
+    if(typeof pointsUsed !== 'undefined' && pointsUsed > 0) {
+        if (currentCurrency === 'eur') finalTotal -= Math.round(pointsUsed / 25);
+        else if (currentCurrency === 'usd') finalTotal -= Math.round(pointsUsed / 22);
+        else finalTotal -= pointsUsed;
+        if (finalTotal < 0) finalTotal = 0;
+    }
     
     if (discountMultiplier < 1) {
         cartTotalPrice.innerHTML = `<del style="font-size: 0.8rem; color: #94A3B8; margin-right: 8px;">${formatPriceDynamic(total)}</del><span style="color: #FF6B6B;">${formatPriceDynamic(finalTotal)}</span>`;
@@ -494,19 +482,645 @@ const updateCartUI = () => {
 };
 
 const addToCart = (id, nameCs, nameEn) => {
-    if (id === 'pkg-calc') {
-        let calcPagesStr = document.getElementById('calc-pages').value;
-        let cCms = document.getElementById('calc-cms').checked;
-        let cEshop = document.getElementById('calc-eshop').checked;
-        let cChat = document.getElementById('calc-chat').checked;
+    cart.push({ id, nameCs, nameEn });
+    updateCartUI();
+    openCart();
+    // Show toast notification
+    showToast();
+};
+
+// Remove from cart (Global function for onclick)
+window.removeFromCart = (index) => {
+    cart.splice(index, 1);
+    updateCartUI();
+};
+
+// Open/Close Cart
+const openCart = () => {
+    if(!cartSidebar) return;
+    cartSidebar.classList.add('open');
+    cartOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+};
+
+const closeCartSidebar = () => {
+    if(!cartSidebar) return;
+    cartSidebar.classList.remove('open');
+    cartOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+};
+
+// Event Listeners
+if(cartBtn) cartBtn.addEventListener('click', openCart);
+if(closeCart) closeCart.addEventListener('click', closeCartSidebar);
+if(cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
+
+if(addToCartBtns) {
+    addToCartBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const { id, nameCs, nameEn } = e.currentTarget.dataset;
+            addToCart(id, nameCs, nameEn);
+        });
+    });
+}
+
+// Checkout logic
+if(checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert(translations[currentLang]['modal.empty_cart']);
+            return;
+        }
+        closeCartSidebar();
+        checkoutModal.classList.add('active');
+    });
+}
+
+if(closeModal) {
+    closeModal.addEventListener('click', () => {
+        checkoutModal.classList.remove('active');
+    });
+}
+
+if(checkoutForm) {
+    checkoutForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Zabrání výchozímu odeslání stránky
+        
+        // Změna tlačítka na načítání
+        const submitBtn = checkoutForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerText;
+        
+        // --- ANTI-SPAM OCHRANA ---
+        // Zabránění uživateli odeslat více objednávek během 5 minut
+        const lastOrderTime = localStorage.getItem('venvioLastOrderTime');
+        if (lastOrderTime && (Date.now() - parseInt(lastOrderTime)) < 5 * 60 * 1000) {
+            alert(currentLang === 'en' ? "Please wait 5 minutes before submitting another order." : "Z důvodu ochrany proti spamu můžete odeslat další objednávku až za 5 minut.");
+            return;
+        }
+
+        submitBtn.innerText = translations[currentLang]['modal.redirect'] || "Odesílám...";
+        submitBtn.disabled = true;
+        
+        // Sestavení informací z košíku
+        let cartText = "PRÁZDNÝ KOŠÍK";
+        if (cart.length > 0) {
+            cartText = cart.map(item => {
+                const price = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0);
+                const name = currentLang === 'en' && item.nameEn ? item.nameEn : item.nameCs;
+                const details = currentLang === 'en' && item.detailsEn ? ' ' + item.detailsEn : (item.detailsCs ? ' ' + item.detailsCs : '');
+                return `${name}${details} (${formatPriceDynamic(price)})`;
+            }).join(', ');
+            let totalString = document.getElementById('cart-total-price').innerText;
+            if (discountMultiplier < 1) {
+                totalString += " (Sleva 10% s kódem VENVIO10 uplatněna)";
+            }
+            cartText += ` | CELKEM: ${totalString}`;
+        }
+        
+        const formData = new FormData(checkoutForm);
+        const requestData = {
+              Jméno: formData.get('Jmeno'),
+              Email: formData.get('Email'),
+              email: formData.get('Email'),
+              Zpráva: formData.get('Zprava'),
+              Objednávka: cartText,
+              _subject: "Nová objednávka webu Venvio!",
+              _autoresponse: currentLang === 'en' 
+                  ? "Thank you for your custom order! We have successfully received your request and will contact you immediately. \n\nBest regards, \nVenvio Team" 
+                  : "Děkujeme za vaši objednávku! Váš požadavek jsme úspěšně přijali a brzy se vám ozveme. \n\nS pozdravem, \nTým Venvio"
+          };
+
+        try {
+            // Odeslání přes AJAX
+            const response = await fetch("https://formsubmit.co/ajax/info@venvio.dev", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            });
+            
+            if (response.ok) {
+                // Zapsat čas úspěšné objednávky pro anti-spam (5 minut blokace)
+                localStorage.setItem('venvioLastOrderTime', Date.now().toString());
+                
+                // Vymažeme košík
+                localStorage.removeItem('venvioCart');
+                // Přesměrujeme klienta přímo na děkovací stránku s bankou
+                window.location.href = "success.html";
+            } else {
+                throw new Error("Nepodařilo se odeslat.");
+            }
+        } catch (error) {
+            console.error("Chyba:", error);
+            alert("Omlouváme se, došlo k chybě při odesílání objednávky. Zkuste to prosím znovu.");
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+}
+
+// Translations Dictionary (update modal submit text)
+translations.cs['modal.submit'] = "Odeslat objednávku";
+translations.en['modal.submit'] = "Submit Order";
+translations.cs['modal.redirect'] = "Odesílám...";
+translations.en['modal.redirect'] = "Sending...";
+
+// Translation additions for new elements
+translations.cs['modal.phone'] = 'Telefon (volitelné)';
+translations.en['modal.phone'] = 'Phone (optional)';
+translations.cs['toast.added'] = 'Přidáno do košíku!';
+translations.en['toast.added'] = 'Added to cart!';
+translations.cs['floating.contact'] = 'Napište nám';
+translations.en['floating.contact'] = 'Contact Us';
+translations.cs['pricing.popular_ribbon'] = 'Doporučujeme';
+translations.en['pricing.popular_ribbon'] = 'Best Value';
+
+// Translation additions for new Služby
+translations.cs['nav.services'] = 'Služby';
+translations.en['nav.services'] = 'Services';
+translations.cs['services.badge'] = '💎 Premium';
+translations.en['services.badge'] = '💎 Premium';
+translations.cs['services.title'] = 'Softwarové služby na míru';
+translations.en['services.title'] = 'Custom Software Services';
+translations.cs['services.desc'] = 'Od jednoduchých webů po komplexní interní systémy a umělou inteligenci.';
+translations.en['services.desc'] = 'From simple websites to complex internal systems and AI.';
+
+translations.cs['svc1.title'] = 'Webové Aplikace & SaaS';
+translations.en['svc1.title'] = 'Web Applications & SaaS';
+translations.cs['svc1.desc'] = 'Vývoj plnohodnotných aplikací (React, Node.js), rezervačních systémů a klientských portálů na míru.';
+translations.en['svc1.desc'] = 'Development of full-featured applications (React, Node.js), booking systems, and custom client portals.';
+translations.cs['svc1.price'] = 'Od 49 900 Kč';
+translations.en['svc1.price'] = 'From 49,900 CZK';
+
+translations.cs['svc2.title'] = 'Inteligentní AI Chatboti';
+translations.en['svc2.title'] = 'Intelligent AI Chatbots';
+translations.cs['svc2.desc'] = 'Chytrý asistent napojený na ChatGPT, který zná vaše produkty, odpovídá 24/7 a zvyšuje prodeje.';
+translations.en['svc2.desc'] = 'A smart assistant connected to ChatGPT that knows your products, replies 24/7, and boosts sales.';
+translations.cs['svc2.price'] = 'Od 19 900 Kč';
+translations.en['svc2.price'] = 'From 19,900 CZK';
+
+translations.cs['svc3.title'] = 'Automatizace Procesů';
+translations.en['svc3.title'] = 'Process Automation';
+translations.cs['svc3.desc'] = 'Propojení systémů přes API (účetnictví, e-shopy). Zbavíme vás rutinní ruční práce a ušetříme čas.';
+translations.en['svc3.desc'] = 'API integrations between systems (accounting, e-shops). We eliminate routine manual work and save time.';
+translations.cs['svc3.price'] = 'Od 9 900 Kč';
+translations.en['svc3.price'] = 'From 9,900 CZK';
+
+translations.cs['svc4.title'] = 'Chrome Doplňky';
+translations.en['svc4.title'] = 'Chrome Extensions';
+translations.cs['svc4.desc'] = 'Vývoj privátních rozšíření do prohlížeče pro usnadnění práce vašich obchodníků a zaměstnanců.';
+translations.en['svc4.desc'] = 'Development of private browser extensions to streamline the work of your sales reps and employees.';
+translations.cs['svc4.price'] = 'Od 14 900 Kč';
+translations.en['svc4.price'] = 'From 14,900 CZK';
+
+// Initialize Language & Cart
+applyTranslations();
+
+// Scroll Animations (Intersection Observer)
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+// === NEW INTERACTIVE FEATURES ===
+
+// Floating Particles
+const particlesContainer = document.getElementById('particles');
+if (particlesContainer) {
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.width = (Math.random() * 3 + 1) + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+        particle.style.animationDelay = (Math.random() * 10) + 's';
+        particle.style.opacity = Math.random() * 0.5 + 0.1;
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Navbar scroll effect + smart hide/show
+const navbar = document.getElementById('navbar');
+let lastScrollY = window.scrollY;
+let ticking = false;
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            if (navbar) {
+                const currentScroll = window.scrollY;
+                // Scrolled state
+                if (currentScroll > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                    navbar.classList.remove('nav-hidden');
+                }
+                // Hide on scroll down, show on scroll up
+                if (currentScroll > lastScrollY && currentScroll > 300) {
+                    navbar.classList.add('nav-hidden');
+                } else {
+                    navbar.classList.remove('nav-hidden');
+                }
+                lastScrollY = currentScroll;
+            }
+
+            // Back to top button visibility
+            const backToTop = document.getElementById('back-to-top');
+            if (backToTop) {
+                if (window.scrollY > 600) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            }
+
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+// Animated Stats Counter
+const statNumbers = document.querySelectorAll('.stat-number');
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-count'));
+            let current = 0;
+            const increment = target / 60;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                el.innerText = Math.floor(current);
+            }, 25);
+            statsObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+statNumbers.forEach(el => statsObserver.observe(el));
+
+// FAQ Accordion
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (question) {
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            faqItems.forEach(i => i.classList.remove('active'));
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    }
+});
+
+// Toast Notification
+let toastTimeout;
+const showToast = () => {
+    const toast = document.getElementById('toast');
+    if(toast) {
+        toast.classList.remove('show');
+        void toast.offsetWidth; // Trigger reflow to restart animation
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+};
+
+// Smooth Anchor Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        // Close mobile menu if open
+        const navLinks = document.getElementById('nav-links');
+        if (navLinks) navLinks.classList.remove('mobile-open');
+    });
+});
+
+// Mobile Menu Toggle
+const mobileToggle = document.getElementById('mobile-menu-toggle');
+const navLinksEl = document.getElementById('nav-links');
+if (mobileToggle && navLinksEl) {
+    mobileToggle.addEventListener('click', () => {
+        navLinksEl.classList.toggle('mobile-open');
+    });
+}
+
+// === PREMIUM FEATURES ===
+
+// Preloader
+document.body.classList.add('loading');
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) preloader.classList.add('hidden');
+        document.body.classList.remove('loading');
+    }, 1400);
+});
+
+// Cursor Glow (desktop only)
+const cursorGlow = document.getElementById('cursor-glow');
+if (cursorGlow && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
+    });
+}
+
+// Back to Top
+const backToTopBtn = document.getElementById('back-to-top');
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// === SCROLL PROGRESS BAR ===
+const scrollProgress = document.getElementById('scroll-progress');
+if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        scrollProgress.style.width = scrollPercent + '%';
+    }, { passive: true });
+}
+
+// === PARALLAX HERO ===
+const heroContent = document.querySelector('.hero-content');
+const heroBgGlow = document.querySelector('.hero-bg-glow');
+if (heroContent && window.matchMedia('(hover: hover)').matches) {
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        if (scrollY < window.innerHeight) {
+            heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
+            heroContent.style.opacity = 1 - (scrollY / (window.innerHeight * 0.8));
+            if (heroBgGlow) {
+                heroBgGlow.style.transform = `translate(-50%, -50%) scale(${1 + scrollY * 0.001})`;
+            }
+        }
+    }, { passive: true });
+}
+
+// === ACTIVE NAV LINK HIGHLIGHTING ===
+const sections = document.querySelectorAll('section[id]');
+const navLinksAll = document.querySelectorAll('.nav-links a[href^="#"]');
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinksAll.forEach(link => {
+                link.classList.remove('nav-active');
+                if (link.getAttribute('href') === '#' + id) {
+                    link.classList.add('nav-active');
+                }
+            });
+        }
+    });
+}, { threshold: 0.3 });
+sections.forEach(s => navObserver.observe(s));
+
+// === OPTION B UPGRADES ===
+
+// 1. Theme Toggle (Light/Dark Mode)
+const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+const currentTheme = localStorage.getItem('theme') || 'dark';
+
+if (currentTheme === 'light') {
+    document.body.classList.add('light-mode');
+    themeToggles.forEach(t => {
+        if(t) t.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+    });
+}
+
+themeToggles.forEach(toggleBtn => {
+    if (!toggleBtn) return;
+    toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        let theme = 'dark';
+        if (document.body.classList.contains('light-mode')) {
+            theme = 'light';
+            themeToggles.forEach(t => t.querySelector('i').classList.replace('fa-moon', 'fa-sun'));
+        } else {
+            themeToggles.forEach(t => t.querySelector('i').classList.replace('fa-sun', 'fa-moon'));
+        }
+        localStorage.setItem('theme', theme);
+    });
+});
+
+// 2. Dynamic Hero Glow Tracking
+const heroHeader = document.querySelector('.hero');
+const heroGlow1 = document.querySelector('.hero-bg-glow');
+const heroGlow2 = document.querySelector('.hero-bg-glow-2');
+
+if (heroHeader && heroGlow1 && heroGlow2 && window.matchMedia('(hover: hover)').matches) {
+    heroHeader.addEventListener('mousemove', (e) => {
+        const rect = heroHeader.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Move glow 1 towards mouse
+        heroGlow1.style.left = `${x}px`;
+        heroGlow1.style.top = `${y}px`;
+        
+        // Move glow 2 in opposite direction for parallax depth
+        heroGlow2.style.left = `${rect.width - x}px`;
+        heroGlow2.style.top = `${rect.height - y}px`;
+    });
+}
+
+// End of script
+
+
+// Preloader Logic
+const hidePreloader = () => {
+    const preloader = document.getElementById('preloader');
+    if(preloader && !preloader.classList.contains('fade-out')) {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+            document.body.classList.remove('loading');
+            preloader.style.display = 'none';
+        }, 800);
+    }
+};
+
+if (document.readyState === 'complete') {
+    setTimeout(hidePreloader, 200);
+} else {
+    window.addEventListener('load', () => setTimeout(hidePreloader, 200));
+    // Fallback in case load event gets stuck (e.g., slow image or ad blocker)
+    setTimeout(hidePreloader, 2000);
+}
+
+
+// Easter Egg
+window.revealSecret = () => {
+    const toast = document.getElementById('toast');
+    const msg = document.getElementById('toast-message');
+    if(toast && msg) {
+        msg.innerText = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajn� sleva 10%! K�d: VENVIO10';
+        toast.classList.add('show');
+        setTimeout(() => { 
+            toast.classList.remove('show'); 
+            setTimeout(() => applyTranslations(), 500); // restore original text
+        }, 5000);
+    }
+};
+
+
+// Calculator Logic
+const calcPages = document.getElementById('calc-pages');
+const calcPagesVal = document.getElementById('calc-pages-val');
+const calcTotal = document.getElementById('calc-total');
+const calcCheckboxes = document.querySelectorAll('.calc-checkboxes input');
+
+const updateCalculator = () => {
+    if(!calcPages || !calcTotal) return;
+    let basePrice = 5900;
+    let pages = parseInt(calcPages.value);
+    calcPagesVal.innerText = pages;
+    let total = basePrice + ((pages - 1) * 1500);
+    calcCheckboxes.forEach(cb => {
+        if(cb.checked) total += parseInt(cb.value);
+    });
+    if(currentCurrency === 'eur') total = Math.round(total / 25);
+    if(currentCurrency === 'usd') total = Math.round(total / 22);
+    calcTotal.innerText = currentLang === 'en' ? total.toLocaleString() : total.toLocaleString('cs-CZ');
+};
+
+if(calcPages) calcPages.addEventListener('input', updateCalculator);
+if(calcCheckboxes) calcCheckboxes.forEach(cb => cb.addEventListener('change', updateCalculator));
+
+// Re-run calc on lang/currency change inside applyTranslations
+
+
+// Calc Translations
+translations.cs['calc.badge'] = '💡 Odhad ceny';
+translations.en['calc.badge'] = '💡 Price Estimate';
+translations.cs['calc.title'] = 'Interaktivní� kalkula�ka';
+translations.en['calc.title'] = 'Interactive Calculator';
+translations.cs['calc.desc'] = 'Spo��tejte si hrubý� odhad va�eho projektu na m�ru.';
+translations.en['calc.desc'] = 'Calculate a rough estimate for your custom project.';
+translations.cs['calc.pages'] = 'Po�et str�nek/podstr�nek: ';
+translations.en['calc.pages'] = 'Number of pages: ';
+translations.cs['calc.opt_cms'] = 'Vlastn� Administrace (CMS)';
+translations.en['calc.opt_cms'] = 'Custom Admin (CMS)';
+translations.cs['calc.opt_chat'] = 'AI Chatbot Asistent';
+translations.en['calc.opt_chat'] = 'AI Chatbot Assistant';
+translations.cs['calc.opt_eshop'] = 'E-shop Modul (Platby)';
+translations.en['calc.opt_eshop'] = 'E-commerce Module';
+translations.cs['calc.total_est'] = 'Odhadovan� cena:';
+translations.en['calc.total_est'] = 'Estimated Price:';
+translations.cs['fab.tooltip'] = 'Napi�te n�m!';
+translations.en['fab.tooltip'] = 'Message Us!';
+
+
+// Calculator ETA and Cart Logic
+let currentCalcTotalRaw = 0;
+const calcEtaVal = document.getElementById('calc-eta-val');
+const calcAddToCartBtn = document.getElementById('calc-add-to-cart');
+
+const calculateEta = (days) => {
+    if (currentLang === 'en') {
+        if (days === 1) return 'under 24 hours';
+        if (days === 2) return 'under 48 hours';
+        if (days <= 6) return `${days} days`;
+        if (days <= 10) return '1-2 weeks';
+        if (days <= 14) return '2 weeks';
+        return `${Math.ceil(days / 7)} weeks`;
+    } else {
+        if (days === 1) return 'do 24 hodin!';
+        if (days === 2) return 'do 48 hodin!';
+        if (days > 2 && days <= 4) return `${days} dny`;
+        if (days > 4 && days <= 6) return `${days} dní`;
+        if (days > 6 && days <= 10) return '1-2 týdny';
+        if (days > 10 && days <= 14) return '2 týdny';
+        let weeks = Math.ceil(days / 7);
+        if (weeks >= 2 && weeks <= 4) return `${weeks} týdny`;
+        return `${weeks} týdnů`;
+    }
+};
+
+const updateCalculatorWithEta = () => {
+    const calcPagesEl = document.getElementById('calc-pages');
+    const calcTotalEl = document.getElementById('calc-total');
+    if(!calcPagesEl || !calcTotalEl) return;
+    
+    let pages = parseInt(calcPagesEl.value);
+    document.getElementById('calc-pages-val').innerText = pages;
+    
+    let basePrice = 0;
+    let days = 0;
+    
+    if (pages === 1) {
+        basePrice = 5900;
+        days = 1;
+    } else if (pages <= 5) {
+        basePrice = 12500;
+        days = 2;
+    } else {
+        basePrice = 18900 + ((pages - 6) * 1500);
+        days = 5 + (pages - 5);
+    }
+    
+    let total = basePrice;
+    
+    document.querySelectorAll('.calc-checkboxes input').forEach(cb => {
+        if(cb.checked) {
+            total += parseInt(cb.value);
+            if(cb.id === 'calc-cms') days += 3;
+            if(cb.id === 'calc-eshop') days += 7;
+            if(cb.id === 'calc-chat') days += 2;
+        }
+    });
+    currentCalcTotalRaw = total;
+    
+    if(calcEtaVal) {
+        calcEtaVal.innerText = calculateEta(days);
+    }
+    
+    if(currentCurrency === 'eur') total = Math.round(total / 25);
+    if(currentCurrency === 'usd') total = Math.round(total / 22);
+    calcTotalEl.innerText = currentLang === 'en' ? total.toLocaleString() : total.toLocaleString('cs-CZ');
+};
+
+if(document.getElementById('calc-pages')) {
+    document.getElementById('calc-pages').addEventListener('input', updateCalculatorWithEta);
+}
+document.querySelectorAll('.calc-checkboxes input').forEach(cb => cb.addEventListener('change', updateCalculatorWithEta));
+
+if(calcAddToCartBtn) {
+    calcAddToCartBtn.addEventListener('click', () => {
         cart.push({
             id: 'pkg-calc',
             customPrice: currentCalcTotalRaw,
             nameCs: 'Projekt na míru (Kalkulačka)',
-            nameEn: 'Custom Project (Calculator)',
-            detailsCs: `(Stránek: ${calcPagesStr}, CMS: ${cCms?'Ano':'Ne'}, E-shop: ${cEshop?'Ano':'Ne'}, Chatbot: ${cChat?'Ano':'Ne'})`,
-            detailsEn: `(Pages: ${calcPagesStr}, CMS: ${cCms?'Yes':'No'}, E-shop: ${cEshop?'Yes':'No'}, Chatbot: ${cChat?'Yes':'No'})`
+            nameEn: 'Custom Project (Calculator)'
         });
+        updateCartUI();
+        showToast(currentLang === 'en' ? 'Added to cart!' : 'Přidáno do košíku!');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartOverlay = document.getElementById('cart-overlay');
+        if(cartSidebar) cartSidebar.classList.add('active');
         if(cartOverlay) cartOverlay.classList.add('active');
     });
 }
