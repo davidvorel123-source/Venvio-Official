@@ -402,7 +402,7 @@ if (applyDiscountBtn) {
     applyDiscountBtn.addEventListener('click', () => {
         const code = discountCodeInput.value.trim().toUpperCase();
         if (code === 'VENVIO10') {
-            if (typeof currentUser !== 'undefined' && currentUser && currentUser.usedCodes.includes(code)) {
+            if (typeof window.currentUser !== 'undefined' && window.currentUser && window.currentUser.usedCodes.includes(code)) {
                 discountMultiplier = 1;
                 discountMsg.innerText = currentLang === 'en' ? 'Code already used!' : 'Tento kód jste již využili!';
                 discountMsg.style.color = '#FF6B6B';
@@ -790,7 +790,7 @@ faqItems.forEach(item => {
 
 // Toast Notification
 let toastTimeout;
-const showToast = (customMsg) => {
+window.showToast = (customMsg) => {
     const toast = document.getElementById('toast');
     if(toast) {
         if (customMsg) {
@@ -1145,7 +1145,7 @@ setTimeout(updateCalculatorWithEta, 100);
 // ==========================================
 // Auth & Points System (with Password & Social Login)
 // ==========================================
-let currentUser = JSON.parse(localStorage.getItem('venvioUser')) || null;
+window.window.currentUser = null; // Managed by Firebase
 
 const authBtn = document.getElementById('auth-btn');
 const authIcon = document.getElementById('auth-icon');
@@ -1164,7 +1164,7 @@ const cartAvailPoints = document.getElementById('cart-avail-points');
 const applyPointsBtn = document.getElementById('apply-points-btn');
 const pointsMsg = document.getElementById('points-msg');
 
-let authMode = 'login';
+window.authMode = "login";
 const tabLogin = document.getElementById('tab-login');
 const tabRegister = document.getElementById('tab-register');
 const groupName = document.getElementById('group-name');
@@ -1211,11 +1211,11 @@ if (togglePasswordBtn) {
     });
 }
 
-const updateAuthModeUI = () => {
+window.updateAuthModeUI = () => {
     if (!tabLogin) return;
     if (authError) authError.style.display = 'none';
     
-    if (authMode === 'login') {
+    if (window.authMode === "login") {
         tabLogin.style.borderBottomColor = 'var(--color-primary)';
         tabLogin.style.color = '#fff';
         tabRegister.style.borderBottomColor = 'transparent';
@@ -1240,42 +1240,24 @@ const updateAuthModeUI = () => {
     }
 };
 
-if (tabLogin) tabLogin.addEventListener('click', () => { authMode = 'login'; updateAuthModeUI(); });
-if (tabRegister) tabRegister.addEventListener('click', () => { authMode = 'register'; updateAuthModeUI(); });
+if (tabLogin) tabLogin.addEventListener('click', () => { window.authMode = "login"; updateAuthModeUI(); });
+if (tabRegister) tabRegister.addEventListener('click', () => { window.authMode = "register"; updateAuthModeUI(); });
 
 // Social Login — opens a mini-form inside the modal instead of ugly prompt()
-const socialLogin = (provider) => {
-    // Switch to register mode with the provider name shown
-    authMode = 'register';
-    updateAuthModeUI();
-    
-    // Pre-fill description with provider info
-    if (authDesc) {
-        authDesc.innerHTML = currentLang === 'en'
-            ? '<i class="fa-solid fa-link" style="color:var(--color-primary);"></i> Connecting via <strong>' + provider + '</strong> — fill in your details below to complete sign-up.'
-            : '<i class="fa-solid fa-link" style="color:var(--color-primary);"></i> Připojení přes <strong>' + provider + '</strong> — vyplňte údaje pro dokončení registrace.';
-    }
-    
-    // Auto-focus the name field
-    const nameInput = document.getElementById('auth-name');
-    if (nameInput) setTimeout(() => nameInput.focus(), 100);
-    
-    showToast(currentLang === 'en' ? 'Connected to ' + provider + '! Complete registration below.' : 'Připojeno k ' + provider + '! Dokončete registraci níže.');
-};
 
-if (btnGoogle) btnGoogle.addEventListener('click', () => socialLogin('Google'));
-if (btnFacebook) btnFacebook.addEventListener('click', () => socialLogin('Facebook'));
 
-const updateAuthUI = () => {
-    if (currentUser) {
+
+
+window.updateAuthUI = () => {
+    if (window.currentUser) {
         if(authIcon) {
             authIcon.className = 'fa-solid fa-circle-user';
             authIcon.style.color = 'var(--color-primary)';
         }
         if(cartPointsSection) {
             cartPointsSection.style.display = 'block';
-            cartAvailPoints.innerText = currentUser.points;
-            if(currentUser.points > 0) {
+            cartAvailPoints.innerText = window.currentUser.points;
+            if(window.currentUser.points > 0) {
                 applyPointsBtn.style.display = 'block';
             } else {
                 applyPointsBtn.style.display = 'none';
@@ -1299,14 +1281,14 @@ const updateAuthUI = () => {
 if (authBtn) {
     authBtn.addEventListener('click', () => {
         authModal.classList.add('active');
-        if (currentUser) {
+        if (window.currentUser) {
             authBodyLogin.style.display = 'none';
             authBodyProfile.style.display = 'block';
-            authProfileName.innerText = currentUser.name;
-            authProfileEmail.innerText = currentUser.email;
-            authProfilePoints.innerText = currentUser.points;
+            authProfileName.innerText = window.currentUser.name;
+            authProfileEmail.innerText = window.currentUser.email;
+            authProfilePoints.innerText = window.currentUser.points;
         } else {
-            authMode = 'login';
+            window.authMode = "login";
             updateAuthModeUI();
             authBodyLogin.style.display = 'block';
             authBodyProfile.style.display = 'none';
@@ -1316,77 +1298,12 @@ if (authBtn) {
 
 if (closeAuthModal) closeAuthModal.addEventListener('click', () => authModal.classList.remove('active'));
 
-if (authForm) {
-    authForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = document.getElementById('auth-email').value.trim();
-        const password = document.getElementById('auth-password').value;
-        let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
-        
-        if (authMode === 'login') {
-            // LOGIN
-            if (!allUsers[email]) {
-                showAuthError(currentLang === 'en' ? 'Account not found. Please register first.' : 'Účet nenalezen. Nejdříve se prosím zaregistrujte.');
-                return;
-            }
-            if (allUsers[email].passwordHash !== simpleHash(password)) {
-                showAuthError(currentLang === 'en' ? 'Incorrect password. Please try again.' : 'Nesprávné heslo. Zkuste to prosím znovu.');
-                return;
-            }
-            currentUser = allUsers[email];
-            showToast(currentLang === 'en' ? 'Welcome back, ' + currentUser.name + '!' : 'Vítejte zpět, ' + currentUser.name + '!');
-        } else {
-            // REGISTER
-            const name = document.getElementById('auth-name').value.trim();
-            const passwordConfirm = document.getElementById('auth-password-confirm').value;
-            
-            if (allUsers[email]) {
-                showAuthError(currentLang === 'en' ? 'Account already exists. Please log in.' : 'Účet s tímto e-mailem již existuje. Prosím přihlaste se.');
-                return;
-            }
-            if (password.length < 6) {
-                showAuthError(currentLang === 'en' ? 'Password must be at least 6 characters.' : 'Heslo musí mít alespoň 6 znaků.');
-                return;
-            }
-            if (password !== passwordConfirm) {
-                showAuthError(currentLang === 'en' ? 'Passwords do not match.' : 'Hesla se neshodují.');
-                return;
-            }
-            
-            currentUser = {
-                name: name,
-                email: email,
-                passwordHash: simpleHash(password),
-                points: 0,
-                usedCodes: [],
-                createdAt: new Date().toISOString()
-            };
-            allUsers[email] = currentUser;
-            localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
-            showToast(currentLang === 'en' ? 'Account created! Welcome, ' + name + '!' : 'Účet vytvořen! Vítejte, ' + name + '!');
-        }
-        
-        localStorage.setItem('venvioUser', JSON.stringify(currentUser));
-        authForm.reset();
-        authModal.classList.remove('active');
-        updateAuthUI();
-    });
-}
 
-if (authLogoutBtn) {
-    authLogoutBtn.addEventListener('click', () => {
-        currentUser = null;
-        localStorage.removeItem('venvioUser');
-        authModal.classList.remove('active');
-        updateAuthUI();
-        showToast(currentLang === 'en' ? 'Logged out successfully.' : 'Byli jste úspěšně odhlášeni.');
-    });
-}
 
 if (applyPointsBtn) {
     applyPointsBtn.addEventListener('click', () => {
-        if (currentUser && currentUser.points > 0) {
-            pointsUsed = currentUser.points;
+        if (window.currentUser && window.currentUser.points > 0) {
+            pointsUsed = window.currentUser.points;
             applyPointsBtn.style.display = 'none';
             let formattedPoints = pointsUsed;
             if (currentCurrency === 'eur') formattedPoints = Math.round(pointsUsed / 25) + ' €';
@@ -1410,21 +1327,21 @@ if (checkoutBtnRef) {
         if(cart.length === 0) return;
         
         // Save used discount code
-        if (currentUser && discountMultiplier < 1) {
+        if (window.currentUser && discountMultiplier < 1) {
             const code = document.getElementById('discount-code') ? document.getElementById('discount-code').value.trim().toUpperCase() : '';
-            if (code && !currentUser.usedCodes.includes(code)) {
-                currentUser.usedCodes.push(code);
+            if (code && !window.currentUser.usedCodes.includes(code)) {
+                window.currentUser.usedCodes.push(code);
             }
         }
         
         // Deduct points
-        if (currentUser && pointsUsed > 0) {
-            currentUser.points -= pointsUsed;
+        if (window.currentUser && pointsUsed > 0) {
+            window.currentUser.points -= pointsUsed;
             pointsUsed = 0;
             let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
-            allUsers[currentUser.email] = currentUser;
+            allUsers[window.currentUser.email] = window.currentUser;
             localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
-            localStorage.setItem('venvioUser', JSON.stringify(currentUser));
+            localStorage.setItem('venvioUser', JSON.stringify(window.currentUser));
         }
         
         // Points are now added manually by the agency.
