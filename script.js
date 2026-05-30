@@ -919,3 +919,18 @@ if (document.readyState === 'complete') {
     setTimeout(hidePreloader, 2000);
 }
 
+
+// Easter Egg
+window.revealSecret = () => {
+    const toast = document.getElementById('toast');
+    const msg = document.getElementById('toast-message');
+    if(toast && msg) {
+        msg.innerText = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajná sleva 10%! Kód: VENVIO10';
+        toast.classList.add('show');
+        setTimeout(() => { 
+            toast.classList.remove('show'); 
+            setTimeout(() => applyTranslations(), 500); // restore original text
+        }, 5000);
+    }
+};
+
