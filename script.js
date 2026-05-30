@@ -304,8 +304,10 @@ const productPrices = {
 };
 
 // Current State
-let currentLang = localStorage.getItem('venvioLang') || 'cs';
-let currentCurrency = localStorage.getItem('venvioCurr') || 'czk';
+let currentLang = localStorage.getItem('venvioLang');
+if (currentLang !== 'cs' && currentLang !== 'en') currentLang = 'cs';
+let currentCurrency = localStorage.getItem('venvioCurr');
+if (currentCurrency !== 'czk' && currentCurrency !== 'eur' && currentCurrency !== 'usd') currentCurrency = 'czk';
 let discountMultiplier = 1;
 
 // DOM Elements for Translation
@@ -378,8 +380,12 @@ document.querySelectorAll('.curr-btn').forEach(btn => {
     });
 });
 
-// State (Cart stores only item ID, names, and we calculate price on the fly)
-let cart = JSON.parse(localStorage.getItem('venvioCart')) || [];
+let cart = [];
+try {
+    cart = JSON.parse(localStorage.getItem('venvioCart')) || [];
+} catch (e) {
+    cart = [];
+}
 
 // DOM Elements
 const cartBtn = document.getElementById('cart-btn');
