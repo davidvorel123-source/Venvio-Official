@@ -440,7 +440,7 @@ const updateCartUI = () => {
     
     cart.forEach((item, index) => {
         // Získání správné ceny podle měny
-        const itemPrice = productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0;
+        const itemPrice = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0);
         total += itemPrice;
         
         const div = document.createElement('div');
@@ -552,7 +552,7 @@ if(checkoutForm) {
         let cartText = "PRÁZDNÝ KOŠÍK";
         if (cart.length > 0) {
             cartText = cart.map(item => {
-                const price = productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0;
+                const price = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0);
                 const name = currentLang === 'en' && item.nameEn ? item.nameEn : item.nameCs;
                 return `${name} (${formatPriceDynamic(price)})`;
             }).join(', ');
@@ -996,22 +996,97 @@ if(calcCheckboxes) calcCheckboxes.forEach(cb => cb.addEventListener('change', up
 
 
 // Calc Translations
-translations.cs['calc.badge'] = '?? Odhad ceny';
-translations.en['calc.badge'] = '?? Price Estimate';
-translations.cs['calc.title'] = 'Interaktivn� kalkula�ka';
+translations.cs['calc.badge'] = '💡 Odhad ceny';
+translations.en['calc.badge'] = '💡 Price Estimate';
+translations.cs['calc.title'] = 'Interaktivní� kalkula�ka';
 translations.en['calc.title'] = 'Interactive Calculator';
-translations.cs['calc.desc'] = 'Spo��tejte si hrub� odhad va�eho projektu na m�ru.';
+translations.cs['calc.desc'] = 'Spo��tejte si hrubý� odhad va�eho projektu na m�ru.';
 translations.en['calc.desc'] = 'Calculate a rough estimate for your custom project.';
-translations.cs['calc.pages'] = 'Po�et str�nek/podstr�nek: ';
+translations.cs['calc.pages'] = 'Po�et str�nek/podstr�nek: ';
 translations.en['calc.pages'] = 'Number of pages: ';
-translations.cs['calc.opt_cms'] = 'Vlastn� Administrace (CMS)';
+translations.cs['calc.opt_cms'] = 'Vlastn� Administrace (CMS)';
 translations.en['calc.opt_cms'] = 'Custom Admin (CMS)';
 translations.cs['calc.opt_chat'] = 'AI Chatbot Asistent';
 translations.en['calc.opt_chat'] = 'AI Chatbot Assistant';
 translations.cs['calc.opt_eshop'] = 'E-shop Modul (Platby)';
 translations.en['calc.opt_eshop'] = 'E-commerce Module';
-translations.cs['calc.total_est'] = 'Odhadovan� cena:';
+translations.cs['calc.total_est'] = 'Odhadovan� cena:';
 translations.en['calc.total_est'] = 'Estimated Price:';
-translations.cs['fab.tooltip'] = 'Napi�te n�m!';
+translations.cs['fab.tooltip'] = 'Napi�te n�m!';
 translations.en['fab.tooltip'] = 'Message Us!';
 
+
+// Calculator ETA and Cart Logic
+let currentCalcTotalRaw = 0;
+const calcEtaVal = document.getElementById('calc-eta-val');
+const calcAddToCartBtn = document.getElementById('calc-add-to-cart');
+
+const calculateEta = (pages, hasCms, hasEshop, hasChat) => {
+    let weeks = 1;
+    if (pages > 5) weeks += 1;
+    if (pages > 15) weeks += 1;
+    if (hasCms) weeks += 1;
+    if (hasEshop) weeks += 2;
+    if (hasChat) weeks += 1;
+    return weeks === 1 ? '1-2 týdny' : `${weeks}-${weeks+1} týdnů`;
+};
+
+const updateCalculatorWithEta = () => {
+    const calcPagesEl = document.getElementById('calc-pages');
+    const calcTotalEl = document.getElementById('calc-total');
+    if(!calcPagesEl || !calcTotalEl) return;
+    
+    let basePrice = 5900;
+    let pages = parseInt(calcPagesEl.value);
+    document.getElementById('calc-pages-val').innerText = pages;
+    let total = basePrice + ((pages - 1) * 1500);
+    
+    let hasCms = false, hasEshop = false, hasChat = false;
+    document.querySelectorAll('.calc-checkboxes input').forEach(cb => {
+        if(cb.checked) {
+            total += parseInt(cb.value);
+            if(cb.id === 'calc-cms') hasCms = true;
+            if(cb.id === 'calc-eshop') hasEshop = true;
+            if(cb.id === 'calc-chat') hasChat = true;
+        }
+    });
+    currentCalcTotalRaw = total;
+    
+    if(calcEtaVal) {
+        let etaStr = calculateEta(pages, hasCms, hasEshop, hasChat);
+        calcEtaVal.innerText = currentLang === 'en' ? etaStr.replace('týdny', 'weeks').replace('týdnů', 'weeks') : etaStr;
+    }
+    
+    if(currentCurrency === 'eur') total = Math.round(total / 25);
+    if(currentCurrency === 'usd') total = Math.round(total / 22);
+    calcTotalEl.innerText = currentLang === 'en' ? total.toLocaleString() : total.toLocaleString('cs-CZ');
+};
+
+if(document.getElementById('calc-pages')) {
+    document.getElementById('calc-pages').addEventListener('input', updateCalculatorWithEta);
+}
+document.querySelectorAll('.calc-checkboxes input').forEach(cb => cb.addEventListener('change', updateCalculatorWithEta));
+
+if(calcAddToCartBtn) {
+    calcAddToCartBtn.addEventListener('click', () => {
+        cart.push({
+            id: 'pkg-calc',
+            customPrice: currentCalcTotalRaw,
+            nameCs: 'Projekt na míru (Kalkulačka)',
+            nameEn: 'Custom Project (Calculator)'
+        });
+        updateCartUI();
+        showToast(currentLang === 'en' ? 'Added to cart!' : 'Přidáno do košíku!');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartOverlay = document.getElementById('cart-overlay');
+        if(cartSidebar) cartSidebar.classList.add('active');
+        if(cartOverlay) cartOverlay.classList.add('active');
+    });
+}
+
+translations.cs['calc.eta'] = 'Odhadovaný čas dodání:';
+translations.en['calc.eta'] = 'Estimated Delivery Time:';
+translations.cs['calc.add_to_cart'] = '<i class="fa-solid fa-cart-plus"></i> Přidat do košíku';
+translations.en['calc.add_to_cart'] = '<i class="fa-solid fa-cart-plus"></i> Add to Cart';
+
+setTimeout(updateCalculatorWithEta, 100);

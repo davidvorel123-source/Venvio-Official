@@ -415,6 +415,13 @@
                 <div class="calc-result">
                     <h3 data-i18n="calc.total_est">Odhadovaná cena:</h3>
                     <div class="calc-price"><span id="calc-total">5 900</span> Kč</div>
+                    <div class="calc-eta" style="margin-top: 1rem; color: var(--color-text-muted); font-size: 0.95rem;">
+                        <i class="fa-solid fa-clock" style="color: var(--color-primary); margin-right: 5px;"></i>
+                        <span data-i18n="calc.eta">Odhadovaný čas dodání:</span> <strong id="calc-eta-val" style="color: #fff;">1-2 týdny</strong>
+                    </div>
+                    <button class="btn btn-primary" id="calc-add-to-cart" style="margin-top: 1.5rem; width: 100%; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);" data-i18n="calc.add_to_cart">
+                        <i class="fa-solid fa-cart-plus"></i> Přidat do košíku
+                    </button>
                 </div>
             </div>
         </div>
@@ -668,6 +675,7 @@
                     <div>
                         <h4 data-i18n="footer.contact_title">Kontakt</h4>
                         <ul>
+                            <li><i class="fa-solid fa-phone"></i> +420 775 104 206</li>
                             <li><i class="fa-solid fa-envelope"></i> info@venvio.dev</li>
                             <li><i class="fa-solid fa-globe"></i> venvio.dev</li>
                         </ul>
@@ -759,7 +767,7 @@
     </div>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/420123456789?text=Dobrý%20den,%20mám%20zájem%20o%20nový%20web." target="_blank" class="fab-whatsapp" id="fab-whatsapp">
+    <a href="https://wa.me/420775104206?text=Dobrý%20den,%20mám%20zájem%20o%20nový%20web." target="_blank" class="fab-whatsapp" id="fab-whatsapp">
         <i class="fa-brands fa-whatsapp"></i>
         <span class="fab-tooltip" data-i18n="fab.tooltip">Napište nám!</span>
     </a>
