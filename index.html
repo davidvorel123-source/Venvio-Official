@@ -64,10 +64,29 @@
 <body class="loading">
     <!-- Preloader -->
     <div id="preloader" class="preloader">
-        <div class="preloader-logo">
-            <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span> VENVIO
+        <div class="loader-content">
+            <i class="fa-solid fa-bolt text-primary" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+            <h2 style="margin: 0; font-weight: 800; letter-spacing: 2px;">VENVIO</h2>
         </div>
     </div>
+    <script>
+        // Bulletproof preloader fallback
+        (function() {
+            var hidePreloader = function() {
+                var p = document.getElementById('preloader');
+                if (p && p.style.display !== 'none') {
+                    p.style.transition = 'opacity 0.8s ease';
+                    p.style.opacity = '0';
+                    setTimeout(function() {
+                        p.style.display = 'none';
+                        document.body.classList.remove('loading');
+                    }, 800);
+                }
+            };
+            window.addEventListener('load', function() { setTimeout(hidePreloader, 200); });
+            setTimeout(hidePreloader, 2500); // 2.5s absolute fallback
+        })();
+    </script>
 
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scroll-progress"></div>
