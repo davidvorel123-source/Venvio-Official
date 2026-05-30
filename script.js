@@ -790,15 +790,21 @@ faqItems.forEach(item => {
 
 // Toast Notification
 let toastTimeout;
-const showToast = () => {
+const showToast = (customMsg) => {
     const toast = document.getElementById('toast');
     if(toast) {
+        if (customMsg) {
+            const msgEl = document.getElementById('toast-message');
+            if (msgEl) msgEl.innerText = customMsg;
+        }
         toast.classList.remove('show');
-        void toast.offsetWidth; // Trigger reflow to restart animation
+        void toast.offsetWidth;
         toast.classList.add('show');
         clearTimeout(toastTimeout);
         toastTimeout = setTimeout(() => {
             toast.classList.remove('show');
+            const msgEl = document.getElementById('toast-message');
+            if (msgEl) msgEl.innerText = translations[currentLang]['toast.added'] || 'Přidáno do košíku!';
         }, 3000);
     }
 };
