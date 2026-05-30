@@ -305,6 +305,7 @@ const productPrices = {
 // Current State
 let currentLang = localStorage.getItem('venvioLang') || 'cs';
 let currentCurrency = localStorage.getItem('venvioCurr') || 'czk';
+let discountMultiplier = 1;
 
 // DOM Elements for Translation
 const applyTranslations = () => {
@@ -392,6 +393,28 @@ const checkoutBtn = document.getElementById('checkout-btn');
 const checkoutModal = document.getElementById('checkout-modal');
 const closeModal = document.getElementById('close-modal');
 const checkoutForm = document.getElementById('checkout-form');
+const applyDiscountBtn = document.getElementById('apply-discount-btn');
+const discountCodeInput = document.getElementById('discount-code');
+const discountMsg = document.getElementById('discount-msg');
+
+if (applyDiscountBtn) {
+    applyDiscountBtn.addEventListener('click', () => {
+        const code = discountCodeInput.value.trim().toUpperCase();
+        if (code === 'VENVIO10') {
+            discountMultiplier = 0.9;
+            discountMsg.innerText = currentLang === 'en' ? 'Discount 10% applied!' : 'Sleva 10% uplatněna!';
+            discountMsg.style.color = '#00D2FF';
+            discountMsg.style.display = 'block';
+            updateCartUI();
+        } else {
+            discountMultiplier = 1;
+            discountMsg.innerText = currentLang === 'en' ? 'Invalid code.' : 'Neplatný kód.';
+            discountMsg.style.color = '#FF6B6B';
+            discountMsg.style.display = 'block';
+            updateCartUI();
+        }
+    });
+}
 
 // Helper formatting based on currency
 const formatPriceDynamic = (priceVal) => {
@@ -434,7 +457,14 @@ const updateCartUI = () => {
         cartContainer.appendChild(div);
     });
 
-    cartTotalPrice.innerText = formatPriceDynamic(total);
+    const finalTotal = total * discountMultiplier;
+    
+    if (discountMultiplier < 1) {
+        cartTotalPrice.innerHTML = `<del style="font-size: 0.8rem; color: #94A3B8; margin-right: 8px;">${formatPriceDynamic(total)}</del><span style="color: #FF6B6B;">${formatPriceDynamic(finalTotal)}</span>`;
+    } else {
+        cartTotalPrice.innerText = formatPriceDynamic(finalTotal);
+    }
+    
     localStorage.setItem('venvioCart', JSON.stringify(cart));
 };
 
@@ -526,7 +556,11 @@ if(checkoutForm) {
                 const name = currentLang === 'en' && item.nameEn ? item.nameEn : item.nameCs;
                 return `${name} (${formatPriceDynamic(price)})`;
             }).join(', ');
-            cartText += ` | CELKEM: ${document.getElementById('cart-total-price').innerText}`;
+            let totalString = document.getElementById('cart-total-price').innerText;
+            if (discountMultiplier < 1) {
+                totalString += " (Sleva 10% s kódem VENVIO10 uplatněna)";
+            }
+            cartText += ` | CELKEM: ${totalString}`;
         }
         
         const formData = new FormData(checkoutForm);
@@ -925,7 +959,7 @@ window.revealSecret = () => {
     const toast = document.getElementById('toast');
     const msg = document.getElementById('toast-message');
     if(toast && msg) {
-        msg.innerText = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajn� sleva 10%! K�d: VENVIO10';
+        msg.innerText = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajn� sleva 10%! K�d: VENVIO10';
         toast.classList.add('show');
         setTimeout(() => { 
             toast.classList.remove('show'); 

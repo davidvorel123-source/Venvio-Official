@@ -617,10 +617,10 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p data-i18n="footer.tax">Ceny jsou konečné. Nejsme plátci DPH.</p>
-                <p>&copy; 2026 Venvio. <span data-i18n="footer.rights">Všechna práva vyhrazena.</span><span onclick="revealSecret()" style="opacity: 0.05; cursor: crosshair; user-select: none; margin-left: 5px;">.</span></p>
-            </div>
+                <div class="footer-bottom">
+                    <p data-i18n="footer.tax">Ceny jsou konečné. Nejsme plátci DPH.</p>
+                    <p>&copy; 2026 Venvio. <span data-i18n="footer.rights">Všechna práva vyhrazena.</span><span onclick="revealSecret()" style="opacity: 0.3; cursor: pointer; margin-left: 8px; font-size: 0.9rem; display: inline-block; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.3" title="Máme pro vás dárek!">🎁</span></p>
+                </div>
         </div>
     </footer>
 
@@ -635,6 +635,11 @@
             <div class="empty-cart-msg" data-i18n="cart.empty">Váš košík je zatím prázdný.</div>
         </div>
         <div class="cart-footer">
+            <div class="discount-container" style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center;">
+                <input type="text" id="discount-code" placeholder="Slevový kód..." style="flex-grow: 1; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--color-border); background: rgba(0,0,0,0.2); color: #fff; font-family: var(--font-body); font-size: 0.9rem;">
+                <button class="btn btn-outline" id="apply-discount-btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Použít</button>
+            </div>
+            <div id="discount-msg" style="font-size: 0.85rem; margin-bottom: 0.8rem; display: none;"></div>
             <div class="cart-total">
                 <span data-i18n="cart.total">Celkem:</span>
                 <strong id="cart-total-price">0 Kč</strong>
