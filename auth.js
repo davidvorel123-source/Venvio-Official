@@ -12,16 +12,17 @@ import {
 
 // TODO: Nahraďte tuto konfiguraci vašimi klíči z Firebase Console
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDVKRMVgDbqQEgt0CqKc_ho1Pol5XZ7ya4",
+  authDomain: "venvio-af343.firebaseapp.com",
+  projectId: "venvio-af343",
+  storageBucket: "venvio-af343.firebasestorage.app",
+  messagingSenderId: "750966161023",
+  appId: "1:750966161023:web:9280a6f8a8f5967df8c94a",
+  measurementId: "G-Z8P8N96FXY"
 };
 
 let app, auth;
-let isFirebaseConfigured = firebaseConfig.apiKey !== "YOUR_API_KEY";
+let isFirebaseConfigured = true;
 
 if (isFirebaseConfigured) {
     app = initializeApp(firebaseConfig);
