@@ -1136,6 +1136,9 @@ setTimeout(updateCalculatorWithEta, 100);
 // ==========================================
 // Auth & Points System
 // ==========================================
+// ==========================================
+// Auth & Points System
+// ==========================================
 let currentUser = JSON.parse(localStorage.getItem('venvioUser')) || null;
 
 const authBtn = document.getElementById('auth-btn');
@@ -1155,6 +1158,68 @@ const cartAvailPoints = document.getElementById('cart-avail-points');
 const applyPointsBtn = document.getElementById('apply-points-btn');
 const pointsMsg = document.getElementById('points-msg');
 
+let authMode = 'login'; // 'login' or 'register'
+const tabLogin = document.getElementById('tab-login');
+const tabRegister = document.getElementById('tab-register');
+const groupName = document.getElementById('group-name');
+const authDesc = document.getElementById('auth-desc');
+const authSubmitBtn = document.getElementById('auth-submit-btn');
+
+const btnGoogle = document.getElementById('btn-google');
+const btnFacebook = document.getElementById('btn-facebook');
+
+const updateAuthModeUI = () => {
+    if (!tabLogin) return;
+    if (authMode === 'login') {
+        tabLogin.style.borderBottomColor = 'var(--color-primary)';
+        tabLogin.style.color = '#fff';
+        tabRegister.style.borderBottomColor = 'transparent';
+        tabRegister.style.color = 'var(--color-text-muted)';
+        groupName.style.display = 'none';
+        document.getElementById('auth-name').removeAttribute('required');
+        authDesc.innerText = currentLang === 'en' ? 'Log in to your account to use loyalty discounts.' : 'Přihlaste se ke svému účtu pro využití věrnostních slev.';
+        authSubmitBtn.innerText = currentLang === 'en' ? 'Log In' : 'Přihlásit se';
+    } else {
+        tabRegister.style.borderBottomColor = 'var(--color-primary)';
+        tabRegister.style.color = '#fff';
+        tabLogin.style.borderBottomColor = 'transparent';
+        tabLogin.style.color = 'var(--color-text-muted)';
+        groupName.style.display = 'block';
+        document.getElementById('auth-name').setAttribute('required', 'true');
+        authDesc.innerText = currentLang === 'en' ? 'Create an account and get a 500 Venvio Coins welcome gift.' : 'Vytvořte si účet a získejte uvítací dárek 500 Venvio Coins.';
+        authSubmitBtn.innerText = currentLang === 'en' ? 'Register' : 'Zaregistrovat';
+    }
+};
+
+if (tabLogin) tabLogin.addEventListener('click', () => { authMode = 'login'; updateAuthModeUI(); });
+if (tabRegister) tabRegister.addEventListener('click', () => { authMode = 'register'; updateAuthModeUI(); });
+
+const fakeSocialLogin = (provider) => {
+    const email = prompt(currentLang === 'en' ? `Connecting to ${provider}... Please confirm your email address:` : `Připojování k ${provider}... Potvrďte prosím svůj e-mail:`);
+    if (email && email.trim() !== '') {
+        let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
+        if (allUsers[email]) {
+            currentUser = allUsers[email];
+            showToast(currentLang === 'en' ? 'Welcome back!' : 'Vítejte zpět!');
+        } else {
+            currentUser = {
+                name: email.split('@')[0],
+                email: email,
+                points: 500,
+                usedCodes: []
+            };
+            allUsers[email] = currentUser;
+            localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
+            showToast(currentLang === 'en' ? `Welcome! Connected via ${provider}. 500 Coins added.` : `Vítejte! Připojeno přes ${provider}. Získali jste 500 Coins.`);
+        }
+        localStorage.setItem('venvioUser', JSON.stringify(currentUser));
+        authModal.classList.remove('active');
+        updateAuthUI();
+    }
+};
+
+if (btnGoogle) btnGoogle.addEventListener('click', () => fakeSocialLogin('Google'));
+if (btnFacebook) btnFacebook.addEventListener('click', () => fakeSocialLogin('Facebook'));
 
 const updateAuthUI = () => {
     if (currentUser) {
@@ -1196,6 +1261,8 @@ if (authBtn) {
             authProfileEmail.innerText = currentUser.email;
             authProfilePoints.innerText = currentUser.points;
         } else {
+            authMode = 'login';
+            updateAuthModeUI();
             authBodyLogin.style.display = 'block';
             authBodyProfile.style.display = 'none';
         }
@@ -1207,14 +1274,23 @@ if (closeAuthModal) closeAuthModal.addEventListener('click', () => authModal.cla
 if (authForm) {
     authForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const name = document.getElementById('auth-name').value;
         const email = document.getElementById('auth-email').value;
-        // Check if user already exists in a mock database
         let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
-        if (allUsers[email]) {
-            currentUser = allUsers[email];
-            showToast(currentLang === 'en' ? 'Welcome back!' : 'Vítejte zpět!');
+        
+        if (authMode === 'login') {
+            if (allUsers[email]) {
+                currentUser = allUsers[email];
+                showToast(currentLang === 'en' ? 'Welcome back!' : 'Vítejte zpět!');
+            } else {
+                alert(currentLang === 'en' ? 'Account not found. Please register first.' : 'Účet nenalezen. Nejdříve se prosím zaregistrujte.');
+                return;
+            }
         } else {
+            if (allUsers[email]) {
+                alert(currentLang === 'en' ? 'Account already exists. Please log in.' : 'Účet již existuje. Prosím přihlaste se.');
+                return;
+            }
+            const name = document.getElementById('auth-name').value;
             currentUser = {
                 name: name,
                 email: email,
@@ -1269,8 +1345,8 @@ if (checkoutBtnRef) {
         
         // Save used discount code
         if (currentUser && discountMultiplier < 1) {
-            const code = document.getElementById('discount-code').value.trim().toUpperCase();
-            if (!currentUser.usedCodes.includes(code)) {
+            const code = document.getElementById('discount-code') ? document.getElementById('discount-code').value.trim().toUpperCase() : '';
+            if (code && !currentUser.usedCodes.includes(code)) {
                 currentUser.usedCodes.push(code);
             }
         }
@@ -1279,11 +1355,6 @@ if (checkoutBtnRef) {
         if (currentUser && pointsUsed > 0) {
             currentUser.points -= pointsUsed;
             pointsUsed = 0;
-        }
-        
-        // Reward points for order (e.g. 1000 points)
-        if (currentUser) {
-            currentUser.points += 1000;
             let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
             allUsers[currentUser.email] = currentUser;
             localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
@@ -1299,16 +1370,29 @@ if (checkoutBtnRef) {
 // Auth UI Init
 setTimeout(updateAuthUI, 100);
 
+translations.cs['auth.tab_login'] = 'Přihlásit se';
+translations.en['auth.tab_login'] = 'Log In';
+translations.cs['auth.tab_register'] = 'Zaregistrovat';
+translations.en['auth.tab_register'] = 'Register';
+translations.cs['auth.desc_login'] = 'Přihlaste se ke svému účtu pro využití věrnostních slev.';
+translations.en['auth.desc_login'] = 'Log in to your account to use loyalty discounts.';
+translations.cs['auth.submit_login'] = 'Přihlásit se';
+translations.en['auth.submit_login'] = 'Log In';
+translations.cs['auth.or'] = 'Nebo';
+translations.en['auth.or'] = 'Or';
+translations.cs['auth.google'] = 'Pokračovat přes Google';
+translations.en['auth.google'] = 'Continue with Google';
+translations.cs['auth.facebook'] = 'Pokračovat přes Facebook';
+translations.en['auth.facebook'] = 'Continue with Facebook';
+translations.cs['auth.points_info'] = 'Získáte 1000 bodů za dokončenou objednávku. Body připisujeme manuálně.';
+translations.en['auth.points_info'] = 'You will get 1000 points for completing your order. Points are assigned manually.';
+
 translations.cs['auth.title'] = 'Klientská sekce';
 translations.en['auth.title'] = 'Client Area';
-translations.cs['auth.desc'] = 'Zadejte svůj e-mail pro přístup k věrnostnímu programu a získání dárku 500 bodů.';
-translations.en['auth.desc'] = 'Enter your email to access the loyalty program and get a 500 coins gift.';
 translations.cs['auth.name'] = 'Jméno';
 translations.en['auth.name'] = 'Name';
 translations.cs['auth.email'] = 'E-mail';
 translations.en['auth.email'] = 'Email';
-translations.cs['auth.submit'] = 'Pokračovat';
-translations.en['auth.submit'] = 'Continue';
 translations.cs['auth.points_label'] = 'Venvio Coins';
 translations.en['auth.points_label'] = 'Venvio Coins';
 translations.cs['auth.points_val'] = '1 bod = 1 Kč sleva';
