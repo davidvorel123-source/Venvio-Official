@@ -730,18 +730,40 @@
                 <button class="close-modal" id="close-auth-modal">&times;</button>
             </div>
             <div class="modal-body" id="auth-body-login">
-                <p data-i18n="auth.desc" style="margin-bottom: 1.5rem; color: var(--color-text-muted);">Zadejte svůj e-mail pro přístup k věrnostnímu programu a získání dárku 500 bodů.</p>
+                <div class="auth-tabs" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                    <button id="tab-login" class="btn btn-outline" style="flex: 1; border: none; border-bottom: 2px solid var(--color-primary); color: #fff; border-radius: 0;" data-i18n="auth.tab_login">Přihlásit se</button>
+                    <button id="tab-register" class="btn btn-outline" style="flex: 1; border: none; border-bottom: 2px solid transparent; color: var(--color-text-muted); border-radius: 0;" data-i18n="auth.tab_register">Zaregistrovat</button>
+                </div>
+                
+                <p id="auth-desc" data-i18n="auth.desc_login" style="margin-bottom: 1.5rem; color: var(--color-text-muted); font-size: 0.9rem;">Přihlaste se ke svému účtu pro využití věrnostních slev.</p>
+                
                 <form id="auth-form">
-                    <div class="form-group">
+                    <div class="form-group" id="group-name" style="display: none;">
                         <label data-i18n="auth.name">Jméno</label>
-                        <input type="text" id="auth-name" required data-i18n-ph="auth.name_ph" placeholder="Vaše jméno">
+                        <input type="text" id="auth-name" data-i18n-ph="auth.name_ph" placeholder="Vaše jméno">
                     </div>
                     <div class="form-group">
                         <label data-i18n="auth.email">E-mail</label>
                         <input type="email" id="auth-email" required data-i18n-ph="auth.email_ph" placeholder="vas@email.cz">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block" data-i18n="auth.submit">Pokračovat</button>
+                    <button type="submit" id="auth-submit-btn" class="btn btn-primary btn-block" data-i18n="auth.submit_login">Přihlásit se</button>
                 </form>
+
+                <div style="text-align: center; margin: 1.5rem 0; position: relative;">
+                    <hr style="border-color: rgba(255,255,255,0.1);">
+                    <span style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--color-bg); padding: 0 10px; color: var(--color-text-muted); font-size: 0.8rem;" data-i18n="auth.or">Nebo</span>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                    <button id="btn-google" class="btn" style="background: white; color: #333; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 8px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" width="20">
+                        <span data-i18n="auth.google">Pokračovat přes Google</span>
+                    </button>
+                    <button id="btn-facebook" class="btn" style="background: #1877F2; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 8px;">
+                        <i class="fa-brands fa-facebook" style="font-size: 1.2rem;"></i>
+                        <span data-i18n="auth.facebook">Pokračovat přes Facebook</span>
+                    </button>
+                </div>
             </div>
             <div class="modal-body" id="auth-body-profile" style="display: none; text-align: center;">
                 <div class="auth-avatar" style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"><i class="fa-solid fa-circle-user"></i></div>
