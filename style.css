@@ -1842,6 +1842,16 @@ body.light-mode .footer {
     border-top: 1px solid rgba(0,0,0,0.05);
     background: #E2E8F0;
 }
+
+@media (max-width: 768px) {
+    body.light-mode .nav-links.mobile-open {
+        background: rgba(241, 245, 249, 0.98);
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    body.light-mode .mobile-switchers-container {
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+}
 /* Testimonials/Portfolio Carousel */
 .portfolio-grid {
     display: flex;
