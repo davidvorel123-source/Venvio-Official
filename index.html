@@ -120,6 +120,9 @@
                         <button class="curr-btn" data-curr="eur">€</button>
                         <button class="curr-btn" data-curr="usd">$</button>
                     </div>
+                    <button id="auth-btn" class="btn-icon auth-btn" aria-label="Login" style="background:transparent; border:none; color:var(--color-text); font-size:1.2rem; cursor:pointer;">
+                        <i class="fa-regular fa-user" id="auth-icon"></i>
+                    </button>
                 </div>
                 <button id="cart-btn" class="cart-btn">
                     <i class="fa-solid fa-bag-shopping"></i>
@@ -697,14 +700,18 @@
             <button class="close-cart" id="close-cart">&times;</button>
         </div>
         <div class="cart-body" id="cart-items-container">
-            <div class="empty-cart-msg" data-i18n="cart.empty">Váš košík je zatím prázdný.</div>
-        </div>
-        <div class="cart-footer">
+            <div class="cart-footer">
             <div class="discount-container" style="display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center;">
-                <input type="text" id="discount-code" placeholder="Slevový kód..." style="flex-grow: 1; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--color-border); background: rgba(0,0,0,0.2); color: #fff; font-family: var(--font-body); font-size: 0.9rem;">
+                <input type="text" id="discount-code" placeholder="Slevový kód..." data-i18n-ph="cart.discount_ph" style="flex-grow: 1; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--color-border); background: rgba(0,0,0,0.2); color: #fff; font-family: var(--font-body); font-size: 0.9rem;">
                 <button class="btn btn-outline" id="apply-discount-btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Použít</button>
             </div>
             <div id="discount-msg" style="font-size: 0.85rem; margin-bottom: 0.8rem; display: none;"></div>
+            
+            <div id="cart-points-section" style="display: none; background: rgba(0,210,255,0.05); border: 1px solid rgba(0,210,255,0.2); padding: 1rem; border-radius: 12px; margin-bottom: 1rem; text-align: center;">
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><span data-i18n="cart.points_avail">Máte k dispozici:</span> <strong id="cart-avail-points" style="color: var(--color-primary);">0</strong> <span data-i18n="cart.points_coins">Venvio Coins</span></p>
+                <button class="btn btn-outline" id="apply-points-btn" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;" data-i18n="cart.use_points">Uplatnit body jako slevu</button>
+                <div id="points-msg" style="font-size: 0.85rem; margin-top: 0.5rem; display: none; color: #00D2FF;"></div>
+            </div>
             <div class="cart-total">
                 <span data-i18n="cart.total">Celkem:</span>
                 <strong id="cart-total-price">0 Kč</strong>
@@ -713,6 +720,41 @@
             <button class="btn btn-primary btn-block" id="checkout-btn" data-i18n="cart.checkout">Přejít k objednávce</button>
         </div>
     </aside>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="auth-modal">
+        <div class="modal glass-panel fade-in-up" style="max-width: 400px;">
+            <div class="modal-header">
+                <h2 data-i18n="auth.title" id="auth-title">Klientská sekce</h2>
+                <button class="close-modal" id="close-auth-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="auth-body-login">
+                <p data-i18n="auth.desc" style="margin-bottom: 1.5rem; color: var(--color-text-muted);">Zadejte svůj e-mail pro přístup k věrnostnímu programu a získání dárku 500 bodů.</p>
+                <form id="auth-form">
+                    <div class="form-group">
+                        <label data-i18n="auth.name">Jméno</label>
+                        <input type="text" id="auth-name" required data-i18n-ph="auth.name_ph" placeholder="Vaše jméno">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="auth.email">E-mail</label>
+                        <input type="email" id="auth-email" required data-i18n-ph="auth.email_ph" placeholder="vas@email.cz">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" data-i18n="auth.submit">Pokračovat</button>
+                </form>
+            </div>
+            <div class="modal-body" id="auth-body-profile" style="display: none; text-align: center;">
+                <div class="auth-avatar" style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"><i class="fa-solid fa-circle-user"></i></div>
+                <h3 id="auth-profile-name" style="margin-bottom: 0.5rem;">Jméno</h3>
+                <p id="auth-profile-email" style="color: var(--color-text-muted); margin-bottom: 1.5rem;">email</p>
+                <div class="points-badge" style="background: rgba(0, 210, 255, 0.1); border: 1px solid var(--color-primary); border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem;">
+                    <div style="font-size: 0.9rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;" data-i18n="auth.points_label">Venvio Coins</div>
+                    <div id="auth-profile-points" style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary);">0</div>
+                    <div style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 5px;" data-i18n="auth.points_val">1 bod = 1 Kč sleva</div>
+                </div>
+                <button id="auth-logout-btn" class="btn btn-outline btn-block" data-i18n="auth.logout">Odhlásit se</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Checkout Modal -->
     <div class="modal-overlay" id="checkout-modal">
