@@ -1022,13 +1022,38 @@ const calcEtaVal = document.getElementById('calc-eta-val');
 const calcAddToCartBtn = document.getElementById('calc-add-to-cart');
 
 const calculateEta = (pages, hasCms, hasEshop, hasChat) => {
-    let weeks = 1;
-    if (pages > 5) weeks += 1;
-    if (pages > 15) weeks += 1;
-    if (hasCms) weeks += 1;
-    if (hasEshop) weeks += 2;
-    if (hasChat) weeks += 1;
-    return weeks === 1 ? '1-2 týdny' : `${weeks}-${weeks+1} týdnů`;
+    let days = 0;
+    
+    // Base days by pages
+    if (pages === 1) days = 1;
+    else if (pages <= 3) days = pages + 1; // 2 pages = 3 days, 3 pages = 4 days
+    else if (pages <= 6) days = pages + 2;
+    else if (pages <= 10) days = 10;
+    else if (pages <= 15) days = 14;
+    else days = 21;
+
+    // Addons
+    if (hasCms) days += 3;
+    if (hasChat) days += 2;
+    if (hasEshop) days += 7;
+
+    // Format output
+    if (currentLang === 'en') {
+        if (days === 1) return 'under 24 hours';
+        if (days <= 6) return `${days} days`;
+        if (days <= 10) return '1-2 weeks';
+        if (days <= 14) return '2 weeks';
+        return `${Math.ceil(days / 7)} weeks`;
+    } else {
+        if (days === 1) return 'do 24 hodin!';
+        if (days >= 2 && days <= 4) return `${days} dny`;
+        if (days > 4 && days <= 6) return `${days} dní`;
+        if (days > 6 && days <= 10) return '1-2 týdny';
+        if (days > 10 && days <= 14) return '2 týdny';
+        let weeks = Math.ceil(days / 7);
+        if (weeks >= 2 && weeks <= 4) return `${weeks} týdny`;
+        return `${weeks} týdnů`;
+    }
 };
 
 const updateCalculatorWithEta = () => {
