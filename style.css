@@ -1133,14 +1133,11 @@ a {
 }
 
 .faq-question::after {
-    content: '+';
-    font-size: 1.5rem;
-    color: var(--color-primary);
-    transition: transform 0.3s;
+    display: none;
 }
 
 .faq-item.active .faq-question::after {
-    transform: rotate(45deg);
+    /* removed */
 }
 
 .faq-answer {
