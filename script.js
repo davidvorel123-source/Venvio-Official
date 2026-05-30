@@ -1057,7 +1057,7 @@ const updateCalculatorWithEta = () => {
         basePrice = 5900;
         days = 1;
     } else if (pages <= 5) {
-        basePrice = 12500 + ((pages - 2) * 500); // 2 pages = 12500, 5 pages = 14000
+        basePrice = 12500;
         days = 2;
     } else {
         basePrice = 18900 + ((pages - 6) * 1500);
