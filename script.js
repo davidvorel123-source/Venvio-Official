@@ -304,6 +304,7 @@ let currentCurrency = localStorage.getItem('venvioCurr') || 'czk';
 
 // DOM Elements for Translation
 const applyTranslations = () => {
+    document.documentElement.lang = currentLang;
     // Translate text
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
