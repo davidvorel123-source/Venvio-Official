@@ -156,6 +156,25 @@
         </div>
     </header>
 
+    <!-- Marquee Trusted By -->
+    <div class="marquee-section">
+        <div class="marquee-content">
+            <span><i class="fa-brands fa-react"></i> React</span>
+            <span><i class="fa-brands fa-node-js"></i> Node.js</span>
+            <span><i class="fa-brands fa-aws"></i> AWS Cloud</span>
+            <span><i class="fa-brands fa-figma"></i> Figma Design</span>
+            <span><i class="fa-brands fa-stripe"></i> Stripe API</span>
+            <span><i class="fa-brands fa-google"></i> Google Cloud</span>
+            <!-- Duplicate for infinite loop -->
+            <span aria-hidden="true"><i class="fa-brands fa-react"></i> React</span>
+            <span aria-hidden="true"><i class="fa-brands fa-node-js"></i> Node.js</span>
+            <span aria-hidden="true"><i class="fa-brands fa-aws"></i> AWS Cloud</span>
+            <span aria-hidden="true"><i class="fa-brands fa-figma"></i> Figma Design</span>
+            <span aria-hidden="true"><i class="fa-brands fa-stripe"></i> Stripe API</span>
+            <span aria-hidden="true"><i class="fa-brands fa-google"></i> Google Cloud</span>
+        </div>
+    </div>
+
     <!-- Stats Counter -->
     <section class="stats-section">
         <div class="container">
@@ -358,6 +377,44 @@
                         <h3>Aura Fine Dining</h3>
                         <p data-i18n="portfolio.p3_desc">Luxusní one-page (jednostránkový) web</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kalkulacka -->
+    <section id="kalkulacka" class="section" style="padding-bottom: 2rem;">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-badge" data-i18n="calc.badge">💡 Odhad ceny</span>
+                <h2 data-i18n="calc.title">Interaktivní kalkulačka</h2>
+                <p data-i18n="calc.desc">Spočítejte si hrubý odhad vašeho projektu na míru.</p>
+            </div>
+            <div class="calc-container glass-panel fade-in-up delay-1">
+                <div class="calc-group">
+                    <label data-i18n="calc.pages">Počet stránek/podstránek: <span id="calc-pages-val" style="color: var(--color-primary); font-weight: 700;">1</span></label>
+                    <input type="range" id="calc-pages" min="1" max="20" value="1" class="calc-range">
+                </div>
+                <div class="calc-checkboxes">
+                    <label class="calc-checkbox-label">
+                        <input type="checkbox" id="calc-cms" value="15000">
+                        <span class="custom-checkbox"></span>
+                        <span data-i18n="calc.opt_cms">Vlastní Administrace (CMS)</span>
+                    </label>
+                    <label class="calc-checkbox-label">
+                        <input type="checkbox" id="calc-chat" value="8000">
+                        <span class="custom-checkbox"></span>
+                        <span data-i18n="calc.opt_chat">AI Chatbot Asistent</span>
+                    </label>
+                    <label class="calc-checkbox-label">
+                        <input type="checkbox" id="calc-eshop" value="25000">
+                        <span class="custom-checkbox"></span>
+                        <span data-i18n="calc.opt_eshop">E-shop Modul (Platby)</span>
+                    </label>
+                </div>
+                <div class="calc-result">
+                    <h3 data-i18n="calc.total_est">Odhadovaná cena:</h3>
+                    <div class="calc-price"><span id="calc-total">5 900</span> Kč</div>
                 </div>
             </div>
         </div>
@@ -700,6 +757,12 @@
         <span id="toast-message" data-i18n="toast.added">Přidáno do košíku!</span>
         <div class="toast-progress"></div>
     </div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/420123456789?text=Dobrý%20den,%20mám%20zájem%20o%20nový%20web." target="_blank" class="fab-whatsapp" id="fab-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="fab-tooltip" data-i18n="fab.tooltip">Napište nám!</span>
+    </a>
 
     <!-- JS -->
     <script src="script.js" defer></script>

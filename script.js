@@ -968,3 +968,50 @@ window.revealSecret = () => {
     }
 };
 
+
+// Calculator Logic
+const calcPages = document.getElementById('calc-pages');
+const calcPagesVal = document.getElementById('calc-pages-val');
+const calcTotal = document.getElementById('calc-total');
+const calcCheckboxes = document.querySelectorAll('.calc-checkboxes input');
+
+const updateCalculator = () => {
+    if(!calcPages || !calcTotal) return;
+    let basePrice = 5900;
+    let pages = parseInt(calcPages.value);
+    calcPagesVal.innerText = pages;
+    let total = basePrice + ((pages - 1) * 1500);
+    calcCheckboxes.forEach(cb => {
+        if(cb.checked) total += parseInt(cb.value);
+    });
+    if(currentCurrency === 'eur') total = Math.round(total / 25);
+    if(currentCurrency === 'usd') total = Math.round(total / 22);
+    calcTotal.innerText = currentLang === 'en' ? total.toLocaleString() : total.toLocaleString('cs-CZ');
+};
+
+if(calcPages) calcPages.addEventListener('input', updateCalculator);
+if(calcCheckboxes) calcCheckboxes.forEach(cb => cb.addEventListener('change', updateCalculator));
+
+// Re-run calc on lang/currency change inside applyTranslations
+
+
+// Calc Translations
+translations.cs['calc.badge'] = '?? Odhad ceny';
+translations.en['calc.badge'] = '?? Price Estimate';
+translations.cs['calc.title'] = 'Interaktivní kalkulaèka';
+translations.en['calc.title'] = 'Interactive Calculator';
+translations.cs['calc.desc'] = 'Spoèítejte si hrubý odhad vašeho projektu na míru.';
+translations.en['calc.desc'] = 'Calculate a rough estimate for your custom project.';
+translations.cs['calc.pages'] = 'Poèet stránek/podstránek: ';
+translations.en['calc.pages'] = 'Number of pages: ';
+translations.cs['calc.opt_cms'] = 'Vlastní Administrace (CMS)';
+translations.en['calc.opt_cms'] = 'Custom Admin (CMS)';
+translations.cs['calc.opt_chat'] = 'AI Chatbot Asistent';
+translations.en['calc.opt_chat'] = 'AI Chatbot Assistant';
+translations.cs['calc.opt_eshop'] = 'E-shop Modul (Platby)';
+translations.en['calc.opt_eshop'] = 'E-commerce Module';
+translations.cs['calc.total_est'] = 'Odhadovaná cena:';
+translations.en['calc.total_est'] = 'Estimated Price:';
+translations.cs['fab.tooltip'] = 'Napište nám!';
+translations.en['fab.tooltip'] = 'Message Us!';
+
