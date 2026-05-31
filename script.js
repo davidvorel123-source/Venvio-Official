@@ -6,34 +6,70 @@ const closeLegalModal = document.getElementById('close-legal-modal');
 const legalTitle = document.getElementById('legal-title');
 const legalContent = document.getElementById('legal-content');
 
+const legalTexts = {
+    terms: {
+        cs: {
+            title: "Obchodní podmínky",
+            content: "<h4>1. Úvodní ustanovení</h4><p>Tyto obchodní podmínky upravují vzájemná práva a povinnosti mezi poskytovatelem (Venvio) a klientem při vývoji webových stránek, SaaS aplikací, AI chatbotů a poskytování souvisejících služeb.</p><h4>2. Objednávka a uzavření smlouvy</h4><p>Smlouva o dílo je uzavřena potvrzením objednávky klientem (elektronicky přes formulář či e-mail). Po uzavření smlouvy může poskytovatel požadovat úhradu zálohy ve výši až 50 % z celkové ceny díla.</p><h4>3. Realizace díla a předání</h4><p>Poskytovatel se zavazuje dodat dílo v dohodnutém termínu. Klient je povinen poskytnout potřebnou součinnost (dodání textů, přístupů apod.). Při prodlení klienta s dodáním podkladů se termín dokončení adekvátně prodlužuje.</p><h4>4. Platební podmínky</h4><p>Doplatek celkové ceny je splatný po předání a schválení hotového díla klientem. Splatnost faktur je standardně 14 dní, není-li dohodnuto jinak.</p><h4>5. Autorská práva a licence</h4><p>Až do úplného zaplacení ceny díla zůstává dílo i veškerá majetková práva k němu majetkem poskytovatele. Po úplném zaplacení přechází na klienta výhradní a neomezená licence k užívání díla pro jeho účely.</p><h4>6. Odpovědnost za vady a záruka</h4><p>Poskytovatel poskytuje na své dílo záruku 6 měsíců na skryté softwarové chyby. Záruka se nevztahuje na chyby způsobené pozdějším zásahem klienta nebo třetí strany do zdrojového kódu či administrace.</p>"
+        },
+        en: {
+            title: "Terms of Service",
+            content: "<h4>1. Introductory Provisions</h4><p>These terms govern the mutual rights and obligations between the provider (Venvio) and the client in the development of websites, SaaS applications, AI chatbots, and the provision of related services.</p><h4>2. Order and Contract Conclusion</h4><p>The contract for work is concluded upon the client\'s confirmation of the order (electronically via form or email). Upon conclusion of the contract, the provider may request an advance payment of up to 50% of the total price.</p><h4>3. Project Execution and Delivery</h4><p>The provider commits to delivering the work within the agreed timeframe. The client is obliged to provide necessary cooperation (supplying texts, access, etc.). If the client delays providing materials, the completion deadline is proportionally extended.</p><h4>4. Payment Terms</h4><p>The remaining balance is due upon delivery and approval of the completed work by the client. The standard invoice maturity is 14 days unless agreed otherwise.</p><h4>5. Copyright and Licensing</h4><p>Until full payment of the project price, the work and all property rights remain the property of the provider. Upon full payment, the client receives an exclusive and unlimited license to use the work.</p><h4>6. Warranty and Liability</h4><p>The provider offers a 6-month warranty on hidden software defects. The warranty does not cover defects caused by subsequent interference by the client or third parties with the source code or administration.</p>"
+        }
+    },
+    privacy: {
+        cs: {
+            title: "Ochrana osobních údajů (GDPR)",
+            content: "<h4>1. Správce osobních údajů</h4><p>Správcem vašich osobních údajů je agentura Venvio. Vaše soukromí bereme vážně a s daty nakládáme v souladu s nařízením GDPR a platnými zákony ČR.</p><h4>2. Jaké údaje zpracováváme</h4><p>Zpracováváme pouze údaje, které nám sami poskytnete při odeslání poptávky, registraci nebo uzavření smlouvy. Jedná se zejména o: Jméno a příjmení (nebo název firmy), e-mailovou adresu, telefonní číslo, IČO/DIČ a fakturační adresu.</p><h4>3. Účel zpracování údajů</h4><p>Vaše údaje používáme výhradně za účelem: <br>- Zpracování vaší poptávky a nacenění projektu<br>- Plnění smlouvy a realizace vývoje softwaru<br>- Vystavení faktur a plnění zákonných účetních povinností<br>- Komunikace týkající se podpory a servisu vašich aplikací</p><h4>4. Zabezpečení a sdílení dat</h4><p>Osobní údaje neprodáváme ani nesdílíme s žádnými třetími stranami pro marketingové účely. K údajům mají přístup pouze prověření členové týmu Venvio a případně externí poskytovatelé nezbytných služeb (např. účetní software).</p><h4>5. Vaše práva</h4><p>Podle nařízení GDPR máte právo požadovat informaci o tom, jaké vaše údaje zpracováváme, vyžádat si jejich aktualizaci, opravu nebo úplný výmaz z naší databáze. Pro uplatnění těchto práv nás prosím kontaktujte na našem e-mailu.</p>"
+        },
+        en: {
+            title: "Privacy Policy (GDPR)",
+            content: "<h4>1. Data Controller</h4><p>The data controller of your personal data is the Venvio agency. We take your privacy seriously and handle data in accordance with GDPR regulations.</p><h4>2. What Data We Process</h4><p>We only process data you provide to us when submitting an inquiry, registering, or concluding a contract. This primarily includes: Name and surname (or company name), email address, phone number, VAT ID, and billing address.</p><h4>3. Purpose of Processing</h4><p>We use your data exclusively for: <br>- Processing your inquiry and project pricing<br>- Contract fulfillment and software development execution<br>- Issuing invoices and fulfilling legal accounting obligations<br>- Communication regarding support and service of your applications</p><h4>4. Data Security and Sharing</h4><p>We do not sell or share personal data with any third parties for marketing purposes. Only verified Venvio team members and, if necessary, external service providers (e.g., accounting software) have access to the data.</p><h4>5. Your Rights</h4><p>Under GDPR, you have the right to request information about what data we process, request its update, correction, or complete deletion from our database. To exercise these rights, please contact us via email.</p>"
+        }
+    }
+};
+
+let currentModalType = null;
+
 if (legalModal) {
     document.querySelector('a[data-i18n="footer.terms"]').addEventListener('click', (e) => {
         e.preventDefault();
-        legalTitle.innerText = "Obchodní podmínky";
-        legalContent.innerHTML = "\n<h4>1. Úvodní ustanovení</h4>\n<p>Tyto obchodní podmínky upravují vzájemná práva a povinnosti mezi poskytovatelem (Venvio) a klientem při vývoji webových stránek, SaaS aplikací, AI chatbotů a poskytování souvisejících služeb.</p>\n<h4>2. Objednávka a uzavření smlouvy</h4>\n<p>Smlouva o dílo je uzavřena potvrzením objednávky klientem (elektronicky přes formulář či e-mail). Po uzavření smlouvy může poskytovatel požadovat úhradu zálohy ve výši až 50 % z celkové ceny díla.</p>\n<h4>3. Realizace díla a předání</h4>\n<p>Poskytovatel se zavazuje dodat dílo v dohodnutém termínu. Klient je povinen poskytnout potřebnou součinnost (dodání textů, přístupů apod.). Při prodlení klienta s dodáním podkladů se termín dokončení adekvátně prodlužuje.</p>\n<h4>4. Platební podmínky</h4>\n<p>Doplatek celkové ceny je splatný po předání a schválení hotového díla klientem. Splatnost faktur je standardně 14 dní, není-li dohodnuto jinak.</p>\n<h4>5. Autorská práva a licence</h4>\n<p>Až do úplného zaplacení ceny díla zůstává dílo i veškerá majetková práva k němu majetkem poskytovatele. Po úplném zaplacení přechází na klienta výhradní a neomezená licence k užívání díla pro jeho účely.</p>\n<h4>6. Odpovědnost za vady a záruka</h4>\n<p>Poskytovatel poskytuje na své dílo záruku 6 měsíců na skryté softwarové chyby. Záruka se nevztahuje na chyby způsobené pozdějším zásahem klienta nebo třetí strany do zdrojového kódu či administrace.</p>\n";
+        currentModalType = 'terms';
+        legalTitle.innerText = legalTexts.terms[currentLang].title;
+        legalContent.innerHTML = legalTexts.terms[currentLang].content;
         legalModal.classList.add('active');
     });
 
     document.querySelector('a[data-i18n="footer.privacy"]').addEventListener('click', (e) => {
         e.preventDefault();
-        legalTitle.innerText = "Ochrana osobních údajů (GDPR)";
-        legalContent.innerHTML = "\n<h4>1. Správce osobních údajů</h4>\n<p>Správcem vašich osobních údajů je agentura Venvio. Vaše soukromí bereme vážně a s daty nakládáme v souladu s nařízením GDPR a platnými zákony ČR.</p>\n<h4>2. Jaké údaje zpracováváme</h4>\n<p>Zpracováváme pouze údaje, které nám sami poskytnete při odeslání poptávky, registraci nebo uzavření smlouvy. Jedná se zejména o: Jméno a příjmení (nebo název firmy), e-mailovou adresu, telefonní číslo, IČO/DIČ a fakturační adresu.</p>\n<h4>3. Účel zpracování údajů</h4>\n<p>Vaše údaje používáme výhradně za účelem: <br>\n- Zpracování vaší poptávky a nacenění projektu<br>\n- Plnění smlouvy a realizace vývoje softwaru<br>\n- Vystavení faktur a plnění zákonných účetních povinností<br>\n- Komunikace týkající se podpory a servisu vašich aplikací</p>\n<h4>4. Zabezpečení a sdílení dat</h4>\n<p>Osobní údaje neprodáváme ani nesdílíme s žádnými třetími stranami pro marketingové účely. K údajům mají přístup pouze prověření členové týmu Venvio a případně externí poskytovatelé nezbytných služeb (např. účetní software).</p>\n<h4>5. Vaše práva</h4>\n<p>Podle nařízení GDPR máte právo požadovat informaci o tom, jaké vaše údaje zpracováváme, vyžádat si jejich aktualizaci, opravu nebo úplný výmaz z naší databáze. Pro uplatnění těchto práv nás prosím kontaktujte na našem e-mailu.</p>\n";
+        currentModalType = 'privacy';
+        legalTitle.innerText = legalTexts.privacy[currentLang].title;
+        legalContent.innerHTML = legalTexts.privacy[currentLang].content;
         legalModal.classList.add('active');
     });
 
     closeLegalModal.addEventListener('click', () => {
         legalModal.classList.remove('active');
+        currentModalType = null;
     });
     
     // Close on click outside
     legalModal.addEventListener('click', (e) => {
         if (e.target === legalModal) {
             legalModal.classList.remove('active');
+            currentModalType = null;
         }
     });
 }
 
-// Translations Dictionary
+// Ensure open modal translates when language changes
+const updateLegalModalLang = () => {
+    if (legalModal && legalModal.classList.contains('active') && currentModalType) {
+        legalTitle.innerText = legalTexts[currentModalType][currentLang].title;
+        legalContent.innerHTML = legalTexts[currentModalType][currentLang].content;
+    }
+};
+\n// Translations Dictionary
 const translations = {
     cs: {
         "nav.why_us": "Proč my",
