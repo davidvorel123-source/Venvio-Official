@@ -9,7 +9,10 @@ import {
     onAuthStateChanged,
     signOut,
     sendEmailVerification,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    setPersistence,
+    browserLocalPersistence,
+    browserSessionPersistence
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 // TODO: Nahraďte tuto konfiguraci vašimi klíči z Firebase Console
@@ -89,8 +92,11 @@ if (authForm) {
         
         // Assuming window.authMode is set in script.js
         const mode = window.authMode || 'login';
+        const rememberMe = document.getElementById('auth-remember') ? document.getElementById('auth-remember').checked : true;
         
         try {
+            await setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
+            
             if (mode === 'register') {
                 const passwordConfirm = document.getElementById('auth-password-confirm').value;
                 if (password !== passwordConfirm) {

@@ -1220,7 +1220,7 @@ if (togglePasswordBtn) {
 window.updateAuthModeUI = () => {
     if (!tabLogin) return;
     if (authError) authError.style.display = 'none';
-    const forgotPwdLink = document.getElementById('forgot-password-link');
+    const authOptions = document.getElementById('auth-options');
     
     if (window.authMode === "login") {
         tabLogin.style.borderBottomColor = 'var(--color-primary)';
@@ -1233,7 +1233,7 @@ window.updateAuthModeUI = () => {
         document.getElementById('auth-password-confirm').removeAttribute('required');
         authDesc.innerText = currentLang === 'en' ? 'Log in to your account to use loyalty discounts.' : 'Přihlaste se ke svému účtu pro využití věrnostních slev.';
         authSubmitBtn.innerText = currentLang === 'en' ? 'Log In' : 'Přihlásit se';
-        if(forgotPwdLink) forgotPwdLink.style.display = 'block';
+        if(authOptions) authOptions.style.display = 'flex';
     } else {
         tabRegister.style.borderBottomColor = 'var(--color-primary)';
         tabRegister.style.color = '#fff';
@@ -1245,6 +1245,7 @@ window.updateAuthModeUI = () => {
         document.getElementById('auth-password-confirm').setAttribute('required', 'true');
         authDesc.innerText = currentLang === 'en' ? 'Create an account and earn Venvio Coins for discounts on your next order.' : 'Vytvořte si účet a sbírejte Venvio Coins pro slevy na příští objednávky.';
         authSubmitBtn.innerText = currentLang === 'en' ? 'Create Account' : 'Vytvořit účet';
+        if(authOptions) authOptions.style.display = 'none';
     }
 };
 
