@@ -69,7 +69,8 @@ const updateLegalModalLang = () => {
         legalContent.innerHTML = legalTexts[currentModalType][currentLang].content;
     }
 };
-\n// Translations Dictionary
+
+// Translations Dictionary
 const translations = {
     cs: {
         "nav.why_us": "Proč my",
