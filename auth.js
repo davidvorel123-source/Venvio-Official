@@ -7,7 +7,8 @@ import {
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
     onAuthStateChanged,
-    signOut
+    signOut,
+    sendEmailVerification
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 // TODO: Nahraďte tuto konfiguraci vašimi klíči z Firebase Console
@@ -95,19 +96,26 @@ if (authForm) {
                     return showError("Hesla se neshodují!");
                 }
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                // Možnost uložit jméno do profilu (updateProfile) by se dalo přidat
-                window.showToast("Účet vytvořen!");
+                await sendEmailVerification(userCredential.user);
+                await signOut(auth); // Odhlasime ho, dokud nepotvrdi email
+                window.showToast("Registrace úspěšná. Potvrďte svůj e-mail!");
             } else {
-                await signInWithEmailAndPassword(auth, email, password);
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                if (!userCredential.user.emailVerified) {
+                    await signOut(auth);
+                    throw new Error("not-verified");
+                }
                 window.showToast("Úspěšně přihlášeno!");
             }
             authError.style.display = 'none';
         } catch (error) {
-            let msg = "Chyba přihlášení.";
+            let msg = "Chyba přihlášení: " + error.message;
+            if (error.message === "not-verified") msg = "Nejprve prosím ověřte svůj e-mail (zkontrolujte schránku).";
             if (error.code === 'auth/email-already-in-use') msg = "Tento e-mail již existuje.";
             if (error.code === 'auth/invalid-email') msg = "Neplatný formát e-mailu.";
             if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') msg = "Špatné heslo nebo e-mail.";
             if (error.code === 'auth/weak-password') msg = "Heslo musí mít alespoň 6 znaků.";
+            if (error.code === 'auth/operation-not-allowed') msg = "Přihlášení přes e-mail není povoleno ve Firebase.";
             showError(msg);
         }
     });
@@ -129,13 +137,22 @@ if (authLogoutBtn) {
 if (isFirebaseConfigured) {
     onAuthStateChanged(auth, (user) => {
         if (user) {
+            let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
+            let points = 500;
+            if (allUsers[user.email] && typeof allUsers[user.email].points !== 'undefined') {
+                points = allUsers[user.email].points;
+            } else {
+                allUsers[user.email] = { points: 500, usedCodes: [] };
+                localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
+            }
+            
             // Uživatel je přihlášen
             window.currentUser = {
                 uid: user.uid,
                 email: user.email,
                 name: user.displayName || user.email.split('@')[0],
-                points: window.currentUser ? window.currentUser.points : 0, // Mock pro body, normálně by byly z Firestore
-                usedCodes: []
+                points: points, // 500 pro nové, jinak z paměti
+                usedCodes: allUsers[user.email].usedCodes || []
             };
             const authModal = document.getElementById('auth-modal');
             if (authModal) authModal.classList.remove('active');
