@@ -22,7 +22,7 @@ const translations = {
         "portfolio.btn": "Zobrazit web",
         "portfolio.p1_desc": "Moderní vícestránkový web pro bistro",
         "portfolio.p2_desc": "Elegantní prezentace kavárny",
-        "portfolio.p3_desc": "Luxusní one-page (jednostránkový) web",
+        "portfolio.p3_desc": "Luxusní one-page web",
         "pricing.title": "Hlavní balíčky služeb",
         "pricing.desc": "Vyberte si řešení, které odpovídá vašim potřebám.",
         "pricing.badge_24": "DO 24 HODIN",
@@ -680,12 +680,14 @@ if(checkoutForm) {
                     if (!allUsers[window.currentUser.email].orders) allUsers[window.currentUser.email].orders = [];
                     
                     const date = new Date().toLocaleDateString(currentLang === 'en' ? 'en-US' : 'cs-CZ');
-                    const itemsStr = cart.map(i => i.title).join(', ');
+                    const itemsStr = cart.map(i => i.nameCs || i.nameEn).join(', ');
+                    let orderTotal = 0;
+                    cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] || 0); orderTotal += p; });
                     
                     allUsers[window.currentUser.email].orders.push({
                         date: date,
                         items: itemsStr,
-                        total: total
+                        total: orderTotal
                     });
                     
                     localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
@@ -722,7 +724,7 @@ translations.cs['blog.post2.desc'] = "Každá sekunda načítání navíc vás p
 translations.en['blog.post2.desc'] = "Every extra second of loading costs you 7% of revenue. Find out how to optimize your pages for search engines.";
 translations.cs['blog.post3.title'] = "5 trendů ve web designu pro rok 2026";
 translations.en['blog.post3.title'] = "5 web design trends for 2026";
-translations.cs['blog.post3.desc'] = "Glassmorphism, dark mode, mikto-animace. Přehled trendů, které dominují a které by váš web neměl postrádat.";
+translations.cs['blog.post3.desc'] = "Glassmorphism, dark mode, mikro-animace. Přehled trendů, které dominují a které by váš web neměl postrádat.";
 translations.en['blog.post3.desc'] = "Glassmorphism, dark mode, micro-animations. Overview of trends that dominate and which your website shouldn't miss.";
 translations.cs['blog.read_more'] = "Číst více";
 translations.en['blog.read_more'] = "Read more";
@@ -1269,7 +1271,7 @@ setTimeout(updateCalculatorWithEta, 100);
 // ==========================================
 // Auth & Points System (with Password & Social Login)
 // ==========================================
-window.window.currentUser = null; // Managed by Firebase
+window.currentUser = null; // Managed by Firebase
 
 const authBtn = document.getElementById('auth-btn');
 const authIcon = document.getElementById('auth-icon');
