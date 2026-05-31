@@ -1069,7 +1069,7 @@ window.revealSecret = () => {
     const toast = document.getElementById('toast');
     const msg = document.getElementById('toast-message');
     if(toast && msg) {
-        msg.innerText = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajn sleva 10%! Kd: VENVIO10';
+        msg.innerText = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajná sleva 10%! Kód: VENVIO10';
         toast.classList.add('show');
         setTimeout(() => { 
             toast.classList.remove('show'); 
