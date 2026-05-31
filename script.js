@@ -666,54 +666,46 @@ if(checkoutForm) {
                   : "Děkujeme za vaši objednávku! Váš požadavek jsme úspěšně přijali a brzy se vám ozveme. \n\nS pozdravem, \nTým Venvio"
           };
 
-        // PŘECHOD Z AJAX NA STANDARDNÍ FORM SUBMIT
-        // FormSubmit vyžaduje standardní odeslání pro aktivaci e-mailu nebo CAPTCHA
+        // PŘECHOD NA WEB3FORMS (Místo FormSubmit)
+        requestData.access_key = "8d52594c-6265-48a0-a197-909feda1667f";
+        requestData.subject = requestData._subject;
+        requestData.from_name = requestData.Jméno;
+        requestData.replyto = requestData.Email;
         
-        // Zapsat čas úspěšné objednávky pro anti-spam (5 minut blokace)
-        localStorage.setItem('venvioLastOrderTime', Date.now().toString());
-        
-        // SAVE ORDER TO DASHBOARD IF LOGGED IN
-        if (window.currentUser) {
-            let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
-            if (!allUsers[window.currentUser.email]) allUsers[window.currentUser.email] = { points: 500, usedCodes: [], orders: [] };
-            if (!allUsers[window.currentUser.email].orders) allUsers[window.currentUser.email].orders = [];
-            const date = new Date().toLocaleDateString(currentLang === 'en' ? 'en-US' : 'cs-CZ');
-            const itemsStr = cart.map(i => i.nameCs || i.nameEn).join(', ');
-            let orderTotal = 0;
-            cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0); orderTotal += p; });
-            
-            allUsers[window.currentUser.email].orders.push({
-                date: date,
-                items: itemsStr,
-                total: orderTotal
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(requestData)
             });
-            localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
-        }
-        localStorage.removeItem('venvioCart');
-
-        // Add hidden fields for custom data
-        const addHidden = (name, value) => {
-            let input = checkoutForm.querySelector('input[name="'+name+'"]');
-            if(!input) {
-                input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = name;
-                checkoutForm.appendChild(input);
+            
+            if (response.ok) {
+                localStorage.setItem('venvioLastOrderTime', Date.now().toString());
+                if (window.currentUser) {
+                    let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
+                    if (!allUsers[window.currentUser.email]) allUsers[window.currentUser.email] = { points: 500, usedCodes: [], orders: [] };
+                    if (!allUsers[window.currentUser.email].orders) allUsers[window.currentUser.email].orders = [];
+                    const date = new Date().toLocaleDateString(currentLang === 'en' ? 'en-US' : 'cs-CZ');
+                    const itemsStr = cart.map(i => i.nameCs || i.nameEn).join(', ');
+                    let orderTotal = 0;
+                    cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0); orderTotal += p; });
+                    allUsers[window.currentUser.email].orders.push({ date: date, items: itemsStr, total: orderTotal });
+                    localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
+                }
+                localStorage.removeItem('venvioCart');
+                window.location.href = "success.html";
+            } else {
+                throw new Error("Nepodařilo se odeslat přes Web3Forms.");
             }
-            input.value = value;
-        };
-
-        addHidden('Objednávka', cartText);
-        addHidden('_subject', requestData._subject);
-        addHidden('_autoresponse', requestData._autoresponse);
-        addHidden('_next', window.location.origin + window.location.pathname.replace('index.html', '') + 'success.html');
-        // FormSubmit requires the "email" field for autoresponse to work, so we duplicate Email to email
-        addHidden('email', formData.get('Email'));
-
-        // Odeslání
-        checkoutForm.action = "https://formsubmit.co/info@venvio.dev";
-        checkoutForm.method = "POST";
-        checkoutForm.submit();
+        } catch (error) {
+            console.error("Web3Forms chyba:", error);
+            alert(currentLang === 'en' ? "Sorry, an error occurred while submitting the order. Please try again." : "Omlouváme se, došlo k chybě při odesílání objednávky. Zkuste to prosím znovu.");
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+        }
     });
 }
 
