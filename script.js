@@ -1108,21 +1108,21 @@ if(calcCheckboxes) calcCheckboxes.forEach(cb => cb.addEventListener('change', up
 // Calc Translations
 translations.cs['calc.badge'] = '💡 Odhad ceny';
 translations.en['calc.badge'] = '💡 Price Estimate';
-translations.cs['calc.title'] = 'Interaktivní kalkulaka';
+translations.cs['calc.title'] = 'Interaktivní kalkulačka';
 translations.en['calc.title'] = 'Interactive Calculator';
-translations.cs['calc.desc'] = 'Spotejte si hrubý odhad vaeho projektu na mru.';
+translations.cs['calc.desc'] = 'Spočítejte si hrubý odhad vašeho projektu na míru.';
 translations.en['calc.desc'] = 'Calculate a rough estimate for your custom project.';
-translations.cs['calc.pages'] = 'Poet strnek/podstrnek: ';
+translations.cs['calc.pages'] = 'Počet stránek/podstránek: ';
 translations.en['calc.pages'] = 'Number of pages: ';
-translations.cs['calc.opt_cms'] = 'Vlastn Administrace (CMS)';
+translations.cs['calc.opt_cms'] = 'Vlastní Administrace (CMS)';
 translations.en['calc.opt_cms'] = 'Custom Admin (CMS)';
 translations.cs['calc.opt_chat'] = 'AI Chatbot Asistent';
 translations.en['calc.opt_chat'] = 'AI Chatbot Assistant';
 translations.cs['calc.opt_eshop'] = 'E-shop Modul (Platby)';
 translations.en['calc.opt_eshop'] = 'E-commerce Module';
-translations.cs['calc.total_est'] = 'Odhadovan cena:';
+translations.cs['calc.total_est'] = 'Odhadovaná cena:';
 translations.en['calc.total_est'] = 'Estimated Price:';
-translations.cs['fab.tooltip'] = 'Napite nm!';
+translations.cs['fab.tooltip'] = 'Napište nám!';
 translations.en['fab.tooltip'] = 'Message Us!';
 
 
