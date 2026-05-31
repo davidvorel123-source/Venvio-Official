@@ -97,15 +97,14 @@ if (authForm) {
                 }
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 await sendEmailVerification(userCredential.user);
-                await signOut(auth); // Odhlasime ho, dokud nepotvrdi email
-                window.showToast("Registrace úspěšná. Potvrďte svůj e-mail!");
+                window.showToast("Registrace úspěšná. Potvrďte svůj e-mail pro dokončení nákupů!");
             } else {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 if (!userCredential.user.emailVerified) {
-                    await signOut(auth);
-                    throw new Error("not-verified");
+                    window.showToast("Nezapomeňte si ověřit e-mail pro možnost nakupovat!");
+                } else {
+                    window.showToast("Úspěšně přihlášeno!");
                 }
-                window.showToast("Úspěšně přihlášeno!");
             }
             authError.style.display = 'none';
         } catch (error) {
@@ -150,6 +149,7 @@ if (isFirebaseConfigured) {
             window.currentUser = {
                 uid: user.uid,
                 email: user.email,
+                emailVerified: user.emailVerified,
                 name: user.displayName || user.email.split('@')[0],
                 points: points, // 500 pro nové, jinak z paměti
                 usedCodes: allUsers[user.email].usedCodes || []
