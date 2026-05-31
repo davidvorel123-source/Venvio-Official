@@ -1,4 +1,38 @@
 let pointsUsed = 0;
+
+// Legal Modal
+const legalModal = document.getElementById('legal-modal');
+const closeLegalModal = document.getElementById('close-legal-modal');
+const legalTitle = document.getElementById('legal-title');
+const legalContent = document.getElementById('legal-content');
+
+if (legalModal) {
+    document.querySelector('a[data-i18n="footer.terms"]').addEventListener('click', (e) => {
+        e.preventDefault();
+        legalTitle.innerText = "Obchodní podmínky";
+        legalContent.innerHTML = "Tato sekce se momentálně připravuje. Kompletní obchodní podmínky budou zveřejněny v nejbližší době.<br><br>V případě dotazů nás neváhejte kontaktovat.";
+        legalModal.classList.add('active');
+    });
+
+    document.querySelector('a[data-i18n="footer.privacy"]').addEventListener('click', (e) => {
+        e.preventDefault();
+        legalTitle.innerText = "Ochrana osobních údajů (GDPR)";
+        legalContent.innerHTML = "Tato sekce se momentálně připravuje. Informace o zpracování osobních údajů budou zveřejněny brzy.<br><br>Ujišťujeme vás, že s vašimi údaji nakládáme s maximální péčí a v souladu s platnou legislativou.";
+        legalModal.classList.add('active');
+    });
+
+    closeLegalModal.addEventListener('click', () => {
+        legalModal.classList.remove('active');
+    });
+    
+    // Close on click outside
+    legalModal.addEventListener('click', (e) => {
+        if (e.target === legalModal) {
+            legalModal.classList.remove('active');
+        }
+    });
+}
+
 // Translations Dictionary
 const translations = {
     cs: {
