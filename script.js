@@ -1329,7 +1329,7 @@ if (checkoutBtnRef) {
     const newCheckoutBtn = checkoutBtnRef.cloneNode(true);
     checkoutBtnRef.parentNode.replaceChild(newCheckoutBtn, checkoutBtnRef);
     
-    newCheckoutBtn.addEventListener('click', () => {
+    newCheckoutBtn.addEventListener('click', async () => {
         if(cart.length === 0) return;
         
         if (!window.currentUser) {
@@ -1339,8 +1339,23 @@ if (checkoutBtnRef) {
             return;
         }
         
+        // Dynamicky obnovíme stav uživatele z Firebase (pokud zrovna potvrdil e-mail v jiné záložce)
+        if (!window.currentUser.emailVerified && window.firebaseAuth && window.firebaseAuth.currentUser) {
+            try {
+                const checkoutSpinner = document.getElementById('preloader');
+                if(checkoutSpinner) checkoutSpinner.classList.remove('fade-out'); // Zobrazíme na chvíli načítání
+                
+                await window.firebaseAuth.currentUser.reload();
+                window.currentUser.emailVerified = window.firebaseAuth.currentUser.emailVerified;
+                
+                if(checkoutSpinner) checkoutSpinner.classList.add('fade-out');
+            } catch (e) {
+                console.error("Chyba při obnově uživatele:", e);
+            }
+        }
+        
         if (!window.currentUser.emailVerified) {
-            alert(currentLang === 'en' ? "Please verify your email address before making a purchase. Check your inbox." : "Před nákupem prosím ověřte svůj e-mail (zkontrolujte schránku).");
+            alert(currentLang === 'en' ? "Please verify your email address before making a purchase. Check your inbox (or SPAM folder)." : "Před nákupem prosím ověřte svůj e-mail (zkontrolujte doručenou poštu i složku SPAM). Po potvrzení klikněte znovu na Pokračovat.");
             return;
         }
         

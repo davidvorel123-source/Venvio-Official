@@ -97,7 +97,7 @@ if (authForm) {
                 }
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 await sendEmailVerification(userCredential.user);
-                window.showToast("Registrace úspěšná. Potvrďte svůj e-mail pro dokončení nákupů!");
+                window.showToast("Registrace úspěšná. Potvrďte svůj e-mail (zkontrolujte i složku SPAM) pro dokončení nákupů!");
             } else {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 if (!userCredential.user.emailVerified) {
