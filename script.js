@@ -1205,6 +1205,23 @@ const calculateEta = (days) => {
     }
 };
 
+let previousCalcTotalRaw = 0;
+const animateValue = (obj, start, end, duration) => {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        // Easing out cubic
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        let val = Math.floor(easeProgress * (end - start) + start);
+        obj.innerText = formatPriceDynamic(currentLang === 'en' ? val.toLocaleString('en-US') : val.toLocaleString('cs-CZ'));
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+};
+
 const updateCalculatorWithEta = () => {
     const calcPagesEl = document.getElementById('calc-pages');
     const calcTotalEl = document.getElementById('calc-total');
@@ -1245,7 +1262,12 @@ const updateCalculatorWithEta = () => {
     
     if(currentCurrency === 'eur') total = Math.round(total / RATE_EUR);
     if(currentCurrency === 'usd') total = Math.round(total / RATE_USD);
-    calcTotalEl.innerText = formatPriceDynamic(currentLang === 'en' ? total.toLocaleString('en-US') : total.toLocaleString('cs-CZ'));
+    if (previousCalcTotalRaw !== total) {
+        animateValue(calcTotalEl, previousCalcTotalRaw, total, 600);
+        previousCalcTotalRaw = total;
+    } else {
+        calcTotalEl.innerText = formatPriceDynamic(currentLang === 'en' ? total.toLocaleString('en-US') : total.toLocaleString('cs-CZ'));
+    }
 };
 
 if(document.getElementById('calc-pages')) {
@@ -1723,3 +1745,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Ensure all delayed translations are applied
 applyTranslations();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const inputs = document.querySelectorAll('input[type="email"], input[type="text"]');
+    inputs.forEach(input => {
+        input.addEventListener('input', (e) => {
+            if (input.checkValidity() && input.value.trim() !== '') {
+                input.style.borderColor = 'var(--color-success)';
+                input.style.boxShadow = '0 0 5px rgba(46, 204, 113, 0.3)';
+            } else {
+                input.style.borderColor = 'rgba(255,255,255,0.1)';
+                input.style.boxShadow = 'none';
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.pricing-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+});
