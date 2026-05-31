@@ -289,6 +289,10 @@ const translations = {
 };
 
 // Products & Pricing Dictionary
+
+const RATE_EUR = 25;
+const RATE_USD = 23;
+
 const productPrices = {
     'pkg-start': { czk: { val: 5900, str: '5 900 Kč' }, eur: { val: 239, str: '239 €' }, usd: { val: 259, str: '$259' } },
     'pkg-standard': { czk: { val: 12500, str: '12 500 Kč' }, eur: { val: 499, str: '499 €' }, usd: { val: 549, str: '$549' } },
@@ -326,6 +330,16 @@ translations.en['chat.placeholder'] = "Type a message...";
 // Translations Dictionary (update modal submit text)
 translations.cs['modal.submit'] = "Odeslat objednávku";
 translations.en['modal.submit'] = "Submit Order";
+
+translations.cs['checkout.gdpr'] = 'Souhlasím se zpracováním osobních údajů pro účely vyřízení objednávky.';
+translations.en['checkout.gdpr'] = 'I agree to the processing of personal data for the purpose of order fulfillment.';
+translations.cs['footer.legal'] = 'Právní informace';
+translations.en['footer.legal'] = 'Legal Information';
+translations.cs['footer.terms'] = 'Obchodní podmínky';
+translations.en['footer.terms'] = 'Terms & Conditions';
+translations.cs['footer.privacy'] = 'Ochrana osobních údajů';
+translations.en['footer.privacy'] = 'Privacy Policy';
+
 const applyTranslations = () => {
     document.documentElement.lang = currentLang;
     // Translate text
@@ -1119,8 +1133,8 @@ const updateCalculator = () => {
     calcCheckboxes.forEach(cb => {
         if(cb.checked) total += parseInt(cb.value);
     });
-    if(currentCurrency === 'eur') total = Math.round(total / 25);
-    if(currentCurrency === 'usd') total = Math.round(total / 22);
+    if(currentCurrency === 'eur') total = Math.round(total / RATE_EUR);
+    if(currentCurrency === 'usd') total = Math.round(total / RATE_USD);
     calcTotal.innerText = currentLang === 'en' ? total.toLocaleString() : total.toLocaleString('cs-CZ');
 };
 
@@ -1215,8 +1229,8 @@ const updateCalculatorWithEta = () => {
         calcEtaVal.innerText = calculateEta(days);
     }
     
-    if(currentCurrency === 'eur') total = Math.round(total / 25);
-    if(currentCurrency === 'usd') total = Math.round(total / 22);
+    if(currentCurrency === 'eur') total = Math.round(total / RATE_EUR);
+    if(currentCurrency === 'usd') total = Math.round(total / RATE_USD);
     calcTotalEl.innerText = currentLang === 'en' ? total.toLocaleString() : total.toLocaleString('cs-CZ');
 };
 
@@ -1448,7 +1462,7 @@ if (applyPointsBtn) {
             pointsUsed = window.currentUser.points;
             applyPointsBtn.style.display = 'none';
             let formattedPoints = pointsUsed;
-            if (currentCurrency === 'eur') formattedPoints = Math.round(pointsUsed / 25) + ' €';
+            if (currentCurrency === 'eur') formattedPoints = Math.round(pointsUsed / RATE_EUR) + ' €';
             else if (currentCurrency === 'usd') formattedPoints = '$' + Math.round(pointsUsed / 22);
             else formattedPoints += ' Kč';
             
@@ -1471,12 +1485,8 @@ if (checkoutBtnRef) {
             return;
         }
         
-        if (!window.currentUser) {
-            alert(currentLang === 'en' ? "You must be logged in to make a purchase." : "Pro dokončení nákupu se musíte přihlásit.");
-            const authModal = document.getElementById('auth-modal');
-            if (authModal) authModal.classList.add('active');
-            return;
-        }
+        // Guest checkout allowed
+
         
         // Dynamicky obnovíme stav uživatele z Firebase (pokud zrovna potvrdil e-mail v jiné záložce)
         if (!window.currentUser.emailVerified && window.firebaseAuth && window.firebaseAuth.currentUser) {
