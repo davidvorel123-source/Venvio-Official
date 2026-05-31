@@ -41,7 +41,7 @@ const translations = {
         "pkg.std.f3": "Přehledná a logická navigace",
         "pkg.std.f4": "Nasazení analytických nástrojů (Google Analytics)",
         "pkg.std.f5": "Kompletní realizace a spuštění do 48 hodin",
-        "pkg.prem.price": "od 18 900 Kč",
+        "pkg.prem.price": "od 49 900 Kč",
         "pkg.prem.ideal": "Ideální pro: Náročnější klienty, kteří vyžadují neomezený rozsah obsahu a nadstandardní interaktivní funkce.",
         "pkg.prem.f1": "Neomezené množství podstránek s architekturou na míru",
         "pkg.prem.f2": "Pokročilé dynamické prvky a animace pomocí JavaScriptu",
@@ -294,9 +294,9 @@ const RATE_EUR = 25;
 const RATE_USD = 23;
 
 const productPrices = {
-    'pkg-start': { czk: { val: 5900, str: '5 900 Kč' }, eur: { val: 239, str: '239 €' }, usd: { val: 259, str: '$259' } },
-    'pkg-standard': { czk: { val: 12500, str: '12 500 Kč' }, eur: { val: 499, str: '499 €' }, usd: { val: 549, str: '$549' } },
-    'pkg-premium': { czk: { val: 18900, str: 'od 18 900 Kč' }, eur: { val: 749, str: 'from 749 €' }, usd: { val: 799, str: 'from $799' } },
+    'pkg-start': { czk: { val: 14900, str: '14 900 Kč' }, eur: { val: 590, str: '590 €' }, usd: { val: 650, str: '$650' } },
+    'pkg-standard': { czk: { val: 29900, str: '29 900 Kč' }, eur: { val: 1190, str: '1190 €' }, usd: { val: 1290, str: '$1290' } },
+    'pkg-premium': { czk: { val: 49900, str: 'od 49 900 Kč' }, eur: { val: 1990, str: 'from 1990 €' }, usd: { val: 2190, str: 'from $2190' } },
     'add-domain': { czk: { val: 490, str: '490 Kč' }, eur: { val: 20, str: '20 €' }, usd: { val: 22, str: '$22' } },
     'add-support': { czk: { val: 1500, str: '1 500 Kč' }, eur: { val: 60, str: '60 €' }, usd: { val: 65, str: '$65' } },
     'add-identity': { czk: { val: 8900, str: '8 900 Kč' }, eur: { val: 350, str: '350 €' }, usd: { val: 390, str: '$390' } },
@@ -1140,7 +1140,7 @@ const calcCheckboxes = document.querySelectorAll('.calc-checkboxes input');
 
 const updateCalculator = () => {
     if(!calcPages || !calcTotal) return;
-    let basePrice = 5900;
+    let basePrice = 14900;
     let pages = parseInt(calcPages.value);
     calcPagesVal.innerText = pages;
     let total = basePrice + ((pages - 1) * 1500);
