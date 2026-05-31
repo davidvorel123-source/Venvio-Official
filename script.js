@@ -298,11 +298,11 @@ const productPrices = {
     'pkg-standard': { czk: { val: 12500, str: '12 500 Kč' }, eur: { val: 499, str: '499 €' }, usd: { val: 549, str: '$549' } },
     'pkg-premium': { czk: { val: 18900, str: 'od 18 900 Kč' }, eur: { val: 749, str: 'from 749 €' }, usd: { val: 799, str: 'from $799' } },
     'add-domain': { czk: { val: 490, str: '490 Kč' }, eur: { val: 20, str: '20 €' }, usd: { val: 22, str: '$22' } },
-    'add-support': { czk: { val: 600, str: '600 Kč' }, eur: { val: 25, str: '25 €' }, usd: { val: 29, str: '$29' } },
-    'add-identity': { czk: { val: 2500, str: '2 500 Kč' }, eur: { val: 99, str: '99 €' }, usd: { val: 109, str: '$109' } },
-    'add-hourly': { czk: { val: 700, str: '700 Kč' }, eur: { val: 29, str: '29 €' }, usd: { val: 35, str: '$35' } },
-    'svc-webapp': { czk: { val: 49900, str: 'od 49 900 Kč' }, eur: { val: 1990, str: 'from 1990 €' }, usd: { val: 2190, str: 'from $2190' } },
-    'svc-ai': { czk: { val: 19900, str: 'od 19 900 Kč' }, eur: { val: 790, str: 'from 790 €' }, usd: { val: 890, str: 'from $890' } },
+    'add-support': { czk: { val: 1500, str: '1 500 Kč' }, eur: { val: 60, str: '60 €' }, usd: { val: 65, str: '$65' } },
+    'add-identity': { czk: { val: 8900, str: '8 900 Kč' }, eur: { val: 350, str: '350 €' }, usd: { val: 390, str: '$390' } },
+    'add-hourly': { czk: { val: 1200, str: '1 200 Kč' }, eur: { val: 50, str: '50 €' }, usd: { val: 55, str: '$55' } },
+    'svc-webapp': { czk: { val: 99000, str: 'od 99 000 Kč' }, eur: { val: 3990, str: 'from 3990 €' }, usd: { val: 4290, str: 'from $4290' } },
+    'svc-ai': { czk: { val: 24900, str: 'od 24 900 Kč' }, eur: { val: 990, str: 'from 990 €' }, usd: { val: 1090, str: 'from $1090' } },
     'svc-automation': { czk: { val: 9900, str: 'od 9 900 Kč' }, eur: { val: 390, str: 'from 390 €' }, usd: { val: 440, str: 'from $440' } },
     'svc-chrome': { czk: { val: 14900, str: 'od 14 900 Kč' }, eur: { val: 590, str: 'from 590 €' }, usd: { val: 650, str: 'from $650' } }
 };
