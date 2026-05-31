@@ -848,7 +848,7 @@ body.light-mode .mesh-bg {
 /* Portfolio */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -1889,22 +1889,7 @@ body.light-mode .footer {
     }
 }
 /* Testimonials/Portfolio Carousel */
-.portfolio-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 2rem;
-    padding-bottom: 2rem;
-    scrollbar-width: none; /* Firefox */
-}
-.portfolio-grid::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-}
-.portfolio-card {
-    scroll-snap-align: center;
-    flex: 0 0 calc(33.333% - 1.33rem);
-    min-width: 300px;
-}
+/* Disabled carousel to show all items in a grid */
 
 /* Pricing Card Elevation */
 .pricing-card {
