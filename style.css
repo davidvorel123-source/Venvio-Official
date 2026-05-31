@@ -342,12 +342,13 @@ a {
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1.5rem;
 }
 
 .logo {
@@ -356,6 +357,7 @@ a {
     font-weight: 900;
     letter-spacing: 2px;
     color: var(--color-text);
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -368,7 +370,7 @@ a {
 
 .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 1.5rem;
     list-style: none;
 }
 
@@ -410,7 +412,7 @@ a {
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
 }
 
 /* Language Switcher */
