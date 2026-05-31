@@ -1566,23 +1566,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const text = chatInput.value.trim();
             if (text) {
                 // Add user message
-                chatMessages.innerHTML += \
+                chatMessages.innerHTML += `
                 <div style="background: var(--color-primary); color: white; padding: 10px; border-radius: 12px 12px 0 12px; max-width: 85%; font-size: 0.9rem; align-self: flex-end;">
-                    \
-                </div>\;
+                    ${text}
+                </div>`;
                 chatInput.value = '';
                 chatMessages.scrollTop = chatMessages.scrollHeight;
 
                 // Simulate reply
                 setTimeout(() => {
-                    const reply = currentLang === 'en' ? 
+                    const reply = window.currentLang === 'en' ? 
                         "Our operators are currently offline. Please leave us a message or contact us via email." : 
-                        "Naöi oper·to¯i jsou moment·lnÏ offline. Zanechte n·m prosÌm zpr·vu nebo n·s kontaktujte e-mailem.";
+                        "Na≈°i oper√°to≈ôi jsou moment√°lnƒõ offline. Zanechte n√°m pros√≠m zpr√°vu nebo n√°s kontaktujte e-mailem.";
                     
-                    chatMessages.innerHTML += \
+                    chatMessages.innerHTML += `
                     <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem;">
-                        \
-                    </div>\;
+                        ${reply}
+                    </div>`;
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }, 1000);
             }
