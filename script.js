@@ -1332,6 +1332,18 @@ if (checkoutBtnRef) {
     newCheckoutBtn.addEventListener('click', () => {
         if(cart.length === 0) return;
         
+        if (!window.currentUser) {
+            alert(currentLang === 'en' ? "You must be logged in to make a purchase." : "Pro dokončení nákupu se musíte přihlásit.");
+            const authModal = document.getElementById('auth-modal');
+            if (authModal) authModal.classList.add('active');
+            return;
+        }
+        
+        if (!window.currentUser.emailVerified) {
+            alert(currentLang === 'en' ? "Please verify your email address before making a purchase. Check your inbox." : "Před nákupem prosím ověřte svůj e-mail (zkontrolujte schránku).");
+            return;
+        }
+        
         // Save used discount code
         if (window.currentUser && discountMultiplier < 1) {
             const code = document.getElementById('discount-code') ? document.getElementById('discount-code').value.trim().toUpperCase() : '';
@@ -1350,7 +1362,14 @@ if (checkoutBtnRef) {
             localStorage.setItem('venvioUser', JSON.stringify(window.currentUser));
         }
         
-        // Points are now added manually by the agency.
+        // Pre-fill email and make it readonly
+        const checkoutEmail = document.querySelector('#checkout-form input[name="Email"]');
+        if (checkoutEmail && window.currentUser) {
+            checkoutEmail.value = window.currentUser.email;
+            checkoutEmail.readOnly = true;
+            checkoutEmail.style.opacity = '0.7';
+            checkoutEmail.style.cursor = 'not-allowed';
+        }
         
         const cModal = document.getElementById('checkout-modal');
         if(cModal) cModal.classList.add('active');
