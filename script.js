@@ -297,7 +297,7 @@ const productPrices = {
     'pkg-start': { czk: { val: 5900, str: '5 900 Kč' }, eur: { val: 239, str: '239 €' }, usd: { val: 259, str: '$259' } },
     'pkg-standard': { czk: { val: 12500, str: '12 500 Kč' }, eur: { val: 499, str: '499 €' }, usd: { val: 549, str: '$549' } },
     'pkg-premium': { czk: { val: 18900, str: 'od 18 900 Kč' }, eur: { val: 749, str: 'from 749 €' }, usd: { val: 799, str: 'from $799' } },
-    'add-domain': { czk: { val: 1800, str: '1 800 Kč' }, eur: { val: 75, str: '75 €' }, usd: { val: 85, str: '$85' } },
+    'add-domain': { czk: { val: 490, str: '490 Kč' }, eur: { val: 20, str: '20 €' }, usd: { val: 22, str: '$22' } },
     'add-support': { czk: { val: 600, str: '600 Kč' }, eur: { val: 25, str: '25 €' }, usd: { val: 29, str: '$29' } },
     'add-identity': { czk: { val: 2500, str: '2 500 Kč' }, eur: { val: 99, str: '99 €' }, usd: { val: 109, str: '$109' } },
     'add-hourly': { czk: { val: 700, str: '700 Kč' }, eur: { val: 29, str: '29 €' }, usd: { val: 35, str: '$35' } },
