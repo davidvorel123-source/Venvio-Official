@@ -1764,12 +1764,17 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.pricing-card');
     cards.forEach(card => {
+        // Inject glow element
+        let glow = document.createElement('div');
+        glow.className = 'mouse-glow';
+        card.appendChild(glow);
+
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
+            glow.style.setProperty('--mouse-x', `${x}px`);
+            glow.style.setProperty('--mouse-y', `${y}px`);
         });
     });
 });
