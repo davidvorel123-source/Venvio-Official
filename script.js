@@ -361,6 +361,14 @@ const applyTranslations = () => {
         }
     });
 
+    // Update WhatsApp link text
+    const waLink = document.getElementById('fab-whatsapp');
+    if (waLink) {
+        waLink.href = currentLang === 'en' 
+            ? "https://wa.me/420775104206?text=Hello,%20I%20am%20interested%20in%20a%20new%20website."
+            : "https://wa.me/420775104206?text=Dobrý%20den,%20mám%20zájem%20o%20nový%20web.";
+    }
+
     // Update auth modal dynamically based on active tab
     const authDesc = document.getElementById('auth-desc');
     const authSubmit = document.getElementById('auth-submit-btn');
@@ -1701,3 +1709,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+// Ensure all delayed translations are applied
+applyTranslations();
