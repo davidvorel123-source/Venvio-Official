@@ -2,5 +2,8 @@
   "name": "venvio-official",
   "version": "1.0.0",
   "description": "Venvio Official Website",
-  "main": "index.html"
+  "main": "index.html",
+  "dependencies": {
+    "jsdom": "^29.1.1"
+  }
 }

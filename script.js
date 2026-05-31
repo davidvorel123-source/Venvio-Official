@@ -612,6 +612,24 @@ if(checkoutForm) {
                 // Zapsat čas úspěšné objednávky pro anti-spam (5 minut blokace)
                 localStorage.setItem('venvioLastOrderTime', Date.now().toString());
                 
+                // SAVE ORDER TO DASHBOARD IF LOGGED IN
+                if (window.currentUser) {
+                    let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
+                    if (!allUsers[window.currentUser.email]) allUsers[window.currentUser.email] = { points: 500, usedCodes: [], orders: [] };
+                    if (!allUsers[window.currentUser.email].orders) allUsers[window.currentUser.email].orders = [];
+                    
+                    const date = new Date().toLocaleDateString(currentLang === 'en' ? 'en-US' : 'cs-CZ');
+                    const itemsStr = cart.map(i => i.title).join(', ');
+                    
+                    allUsers[window.currentUser.email].orders.push({
+                        date: date,
+                        items: itemsStr,
+                        total: total
+                    });
+                    
+                    localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
+                }
+                
                 // Vymažeme košík
                 localStorage.removeItem('venvioCart');
                 // Přesměrujeme klienta přímo na děkovací stránku s bankou
@@ -627,6 +645,30 @@ if(checkoutForm) {
         }
     });
 }
+
+
+translations.cs['blog.title'] = "Případové studie & Tipy";
+translations.en['blog.title'] = "Case Studies & Tips";
+translations.cs['blog.desc'] = "Zajímavosti ze světa vývoje webů a online podnikání.";
+translations.en['blog.desc'] = "Insights from web development and online business.";
+translations.cs['blog.post1.title'] = "Jak moderní design zvyšuje konverze o 40%";
+translations.en['blog.post1.title'] = "How modern design increases conversions by 40%";
+translations.cs['blog.post1.desc'] = "Detailní pohled na to, proč vaši zákazníci odcházejí ke konkurenci kvůli zastaralému vzhledu a pomalému načítání.";
+translations.en['blog.post1.desc'] = "A detailed look at why your customers leave for competitors due to outdated design and slow loading.";
+translations.cs['blog.post2.title'] = "Proč se vyplatí investovat do rychlosti webu?";
+translations.en['blog.post2.title'] = "Why invest in website speed?";
+translations.cs['blog.post2.desc'] = "Každá sekunda načítání navíc vás připravuje o 7 % tržeb. Zjistěte, jak optimalizovat vaše stránky pro vyhledávače.";
+translations.en['blog.post2.desc'] = "Every extra second of loading costs you 7% of revenue. Find out how to optimize your pages for search engines.";
+translations.cs['blog.post3.title'] = "5 trendů ve web designu pro rok 2026";
+translations.en['blog.post3.title'] = "5 web design trends for 2026";
+translations.cs['blog.post3.desc'] = "Glassmorphism, dark mode, mikto-animace. Přehled trendů, které dominují a které by váš web neměl postrádat.";
+translations.en['blog.post3.desc'] = "Glassmorphism, dark mode, micro-animations. Overview of trends that dominate and which your website shouldn't miss.";
+translations.cs['blog.read_more'] = "Číst více";
+translations.en['blog.read_more'] = "Read more";
+translations.cs['dash.orders'] = "Historie objednávek";
+translations.en['dash.orders'] = "Order History";
+translations.cs['dash.no_orders'] = "Zatím nemáte žádné objednávky.";
+translations.en['dash.no_orders'] = "You have no orders yet.";
 
 // Translations Dictionary (update modal submit text)
 translations.cs['modal.submit'] = "Odeslat objednávku";
@@ -1299,6 +1341,35 @@ if (authBtn) {
             authProfileName.innerText = window.currentUser.name;
             authProfileEmail.innerText = window.currentUser.email;
             authProfilePoints.innerText = window.currentUser.points;
+            
+            // Populate orders
+            const ordersList = document.getElementById('dashboard-orders-list');
+            if (ordersList) {
+                let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
+                let userOrders = [];
+                if (allUsers[window.currentUser.email] && allUsers[window.currentUser.email].orders) {
+                    userOrders = allUsers[window.currentUser.email].orders;
+                }
+                
+                if (userOrders.length === 0) {
+                    ordersList.innerHTML = `<p style="color: var(--color-text-muted); font-style: italic; text-align: center; margin-top: 1rem;" data-i18n="dash.no_orders">${currentLang === 'en' ? 'You have no orders yet.' : 'Zatím nemáte žádné objednávky.'}</p>`;
+                } else {
+                    let html = '';
+                    userOrders.forEach(o => {
+                        html += `
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-weight: 600; color: #fff;">${o.date}</div>
+                                <div style="color: var(--color-text-muted); font-size: 0.8rem; margin-top: 4px;">${o.items}</div>
+                            </div>
+                            <div style="background: rgba(0, 210, 255, 0.1); color: var(--color-primary); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 800;">
+                                ${currentLang === 'en' ? 'PROCESSING' : 'VE ZPRACOVÁNÍ'}
+                            </div>
+                        </div>`;
+                    });
+                    ordersList.innerHTML = html;
+                }
+            }
         } else {
             window.authMode = "login";
             updateAuthModeUI();
@@ -1471,5 +1542,55 @@ window.addEventListener('storage', (e) => {
         } catch(err) {
             console.error('Error syncing cart:', err);
         }
+    }
+});
+// Live Chat Mockup Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatWindow = document.getElementById('chat-window');
+    const chatClose = document.getElementById('chat-close');
+    const chatSend = document.getElementById('chat-send');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    if (chatToggle && chatWindow) {
+        chatToggle.addEventListener('click', () => {
+            chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatWindow.style.display = 'none';
+        });
+
+        const sendMessage = () => {
+            const text = chatInput.value.trim();
+            if (text) {
+                // Add user message
+                chatMessages.innerHTML += \
+                <div style="background: var(--color-primary); color: white; padding: 10px; border-radius: 12px 12px 0 12px; max-width: 85%; font-size: 0.9rem; align-self: flex-end;">
+                    \
+                </div>\;
+                chatInput.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                // Simulate reply
+                setTimeout(() => {
+                    const reply = currentLang === 'en' ? 
+                        "Our operators are currently offline. Please leave us a message or contact us via email." : 
+                        "Na�i oper�to�i jsou moment�ln� offline. Zanechte n�m pros�m zpr�vu nebo n�s kontaktujte e-mailem.";
+                    
+                    chatMessages.innerHTML += \
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem;">
+                        \
+                    </div>\;
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        };
+
+        if(chatSend) chatSend.addEventListener('click', sendMessage);
+        if(chatInput) chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
     }
 });

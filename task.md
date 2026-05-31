@@ -1,0 +1,16 @@
+- [x] 1. Animace pøi scrollování (AOS)
+  - [x] Pøidat AOS CSS/JS do index.html
+  - [x] Inicializovat AOS v script.js
+  - [x] Pøidat data-aos do HTML elementù
+- [x] 2. Klientská sekce (Dashboard)
+  - [x] Upravit auth-modal UI v index.html
+  - [x] Upravit CSS pro Dashboard
+  - [x] Javascript logika pro historii objednávek a fake stavy
+- [x] 3. Sekce Blog / Pøípadové studie
+  - [x] Pøidat sekci Blog do index.html (nad Kontakt)
+  - [x] Pøidat styly pro sekci Blog
+  - [x] Pøidat pøeklady do script.js
+- [x] 4. Live Chat (Vizualizace)
+  - [x] Pøidat plovoucí HTML strukturu
+  - [x] Vytvoøit CSS pro chat modal
+  - [x] Vytvoøit JS logiku pro otevírání a odeslání zprávy
