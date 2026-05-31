@@ -71,14 +71,6 @@ if (btnGoogle) {
 if (btnFacebook) {
     btnFacebook.addEventListener('click', async (e) => {
         e.preventDefault();
-        if (!isFirebaseConfigured) return alert("Firebase není napojen! Prosím doplňte API klíče v auth.js.");
-        try {
-            const provider = new FacebookAuthProvider();
-            await signInWithPopup(auth, provider);
-        } catch (error) {
-            showError("Chyba Facebook přihlášení: " + error.message);
-        }
-    btnFacebook.addEventListener('click', async () => {
         if (!isFirebaseConfigured) return alert(window.currentLang === 'en' ? "Firebase not connected!" : "Firebase není napojen! Prosím doplňte API klíče v auth.js.");
         const provider = new FacebookAuthProvider();
         // We must add scopes to get email and public profile
