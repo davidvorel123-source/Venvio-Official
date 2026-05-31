@@ -1517,7 +1517,7 @@ if (checkoutBtnRef) {
             }
         }
         
-        if (!window.currentUser.emailVerified) {
+        if (window.currentUser && !window.currentUser.emailVerified) {
             alert(currentLang === 'en' ? "Please verify your email address before making a purchase. Check your inbox (or SPAM folder)." : "Před nákupem prosím ověřte svůj e-mail (zkontrolujte doručenou poštu i složku SPAM). Po potvrzení klikněte znovu na Pokračovat.");
             return;
         }
