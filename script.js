@@ -638,29 +638,33 @@ if(checkoutForm) {
         submitBtn.disabled = true;
         
         // Sestavení informací z košíku
+        const formData = new FormData(checkoutForm);
+        
         let cartText = "PRÁZDNÝ KOŠÍK";
+        let totalString = "0";
         if (cart.length > 0) {
             cartText = cart.map(item => {
                 const price = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0);
                 const name = currentLang === 'en' && item.nameEn ? item.nameEn : item.nameCs;
                 const details = currentLang === 'en' && item.detailsEn ? ' ' + item.detailsEn : (item.detailsCs ? ' ' + item.detailsCs : '');
-                return `${name}${details} (${formatPriceDynamic(price)})`;
-            }).join(', ');
-            let totalString = document.getElementById('cart-total-price').innerText;
+                return `📦 ${name}${details} - ${formatPriceDynamic(price)}`;
+            }).join('\n');
+            
+            totalString = document.getElementById('cart-total-price').innerText;
             if (discountMultiplier < 1) {
-                totalString += " (Sleva 10% s kódem VENVIO10 uplatněna)";
+                totalString += " (Sleva 10% uplatněna)";
             }
-            cartText += ` | CELKEM: ${totalString}`;
         }
         
-        const formData = new FormData(checkoutForm);
         const requestData = {
-              Jméno: formData.get('Jmeno'),
-              Email: formData.get('Email'),
-              email: formData.get('Email'),
-              Zpráva: formData.get('Zprava'),
-              Objednávka: cartText,
-              _subject: "Nová objednávka webu Venvio!",
+              "Jméno Klienta": formData.get('Jmeno'),
+              "E-mail": formData.get('Email'),
+              "Telefon": formData.get('Telefon') || "Nezadáno",
+              "Zpráva od klienta": formData.get('Zprava') || "Bez zprávy",
+              "Položky v košíku": "\n" + cartText,
+              "CELKOVÁ CENA": totalString,
+              _subject: "🚀 Nová VIP objednávka z Venvio.dev!",
+              _template: "box",
               _autoresponse: currentLang === 'en' 
                   ? "Thank you for your custom order! We have successfully received your request and will contact you immediately. \n\nBest regards, \nVenvio Team" 
                   : "Děkujeme za vaši objednávku! Váš požadavek jsme úspěšně přijali a brzy se vám ozveme. \n\nS pozdravem, \nTým Venvio"
@@ -669,8 +673,8 @@ if(checkoutForm) {
         // PŘECHOD NA WEB3FORMS (Místo FormSubmit)
         requestData.access_key = "8d52594c-6265-48a0-a197-909feda1667f";
         requestData.subject = requestData._subject;
-        requestData.from_name = requestData.Jméno;
-        requestData.replyto = requestData.Email;
+        requestData.from_name = requestData["Jméno Klienta"];
+        requestData.replyto = requestData["E-mail"];
         
         try {
             const response = await fetch("https://api.web3forms.com/submit", {
