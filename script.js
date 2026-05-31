@@ -666,72 +666,54 @@ if(checkoutForm) {
                   : "Děkujeme za vaši objednávku! Váš požadavek jsme úspěšně přijali a brzy se vám ozveme. \n\nS pozdravem, \nTým Venvio"
           };
 
-        try {
-            // Odeslání přes AJAX
-            const response = await fetch("https://formsubmit.co/ajax/info@venvio.dev", {
-                method: "POST",
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(requestData)
+        // PŘECHOD Z AJAX NA STANDARDNÍ FORM SUBMIT
+        // FormSubmit vyžaduje standardní odeslání pro aktivaci e-mailu nebo CAPTCHA
+        
+        // Zapsat čas úspěšné objednávky pro anti-spam (5 minut blokace)
+        localStorage.setItem('venvioLastOrderTime', Date.now().toString());
+        
+        // SAVE ORDER TO DASHBOARD IF LOGGED IN
+        if (window.currentUser) {
+            let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
+            if (!allUsers[window.currentUser.email]) allUsers[window.currentUser.email] = { points: 500, usedCodes: [], orders: [] };
+            if (!allUsers[window.currentUser.email].orders) allUsers[window.currentUser.email].orders = [];
+            const date = new Date().toLocaleDateString(currentLang === 'en' ? 'en-US' : 'cs-CZ');
+            const itemsStr = cart.map(i => i.nameCs || i.nameEn).join(', ');
+            let orderTotal = 0;
+            cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0); orderTotal += p; });
+            
+            allUsers[window.currentUser.email].orders.push({
+                date: date,
+                items: itemsStr,
+                total: orderTotal
             });
-            
-            if (response.ok) {
-                // Zapsat čas úspěšné objednávky pro anti-spam (5 minut blokace)
-                localStorage.setItem('venvioLastOrderTime', Date.now().toString());
-                
-                // SAVE ORDER TO DASHBOARD IF LOGGED IN
-                if (window.currentUser) {
-                    let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
-                    if (!allUsers[window.currentUser.email]) allUsers[window.currentUser.email] = { points: 500, usedCodes: [], orders: [] };
-                    if (!allUsers[window.currentUser.email].orders) allUsers[window.currentUser.email].orders = [];
-                    
-                    const date = new Date().toLocaleDateString(currentLang === 'en' ? 'en-US' : 'cs-CZ');
-                    const itemsStr = cart.map(i => i.nameCs || i.nameEn).join(', ');
-                    let orderTotal = 0;
-                    cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] || 0); orderTotal += p; });
-                    
-                    allUsers[window.currentUser.email].orders.push({
-                        date: date,
-                        items: itemsStr,
-                        total: orderTotal
-                    });
-                    
-                    localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
-                }
-                
-                // Vymažeme košík
-                localStorage.removeItem('venvioCart');
-                // Přesměrujeme klienta přímo na děkovací stránku s bankou
-                window.location.href = "success.html";
-            } else {
-                throw new Error("Nepodařilo se odeslat.");
-            }
-        } catch (error) {
-            console.warn("FormSubmit API odepřelo AJAX požadavek (CORS, nevyžádaný spam nebo neověřený e-mail). Povolujeme fallback přesměrování na success.html.", error);
-            
-            localStorage.setItem('venvioLastOrderTime', Date.now().toString());
-            
-            if (window.currentUser) {
-                let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
-                if (!allUsers[window.currentUser.email]) allUsers[window.currentUser.email] = { points: 500, usedCodes: [], orders: [] };
-                if (!allUsers[window.currentUser.email].orders) allUsers[window.currentUser.email].orders = [];
-                const date = new Date().toLocaleDateString(currentLang === 'en' ? 'en-US' : 'cs-CZ');
-                const itemsStr = cart.map(i => i.nameCs || i.nameEn).join(', ');
-                let orderTotal = 0;
-                cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0); orderTotal += p; });
-                
-                allUsers[window.currentUser.email].orders.push({
-                    date: date,
-                    items: itemsStr,
-                    total: orderTotal
-                });
-                localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
-            }
-            localStorage.removeItem('venvioCart');
-            window.location.href = "success.html";
+            localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
         }
+        localStorage.removeItem('venvioCart');
+
+        // Add hidden fields for custom data
+        const addHidden = (name, value) => {
+            let input = checkoutForm.querySelector('input[name="'+name+'"]');
+            if(!input) {
+                input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = name;
+                checkoutForm.appendChild(input);
+            }
+            input.value = value;
+        };
+
+        addHidden('Objednávka', cartText);
+        addHidden('_subject', requestData._subject);
+        addHidden('_autoresponse', requestData._autoresponse);
+        addHidden('_next', window.location.origin + window.location.pathname.replace('index.html', '') + 'success.html');
+        // FormSubmit requires the "email" field for autoresponse to work, so we duplicate Email to email
+        addHidden('email', formData.get('Email'));
+
+        // Odeslání
+        checkoutForm.action = "https://formsubmit.co/info@venvio.dev";
+        checkoutForm.method = "POST";
+        checkoutForm.submit();
     });
 }
 
