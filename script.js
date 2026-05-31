@@ -311,6 +311,21 @@ if (currentCurrency !== 'czk' && currentCurrency !== 'eur' && currentCurrency !=
 let discountMultiplier = 1;
 
 // DOM Elements for Translation
+
+translations.cs['chat.tooltip'] = "Chatujte s naší AI";
+translations.en['chat.tooltip'] = "Chat with our AI";
+translations.cs['chat.header_title'] = "Venvio Podpora";
+translations.en['chat.header_title'] = "Venvio Support";
+translations.cs['chat.header_desc'] = "Odpovídáme ihned";
+translations.en['chat.header_desc'] = "Replies instantly";
+translations.cs['chat.welcome'] = "Dobrý den! 👋 Jak vám můžeme pomoci s vaším webem?";
+translations.en['chat.welcome'] = "Hello! 👋 How can we help you with your website?";
+translations.cs['chat.placeholder'] = "Napište zprávu...";
+translations.en['chat.placeholder'] = "Type a message...";
+
+// Translations Dictionary (update modal submit text)
+translations.cs['modal.submit'] = "Odeslat objednávku";
+translations.en['modal.submit'] = "Submit Order";
 const applyTranslations = () => {
     document.documentElement.lang = currentLang;
     // Translate text
@@ -1054,7 +1069,7 @@ window.revealSecret = () => {
     const toast = document.getElementById('toast');
     const msg = document.getElementById('toast-message');
     if(toast && msg) {
-        msg.innerText = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajn� sleva 10%! K�d: VENVIO10';
+        msg.innerText = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajn sleva 10%! Kd: VENVIO10';
         toast.classList.add('show');
         setTimeout(() => { 
             toast.classList.remove('show'); 
@@ -1093,21 +1108,21 @@ if(calcCheckboxes) calcCheckboxes.forEach(cb => cb.addEventListener('change', up
 // Calc Translations
 translations.cs['calc.badge'] = '💡 Odhad ceny';
 translations.en['calc.badge'] = '💡 Price Estimate';
-translations.cs['calc.title'] = 'Interaktivní� kalkula�ka';
+translations.cs['calc.title'] = 'Interaktivní kalkulaka';
 translations.en['calc.title'] = 'Interactive Calculator';
-translations.cs['calc.desc'] = 'Spo��tejte si hrubý� odhad va�eho projektu na m�ru.';
+translations.cs['calc.desc'] = 'Spotejte si hrubý odhad vaeho projektu na mru.';
 translations.en['calc.desc'] = 'Calculate a rough estimate for your custom project.';
-translations.cs['calc.pages'] = 'Po�et str�nek/podstr�nek: ';
+translations.cs['calc.pages'] = 'Poet strnek/podstrnek: ';
 translations.en['calc.pages'] = 'Number of pages: ';
-translations.cs['calc.opt_cms'] = 'Vlastn� Administrace (CMS)';
+translations.cs['calc.opt_cms'] = 'Vlastn Administrace (CMS)';
 translations.en['calc.opt_cms'] = 'Custom Admin (CMS)';
 translations.cs['calc.opt_chat'] = 'AI Chatbot Asistent';
 translations.en['calc.opt_chat'] = 'AI Chatbot Assistant';
 translations.cs['calc.opt_eshop'] = 'E-shop Modul (Platby)';
 translations.en['calc.opt_eshop'] = 'E-commerce Module';
-translations.cs['calc.total_est'] = 'Odhadovan� cena:';
+translations.cs['calc.total_est'] = 'Odhadovan cena:';
 translations.en['calc.total_est'] = 'Estimated Price:';
-translations.cs['fab.tooltip'] = 'Napi�te n�m!';
+translations.cs['fab.tooltip'] = 'Napite nm!';
 translations.en['fab.tooltip'] = 'Message Us!';
 
 
