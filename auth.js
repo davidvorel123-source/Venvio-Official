@@ -78,17 +78,39 @@ if (btnFacebook) {
         } catch (error) {
             showError("Chyba Facebook přihlášení: " + error.message);
         }
+    btnFacebook.addEventListener('click', async () => {
+        if (!isFirebaseConfigured) return alert(window.currentLang === 'en' ? "Firebase not connected!" : "Firebase není napojen! Prosím doplňte API klíče v auth.js.");
+        const provider = new FacebookAuthProvider();
+        // We must add scopes to get email and public profile
+        provider.addScope('email');
+        provider.addScope('public_profile');
+        provider.setCustomParameters({
+           'display': 'popup'
+        });
+        try {
+            await signInWithPopup(auth, provider);
+            // onAuthStateChanged obslouží zbytek
+        } catch (error) {
+            let errorMessage = error.message;
+            if (error.code === 'auth/account-exists-with-different-credential') {
+                errorMessage = window.currentLang === 'en' ? "An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address." : "Tento e-mail už se používá (např. přes Google). Přihlaste se jinou metodou.";
+            } else if (error.code === 'auth/popup-closed-by-user') {
+                 errorMessage = window.currentLang === 'en' ? "The popup has been closed by the user before finalizing the operation." : "Vyskakovací okno bylo zavřeno před dokončením přihlášení.";
+            }
+            showError((window.currentLang === 'en' ? "Facebook sign in error: " : "Chyba Facebook přihlášení: ") + errorMessage);
+            console.error("Facebook error:", error);
+        }
     });
 }
 
+// Klasické heslo + email (Přihlášení / Registrace)
 if (authForm) {
     authForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        if (!isFirebaseConfigured) return alert("Firebase není napojen! Prosím doplňte API klíče v auth.js.");
+        if (!isFirebaseConfigured) return alert(window.currentLang === 'en' ? "Firebase not connected!" : "Firebase není napojen! Prosím doplňte API klíče v auth.js.");
         
-        const email = document.getElementById('auth-email').value.trim();
+        const email = document.getElementById('auth-email').value;
         const password = document.getElementById('auth-password').value;
-        const name = document.getElementById('auth-name') ? document.getElementById('auth-name').value.trim() : '';
         
         // Assuming window.authMode is set in script.js
         const mode = window.authMode || 'login';
@@ -100,28 +122,31 @@ if (authForm) {
             if (mode === 'register') {
                 const passwordConfirm = document.getElementById('auth-password-confirm').value;
                 if (password !== passwordConfirm) {
-                    return showError("Hesla se neshodují!");
+                    return showError(window.currentLang === 'en' ? "Passwords do not match!" : "Hesla se neshodují!");
                 }
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 await sendEmailVerification(userCredential.user);
-                window.showToast("Registrace úspěšná. Potvrďte svůj e-mail (zkontrolujte i složku SPAM) pro dokončení nákupů!");
+                window.showToast(window.currentLang === 'en' ? "Registration successful. Please verify your email (check SPAM folder) to complete purchases!" : "Registrace úspěšná. Potvrďte svůj e-mail (zkontrolujte i složku SPAM) pro dokončení nákupů!");
+                await signOut(auth); // force them to login after verification
             } else {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 if (!userCredential.user.emailVerified) {
-                    window.showToast("Nezapomeňte si ověřit e-mail pro možnost nakupovat!");
+                    window.showToast(window.currentLang === 'en' ? "Don't forget to verify your email to be able to make purchases!" : "Nezapomeňte si ověřit e-mail pro možnost nakupovat!");
                 } else {
-                    window.showToast("Úspěšně přihlášeno!");
+                    window.showToast(window.currentLang === 'en' ? "Successfully logged in!" : "Úspěšně přihlášeno!");
                 }
             }
-            authError.style.display = 'none';
+            if (document.getElementById('auth-modal')) {
+                document.getElementById('auth-modal').classList.remove('active');
+            }
         } catch (error) {
-            let msg = "Chyba přihlášení: " + error.message;
-            if (error.message === "not-verified") msg = "Nejprve prosím ověřte svůj e-mail (zkontrolujte schránku).";
-            if (error.code === 'auth/email-already-in-use') msg = "Tento e-mail již existuje.";
-            if (error.code === 'auth/invalid-email') msg = "Neplatný formát e-mailu.";
-            if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') msg = "Špatné heslo nebo e-mail.";
-            if (error.code === 'auth/weak-password') msg = "Heslo musí mít alespoň 6 znaků.";
-            if (error.code === 'auth/operation-not-allowed') msg = "Přihlášení přes e-mail není povoleno ve Firebase.";
+            let msg = "Error: " + error.message;
+            if (error.code === 'auth/email-already-in-use') msg = window.currentLang === 'en' ? "Email is already in use." : "Tento e-mail se už používá. Zkuste se rovnou přihlásit.";
+            if (error.code === 'auth/weak-password') msg = window.currentLang === 'en' ? "Password should be at least 6 characters." : "Heslo musí mít alespoň 6 znaků.";
+            if (error.code === 'auth/invalid-credential') msg = window.currentLang === 'en' ? "Invalid credentials." : "Špatný e-mail nebo heslo.";
+            if (error.code === 'auth/user-not-found') msg = window.currentLang === 'en' ? "Account with this email does not exist." : "Účet s tímto e-mailem neexistuje.";
+            if (error.code === 'auth/wrong-password') msg = window.currentLang === 'en' ? "Wrong password." : "Špatné heslo.";
+            
             showError(msg);
         }
     });

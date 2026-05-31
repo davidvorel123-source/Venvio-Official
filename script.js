@@ -621,7 +621,7 @@ if(checkoutForm) {
             }
         } catch (error) {
             console.error("Chyba:", error);
-            alert("Omlouváme se, došlo k chybě při odesílání objednávky. Zkuste to prosím znovu.");
+            alert(currentLang === 'en' ? "Sorry, an error occurred while submitting the order. Please try again." : "Omlouváme se, došlo k chybě při odesílání objednávky. Zkuste to prosím znovu.");
             submitBtn.innerText = originalText;
             submitBtn.disabled = false;
         }
@@ -1336,7 +1336,10 @@ if (checkoutBtnRef) {
     checkoutBtnRef.parentNode.replaceChild(newCheckoutBtn, checkoutBtnRef);
     
     newCheckoutBtn.addEventListener('click', async () => {
-        if(cart.length === 0) return;
+        if(cart.length === 0) {
+            window.showToast(currentLang === 'en' ? 'Cart is empty.' : 'Košík je prázdný.');
+            return;
+        }
         
         if (!window.currentUser) {
             alert(currentLang === 'en' ? "You must be logged in to make a purchase." : "Pro dokončení nákupu se musíte přihlásit.");
@@ -1456,3 +1459,17 @@ translations.cs['cart.points_avail'] = 'Máte k dispozici:';
 translations.en['cart.points_avail'] = 'You have:';
 translations.cs['cart.use_points'] = 'Uplatnit body jako slevu';
 translations.en['cart.use_points'] = 'Use coins for discount';
+
+// Sync cart across multiple tabs
+window.addEventListener('storage', (e) => {
+    if (e.key === 'venvioCart') {
+        try {
+            const newCart = JSON.parse(e.newValue) || [];
+            cart.length = 0;
+            cart.push(...newCart);
+            updateCartUI();
+        } catch(err) {
+            console.error('Error syncing cart:', err);
+        }
+    }
+});
