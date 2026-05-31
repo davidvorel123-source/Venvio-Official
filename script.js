@@ -343,6 +343,31 @@ const applyTranslations = () => {
         }
     });
 
+    // Update auth modal dynamically based on active tab
+    const authDesc = document.getElementById('auth-desc');
+    const authSubmit = document.getElementById('auth-submit-btn');
+    const isLogin = document.getElementById('tab-login') && document.getElementById('tab-login').style.borderBottomColor !== 'transparent';
+    if (authDesc && authSubmit) {
+        if (isLogin) {
+            authDesc.innerHTML = currentLang === 'en' ? 'Log in to your account to use loyalty discounts.' : 'Přihlaste se ke svému účtu pro využití věrnostních slev.';
+            authSubmit.innerHTML = currentLang === 'en' ? 'Log In' : 'Přihlásit se';
+        } else {
+            authDesc.innerHTML = currentLang === 'en' ? 'Create an account and earn Venvio Coins for discounts on your next order.' : 'Vytvořte si účet a sbírejte Venvio Coins pro slevy na příští objednávky.';
+            authSubmit.innerHTML = currentLang === 'en' ? 'Create Account' : 'Vytvořit účet';
+        }
+    }
+
+    // Update toast if it's currently showing
+    const toastMsg = document.getElementById('toast-message');
+    if (toastMsg) {
+        if (toastMsg.innerHTML.includes('Secret') || toastMsg.innerHTML.includes('Tajná sleva') || toastMsg.innerHTML.includes('Tajn')) {
+            toastMsg.innerHTML = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajná sleva 10%! Kód: VENVIO10';
+        } else if (toastMsg.innerHTML.includes('Přidáno') || toastMsg.innerHTML.includes('Ptidno') || toastMsg.innerHTML.includes('Added')) {
+            toastMsg.innerHTML = translations[currentLang]['toast.added'] || 'Přidáno do košíku!';
+        }
+    }
+
+
     // Translate placeholders
     document.querySelectorAll('[data-i18n-ph]').forEach(el => {
         const key = el.getAttribute('data-i18n-ph');
