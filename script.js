@@ -787,15 +787,15 @@ translations.cs['svc1.title'] = 'Webové Aplikace & SaaS';
 translations.en['svc1.title'] = 'Web Applications & SaaS';
 translations.cs['svc1.desc'] = 'Vývoj plnohodnotných aplikací (React, Node.js), rezervačních systémů a klientských portálů na míru.';
 translations.en['svc1.desc'] = 'Development of full-featured applications (React, Node.js), booking systems, and custom client portals.';
-translations.cs['svc1.price'] = 'Od 49 900 Kč';
-translations.en['svc1.price'] = 'From 49,900 CZK';
+translations.cs['svc1.price'] = 'Od 99 000 Kč';
+translations.en['svc1.price'] = 'From 99,000 CZK';
 
 translations.cs['svc2.title'] = 'Inteligentní AI Chatboti';
 translations.en['svc2.title'] = 'Intelligent AI Chatbots';
 translations.cs['svc2.desc'] = 'Chytrý asistent napojený na ChatGPT, který zná vaše produkty, odpovídá 24/7 a zvyšuje prodeje.';
 translations.en['svc2.desc'] = 'A smart assistant connected to ChatGPT that knows your products, replies 24/7, and boosts sales.';
-translations.cs['svc2.price'] = 'Od 19 900 Kč';
-translations.en['svc2.price'] = 'From 19,900 CZK';
+translations.cs['svc2.price'] = 'Od 24 900 Kč';
+translations.en['svc2.price'] = 'From 24,900 CZK';
 
 translations.cs['svc3.title'] = 'Automatizace Procesů';
 translations.en['svc3.title'] = 'Process Automation';
@@ -1234,13 +1234,13 @@ const updateCalculatorWithEta = () => {
     let days = 0;
     
     if (pages === 1) {
-        basePrice = 5900;
+        basePrice = 14900;
         days = 1;
     } else if (pages <= 5) {
-        basePrice = 12500;
+        basePrice = 29900;
         days = 2;
     } else {
-        basePrice = 18900 + ((pages - 6) * 1500);
+        basePrice = 49900 + ((pages - 6) * 2000);
         days = 5 + (pages - 5);
     }
     
