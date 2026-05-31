@@ -321,6 +321,13 @@ const applyTranslations = () => {
         }
     });
 
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[currentLang] && translations[currentLang][key]) {
+            el.setAttribute('placeholder', translations[currentLang][key]);
+        }
+    });
+
     // Translate placeholders
     document.querySelectorAll('[data-i18n-ph]').forEach(el => {
         const key = el.getAttribute('data-i18n-ph');
@@ -669,6 +676,18 @@ translations.cs['dash.orders'] = "Historie objednávek";
 translations.en['dash.orders'] = "Order History";
 translations.cs['dash.no_orders'] = "Zatím nemáte žádné objednávky.";
 translations.en['dash.no_orders'] = "You have no orders yet.";
+
+
+translations.cs['chat.tooltip'] = "Chatujte s naší AI";
+translations.en['chat.tooltip'] = "Chat with our AI";
+translations.cs['chat.header_title'] = "Venvio Podpora";
+translations.en['chat.header_title'] = "Venvio Support";
+translations.cs['chat.header_desc'] = "Odpovídáme ihned";
+translations.en['chat.header_desc'] = "Replies instantly";
+translations.cs['chat.welcome'] = "Dobrý den! 👋 Jak vám můžeme pomoci s vaším webem?";
+translations.en['chat.welcome'] = "Hello! 👋 How can we help you with your website?";
+translations.cs['chat.placeholder'] = "Napište zprávu...";
+translations.en['chat.placeholder'] = "Type a message...";
 
 // Translations Dictionary (update modal submit text)
 translations.cs['modal.submit'] = "Odeslat objednávku";

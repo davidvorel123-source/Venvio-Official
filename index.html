@@ -908,9 +908,9 @@
 
 
     <!-- Live Chat Mockup -->
-    <div id="chat-widget" style="position: fixed; bottom: 90px; right: 20px; z-index: 9999;">
+    <div id="chat-widget" style="position: fixed; bottom: 110px; right: 20px; z-index: 9999;">
         <!-- Chat Button -->
-        <button id="chat-toggle" style="background: var(--color-primary); color: #fff; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4); display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;">
+        <button id="chat-toggle" title="Chatujte s naší AI" data-i18n="chat.tooltip" style="background: var(--color-primary); color: #fff; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4); display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;">
             <i class="fa-solid fa-comment-dots"></i>
         </button>
 
@@ -923,8 +923,8 @@
                         <i class="fa-solid fa-headset"></i>
                     </div>
                     <div>
-                        <div style="font-weight: 600; font-size: 0.95rem;">Venvio Podpora</div>
-                        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.8);">Odpovídáme ihned</div>
+                        <div style="font-weight: 600; font-size: 0.95rem;" data-i18n="chat.header_title">Venvio Podpora</div>
+                        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.8);" data-i18n="chat.header_desc">Odpovídáme ihned</div>
                     </div>
                 </div>
                 <button id="chat-close" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;">&times;</button>
@@ -933,13 +933,13 @@
             <!-- Messages -->
             <div id="chat-messages" style="padding: 1rem; height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: var(--color-bg);">
                 <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem;">
-                    Dobrý den! 👋 Jak vám můžeme pomoci s vaším webem?
+                    <span data-i18n="chat.welcome">Dobrý den! 👋 Jak vám můžeme pomoci s vaším webem?</span>
                 </div>
             </div>
 
             <!-- Input -->
             <div style="padding: 10px; background: var(--color-surface); border-top: 1px solid rgba(255,255,255,0.05); display: flex; gap: 10px;">
-                <input type="text" id="chat-input" placeholder="Napište zprávu..." style="flex: 1; padding: 8px 12px; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; background: rgba(255,255,255,0.02); color: #fff; outline: none; font-size: 0.9rem;">
+                <input type="text" id="chat-input" placeholder="Napište zprávu..." data-i18n-placeholder="chat.placeholder" style="flex: 1; padding: 8px 12px; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; background: rgba(255,255,255,0.15); color: #fff; outline: none; font-size: 0.9rem;">
                 <button id="chat-send" style="background: var(--color-primary); color: #fff; border: none; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
                     <i class="fa-solid fa-paper-plane" style="font-size: 0.8rem;"></i>
                 </button>
