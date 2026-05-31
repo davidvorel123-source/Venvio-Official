@@ -1288,6 +1288,8 @@ setTimeout(updateCalculatorWithEta, 100);
 window.currentUser = null; // Managed by Firebase
 
 const authBtn = document.getElementById('auth-btn');
+const authBtnMobile = document.getElementById('auth-btn-mobile');
+const authIconMobile = document.getElementById('auth-icon-mobile');
 const authIcon = document.getElementById('auth-icon');
 const authModal = document.getElementById('auth-modal');
 const closeAuthModal = document.getElementById('close-auth-modal');
@@ -1397,6 +1399,10 @@ window.updateAuthUI = () => {
             authIcon.className = 'fa-solid fa-circle-user';
             authIcon.style.color = 'var(--color-primary)';
         }
+        if(authIconMobile) {
+            authIconMobile.className = 'fa-solid fa-circle-user';
+            authIconMobile.style.color = 'var(--color-primary)';
+        }
         if(document.getElementById('guest-discount-info')) document.getElementById('guest-discount-info').style.display = 'none';
           if(cartPointsSection) {
             cartPointsSection.style.display = 'block';
@@ -1411,6 +1417,10 @@ window.updateAuthUI = () => {
         if(authIcon) {
             authIcon.className = 'fa-regular fa-user';
             authIcon.style.color = 'var(--color-text)';
+        }
+        if(authIconMobile) {
+            authIconMobile.className = 'fa-regular fa-user';
+            authIconMobile.style.color = 'var(--color-text)';
         }
         if(document.getElementById('guest-discount-info')) document.getElementById('guest-discount-info').style.display = 'none';
           if(cartPointsSection) {
