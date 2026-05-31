@@ -331,6 +331,10 @@ translations.en['chat.placeholder'] = "Type a message...";
 translations.cs['modal.submit'] = "Odeslat objednávku";
 translations.en['modal.submit'] = "Submit Order";
 
+
+translations.cs['cart.guest_info'] = 'Objednáváte jako host. Přihlaste se a získejte okamžitou slevu 500 Kč!';
+translations.en['cart.guest_info'] = 'Ordering as a guest. Log in to get an instant 500 CZK discount!';
+
 translations.cs['checkout.gdpr'] = 'Souhlasím se zpracováním osobních údajů pro účely vyřízení objednávky.';
 translations.en['checkout.gdpr'] = 'I agree to the processing of personal data for the purpose of order fulfillment.';
 translations.cs['footer.legal'] = 'Právní informace';
@@ -568,6 +572,8 @@ const openCart = () => {
     if(!cartSidebar) return;
     cartSidebar.classList.add('open');
     cartOverlay.classList.add('active');
+      if(document.getElementById('chat-widget')) document.getElementById('chat-widget').style.display = 'none';
+      if(document.getElementById('fab-whatsapp')) document.getElementById('fab-whatsapp').style.display = 'none';
     document.body.style.overflow = 'hidden';
 };
 
@@ -575,6 +581,8 @@ const closeCartSidebar = () => {
     if(!cartSidebar) return;
     cartSidebar.classList.remove('open');
     cartOverlay.classList.remove('active');
+      if(document.getElementById('chat-widget')) document.getElementById('chat-widget').style.display = 'block';
+      if(document.getElementById('fab-whatsapp')) document.getElementById('fab-whatsapp').style.display = 'flex';
     document.body.style.overflow = '';
 };
 
@@ -1255,6 +1263,8 @@ if(calcAddToCartBtn) {
         const cartOverlay = document.getElementById('cart-overlay');
         if(cartSidebar) cartSidebar.classList.add('active');
         if(cartOverlay) cartOverlay.classList.add('active');
+      if(document.getElementById('chat-widget')) document.getElementById('chat-widget').style.display = 'none';
+      if(document.getElementById('fab-whatsapp')) document.getElementById('fab-whatsapp').style.display = 'none';
     });
 }
 
@@ -1383,7 +1393,8 @@ window.updateAuthUI = () => {
             authIcon.className = 'fa-solid fa-circle-user';
             authIcon.style.color = 'var(--color-primary)';
         }
-        if(cartPointsSection) {
+        if(document.getElementById('guest-discount-info')) document.getElementById('guest-discount-info').style.display = 'none';
+          if(cartPointsSection) {
             cartPointsSection.style.display = 'block';
             cartAvailPoints.innerText = window.currentUser.points;
             if(window.currentUser.points > 0) {
@@ -1397,7 +1408,8 @@ window.updateAuthUI = () => {
             authIcon.className = 'fa-regular fa-user';
             authIcon.style.color = 'var(--color-text)';
         }
-        if(cartPointsSection) {
+        if(document.getElementById('guest-discount-info')) document.getElementById('guest-discount-info').style.display = 'none';
+          if(cartPointsSection) {
             cartPointsSection.style.display = 'none';
         }
         pointsUsed = 0;
@@ -1491,7 +1503,7 @@ if (checkoutBtnRef) {
 
         
         // Dynamicky obnovíme stav uživatele z Firebase (pokud zrovna potvrdil e-mail v jiné záložce)
-        if (!window.currentUser.emailVerified && window.firebaseAuth && window.firebaseAuth.currentUser) {
+        if (window.currentUser && !window.currentUser.emailVerified && window.firebaseAuth && window.firebaseAuth.currentUser) {
             try {
                 const checkoutSpinner = document.getElementById('preloader');
                 if(checkoutSpinner) checkoutSpinner.classList.remove('fade-out'); // Zobrazíme na chvíli načítání

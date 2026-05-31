@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=mpttu25a">
+    <link rel="stylesheet" href="style.css?v=mpttwlja">
 </head>
 <body class="loading">
     <script>
@@ -759,7 +759,11 @@
             </div>
             <p class="tax-info" data-i18n="cart.tax_info">Nejsme plátci DPH. Ceny jsou konečné.</p>
             <p data-i18n="auth.points_info" style="font-size: 0.8rem; color: var(--color-primary); text-align: center; margin: 10px 0;">Získáte 1000 bodů za dokončenou objednávku. Body připisujeme manuálně.</p>
-            <button class="btn btn-primary btn-block" id="checkout-btn" data-i18n="cart.checkout">Přejít k objednávce</button>
+            
+              <p id="guest-discount-info" style="font-size: 0.85rem; color: var(--color-text-muted); text-align: center; margin-top: 1rem; padding: 0.5rem; border: 1px dashed rgba(255,255,255,0.2); border-radius: 8px;">
+                  <i class="fa-solid fa-gift" style="color: var(--color-primary);"></i> <span data-i18n="cart.guest_info">Objednáváte jako host. Přihlaste se a získejte okamžitou slevu 500 Kč!</span>
+              </p>
+              <button class="btn btn-primary btn-block" id="checkout-btn" data-i18n="cart.checkout">Přejít k objednávce</button>
         </div>
     </aside>
 
@@ -959,6 +963,6 @@
     <!-- JS -->
     <script type="module" src="auth.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js?v=mpttu25a" defer></script>
+    <script src="script.js?v=mpttwlja" defer></script>
 </body>
 </html>
