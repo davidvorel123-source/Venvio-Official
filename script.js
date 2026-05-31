@@ -564,6 +564,19 @@ if (applyDiscountBtn) {
                 discountMsg.style.display = 'block';
             }
             updateCartUI();
+        } else if (code === 'VENVIO-50-VIP-X72Q') {
+            if (typeof window.currentUser !== 'undefined' && window.currentUser && window.currentUser.usedCodes.includes(code)) {
+                discountMultiplier = 1;
+                discountMsg.innerText = currentLang === 'en' ? 'Code already used!' : 'Tento kód jste již využili!';
+                discountMsg.style.color = '#FF6B6B';
+                discountMsg.style.display = 'block';
+            } else {
+                discountMultiplier = 0.5;
+                discountMsg.innerText = currentLang === 'en' ? 'VIP Discount 50% applied!' : 'VIP Sleva 50% uplatněna!';
+                discountMsg.style.color = '#00D2FF';
+                discountMsg.style.display = 'block';
+            }
+            updateCartUI();
         } else {
             discountMultiplier = 1;
             discountMsg.innerText = currentLang === 'en' ? 'Invalid code.' : 'Neplatný kód.';
