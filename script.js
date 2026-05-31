@@ -1137,7 +1137,7 @@ const updateCalculator = () => {
     });
     if(currentCurrency === 'eur') total = Math.round(total / RATE_EUR);
     if(currentCurrency === 'usd') total = Math.round(total / RATE_USD);
-    calcTotal.innerText = currentLang === 'en' ? total.toLocaleString() : total.toLocaleString('cs-CZ');
+    calcTotal.innerText = formatPriceDynamic(currentLang === 'en' ? total.toLocaleString('en-US') : total.toLocaleString('cs-CZ'));
 };
 
 if(calcPages) calcPages.addEventListener('input', updateCalculator);
@@ -1233,7 +1233,7 @@ const updateCalculatorWithEta = () => {
     
     if(currentCurrency === 'eur') total = Math.round(total / RATE_EUR);
     if(currentCurrency === 'usd') total = Math.round(total / RATE_USD);
-    calcTotalEl.innerText = currentLang === 'en' ? total.toLocaleString() : total.toLocaleString('cs-CZ');
+    calcTotalEl.innerText = formatPriceDynamic(currentLang === 'en' ? total.toLocaleString('en-US') : total.toLocaleString('cs-CZ'));
 };
 
 if(document.getElementById('calc-pages')) {
