@@ -1571,6 +1571,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatSend = document.getElementById('chat-send');
     const chatInput = document.getElementById('chat-input');
     const chatMessages = document.getElementById('chat-messages');
+    let chatHistory = [];
 
     if (chatToggle && chatWindow) {
         chatToggle.addEventListener('click', () => {
@@ -1581,29 +1582,56 @@ document.addEventListener('DOMContentLoaded', () => {
             chatWindow.style.display = 'none';
         });
 
-        const sendMessage = () => {
+        const sendMessage = async () => {
             const text = chatInput.value.trim();
             if (text) {
-                // Add user message
+                // Add user message to UI
                 chatMessages.innerHTML += `
-                <div style="background: var(--color-primary); color: white; padding: 10px; border-radius: 12px 12px 0 12px; max-width: 85%; font-size: 0.9rem; align-self: flex-end;">
+                <div style="background: var(--color-primary); color: white; padding: 10px; border-radius: 12px 12px 0 12px; max-width: 85%; font-size: 0.9rem; align-self: flex-end; margin-bottom: 5px;">
                     ${text}
                 </div>`;
                 chatInput.value = '';
                 chatMessages.scrollTop = chatMessages.scrollHeight;
 
-                // Simulate reply
-                setTimeout(() => {
-                    const reply = window.currentLang === 'en' ? 
-                        "Our operators are currently offline. Please leave us a message or contact us via email." : 
-                        "Naši operátoři jsou momentálně offline. Zanechte nám prosím zprávu nebo nás kontaktujte e-mailem.";
+                // Add to history
+                chatHistory.push({ role: 'user', content: text });
+
+                // Loading indicator
+                const loadingId = 'loading-' + Date.now();
+                chatMessages.innerHTML += `
+                <div id="${loadingId}" style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem; margin-bottom: 5px;">
+                    <i class="fa-solid fa-ellipsis fa-fade"></i>
+                </div>`;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                try {
+                    const response = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ messages: chatHistory, lang: window.currentLang })
+                    });
                     
+                    if (document.getElementById(loadingId)) document.getElementById(loadingId).remove();
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        chatHistory.push({ role: 'assistant', content: data.reply });
+                        
+                        chatMessages.innerHTML += `
+                        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem; margin-bottom: 5px;">
+                            ${data.reply.replace(/\n/g, '<br>')}
+                        </div>`;
+                    } else {
+                        throw new Error('API Error');
+                    }
+                } catch (error) {
+                    if (document.getElementById(loadingId)) document.getElementById(loadingId).remove();
+                    const errMsg = window.currentLang === 'en' ? "Connection error." : "Chyba připojení k serveru.";
                     chatMessages.innerHTML += `
-                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem;">
-                        ${reply}
+                    <div style="background: rgba(255,50,50,0.1); color: #ff6b6b; padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem; margin-bottom: 5px;">
+                        ${errMsg}
                     </div>`;
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 1000);
+                }
             }
         };
 
