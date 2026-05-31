@@ -1220,18 +1220,20 @@ if (togglePasswordBtn) {
 window.updateAuthModeUI = () => {
     if (!tabLogin) return;
     if (authError) authError.style.display = 'none';
+    const forgotPwdLink = document.getElementById('forgot-password-link');
     
     if (window.authMode === "login") {
         tabLogin.style.borderBottomColor = 'var(--color-primary)';
         tabLogin.style.color = '#fff';
         tabRegister.style.borderBottomColor = 'transparent';
         tabRegister.style.color = 'var(--color-text-muted)';
-        groupName.style.display = 'none';
-        groupPasswordConfirm.style.display = 'none';
+        if(groupName) groupName.style.display = 'none';
+        if(groupPasswordConfirm) groupPasswordConfirm.style.display = 'none';
         document.getElementById('auth-name').removeAttribute('required');
         document.getElementById('auth-password-confirm').removeAttribute('required');
         authDesc.innerText = currentLang === 'en' ? 'Log in to your account to use loyalty discounts.' : 'Přihlaste se ke svému účtu pro využití věrnostních slev.';
         authSubmitBtn.innerText = currentLang === 'en' ? 'Log In' : 'Přihlásit se';
+        if(forgotPwdLink) forgotPwdLink.style.display = 'block';
     } else {
         tabRegister.style.borderBottomColor = 'var(--color-primary)';
         tabRegister.style.color = '#fff';

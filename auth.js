@@ -8,7 +8,8 @@ import {
     signInWithEmailAndPassword, 
     onAuthStateChanged,
     signOut,
-    sendEmailVerification
+    sendEmailVerification,
+    sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 // TODO: Nahraďte tuto konfiguraci vašimi klíči z Firebase Console
@@ -129,6 +130,28 @@ if (authLogoutBtn) {
         }
         await signOut(auth);
         window.showToast("Byli jste odhlášeni.");
+    });
+}
+
+const forgotPwdBtn = document.getElementById('auth-forgot-pwd');
+if (forgotPwdBtn) {
+    forgotPwdBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        if (!isFirebaseConfigured) return;
+        const email = document.getElementById('auth-email').value.trim();
+        if (!email) {
+            return showError(window.currentLang === 'en' ? "Please enter your email above first." : "Nejprve vyplňte svůj e-mail nahoru do kolonky.");
+        }
+        try {
+            await sendPasswordResetEmail(auth, email);
+            window.showToast(window.currentLang === 'en' ? "Password reset link sent to your email." : "Odkaz pro obnovu hesla byl odeslán na váš e-mail.");
+            authError.style.display = 'none';
+        } catch (error) {
+            let msg = "Chyba: " + error.message;
+            if (error.code === 'auth/user-not-found') msg = "Účet s tímto e-mailem neexistuje.";
+            if (error.code === 'auth/invalid-email') msg = "Neplatný formát e-mailu.";
+            showError(msg);
+        }
     });
 }
 
