@@ -1975,7 +1975,7 @@ body.light-mode .pricing-card:hover {
 .fab-whatsapp { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); z-index: 1000; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .fab-whatsapp:hover { transform: scale(1.1) translateY(-5px); color: white; }
 .fab-tooltip { position: absolute; right: 80px; background: white; color: #0f172a; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity 0.3s; white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-.fab-whatsapp:hover .fab-tooltip { opacity: 1; }
+.fab-whatsapp:hover .fab-tooltip, .fab-chat:hover .fab-tooltip { opacity: 1; }
 
 .calc-container { max-width: 600px; margin: 0 auto; padding: 2.5rem; border-radius: 24px; text-align: left; }
 .calc-group { margin-bottom: 2rem; }
