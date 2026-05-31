@@ -45,7 +45,7 @@ IMPORTANT: DO NOT use Markdown links (like [link](url)). Instead, tell people to
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": \`Bearer \${OPENAI_API_KEY}\`
+                "Authorization": `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
                 model: "gpt-4o-mini",
