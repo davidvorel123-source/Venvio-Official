@@ -742,10 +742,19 @@ if(checkoutForm) {
                 return `📦 ${name}${details} - ${formatPriceDynamic(price)}`;
             }).join('\n');
             
-            totalString = document.getElementById('cart-total-price').innerText;
+            
+            let rawTotal = cart.reduce((sum, item) => {
+                const p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0);
+                return sum + p;
+            }, 0);
+            let finalCheckoutTotal = rawTotal * discountMultiplier;
+            totalString = formatPriceDynamic(finalCheckoutTotal);
+            
             if (discountMultiplier < 1) {
-                totalString += " (Sleva 10% uplatněna)";
+                const pct = Math.round((1 - discountMultiplier) * 100);
+                totalString += currentLang === 'en' ? ` (Discount ${pct}% applied)` : ` (Sleva ${pct}% uplatněna)`;
             }
+    
         }
         
         const requestData = {
