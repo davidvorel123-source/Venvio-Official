@@ -1875,3 +1875,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// --- MOBILE AUTH FIX ---
+if (authBtnMobile) {
+    authBtnMobile.addEventListener('click', () => {
+        if (authBtn) {
+            authBtn.click(); // Trigger the desktop button's logic
+        } else {
+            authModal.classList.add('active'); // Fallback
+        }
+    });
+}
