@@ -2055,3 +2055,52 @@ body.light-mode .pricing-card:hover {
         font-size: 1rem !important;
     }
 }
+
+
+/* --- EMERGENCY CHAT UI FIX FOR MOBILE --- */
+@media (max-width: 768px) {
+    /* Hide tooltip on mobile to prevent ghost tooltips */
+    .fab-tooltip { display: none !important; }
+    
+    #chat-window {
+        width: calc(100vw - 40px) !important;
+        max-width: 340px !important;
+        right: 0 !important;
+        bottom: 70px !important;
+        z-index: 10001 !important; /* Ensure it stays above everything */
+    }
+    
+    /* Force the input container to be a row and fixed height */
+    #chat-window > div:last-child {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        height: 60px !important;
+        flex-wrap: nowrap !important;
+        padding: 10px !important;
+    }
+    
+    /* Force the input to be single line and normal height */
+    #chat-input {
+        height: 40px !important;
+        min-height: 40px !important;
+        flex: 1 !important;
+        width: 100% !important;
+        padding: 0 12px !important;
+        border-radius: 20px !important;
+        margin: 0 !important;
+    }
+    
+    /* Ensure the send button doesn't get squeezed */
+    #chat-send {
+        min-width: 35px !important;
+        max-width: 35px !important;
+        height: 35px !important;
+        margin-left: 10px !important;
+    }
+    
+    #chat-messages {
+        height: 250px !important;
+        min-height: 200px !important;
+    }
+}
