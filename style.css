@@ -1965,3 +1965,56 @@ body.light-mode .pricing-card:hover {
     position: absolute;
     text-align: center;
 }
+
+
+/* --- COMPREHENSIVE MOBILE OVERRIDES --- */
+@media (max-width: 768px) {
+    /* Paddings */
+    .hero { padding: 6rem 0 3rem; min-height: auto; }
+    .section { padding: 3rem 0; }
+    .section-header { margin-bottom: 2rem; }
+    .modal { padding: 1.5rem !important; width: 95% !important; max-width: 100% !important; }
+    .modal-header { margin-bottom: 1rem; }
+    .calc-container { padding: 1.5rem !important; }
+    .cart-header { padding: 1.2rem !important; }
+    .cart-footer { padding: 1.2rem !important; }
+    .cart-item { padding: 0.8rem !important; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .remove-item { align-self: flex-end; }
+    
+    /* Grids & Layouts */
+    .stats-grid { grid-template-columns: 1fr !important; gap: 1rem; }
+    .stat-number { font-size: 2.5rem !important; }
+    .stat-item { padding: 1rem !important; }
+    
+    .features-grid, .process-timeline, .portfolio-grid { 
+        grid-template-columns: 1fr !important; 
+    }
+    
+    /* Pricing */
+    .pricing-grid { padding: 0 1rem; }
+    
+    /* Fixed Elements */
+    .fab-whatsapp { width: 50px !important; height: 50px !important; font-size: 1.5rem !important; bottom: 1.5rem !important; right: 1.5rem !important; }
+    .floating-contact { bottom: 85px !important; right: 20px !important; }
+    .floating-contact-btn { width: 45px !important; height: 45px !important; font-size: 1.2rem !important; }
+    .back-to-top { bottom: 20px !important; left: 20px !important; width: 45px !important; height: 45px !important; }
+    
+    .cart-sidebar {
+        max-width: 100% !important;
+        right: -100% !important;
+    }
+    .cart-sidebar.open { right: 0 !important; }
+    
+    /* Typography */
+    .hero h1 { font-size: 2.2rem !important; }
+    .hero p { font-size: 1.1rem !important; }
+    .section-header h2 { font-size: 1.8rem !important; }
+    h3 { font-size: 1.3rem !important; }
+    .feature-card h3 { font-size: 1.2rem !important; }
+    .calc-price { font-size: 2.2rem !important; }
+    
+    /* Misc Fixes */
+    .nav-container { padding: 1rem 1.2rem !important; }
+    .cursor-glow, .mouse-glow { display: none !important; }
+    .marquee-content span { font-size: 1rem !important; padding: 0 1.5rem !important; }
+}
