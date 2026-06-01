@@ -777,10 +777,12 @@ if(checkoutForm) {
         requestData.from_name = requestData["Jméno Klienta"];
         requestData.replyto = requestData["E-mail"];
         requestData.email = requestData["E-mail"];
+          requestData.access_key = "8d52594c-6265-48a0-a197-909feda1667f";
+          requestData.autoresponse = requestData._autoresponse;
         requestData.email = requestData["E-mail"]; // REQUIRED for Web3Forms Autoresponder
         
         try {
-            const response = await fetch("https://formsubmit.co/ajax/info@venvio.dev", {
+            const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: { 
                     'Content-Type': 'application/json',
