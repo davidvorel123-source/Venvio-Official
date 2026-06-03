@@ -71,7 +71,7 @@ const updateLegalModalLang = () => {
 };
 
 // Translations Dictionary
-const translations = {
+const translations = {const translations = {
     cs: {
         "nav.why_us": "Proč my",
         "nav.portfolio": "Reference",
@@ -154,10 +154,10 @@ const translations = {
         "modal.redirect": "Přesměrovávání na platbu...",
         "modal.empty_cart": "Váš košík je prázdný.",
         "modal.error": "Omlouváme se, došlo k chybě při inicializaci platby: ",
-        "success.title": "Platba proběhla úspěšně!",
+        "success.title": "Objednávka byla úspěšně přijata!",
         "success.desc": "Děkujeme za vaši důvěru. Vaši objednávku jsme v pořádku přijali a brzy se vám ozveme na zadaný e-mail s dalšími kroky k vytvoření vašeho nového webu.",
         "success.btn": "Zpět na hlavní stránku",
-        "cancel.desc": "Platba nebyla dokončena. Váš košík zůstal uložen a můžete se k objednávce kdykoliv vrátit.",
+        "cancel.desc": "Objednávka nebyla odeslána. Váš košík zůstal uložen a můžete se k objednávce kdykoliv vrátit.",
         "cancel.btn": "Zpět k objednávce",
         "stats.projects": "Dokončených projektů",
         "stats.delivery": "Průměrná doba dodání",
@@ -296,10 +296,10 @@ const translations = {
         "modal.redirect": "Redirecting to payment...",
         "modal.empty_cart": "Your cart is empty.",
         "modal.error": "Sorry, an error occurred while initializing the payment: ",
-        "success.title": "Payment successful!",
+        "success.title": "Order successfully received!",
         "success.desc": "Thank you for your trust. We have received your order and will contact you shortly at the provided e-mail with the next steps to create your new website.",
         "success.btn": "Back to Homepage",
-        "cancel.title": "Payment cancelled",
+        "cancel.title": "Order cancelled",
         "cancel.desc": "The payment was not completed. Your cart remains saved and you can return to your order at any time.",
         "cancel.btn": "Back to Order",
         "stats.projects": "Completed Projects",
@@ -357,6 +357,9 @@ const translations = {
         "footer.nav_title": "Navigation",
         "footer.contact_title": "Contact"
     }
+};
+
+
 };
 
 // Products & Pricing Dictionary
@@ -1961,4 +1964,27 @@ function generateInvoicePDF(orderData) {
     doc.text("Nejsme plátci DPH.", 20, 285);
     
     doc.save("venvio-objednavka.pdf");
+}
+
+// Dynamic additions for success.html
+translations.cs['success.bank_title'] = 'Způsob platby';
+translations.en['success.bank_title'] = 'Payment Method';
+translations.cs['success.bank_acc'] = 'Číslo účtu (CZ):';
+translations.en['success.bank_acc'] = 'Account Number (CZ):';
+translations.cs['success.bank_iban'] = 'IBAN (Zahraničí):';
+translations.en['success.bank_iban'] = 'IBAN (International):';
+translations.cs['success.bank_msg'] = 'Zpráva pro příjemce:';
+translations.en['success.bank_msg'] = 'Message for Recipient:';
+translations.cs['success.bank_msg_val'] = 'Vaše jméno nebo název firmy';
+translations.en['success.bank_msg_val'] = 'Your name or company name';
+
+translations.cs['success.paypal_title'] = 'Platba přes PayPal';
+translations.en['success.paypal_title'] = 'Payment via PayPal';
+translations.cs['success.paypal_desc'] = 'Můžete využít také rychlou platbu na náš PayPal účet:';
+translations.en['success.paypal_desc'] = 'You can also use fast payment to our PayPal account:';
+translations.cs['success.paypal_btn'] = 'Přejít na PayPal';
+translations.en['success.paypal_btn'] = 'Go to PayPal';
+
+if (typeof applyTranslations === 'function') {
+    applyTranslations(currentLang);
 }
