@@ -611,7 +611,11 @@ const updateCartUI = () => {
     
     cart.forEach((item, index) => {
         // Získání správné ceny podle měny
-        const itemPrice = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0);
+        let itemPrice = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0);
+        if (item.id === "pkg-calc") {
+            if (currentCurrency === "eur") itemPrice = Math.round(itemPrice / RATE_EUR);
+            if (currentCurrency === "usd") itemPrice = Math.round(itemPrice / RATE_USD);
+        }
         total += itemPrice;
         
         const div = document.createElement('div');
@@ -793,7 +797,14 @@ if(checkoutForm) {
             
             if (response.ok) {
                 let baseTotal = 0;
-                cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0); baseTotal += p; });
+                cart.forEach(item => { 
+                    let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0); 
+                    if (item.id === "pkg-calc") {
+                        if (currentCurrency === "eur") p = Math.round(p / RATE_EUR);
+                        if (currentCurrency === "usd") p = Math.round(p / RATE_USD);
+                    }
+                    baseTotal += p; 
+                });
                 let pointsDiscount = 0;
                 if (typeof pointsUsed !== "undefined" && pointsUsed > 0) {
                     if (currentCurrency === "czk") pointsDiscount = pointsUsed;
@@ -1402,19 +1413,21 @@ const updateCalculatorWithEta = () => {
             if(cb.id === 'calc-chat') days += 2;
         }
     });
-    currentCalcTotalRaw = total;
+    currentCalcTotalRaw = total; // ALWAYS CZK
     
     if(calcEtaVal) {
         calcEtaVal.innerText = calculateEta(days);
     }
     
-    if(currentCurrency === 'eur') total = Math.round(total / RATE_EUR);
-    if(currentCurrency === 'usd') total = Math.round(total / RATE_USD);
-    if (previousCalcTotalRaw !== total) {
-        animateValue(calcTotalEl, previousCalcTotalRaw, total, 600);
-        previousCalcTotalRaw = total;
+    let displayTotal = total;
+    if(currentCurrency === 'eur') displayTotal = Math.round(displayTotal / RATE_EUR);
+    if(currentCurrency === 'usd') displayTotal = Math.round(displayTotal / RATE_USD);
+    
+    if (previousCalcTotalRaw !== displayTotal) {
+        animateValue(calcTotalEl, previousCalcTotalRaw, displayTotal, 600);
+        previousCalcTotalRaw = displayTotal;
     } else {
-        calcTotalEl.innerText = formatPriceDynamic(currentLang === 'en' ? total.toLocaleString('en-US') : total.toLocaleString('cs-CZ'));
+        calcTotalEl.innerText = formatPriceDynamic(currentLang === 'en' ? displayTotal.toLocaleString('en-US') : displayTotal.toLocaleString('cs-CZ'));
     }
 };
 
@@ -1709,15 +1722,7 @@ if (checkoutBtnRef) {
             }
         }
         
-        // Deduct points
-        if (window.currentUser && pointsUsed > 0) {
-            window.currentUser.points -= pointsUsed;
-            pointsUsed = 0;
-            let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
-            allUsers[window.currentUser.email] = window.currentUser;
-            localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
-            localStorage.setItem('venvioUser', JSON.stringify(window.currentUser));
-        }
+
         
         // Pre-fill email and make it readonly
         const checkoutEmail = document.querySelector('#checkout-form input[name="Email"]');
