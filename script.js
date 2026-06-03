@@ -506,7 +506,8 @@ const applyTranslations = () => {
     });
 
     updateCartUI(); // Re-render cart with new language & currency
-    if (typeof updateCalculatorWithEta === 'function') updateCalculatorWithEta();
+    const triggerCalc = document.getElementById('calc-pages');
+    if (triggerCalc) triggerCalc.dispatchEvent(new Event('input'));
 };
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
