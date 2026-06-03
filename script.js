@@ -71,7 +71,7 @@ const updateLegalModalLang = () => {
 };
 
 // Translations Dictionary
-const translations = {const translations = {
+const translations = {
     cs: {
         "nav.why_us": "Proč my",
         "nav.portfolio": "Reference",
@@ -357,9 +357,6 @@ const translations = {const translations = {
         "footer.nav_title": "Navigation",
         "footer.contact_title": "Contact"
     }
-};
-
-
 };
 
 // Products & Pricing Dictionary
