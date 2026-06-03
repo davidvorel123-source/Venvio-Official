@@ -2116,7 +2116,7 @@ function generateInvoicePDF(orderData) {
     };
     
     html2pdf().set(opt).from(invoiceWrapper).save();
-}
+
 }
 
 // Dynamic additions for success.html
