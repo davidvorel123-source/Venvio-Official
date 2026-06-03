@@ -16,7 +16,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// TODO: NahraĂ„Ĺąte tuto konfiguraci vaÄąË‡imi klÄ‚Â­Ă„Ĺ¤i z Firebase Console
+// TODO: Nahraďte tuto konfiguraci vašimi klíči z Firebase Console
 const firebaseConfig = {
   apiKey: "AIzaSyDVKRMVgDbqQEgt0CqKc_ho1Pol5XZ7ya4",
   authDomain: "venvio-af343.firebaseapp.com",
@@ -35,7 +35,7 @@ if (isFirebaseConfigured) {
     auth = getAuth(app);
     db = getFirestore(app);
 } else {
-    console.warn("Firebase nenÄ‚Â­ nakonfigurovÄ‚Ë‡n! Autentizace nebude fungovat.");
+    console.warn("Firebase není nakonfigurován! Autentizace nebude fungovat.");
 }
 
 // Export for other scripts
@@ -60,13 +60,13 @@ const showError = (msg) => {
 if (btnGoogle) {
     btnGoogle.addEventListener('click', async (e) => {
         e.preventDefault();
-        if (!isFirebaseConfigured) return alert("Firebase nenÄ‚Â­ napojen! ProsÄ‚Â­m doplÄąÂte API klÄ‚Â­Ă„Ĺ¤e v auth.js.");
+        if (!isFirebaseConfigured) return alert("Firebase není napojen! Prosím doplňte API klíče v auth.js.");
         try {
             const provider = new GoogleAuthProvider();
             if (window.innerWidth < 768) { await signInWithRedirect(auth, provider); } else { await signInWithPopup(auth, provider); }
-            // Modal zavÄąâ„˘e automaticky onAuthStateChanged v script.js
+            // Modal zavře automaticky onAuthStateChanged v script.js
         } catch (error) {
-            showError("Chyba Google pÄąâ„˘ihlÄ‚Ë‡ÄąË‡enÄ‚Â­: " + error.message);
+            showError("Chyba Google přihlášení: " + error.message);
         }
     });
 }
@@ -74,7 +74,7 @@ if (btnGoogle) {
 if (btnFacebook) {
     btnFacebook.addEventListener('click', async (e) => {
         e.preventDefault();
-        if (!isFirebaseConfigured) return alert(window.currentLang === 'en' ? "Firebase not connected!" : "Firebase nenÄ‚Â­ napojen! ProsÄ‚Â­m doplÄąÂte API klÄ‚Â­Ă„Ĺ¤e v auth.js.");
+        if (!isFirebaseConfigured) return alert(window.currentLang === 'en' ? "Firebase not connected!" : "Firebase není napojen! Prosím doplňte API klíče v auth.js.");
         const provider = new FacebookAuthProvider();
         // We must add scopes to get email and public profile
         provider.addScope('email');
@@ -84,25 +84,25 @@ if (btnFacebook) {
         });
         try {
             if (window.innerWidth < 768) { await signInWithRedirect(auth, provider); } else { await signInWithPopup(auth, provider); }
-            // onAuthStateChanged obslouÄąÄľÄ‚Â­ zbytek
+            // onAuthStateChanged obslouží zbytek
         } catch (error) {
             let errorMessage = error.message;
             if (error.code === 'auth/account-exists-with-different-credential') {
-                errorMessage = window.currentLang === 'en' ? "An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address." : "Tento e-mail uÄąÄľ se pouÄąÄľÄ‚Â­vÄ‚Ë‡ (napÄąâ„˘. pÄąâ„˘es Google). PÄąâ„˘ihlaste se jinou metodou.";
+                errorMessage = window.currentLang === 'en' ? "An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address." : "Tento e-mail už se používá (např. přes Google). Přihlaste se jinou metodou.";
             } else if (error.code === 'auth/popup-closed-by-user') {
-                 errorMessage = window.currentLang === 'en' ? "The popup has been closed by the user before finalizing the operation." : "VyskakovacÄ‚Â­ okno bylo zavÄąâ„˘eno pÄąâ„˘ed dokonĂ„Ĺ¤enÄ‚Â­m pÄąâ„˘ihlÄ‚Ë‡ÄąË‡enÄ‚Â­.";
+                 errorMessage = window.currentLang === 'en' ? "The popup has been closed by the user before finalizing the operation." : "Vyskakovací okno bylo zavřeno před dokončením přihlášení.";
             }
-            showError((window.currentLang === 'en' ? "Facebook sign in error: " : "Chyba Facebook pÄąâ„˘ihlÄ‚Ë‡ÄąË‡enÄ‚Â­: ") + errorMessage);
+            showError((window.currentLang === 'en' ? "Facebook sign in error: " : "Chyba Facebook přihlášení: ") + errorMessage);
             console.error("Facebook error:", error);
         }
     });
 }
 
-// KlasickÄ‚Â© heslo + email (PÄąâ„˘ihlÄ‚Ë‡ÄąË‡enÄ‚Â­ / Registrace)
+// Klasické heslo + email (Přihlášení / Registrace)
 if (authForm) {
     authForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        if (!isFirebaseConfigured) return alert(window.currentLang === 'en' ? "Firebase not connected!" : "Firebase nenÄ‚Â­ napojen! ProsÄ‚Â­m doplÄąÂte API klÄ‚Â­Ă„Ĺ¤e v auth.js.");
+        if (!isFirebaseConfigured) return alert(window.currentLang === 'en' ? "Firebase not connected!" : "Firebase není napojen! Prosím doplňte API klíče v auth.js.");
         
         const email = document.getElementById('auth-email').value;
         const password = document.getElementById('auth-password').value;
@@ -117,18 +117,18 @@ if (authForm) {
             if (mode === 'register') {
                 const pwdConfEl = document.getElementById('auth-password-confirm'); const passwordConfirm = pwdConfEl ? pwdConfEl.value : ''; window.isRegistering = true;
                 if (password !== passwordConfirm) {
-                    return showError(window.currentLang === 'en' ? "Passwords do not match!" : "Hesla se neshodujÄ‚Â­!");
+                    return showError(window.currentLang === 'en' ? "Passwords do not match!" : "Hesla se neshodují!");
                 }
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 await sendEmailVerification(userCredential.user);
-                if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? "Registration successful. Please verify your email (check SPAM folder) to complete purchases!" : "Registrace Ä‚ĹźspĂ„â€şÄąË‡nÄ‚Ë‡. PotvrĂ„Ĺąte svÄąĹ»j e-mail (zkontrolujte i sloÄąÄľku SPAM) pro dokonĂ„Ĺ¤enÄ‚Â­ nÄ‚Ë‡kupÄąĹ»!");
+                if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? "Registration successful. Please verify your email (check SPAM folder) to complete purchases!" : "Registrace úspěšná. Potvrďte svůj e-mail (zkontrolujte i složku SPAM) pro dokončení nákupů!");
                 await signOut(auth); setTimeout(() => window.isRegistering = false, 1000);
             } else {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 if (!userCredential.user.emailVerified) {
-                    if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? "Don't forget to verify your email to be able to make purchases!" : "NezapomeÄąÂte si ovĂ„â€şÄąâ„˘it e-mail pro moÄąÄľnost nakupovat!");
+                    if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? "Don't forget to verify your email to be able to make purchases!" : "Nezapomeňte si ověřit e-mail pro možnost nakupovat!");
                 } else {
-                    if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? "Successfully logged in!" : "Ä‚ĹˇspĂ„â€şÄąË‡nĂ„â€ş pÄąâ„˘ihlÄ‚Ë‡ÄąË‡eno!");
+                    if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? "Successfully logged in!" : "Úspěšně přihlášeno!");
                 }
             }
             if (document.getElementById('auth-modal')) {
@@ -136,11 +136,11 @@ if (authForm) {
             }
         } catch (error) {
             let msg = "Error: " + error.message;
-            if (error.code === 'auth/email-already-in-use') msg = window.currentLang === 'en' ? "Email is already in use." : "Tento e-mail se uÄąÄľ pouÄąÄľÄ‚Â­vÄ‚Ë‡. Zkuste se rovnou pÄąâ„˘ihlÄ‚Ë‡sit.";
-            if (error.code === 'auth/weak-password') msg = window.currentLang === 'en' ? "Password should be at least 6 characters." : "Heslo musÄ‚Â­ mÄ‚Â­t alespoÄąÂ 6 znakÄąĹ».";
-            if (error.code === 'auth/invalid-credential') msg = window.currentLang === 'en' ? "Invalid credentials." : "ÄąÂ patnÄ‚Ëť e-mail nebo heslo.";
-            if (error.code === 'auth/user-not-found') msg = window.currentLang === 'en' ? "Account with this email does not exist." : "Ä‚ĹˇĂ„Ĺ¤et s tÄ‚Â­mto e-mailem neexistuje.";
-            if (error.code === 'auth/wrong-password') msg = window.currentLang === 'en' ? "Wrong password." : "ÄąÂ patnÄ‚Â© heslo.";
+            if (error.code === 'auth/email-already-in-use') msg = window.currentLang === 'en' ? "Email is already in use." : "Tento e-mail se už používá. Zkuste se rovnou přihlásit.";
+            if (error.code === 'auth/weak-password') msg = window.currentLang === 'en' ? "Password should be at least 6 characters." : "Heslo musí mít alespoň 6 znaků.";
+            if (error.code === 'auth/invalid-credential') msg = window.currentLang === 'en' ? "Invalid credentials." : "Špatný e-mail nebo heslo.";
+            if (error.code === 'auth/user-not-found') msg = window.currentLang === 'en' ? "Account with this email does not exist." : "Účet s tímto e-mailem neexistuje.";
+            if (error.code === 'auth/wrong-password') msg = window.currentLang === 'en' ? "Wrong password." : "Špatné heslo.";
             
             showError(msg);
         }
@@ -155,7 +155,7 @@ if (authLogoutBtn) {
             return;
         }
         await signOut(auth);
-        if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? 'You have been logged out.' : 'Byli jste odhlÄ‚Ë‡ÄąË‡eni.');
+        if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? 'You have been logged out.' : 'Byli jste odhlášeni.');
     });
 }
 
@@ -164,24 +164,24 @@ if (forgotPwdBtn) {
     forgotPwdBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         if (!isFirebaseConfigured) return;
-        if (Date.now() - lastForgotPwdTime < 60000) { return showError(window.currentLang === 'en' ? 'Please wait a minute.' : 'ProsÄ‚Â­m poĂ„Ĺ¤kejte minutu pÄąâ„˘ed dalÄąË‡Ä‚Â­m pokusem.'); } lastForgotPwdTime = Date.now(); const email = document.getElementById('auth-email').value.trim();
+        if (Date.now() - lastForgotPwdTime < 60000) { return showError(window.currentLang === 'en' ? 'Please wait a minute.' : 'Prosím počkejte minutu před dalším pokusem.'); } lastForgotPwdTime = Date.now(); const email = document.getElementById('auth-email').value.trim();
         if (!email) {
-            return showError(window.currentLang === 'en' ? "Please enter your email above first." : "Nejprve vyplÄąÂte svÄąĹ»j e-mail nahoru do kolonky.");
+            return showError(window.currentLang === 'en' ? "Please enter your email above first." : "Nejprve vyplňte svůj e-mail nahoru do kolonky.");
         }
         try {
             await sendPasswordResetEmail(auth, email);
-            if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? "Password reset link sent to your email." : "Odkaz pro obnovu hesla byl odeslÄ‚Ë‡n na vÄ‚Ë‡ÄąË‡ e-mail.");
+            if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? "Password reset link sent to your email." : "Odkaz pro obnovu hesla byl odeslán na váš e-mail.");
             authError.style.display = 'none';
         } catch (error) {
             let msg = "Chyba: " + error.message;
-            if (error.code === 'auth/user-not-found') msg = window.currentLang === 'en' ? 'Account not found.' : 'Ä‚ĹˇĂ„Ĺ¤et s tÄ‚Â­mto e-mailem neexistuje.';
-            if (error.code === 'auth/invalid-email') msg = window.currentLang === 'en' ? 'Invalid email format.' : 'NeplatnÄ‚Ëť formÄ‚Ë‡t e-mailu.';
+            if (error.code === 'auth/user-not-found') msg = window.currentLang === 'en' ? 'Account not found.' : 'Účet s tímto e-mailem neexistuje.';
+            if (error.code === 'auth/invalid-email') msg = window.currentLang === 'en' ? 'Invalid email format.' : 'Neplatný formát e-mailu.';
             showError(msg);
         }
     });
 }
 
-// PoslouchÄ‚Ë‡nÄ‚Â­ na zmĂ„â€şnu stavu pÄąâ„˘ihlÄ‚Ë‡ÄąË‡enÄ‚Â­
+// Poslouchání na změnu stavu přihlášení
 if (isFirebaseConfigured) {
     onAuthStateChanged(auth, async (user) => {
         if (user) {
@@ -230,4 +230,3 @@ if (isFirebaseConfigured) {
         }
     });
 }
-

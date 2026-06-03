@@ -792,8 +792,17 @@ if(checkoutForm) {
             });
             
             if (response.ok) {
-                let orderTotal = 0;
-                cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0); orderTotal += p; });
+                let baseTotal = 0;
+                cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0); baseTotal += p; });
+                let pointsDiscount = 0;
+                if (typeof pointsUsed !== "undefined" && pointsUsed > 0) {
+                    if (currentCurrency === "czk") pointsDiscount = pointsUsed;
+                    else if (currentCurrency === "eur") pointsDiscount = Math.round(pointsUsed / RATE_EUR);
+                    else if (currentCurrency === "usd") pointsDiscount = Math.round(pointsUsed / RATE_USD);
+                }
+                let discountMultiplierVal = typeof discountMultiplier !== "undefined" ? discountMultiplier : 1;
+                let orderTotal = (baseTotal * discountMultiplierVal) - pointsDiscount;
+                if (orderTotal < 0) orderTotal = 0;
 
                 if (typeof generateInvoicePDF === 'function') {
                     generateInvoicePDF({
@@ -813,15 +822,38 @@ if(checkoutForm) {
                 if (typeof gtag === 'function') gtag('event', 'purchase', { value: orderTotal, currency: currentCurrency.toUpperCase() });
                 localStorage.setItem('venvioLastOrderTime', Date.now().toString());
                 if (window.currentUser) {
-                    let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
+                    let allUsers = typeof safeJsonParse === "function" ? safeJsonParse(localStorage.getItem("venvioAllUsers"), {}) : (JSON.parse(localStorage.getItem("venvioAllUsers")) || {});
                     if (!allUsers[window.currentUser.email]) allUsers[window.currentUser.email] = { points: 500, usedCodes: [], orders: [] };
                     if (!allUsers[window.currentUser.email].orders) allUsers[window.currentUser.email].orders = [];
-                    const date = new Date().toLocaleDateString(currentLang === 'en' ? 'en-US' : 'cs-CZ');
-                    const itemsStr = cart.map(i => i.nameCs || i.nameEn).join(', ');
-                    let orderTotal = 0;
-                    cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0); orderTotal += p; });
-                    allUsers[window.currentUser.email].orders.push({ date: date, items: itemsStr, total: orderTotal });
-                    localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
+                    
+                    const date = new Date().toLocaleDateString(currentLang === "en" ? "en-US" : "cs-CZ");
+                    const itemsStr = cart.map(i => i.nameCs || i.nameEn).join(", ");
+                    
+                    let ptsUsed = typeof pointsUsed !== "undefined" ? pointsUsed : 0;
+                    if (ptsUsed > 0 && allUsers[window.currentUser.email].points >= ptsUsed) {
+                        allUsers[window.currentUser.email].points -= ptsUsed;
+                        window.currentUser.points = allUsers[window.currentUser.email].points;
+                    }
+                    
+                    const newOrder = { date: date, items: itemsStr, total: orderTotal, pointsUsed: ptsUsed };
+                    allUsers[window.currentUser.email].orders.push(newOrder);
+                    localStorage.setItem("venvioAllUsers", JSON.stringify(allUsers));
+                    
+                    if (window.firebaseDb) {
+                        import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js").then(({ doc, updateDoc, getDoc }) => {
+                            const userRef = doc(window.firebaseDb, "users", window.currentUser.uid);
+                            getDoc(userRef).then(snap => {
+                                if(snap.exists()) {
+                                    const d = snap.data();
+                                    const fbOrders = d.orders || [];
+                                    fbOrders.push(newOrder);
+                                    let newPoints = (d.points !== undefined ? d.points : 500) - ptsUsed;
+                                    if(newPoints < 0) newPoints = 0;
+                                    updateDoc(userRef, { orders: fbOrders, points: newPoints }).catch(e => console.error("Firestore order update err:", e));
+                                }
+                            });
+                        }).catch(err => console.error("Firestore module load err:", err));
+                    }
                 }
                 localStorage.removeItem('venvioCart');
                 window.location.href = "success.html";
