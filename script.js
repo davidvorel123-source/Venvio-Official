@@ -792,9 +792,12 @@ if(checkoutForm) {
             });
             
             if (response.ok) {
+                let orderTotal = 0;
+                cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0); orderTotal += p; });
+
                 if (typeof generateInvoicePDF === 'function') {
                     generateInvoicePDF({
-                        name: requestData["Jméno"] || requestData["Name"] || '',
+                        name: requestData["Jméno Klienta"] || requestData["Name"] || '',
                         email: requestData.email || '',
                         items: cart.map(i => i.nameCs || i.nameEn),
                         total: orderTotal
@@ -803,7 +806,7 @@ if(checkoutForm) {
                 if (window.emailjs) {
                     emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
                         to_email: requestData.email,
-                        to_name: requestData["Jméno"] || requestData["Name"] || "Zákazníku",
+                        to_name: requestData["Jméno Klienta"] || requestData["Name"] || "Zákazníku",
                         order_details: requestData.Zprava || requestData.Message
                     }).catch(e => console.error("EmailJS error:", e));
                 }
