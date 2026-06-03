@@ -9,8 +9,8 @@ const legalContent = document.getElementById('legal-content');
 const legalTexts = {
     terms: {
         cs: {
-            title: "ObchodnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ podmĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­nky",
-            content: "<h4>1. Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡vodnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ ustanovenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­</h4><p>Tyto obchodnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ podmĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­nky upravujĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ vzĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇjemnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ prĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇva a povinnosti mezi poskytovatelem (Venvio) a klientem pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âi vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žvoji webovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žch strĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnek, SaaS aplikacĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­, AI chatbotĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» a poskytovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ souvisejĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­cĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch sluĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľeb.</p><h4>2. ObjednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvka a uzavĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ smlouvy</h4><p>Smlouva o dĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­lo je uzavĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âena potvrzenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvky klientem (elektronicky pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âes formulĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Â Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤i e-mail). Po uzavĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ smlouvy mĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľe poskytovatel poĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľadovat Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşhradu zĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇlohy ve vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇi aĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľ 50 % z celkovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© ceny dĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­la.</p><h4>3. Realizace dĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­la a pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂedĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­</h4><p>Poskytovatel se zavazuje dodat dĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­lo v dohodnutĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©m termĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­nu. Klient je povinen poskytnout potĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âebnou souÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤innost (dodĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ textĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â», pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­stupĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» apod.). PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âi prodlenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ klienta s dodĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m podkladĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» se termĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­n dokonÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤enĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ adekvĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇtnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹź prodluĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľuje.</p><h4>4. PlatebnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ podmĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­nky</h4><p>Doplatek celkovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© ceny je splatnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž po pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂedĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ a schvĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇlenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ hotovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©ho dĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­la klientem. Splatnost faktur je standardnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹź 14 dnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­, nenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­-li dohodnuto jinak.</p><h4>5. AutorskĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ prĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇva a licence</h4><p>AĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľ do Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşplnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©ho zaplacenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ ceny dĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­la zĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»stĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ dĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­lo i veĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇkerĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ majetkovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ prĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇva k nÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźmu majetkem poskytovatele. Po Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşplnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©m zaplacenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂechĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇzĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ na klienta vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žhradnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ a neomezenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ licence k uĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ dĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­la pro jeho Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ely.</p><h4>6. OdpovÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźdnost za vady a zĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇruka</h4><p>Poskytovatel poskytuje na svĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© dĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­lo zĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇruku 6 mÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźsĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­cĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» na skrytĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© softwarovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© chyby. ZĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇruka se nevztahuje na chyby zpĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»sobenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© pozdÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźjĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m zĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇsahem klienta nebo tĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂetĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ strany do zdrojovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©ho kĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡du Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤i administrace.</p>"
+            title: "Obchodní podmínky",
+            content: "<h4>1. Úvodní ustanovení</h4><p>Tyto obchodní podmínky upravují vzájemná práva a povinnosti mezi poskytovatelem (Venvio) a klientem při vývoji webových stránek, SaaS aplikací, AI chatbotů a poskytování souvisejících služeb.</p><h4>2. Objednávka a uzavření smlouvy</h4><p>Smlouva o dílo je uzavřena potvrzením objednávky klientem (elektronicky přes formulář či e-mail). Po uzavření smlouvy může poskytovatel požadovat úhradu zálohy ve výši až 50 % z celkové ceny díla.</p><h4>3. Realizace díla a předání</h4><p>Poskytovatel se zavazuje dodat dílo v dohodnutém termínu. Klient je povinen poskytnout potřebnou součinnost (dodání textů, přístupů apod.). Při prodlení klienta s dodáním podkladů se termín dokončení adekvátně prodlužuje.</p><h4>4. Platební podmínky</h4><p>Doplatek celkové ceny je splatný po předání a schválení hotového díla klientem. Splatnost faktur je standardně 14 dní, není-li dohodnuto jinak.</p><h4>5. Autorská práva a licence</h4><p>Až do úplného zaplacení ceny díla zůstává dílo i veškerá majetková práva k němu majetkem poskytovatele. Po úplném zaplacení přechází na klienta výhradní a neomezená licence k užívání díla pro jeho účely.</p><h4>6. Odpovědnost za vady a záruka</h4><p>Poskytovatel poskytuje na své dílo záruku 6 měsíců na skryté softwarové chyby. Záruka se nevztahuje na chyby způsobené pozdějším zásahem klienta nebo třetí strany do zdrojového kódu či administrace.</p>"
         },
         en: {
             title: "Terms of Service",
@@ -19,8 +19,8 @@ const legalTexts = {
     },
     privacy: {
         cs: {
-            title: "Ochrana osobnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdajĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» (GDPR)",
-            content: "<h4>1. SprĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvce osobnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdajĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»</h4><p>SprĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvcem vaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇich osobnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdajĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» je agentura Venvio. VaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇe soukromĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ bereme vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹź a s daty naklĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇdĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇme v souladu s naĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­zenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m GDPR a platnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žmi zĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇkony Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ă„Ä…Ă‹â€ˇR.</p><h4>2. JakĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdaje zpracovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇme</h4><p>ZpracovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇme pouze Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdaje, kterĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© nĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇm sami poskytnete pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âi odeslĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ poptĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvky, registraci nebo uzavĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ smlouvy. JednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ se zejmĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©na o: JmĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©no a pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­jmenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ (nebo nĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇzev firmy), e-mailovou adresu, telefonnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­slo, IÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ă„Ä…Ă‹â€ˇO/DIÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ă„Ä…Ă‹â€ˇ a fakturaÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤nĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ adresu.</p><h4>3. Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤el zpracovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdajĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»</h4><p>VaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇe Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdaje pouĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇme vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žhradnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹź za Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤elem: <br>- ZpracovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ vaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ poptĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvky a nacenÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ projektu<br>- PlnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ smlouvy a realizace vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žvoje softwaru<br>- VystavenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ faktur a plnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ zĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇkonnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žch Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤etnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch povinnostĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­<br>- Komunikace tĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žkajĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­cĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ se podpory a servisu vaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇich aplikacĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­</p><h4>4. ZabezpeÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤enĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ a sdĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­lenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ dat</h4><p>OsobnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdaje neprodĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇme ani nesdĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­lĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­me s Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇdnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žmi tĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂetĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­mi stranami pro marketingovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ely. K Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdajĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»m majĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­stup pouze provÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤lenovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© tĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žmu Venvio a pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­padnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹź externĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ poskytovatelĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© nezbytnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žch sluĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľeb (napĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Â. Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤etnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ software).</p><h4>5. VaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇe prĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇva</h4><p>Podle naĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­zenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ GDPR mĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇte prĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvo poĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľadovat informaci o tom, jakĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© vaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇe Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdaje zpracovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇme, vyĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇdat si jejich aktualizaci, opravu nebo Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşplnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žmaz z naĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ databĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇze. Pro uplatnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ tÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźchto prĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇv nĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇs prosĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m kontaktujte na naĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇem e-mailu.</p>"
+            title: "Ochrana osobních údajů (GDPR)",
+            content: "<h4>1. Správce osobních údajů</h4><p>Správcem vašich osobních údajů je agentura Venvio. Vaše soukromí bereme vážně a s daty nakládáme v souladu s nařízením GDPR a platnými zákony ČR.</p><h4>2. Jaké údaje zpracováváme</h4><p>Zpracováváme pouze údaje, které nám sami poskytnete při odeslání poptávky, registraci nebo uzavření smlouvy. Jedná se zejména o: Jméno a příjmení (nebo název firmy), e-mailovou adresu, telefonní číslo, IČO/DIČ a fakturační adresu.</p><h4>3. Účel zpracování údajů</h4><p>Vaše údaje používáme výhradně za účelem: <br>- Zpracování vaší poptávky a nacenění projektu<br>- Plnění smlouvy a realizace vývoje softwaru<br>- Vystavení faktur a plnění zákonných účetních povinností<br>- Komunikace týkající se podpory a servisu vašich aplikací</p><h4>4. Zabezpečení a sdílení dat</h4><p>Osobní údaje neprodáváme ani nesdílíme s žádnými třetími stranami pro marketingové účely. K údajům mají přístup pouze prověření členové týmu Venvio a případně externí poskytovatelé nezbytných služeb (např. účetní software).</p><h4>5. Vaše práva</h4><p>Podle nařízení GDPR máte právo požadovat informaci o tom, jaké vaše údaje zpracováváme, vyžádat si jejich aktualizaci, opravu nebo úplný výmaz z naší databáze. Pro uplatnění těchto práv nás prosím kontaktujte na našem e-mailu.</p>"
         },
         en: {
             title: "Privacy Policy (GDPR)",
@@ -48,7 +48,7 @@ if (legalModal) {
         legalModal.classList.add('active');
     });
 
-    if(closeLegalModal) closeLegalModal.addEventListener('click', () => {
+    closeLegalModal.addEventListener('click', () => {
         legalModal.classList.remove('active');
         currentModalType = null;
     });
@@ -71,10 +71,6 @@ const updateLegalModalLang = () => {
 };
 
 // Translations Dictionary
-const safeJsonParse = (str, fallback) => {
-    try { return JSON.parse(str) || fallback; }
-    catch (e) { return fallback; }
-};
 const translations = {
     cs: {
         "nav.why_us": "Proč my",
@@ -158,10 +154,10 @@ const translations = {
         "modal.redirect": "Přesměrovávání na platbu...",
         "modal.empty_cart": "Váš košík je prázdný.",
         "modal.error": "Omlouváme se, došlo k chybě při inicializaci platby: ",
-        "success.title": "Objednávka byla úspěšně přijata!",
+        "success.title": "Platba proběhla úspěšně!",
         "success.desc": "Děkujeme za vaši důvěru. Vaši objednávku jsme v pořádku přijali a brzy se vám ozveme na zadaný e-mail s dalšími kroky k vytvoření vašeho nového webu.",
         "success.btn": "Zpět na hlavní stránku",
-        "cancel.desc": "Objednávka nebyla odeslána. Váš košík zůstal uložen a můžete se k objednávce kdykoliv vrátit.",
+        "cancel.desc": "Platba nebyla dokončena. Váš košík zůstal uložen a můžete se k objednávce kdykoliv vrátit.",
         "cancel.btn": "Zpět k objednávce",
         "stats.projects": "Dokončených projektů",
         "stats.delivery": "Průměrná doba dodání",
@@ -300,10 +296,10 @@ const translations = {
         "modal.redirect": "Redirecting to payment...",
         "modal.empty_cart": "Your cart is empty.",
         "modal.error": "Sorry, an error occurred while initializing the payment: ",
-        "success.title": "Order successfully received!",
+        "success.title": "Payment successful!",
         "success.desc": "Thank you for your trust. We have received your order and will contact you shortly at the provided e-mail with the next steps to create your new website.",
         "success.btn": "Back to Homepage",
-        "cancel.title": "Order cancelled",
+        "cancel.title": "Payment cancelled",
         "cancel.desc": "The payment was not completed. Your cart remains saved and you can return to your order at any time.",
         "cancel.btn": "Back to Order",
         "stats.projects": "Completed Projects",
@@ -363,24 +359,23 @@ const translations = {
     }
 };
 
-
 // Products & Pricing Dictionary
 
 const RATE_EUR = 25;
 const RATE_USD = 23;
 
 const productPrices = {
-    'pkg-start': { czk: { val: 14900, str: '14 900 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤' }, eur: { val: 590, str: '590 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' }, usd: { val: 650, str: '$650' } },
-    'pkg-standard': { czk: { val: 29900, str: '29 900 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤' }, eur: { val: 1190, str: '1190 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' }, usd: { val: 1290, str: '$1290' } },
-    'pkg-premium': { czk: { val: 49900, str: 'od 49 900 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤' }, eur: { val: 1990, str: 'from 1990 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' }, usd: { val: 2190, str: 'from $2190' } },
-    'add-domain': { czk: { val: 490, str: '490 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤' }, eur: { val: 20, str: '20 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' }, usd: { val: 22, str: '$22' } },
-    'add-support': { czk: { val: 1500, str: '1 500 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤' }, eur: { val: 60, str: '60 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' }, usd: { val: 65, str: '$65' } },
-    'add-identity': { czk: { val: 8900, str: '8 900 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤' }, eur: { val: 350, str: '350 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' }, usd: { val: 390, str: '$390' } },
-    'add-hourly': { czk: { val: 1200, str: '1 200 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤' }, eur: { val: 50, str: '50 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' }, usd: { val: 55, str: '$55' } },
-    'svc-webapp': { czk: { val: 99000, str: 'od 99 000 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤' }, eur: { val: 3990, str: 'from 3990 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' }, usd: { val: 4290, str: 'from $4290' } },
-    'svc-ai': { czk: { val: 24900, str: 'od 24 900 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤' }, eur: { val: 990, str: 'from 990 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' }, usd: { val: 1090, str: 'from $1090' } },
-    'svc-automation': { czk: { val: 9900, str: 'od 9 900 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤' }, eur: { val: 390, str: 'from 390 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' }, usd: { val: 440, str: 'from $440' } },
-    'svc-chrome': { czk: { val: 14900, str: 'od 14 900 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤' }, eur: { val: 590, str: 'from 590 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' }, usd: { val: 650, str: 'from $650' } }
+    'pkg-start': { czk: { val: 14900, str: '14 900 Kč' }, eur: { val: 590, str: '590 €' }, usd: { val: 650, str: '$650' } },
+    'pkg-standard': { czk: { val: 29900, str: '29 900 Kč' }, eur: { val: 1190, str: '1190 €' }, usd: { val: 1290, str: '$1290' } },
+    'pkg-premium': { czk: { val: 49900, str: 'od 49 900 Kč' }, eur: { val: 1990, str: 'from 1990 €' }, usd: { val: 2190, str: 'from $2190' } },
+    'add-domain': { czk: { val: 490, str: '490 Kč' }, eur: { val: 20, str: '20 €' }, usd: { val: 22, str: '$22' } },
+    'add-support': { czk: { val: 1500, str: '1 500 Kč' }, eur: { val: 60, str: '60 €' }, usd: { val: 65, str: '$65' } },
+    'add-identity': { czk: { val: 8900, str: '8 900 Kč' }, eur: { val: 350, str: '350 €' }, usd: { val: 390, str: '$390' } },
+    'add-hourly': { czk: { val: 1200, str: '1 200 Kč' }, eur: { val: 50, str: '50 €' }, usd: { val: 55, str: '$55' } },
+    'svc-webapp': { czk: { val: 99000, str: 'od 99 000 Kč' }, eur: { val: 3990, str: 'from 3990 €' }, usd: { val: 4290, str: 'from $4290' } },
+    'svc-ai': { czk: { val: 24900, str: 'od 24 900 Kč' }, eur: { val: 990, str: 'from 990 €' }, usd: { val: 1090, str: 'from $1090' } },
+    'svc-automation': { czk: { val: 9900, str: 'od 9 900 Kč' }, eur: { val: 390, str: 'from 390 €' }, usd: { val: 440, str: 'from $440' } },
+    'svc-chrome': { czk: { val: 14900, str: 'od 14 900 Kč' }, eur: { val: 590, str: 'from 590 €' }, usd: { val: 650, str: 'from $650' } }
 };
 
 // Current State
@@ -392,19 +387,32 @@ let discountMultiplier = 1;
 
 // DOM Elements for Translation
 
-// Duplicate chat translations removed
+translations.cs['chat.tooltip'] = "Chatujte s naší AI";
+translations.en['chat.tooltip'] = "Chat with our AI";
+translations.cs['chat.header_title'] = "Venvio Podpora";
+translations.en['chat.header_title'] = "Venvio Support";
+translations.cs['chat.header_desc'] = "Odpovídáme ihned";
+translations.en['chat.header_desc'] = "Replies instantly";
+translations.cs['chat.welcome'] = "Dobrý den! 👋 Jak vám můžeme pomoci s vaším webem?";
+translations.en['chat.welcome'] = "Hello! 👋 How can we help you with your website?";
+translations.cs['chat.placeholder'] = "Napište zprávu...";
+translations.en['chat.placeholder'] = "Type a message...";
+
+// Translations Dictionary (update modal submit text)
+translations.cs['modal.submit'] = "Odeslat objednávku";
+translations.en['modal.submit'] = "Submit Order";
 
 
-translations.cs['cart.guest_info'] = 'ObjednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇte jako host. PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âihlaste se a zĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­skejte okamĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľitou slevu 500 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤!';
+translations.cs['cart.guest_info'] = 'Objednáváte jako host. Přihlaste se a získejte okamžitou slevu 500 Kč!';
 translations.en['cart.guest_info'] = 'Ordering as a guest. Log in to get an instant 500 CZK discount!';
 
-translations.cs['checkout.gdpr'] = 'SouhlasĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m se zpracovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m osobnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdajĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» pro Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ely vyĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­zenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvky.';
+translations.cs['checkout.gdpr'] = 'Souhlasím se zpracováním osobních údajů pro účely vyřízení objednávky.';
 translations.en['checkout.gdpr'] = 'I agree to the processing of personal data for the purpose of order fulfillment.';
-translations.cs['footer.legal'] = 'PrĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ informace';
+translations.cs['footer.legal'] = 'Právní informace';
 translations.en['footer.legal'] = 'Legal Information';
-translations.cs['footer.terms'] = 'ObchodnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ podmĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­nky';
+translations.cs['footer.terms'] = 'Obchodní podmínky';
 translations.en['footer.terms'] = 'Terms & Conditions';
-translations.cs['footer.privacy'] = 'Ochrana osobnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşdajĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»';
+translations.cs['footer.privacy'] = 'Ochrana osobních údajů';
 translations.en['footer.privacy'] = 'Privacy Policy';
 
 const applyTranslations = () => {
@@ -429,7 +437,7 @@ const applyTranslations = () => {
     if (waLink) {
         waLink.href = currentLang === 'en' 
             ? "https://wa.me/420775104206?text=Hello,%20I%20am%20interested%20in%20a%20new%20website."
-            : "https://wa.me/420775104206?text=DobrĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž%20den,%20mĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇm%20zĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇjem%20o%20novĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž%20web.";
+            : "https://wa.me/420775104206?text=Dobrý%20den,%20mám%20zájem%20o%20nový%20web.";
     }
 
     // Update auth modal dynamically based on active tab
@@ -438,21 +446,21 @@ const applyTranslations = () => {
     const isLogin = document.getElementById('tab-login') && document.getElementById('tab-login').style.borderBottomColor !== 'transparent';
     if (authDesc && authSubmit) {
         if (isLogin) {
-            authDesc.innerHTML = currentLang === 'en' ? 'Log in to your account to use loyalty discounts.' : 'PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âihlaste se ke svĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©mu Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤tu pro vyuĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľitĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ vÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźrnostnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch slev.';
-            authSubmit.innerHTML = currentLang === 'en' ? 'Log In' : 'PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂihlĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇsit se';
+            authDesc.innerHTML = currentLang === 'en' ? 'Log in to your account to use loyalty discounts.' : 'Přihlaste se ke svému účtu pro využití věrnostních slev.';
+            authSubmit.innerHTML = currentLang === 'en' ? 'Log In' : 'Přihlásit se';
         } else {
-            authDesc.innerHTML = currentLang === 'en' ? 'Create an account and earn Venvio Coins for discounts on your next order.' : 'VytvoĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âte si Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤et a sbĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­rejte Venvio Coins pro slevy na pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇtĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvky.';
-            authSubmit.innerHTML = currentLang === 'en' ? 'Create Account' : 'VytvoĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âit Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤et';
+            authDesc.innerHTML = currentLang === 'en' ? 'Create an account and earn Venvio Coins for discounts on your next order.' : 'Vytvořte si účet a sbírejte Venvio Coins pro slevy na příští objednávky.';
+            authSubmit.innerHTML = currentLang === 'en' ? 'Create Account' : 'Vytvořit účet';
         }
     }
 
     // Update toast if it's currently showing
     const toastMsg = document.getElementById('toast-message');
     if (toastMsg) {
-        if (toastMsg.innerHTML.includes('Secret') || toastMsg.innerHTML.includes('TajnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ sleva') || toastMsg.innerHTML.includes('Tajn')) {
-            toastMsg.innerHTML = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'TajnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ sleva 10%! KĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡d: VENVIO10';
-        } else if (toastMsg.innerHTML.includes('PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂidĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇno') || toastMsg.innerHTML.includes('Ptidno') || toastMsg.innerHTML.includes('Added')) {
-            toastMsg.innerHTML = translations[currentLang]['toast.added'] || 'PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂidĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇno do koĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ku!';
+        if (toastMsg.innerHTML.includes('Secret') || toastMsg.innerHTML.includes('Tajná sleva') || toastMsg.innerHTML.includes('Tajn')) {
+            toastMsg.innerHTML = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajná sleva 10%! Kód: VENVIO10';
+        } else if (toastMsg.innerHTML.includes('Přidáno') || toastMsg.innerHTML.includes('Ptidno') || toastMsg.innerHTML.includes('Added')) {
+            toastMsg.innerHTML = translations[currentLang]['toast.added'] || 'Přidáno do košíku!';
         }
     }
 
@@ -471,7 +479,7 @@ const applyTranslations = () => {
         if (productPrices[key] && productPrices[key][currentCurrency]) {
             let priceStr = productPrices[key][currentCurrency].str;
             if (currentLang === 'en' && currentCurrency === 'czk') {
-                priceStr = priceStr.replace('KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤', 'CZK').replace('od ', 'from ');
+                priceStr = priceStr.replace('Kč', 'CZK').replace('od ', 'from ');
             } else if (currentLang === 'cs' && currentCurrency !== 'czk') {
                 priceStr = priceStr.replace('from ', 'od ');
             }
@@ -497,8 +505,7 @@ const applyTranslations = () => {
         }
     });
 
-    updateCartUI();
-    if(typeof gtag === 'function') gtag('event', 'add_to_cart'); // Re-render cart with new language & currency
+    updateCartUI(); // Re-render cart with new language & currency
 };
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -518,7 +525,11 @@ document.querySelectorAll('.curr-btn').forEach(btn => {
 });
 
 let cart = [];
-cart = safeJsonParse(localStorage.getItem('venvioCart'), []);
+try {
+    cart = JSON.parse(localStorage.getItem('venvioCart')) || [];
+} catch (e) {
+    cart = [];
+}
 
 // DOM Elements
 const cartBtn = document.getElementById('cart-btn');
@@ -543,46 +554,43 @@ if (applyDiscountBtn) {
         if (code === 'VENVIO10') {
             if (typeof window.currentUser !== 'undefined' && window.currentUser && window.currentUser.usedCodes.includes(code)) {
                 discountMultiplier = 1;
-                discountMsg.innerText = currentLang === 'en' ? 'Code already used!' : 'Tento kĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡d jste jiĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľ vyuĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľili!';
+                discountMsg.innerText = currentLang === 'en' ? 'Code already used!' : 'Tento kód jste již využili!';
                 discountMsg.style.color = '#FF6B6B';
                 discountMsg.style.display = 'block';
             } else {
                 discountMultiplier = 0.9;
-                discountMsg.innerText = currentLang === 'en' ? 'Discount 10% applied!' : 'Sleva 10% uplatnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźna!';
+                discountMsg.innerText = currentLang === 'en' ? 'Discount 10% applied!' : 'Sleva 10% uplatněna!';
                 discountMsg.style.color = '#00D2FF';
                 discountMsg.style.display = 'block';
             }
             updateCartUI();
-    if(typeof gtag === 'function') gtag('event', 'add_to_cart');
         } else if (code === 'VENVIO-50-VIP-X72Q') {
             if (typeof window.currentUser !== 'undefined' && window.currentUser && window.currentUser.usedCodes.includes(code)) {
                 discountMultiplier = 1;
-                discountMsg.innerText = currentLang === 'en' ? 'Code already used!' : 'Tento kĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡d jste jiĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľ vyuĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľili!';
+                discountMsg.innerText = currentLang === 'en' ? 'Code already used!' : 'Tento kód jste již využili!';
                 discountMsg.style.color = '#FF6B6B';
                 discountMsg.style.display = 'block';
             } else {
                 discountMultiplier = 0.5;
-                discountMsg.innerText = currentLang === 'en' ? 'VIP Discount 50% applied!' : 'VIP Sleva 50% uplatnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźna!';
+                discountMsg.innerText = currentLang === 'en' ? 'VIP Discount 50% applied!' : 'VIP Sleva 50% uplatněna!';
                 discountMsg.style.color = '#00D2FF';
                 discountMsg.style.display = 'block';
             }
             updateCartUI();
-    if(typeof gtag === 'function') gtag('event', 'add_to_cart');
         } else {
             discountMultiplier = 1;
-            discountMsg.innerText = currentLang === 'en' ? 'Invalid code.' : 'NeplatnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž kĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡d.';
+            discountMsg.innerText = currentLang === 'en' ? 'Invalid code.' : 'Neplatný kód.';
             discountMsg.style.color = '#FF6B6B';
             discountMsg.style.display = 'block';
             updateCartUI();
-    if(typeof gtag === 'function') gtag('event', 'add_to_cart');
         }
     });
 }
 
 // Helper formatting based on currency
 const formatPriceDynamic = (priceVal) => {
-    if (currentCurrency === 'czk') return currentLang === 'en' ? priceVal + ' CZK' : priceVal + ' KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤';
-    if (currentCurrency === 'eur') return priceVal + ' Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬';
+    if (currentCurrency === 'czk') return currentLang === 'en' ? priceVal + ' CZK' : priceVal + ' Kč';
+    if (currentCurrency === 'eur') return priceVal + ' €';
     if (currentCurrency === 'usd') return '$' + priceVal;
     return priceVal;
 };
@@ -602,7 +610,7 @@ const updateCartUI = () => {
     cartContainer.innerHTML = '';
     
     cart.forEach((item, index) => {
-        // ZĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­skĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ sprĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© ceny podle mÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźny
+        // Získání správné ceny podle měny
         const itemPrice = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0);
         total += itemPrice;
         
@@ -623,7 +631,7 @@ const updateCartUI = () => {
     let finalTotal = total * discountMultiplier;
     if(typeof pointsUsed !== 'undefined' && pointsUsed > 0) {
         if (currentCurrency === 'eur') finalTotal -= Math.round(pointsUsed / 25);
-        else if (currentCurrency === 'usd') finalTotal -= Math.round(pointsUsed / RATE_USD);
+        else if (currentCurrency === 'usd') finalTotal -= Math.round(pointsUsed / 22);
         else finalTotal -= pointsUsed;
         if (finalTotal < 0) finalTotal = 0;
     }
@@ -640,8 +648,6 @@ const updateCartUI = () => {
 const addToCart = (id, nameCs, nameEn) => {
     cart.push({ id, nameCs, nameEn });
     updateCartUI();
-    if(typeof gtag === 'function') gtag('event', 'add_to_cart');
-    if(typeof gtag === 'function') gtag('event', 'add_to_cart');
     openCart();
     // Show toast notification
     showToast();
@@ -651,7 +657,6 @@ const addToCart = (id, nameCs, nameEn) => {
 window.removeFromCart = (index) => {
     cart.splice(index, 1);
     updateCartUI();
-    if(typeof gtag === 'function') gtag('event', 'add_to_cart');
 };
 
 // Open/Close Cart
@@ -687,7 +692,17 @@ if(addToCartBtns) {
     });
 }
 
-// Checkout logic - Original simple checkoutBtn listener removed (superseded by complex one later)
+// Checkout logic
+if(checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert(translations[currentLang]['modal.empty_cart']);
+            return;
+        }
+        closeCartSidebar();
+        checkoutModal.classList.add('active');
+    });
+}
 
 if(closeModal) {
     closeModal.addEventListener('click', () => {
@@ -697,34 +712,34 @@ if(closeModal) {
 
 if(checkoutForm) {
     checkoutForm.addEventListener('submit', async (e) => {
-        e.preventDefault(); // ZabrĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žchozĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­mu odeslĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ strĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnky
+        e.preventDefault(); // Zabrání výchozímu odeslání stránky
         
-        // ZmÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźna tlaÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­tka na naÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­tĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­
+        // Změna tlačítka na načítání
         const submitBtn = checkoutForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerText;
         
         // --- ANTI-SPAM OCHRANA ---
-        // ZabrĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ uĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľivateli odeslat vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ce objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvek bÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźhem 5 minut
+        // Zabránění uživateli odeslat více objednávek během 5 minut
         const lastOrderTime = localStorage.getItem('venvioLastOrderTime');
         if (lastOrderTime && (Date.now() - parseInt(lastOrderTime)) < 5 * 60 * 1000) {
-            alert(currentLang === 'en' ? "Please wait 5 minutes before submitting another order." : "Z dĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»vodu ochrany proti spamu mĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľete odeslat dalĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvku aĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľ za 5 minut.");
+            alert(currentLang === 'en' ? "Please wait 5 minutes before submitting another order." : "Z důvodu ochrany proti spamu můžete odeslat další objednávku až za 5 minut.");
             return;
         }
 
-        submitBtn.innerText = translations[currentLang]['modal.redirect'] || "OdesĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­lĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇm...";
+        submitBtn.innerText = translations[currentLang]['modal.redirect'] || "Odesílám...";
         submitBtn.disabled = true;
         
-        // SestavenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ informacĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ z koĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ku
+        // Sestavení informací z košíku
         const formData = new FormData(checkoutForm);
         
-        let cartText = "PRĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂZDNĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚â€žĂ˘â‚¬Ĺľ KOĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤K";
+        let cartText = "PRÁZDNÝ KOŠÍK";
         let totalString = "0";
         if (cart.length > 0) {
             cartText = cart.map(item => {
                 const price = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0);
                 const name = currentLang === 'en' && item.nameEn ? item.nameEn : item.nameCs;
                 const details = currentLang === 'en' && item.detailsEn ? ' ' + item.detailsEn : (item.detailsCs ? ' ' + item.detailsCs : '');
-                return `Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚ÂÄ‚â€žĂ„â€¦Ă„Ä…ÄąĹźĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă˘â‚¬ĹźĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¦ ${name}${details} - ${formatPriceDynamic(price)}`;
+                return `📦 ${name}${details} - ${formatPriceDynamic(price)}`;
             }).join('\n');
             
             
@@ -737,29 +752,29 @@ if(checkoutForm) {
             
             if (discountMultiplier < 1) {
                 const pct = Math.round((1 - discountMultiplier) * 100);
-                totalString += currentLang === 'en' ? ` (Discount ${pct}% applied)` : ` (Sleva ${pct}% uplatnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźna)`;
+                totalString += currentLang === 'en' ? ` (Discount ${pct}% applied)` : ` (Sleva ${pct}% uplatněna)`;
             }
     
         }
         
         const requestData = {
-              "JmĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©no Klienta": formData.get('Jmeno'),
+              "Jméno Klienta": formData.get('Jmeno'),
               "E-mail": formData.get('Email'),
-              "Telefon": formData.get('Telefon') || "NezadĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇno",
-              "ZprĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇva od klienta": formData.get('Zprava') || "Bez zprĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvy",
-              "PoloĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľky v koĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ku": "\n" + cartText,
-              "CELKOVĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â CENA": totalString,
-              _subject: "Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚ÂÄ‚â€žĂ„â€¦Ă„Ä…ÄąĹźÄ‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬ NovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ VIP objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvka z Venvio.dev!",
+              "Telefon": formData.get('Telefon') || "Nezadáno",
+              "Zpráva od klienta": formData.get('Zprava') || "Bez zprávy",
+              "Položky v košíku": "\n" + cartText,
+              "CELKOVÁ CENA": totalString,
+              _subject: "🚀 Nová VIP objednávka z Venvio.dev!",
               _template: "box",
               _autoresponse: currentLang === 'en' 
                   ? "Thank you for your custom order! We have successfully received your request and will contact you immediately. \n\nBest regards, \nVenvio Team" 
-                  : "DÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźkujeme za vaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇi objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvku! VĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ poĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľadavek jsme Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşspÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹź pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âijali a brzy se vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇm ozveme. \n\nS pozdravem, \nTĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žm Venvio"
+                  : "Děkujeme za vaši objednávku! Váš požadavek jsme úspěšně přijali a brzy se vám ozveme. \n\nS pozdravem, \nTým Venvio"
           };
 
-        // PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂECHOD NA WEB3FORMS (MĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­sto FormSubmit)
+        // PŘECHOD NA WEB3FORMS (Místo FormSubmit)
         requestData.access_key = "8d52594c-6265-48a0-a197-909feda1667f";
         requestData.subject = requestData._subject;
-        requestData.from_name = requestData["JmĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©no Klienta"];
+        requestData.from_name = requestData["Jméno Klienta"];
         requestData.replyto = requestData["E-mail"];
         requestData.email = requestData["E-mail"];
           requestData.access_key = "8d52594c-6265-48a0-a197-909feda1667f";
@@ -777,25 +792,25 @@ if(checkoutForm) {
             });
             
             if (response.ok) {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'purchase', { value: orderTotal, currency: currentCurrency.toUpperCase() });
+                if (typeof generateInvoicePDF === 'function') {
+                    generateInvoicePDF({
+                        name: requestData["Jméno"] || requestData["Name"] || '',
+                        email: requestData.email || '',
+                        items: cart.map(i => i.nameCs || i.nameEn),
+                        total: orderTotal
+                    });
                 }
-                generateInvoicePDF({
-                    name: requestData["JmÄ‚Â©no"] || requestData["Name"] || '',
-                    email: requestData.email || '',
-                    items: cart.map(i => i.nameCs || i.nameEn),
-                    total: orderTotal
-                });
                 if (window.emailjs) {
                     emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
                         to_email: requestData.email,
-                        to_name: requestData["JmĂ„â€šĂ‚Â©no"] || requestData["Name"] || "ZĂ„â€šĂ‹â€ˇkaznĂ„â€šĂ‚Â­ku",
+                        to_name: requestData["Jméno"] || requestData["Name"] || "Zákazníku",
                         order_details: requestData.Zprava || requestData.Message
                     }).catch(e => console.error("EmailJS error:", e));
                 }
+                if (typeof gtag === 'function') gtag('event', 'purchase', { value: orderTotal, currency: currentCurrency.toUpperCase() });
                 localStorage.setItem('venvioLastOrderTime', Date.now().toString());
                 if (window.currentUser) {
-                    let allUsers = safeJsonParse(localStorage.getItem('venvioAllUsers'), {});
+                    let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
                     if (!allUsers[window.currentUser.email]) allUsers[window.currentUser.email] = { points: 500, usedCodes: [], orders: [] };
                     if (!allUsers[window.currentUser.email].orders) allUsers[window.currentUser.email].orders = [];
                     const date = new Date().toLocaleDateString(currentLang === 'en' ? 'en-US' : 'cs-CZ');
@@ -804,24 +819,15 @@ if(checkoutForm) {
                     cart.forEach(item => { let p = item.customPrice !== undefined ? item.customPrice : (productPrices[item.id] ? productPrices[item.id][currentCurrency].val : 0); orderTotal += p; });
                     allUsers[window.currentUser.email].orders.push({ date: date, items: itemsStr, total: orderTotal });
                     localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
-            if (window.firebaseDb) {
-                import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js").then(({ doc, updateDoc }) => {
-                    const userRef = doc(window.firebaseDb, 'users', window.currentUser.uid);
-                    updateDoc(userRef, {
-                        points: window.currentUser.points,
-                        usedCodes: window.currentUser.usedCodes
-                    }).catch(err => console.error("Firestore save error:", err));
-                });
-            }
                 }
                 localStorage.removeItem('venvioCart');
                 window.location.href = "success.html";
             } else {
-                throw new Error("NepodaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âilo se odeslat pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âes Web3Forms.");
+                throw new Error("Nepodařilo se odeslat přes Web3Forms.");
             }
         } catch (error) {
             console.error("Web3Forms chyba:", error);
-            alert(currentLang === 'en' ? "Sorry, an error occurred while submitting the order. Please try again." : "OmlouvĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇme se, doĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇlo k chybÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹź pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âi odesĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­lĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvky. Zkuste to prosĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m znovu.");
+            alert(currentLang === 'en' ? "Sorry, an error occurred while submitting the order. Please try again." : "Omlouváme se, došlo k chybě při odesílání objednávky. Zkuste to prosím znovu.");
             submitBtn.innerText = originalText;
             submitBtn.disabled = false;
         }
@@ -829,93 +835,93 @@ if(checkoutForm) {
 }
 
 
-translations.cs['blog.title'] = "PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­padovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© studie & Tipy";
+translations.cs['blog.title'] = "Případové studie & Tipy";
 translations.en['blog.title'] = "Case Studies & Tips";
-translations.cs['blog.desc'] = "ZajĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­mavosti ze svÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźta vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žvoje webĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» a online podnikĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­.";
+translations.cs['blog.desc'] = "Zajímavosti ze světa vývoje webů a online podnikání.";
 translations.en['blog.desc'] = "Insights from web development and online business.";
-translations.cs['blog.post1.title'] = "Jak modernĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ design zvyĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇuje konverze o 40%";
+translations.cs['blog.post1.title'] = "Jak moderní design zvyšuje konverze o 40%";
 translations.en['blog.post1.title'] = "How modern design increases conversions by 40%";
-translations.cs['blog.post1.desc'] = "DetailnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ pohled na to, proÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ vaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇi zĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇkaznĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ci odchĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇzejĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ ke konkurenci kvĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»li zastaralĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©mu vzhledu a pomalĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©mu naÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­tĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­.";
+translations.cs['blog.post1.desc'] = "Detailní pohled na to, proč vaši zákazníci odcházejí ke konkurenci kvůli zastaralému vzhledu a pomalému načítání.";
 translations.en['blog.post1.desc'] = "A detailed look at why your customers leave for competitors due to outdated design and slow loading.";
-translations.cs['blog.post2.title'] = "ProÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ se vyplatĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ investovat do rychlosti webu?";
+translations.cs['blog.post2.title'] = "Proč se vyplatí investovat do rychlosti webu?";
 translations.en['blog.post2.title'] = "Why invest in website speed?";
-translations.cs['blog.post2.desc'] = "KaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľdĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ sekunda naÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­tĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ navĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­c vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇs pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âipravuje o 7 % trĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľeb. ZjistÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźte, jak optimalizovat vaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇe strĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnky pro vyhledĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvaÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤e.";
+translations.cs['blog.post2.desc'] = "Každá sekunda načítání navíc vás připravuje o 7 % tržeb. Zjistěte, jak optimalizovat vaše stránky pro vyhledávače.";
 translations.en['blog.post2.desc'] = "Every extra second of loading costs you 7% of revenue. Find out how to optimize your pages for search engines.";
-translations.cs['blog.post3.title'] = "5 trendĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» ve web designu pro rok 2026";
+translations.cs['blog.post3.title'] = "5 trendů ve web designu pro rok 2026";
 translations.en['blog.post3.title'] = "5 web design trends for 2026";
-translations.cs['blog.post3.desc'] = "Glassmorphism, dark mode, mikro-animace. PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âehled trendĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â», kterĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© dominujĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ a kterĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© by vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ web nemÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźl postrĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇdat.";
+translations.cs['blog.post3.desc'] = "Glassmorphism, dark mode, mikro-animace. Přehled trendů, které dominují a které by váš web neměl postrádat.";
 translations.en['blog.post3.desc'] = "Glassmorphism, dark mode, micro-animations. Overview of trends that dominate and which your website shouldn't miss.";
-translations.cs['blog.read_more'] = "Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­st vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ce";
+translations.cs['blog.read_more'] = "Číst více";
 translations.en['blog.read_more'] = "Read more";
-translations.cs['dash.orders'] = "Historie objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvek";
+translations.cs['dash.orders'] = "Historie objednávek";
 translations.en['dash.orders'] = "Order History";
-translations.cs['dash.no_orders'] = "ZatĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m nemĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇte Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇdnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvky.";
+translations.cs['dash.no_orders'] = "Zatím nemáte žádné objednávky.";
 translations.en['dash.no_orders'] = "You have no orders yet.";
 
 
-translations.cs['chat.tooltip'] = "Chatujte s naĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ AI";
+translations.cs['chat.tooltip'] = "Chatujte s naší AI";
 translations.en['chat.tooltip'] = "Chat with our AI";
 translations.cs['chat.header_title'] = "Venvio Podpora";
 translations.en['chat.header_title'] = "Venvio Support";
-translations.cs['chat.header_desc'] = "OdpovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­dĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇme ihned";
+translations.cs['chat.header_desc'] = "Odpovídáme ihned";
 translations.en['chat.header_desc'] = "Replies instantly";
-translations.cs['chat.welcome'] = "DobrĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž den! Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚ÂÄ‚â€žĂ„â€¦Ă„Ä…ÄąĹźĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€šĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦ Jak vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇm mĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľeme pomoci s vaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m webem?";
-translations.en['chat.welcome'] = "Hello! Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚ÂÄ‚â€žĂ„â€¦Ă„Ä…ÄąĹźĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€šĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚â€žĂ˘â‚¬Â¦ How can we help you with your website?";
-translations.cs['chat.placeholder'] = "NapiĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇte zprĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvu...";
+translations.cs['chat.welcome'] = "Dobrý den! 👋 Jak vám můžeme pomoci s vaším webem?";
+translations.en['chat.welcome'] = "Hello! 👋 How can we help you with your website?";
+translations.cs['chat.placeholder'] = "Napište zprávu...";
 translations.en['chat.placeholder'] = "Type a message...";
 
 // Translations Dictionary (update modal submit text)
-translations.cs['modal.submit'] = "Odeslat objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvku";
+translations.cs['modal.submit'] = "Odeslat objednávku";
 translations.en['modal.submit'] = "Submit Order";
-translations.cs['modal.redirect'] = "OdesĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­lĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇm...";
+translations.cs['modal.redirect'] = "Odesílám...";
 translations.en['modal.redirect'] = "Sending...";
 
 // Translation additions for new elements
-translations.cs['modal.phone'] = 'Telefon (volitelnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©)';
+translations.cs['modal.phone'] = 'Telefon (volitelné)';
 translations.en['modal.phone'] = 'Phone (optional)';
-translations.cs['toast.added'] = 'PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂidĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇno do koĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ku!';
+translations.cs['toast.added'] = 'Přidáno do košíku!';
 translations.en['toast.added'] = 'Added to cart!';
-translations.cs['floating.contact'] = 'NapiĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇte nĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇm';
+translations.cs['floating.contact'] = 'Napište nám';
 translations.en['floating.contact'] = 'Contact Us';
-translations.cs['pricing.popular_ribbon'] = 'DoporuÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ujeme';
+translations.cs['pricing.popular_ribbon'] = 'Doporučujeme';
 translations.en['pricing.popular_ribbon'] = 'Best Value';
 
-// Translation additions for new SluĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľby
-translations.cs['nav.services'] = 'SluĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľby';
+// Translation additions for new Služby
+translations.cs['nav.services'] = 'Služby';
 translations.en['nav.services'] = 'Services';
-translations.cs['services.badge'] = 'Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚ÂÄ‚â€žĂ„â€¦Ă„Ä…ÄąĹźĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚ËĂ˘â‚¬ĹľĂ‹ÂÄ‚â€žĂ„â€¦Ä‚â€ąÄąÄ„ Premium';
-translations.en['services.badge'] = 'Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚ÂÄ‚â€žĂ„â€¦Ă„Ä…ÄąĹźĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚ËĂ˘â‚¬ĹľĂ‹ÂÄ‚â€žĂ„â€¦Ä‚â€ąÄąÄ„ Premium';
-translations.cs['services.title'] = 'SoftwarovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© sluĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľby na mĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ru';
+translations.cs['services.badge'] = '💎 Premium';
+translations.en['services.badge'] = '💎 Premium';
+translations.cs['services.title'] = 'Softwarové služby na míru';
 translations.en['services.title'] = 'Custom Software Services';
-translations.cs['services.desc'] = 'Od jednoduchĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žch webĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» po komplexnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ internĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ systĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©my a umÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźlou inteligenci.';
+translations.cs['services.desc'] = 'Od jednoduchých webů po komplexní interní systémy a umělou inteligenci.';
 translations.en['services.desc'] = 'From simple websites to complex internal systems and AI.';
 
-translations.cs['svc1.title'] = 'WebovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© Aplikace & SaaS';
+translations.cs['svc1.title'] = 'Webové Aplikace & SaaS';
 translations.en['svc1.title'] = 'Web Applications & SaaS';
-translations.cs['svc1.desc'] = 'VĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žvoj plnohodnotnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žch aplikacĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ (React, Node.js), rezervaÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤nĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch systĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©mĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» a klientskĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žch portĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇlĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» na mĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ru.';
+translations.cs['svc1.desc'] = 'Vývoj plnohodnotných aplikací (React, Node.js), rezervačních systémů a klientských portálů na míru.';
 translations.en['svc1.desc'] = 'Development of full-featured applications (React, Node.js), booking systems, and custom client portals.';
-translations.cs['svc1.price'] = 'Od 99 000 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤';
+translations.cs['svc1.price'] = 'Od 99 000 Kč';
 translations.en['svc1.price'] = 'From 99,000 CZK';
 
-translations.cs['svc2.title'] = 'InteligentnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ AI Chatboti';
+translations.cs['svc2.title'] = 'Inteligentní AI Chatboti';
 translations.en['svc2.title'] = 'Intelligent AI Chatbots';
-translations.cs['svc2.desc'] = 'ChytrĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž asistent napojenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž na ChatGPT, kterĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž znĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ vaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇe produkty, odpovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­dĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ 24/7 a zvyĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇuje prodeje.';
+translations.cs['svc2.desc'] = 'Chytrý asistent napojený na ChatGPT, který zná vaše produkty, odpovídá 24/7 a zvyšuje prodeje.';
 translations.en['svc2.desc'] = 'A smart assistant connected to ChatGPT that knows your products, replies 24/7, and boosts sales.';
-translations.cs['svc2.price'] = 'Od 24 900 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤';
+translations.cs['svc2.price'] = 'Od 24 900 Kč';
 translations.en['svc2.price'] = 'From 24,900 CZK';
 
-translations.cs['svc3.title'] = 'Automatizace ProcesĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»';
+translations.cs['svc3.title'] = 'Automatizace Procesů';
 translations.en['svc3.title'] = 'Process Automation';
-translations.cs['svc3.desc'] = 'PropojenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ systĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©mĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âes API (Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤etnictvĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­, e-shopy). ZbavĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­me vĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇs rutinnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ ruÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤nĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ prĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇce a uĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇetĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­me Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤as.';
+translations.cs['svc3.desc'] = 'Propojení systémů přes API (účetnictví, e-shopy). Zbavíme vás rutinní ruční práce a ušetříme čas.';
 translations.en['svc3.desc'] = 'API integrations between systems (accounting, e-shops). We eliminate routine manual work and save time.';
-translations.cs['svc3.price'] = 'Od 9 900 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤';
+translations.cs['svc3.price'] = 'Od 9 900 Kč';
 translations.en['svc3.price'] = 'From 9,900 CZK';
 
-translations.cs['svc4.title'] = 'Chrome DoplĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Âky';
+translations.cs['svc4.title'] = 'Chrome Doplňky';
 translations.en['svc4.title'] = 'Chrome Extensions';
-translations.cs['svc4.desc'] = 'VĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€žvoj privĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇtnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch rozĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ do prohlĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľeÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤e pro usnadnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ prĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇce vaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇich obchodnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­kĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â» a zamÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźstnancĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â».';
+translations.cs['svc4.desc'] = 'Vývoj privátních rozšíření do prohlížeče pro usnadnění práce vašich obchodníků a zaměstnanců.';
 translations.en['svc4.desc'] = 'Development of private browser extensions to streamline the work of your sales reps and employees.';
-translations.cs['svc4.price'] = 'Od 14 900 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤';
+translations.cs['svc4.price'] = 'Od 14 900 Kč';
 translations.en['svc4.price'] = 'From 14,900 CZK';
 
 // Initialize Language & Cart
@@ -974,30 +980,15 @@ window.addEventListener('scroll', () => {
                     navbar.classList.remove('nav-hidden');
                 }
                 lastScrollY = currentScroll;
-            }            // Back to top button visibility
+            }
+
+            // Back to top button visibility
             const backToTop = document.getElementById('back-to-top');
             if (backToTop) {
                 if (window.scrollY > 600) {
                     backToTop.classList.add('visible');
                 } else {
                     backToTop.classList.remove('visible');
-                }
-            }
-
-            // Scroll Progress
-            if (scrollProgress) {
-                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                scrollProgress.style.width = ((currentScroll / docHeight) * 100) + '%';
-            }
-
-            // Parallax Hero
-            if (heroContent && window.matchMedia('(hover: hover)').matches) {
-                if (currentScroll < window.innerHeight) {
-                    heroContent.style.transform = `translateY(${currentScroll * 0.3}px)`;
-                    heroContent.style.opacity = 1 - (currentScroll / (window.innerHeight * 0.8));
-                    if (heroBgGlow) {
-                        heroBgGlow.style.transform = `translate(-50%, -50%) scale(${1 + currentScroll * 0.001})`;
-                    }
                 }
             }
 
@@ -1061,7 +1052,7 @@ window.showToast = (customMsg) => {
         toastTimeout = setTimeout(() => {
             toast.classList.remove('show');
             const msgEl = document.getElementById('toast-message');
-            if (msgEl) msgEl.innerText = translations[currentLang]['toast.added'] || 'PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂidĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇno do koĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ku!';
+            if (msgEl) msgEl.innerText = translations[currentLang]['toast.added'] || 'Přidáno do košíku!';
         }, 3000);
     }
 };
@@ -1094,7 +1085,15 @@ if (mobileToggle && navLinksEl) {
 
 // === PREMIUM FEATURES ===
 
-// First preloader logic removed as duplicate
+// Preloader
+document.body.classList.add('loading');
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) preloader.classList.add('hidden');
+        document.body.classList.remove('loading');
+    }, 1400);
+});
 
 // Cursor Glow (desktop only)
 const cursorGlow = document.getElementById('cursor-glow');
@@ -1115,45 +1114,29 @@ if (backToTopBtn) {
 
 // === SCROLL PROGRESS BAR ===
 const scrollProgress = document.getElementById('scroll-progress');
+if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        scrollProgress.style.width = scrollPercent + '%';
+    }, { passive: true });
+}
 
 // === PARALLAX HERO ===
 const heroContent = document.querySelector('.hero-content');
 const heroBgGlow = document.querySelector('.hero-bg-glow');
-// Listener moved to main scroll handler
-
-// PDF Generation
-function generateInvoicePDF(orderData) {
-    if (!window.jspdf) return;
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    
-    doc.setFontSize(22);
-    doc.text("Venvio - Shrnutí objednávky", 20, 20);
-    
-    doc.setFontSize(12);
-    doc.text("Datum: " + new Date().toLocaleDateString(), 20, 30);
-    doc.text("Zákazník: " + (orderData.name || ''), 20, 40);
-    doc.text("E-mail: " + (orderData.email || ''), 20, 48);
-    
-    doc.text("Položky:", 20, 60);
-    let y = 70;
-    
-    if (orderData.items) {
-        orderData.items.forEach(item => {
-            doc.text("- " + item, 25, y);
-            y += 8;
-        });
-    }
-    
-    doc.setFontSize(14);
-    doc.text("Celkem k úhradě: " + orderData.total + " CZK", 20, y + 10);
-    
-    doc.setFontSize(10);
-    doc.setTextColor(150);
-    doc.text("Venvio.dev | IČO: 27622444", 20, 280);
-    doc.text("Nejsme plátci DPH.", 20, 285);
-    
-    doc.save("venvio-objednavka.pdf");
+if (heroContent && window.matchMedia('(hover: hover)').matches) {
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        if (scrollY < window.innerHeight) {
+            heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
+            heroContent.style.opacity = 1 - (scrollY / (window.innerHeight * 0.8));
+            if (heroBgGlow) {
+                heroBgGlow.style.transform = `translate(-50%, -50%) scale(${1 + scrollY * 0.001})`;
+            }
+        }
+    }, { passive: true });
 }
 
 // === ACTIVE NAV LINK HIGHLIGHTING ===
@@ -1252,7 +1235,7 @@ window.revealSecret = () => {
     const toast = document.getElementById('toast');
     const msg = document.getElementById('toast-message');
     if(toast && msg) {
-        msg.innerText = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'TajnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ sleva 10%! KĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚ËĂ˘â€šÂ¬ÄąË‡d: VENVIO10';
+        msg.innerText = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajná sleva 10%! Kód: VENVIO10';
         toast.classList.add('show');
         setTimeout(() => { 
             toast.classList.remove('show'); 
@@ -1268,29 +1251,44 @@ const calcPagesVal = document.getElementById('calc-pages-val');
 const calcTotal = document.getElementById('calc-total');
 const calcCheckboxes = document.querySelectorAll('.calc-checkboxes input');
 
-// Removed dead updateCalculator function
+const updateCalculator = () => {
+    if(!calcPages || !calcTotal) return;
+    let basePrice = 14900;
+    let pages = parseInt(calcPages.value);
+    calcPagesVal.innerText = pages;
+    let total = basePrice + ((pages - 1) * 1500);
+    calcCheckboxes.forEach(cb => {
+        if(cb.checked) total += parseInt(cb.value);
+    });
+    if(currentCurrency === 'eur') total = Math.round(total / RATE_EUR);
+    if(currentCurrency === 'usd') total = Math.round(total / RATE_USD);
+    calcTotal.innerText = formatPriceDynamic(currentLang === 'en' ? total.toLocaleString('en-US') : total.toLocaleString('cs-CZ'));
+};
+
+if(calcPages) calcPages.addEventListener('input', updateCalculator);
+if(calcCheckboxes) calcCheckboxes.forEach(cb => cb.addEventListener('change', updateCalculator));
 
 // Re-run calc on lang/currency change inside applyTranslations
 
 
 // Calc Translations
-translations.cs['calc.badge'] = 'Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚ÂÄ‚â€žĂ„â€¦Ă„Ä…ÄąĹźĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚ËĂ˘â‚¬ĹľĂ‹ÂĂ„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ Odhad ceny';
-translations.en['calc.badge'] = 'Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚ÂÄ‚â€žĂ„â€¦Ă„Ä…ÄąĹźĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚ËĂ˘â‚¬ĹľĂ‹ÂĂ„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ Price Estimate';
-translations.cs['calc.title'] = 'InteraktivnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ kalkulaÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ka';
+translations.cs['calc.badge'] = '💡 Odhad ceny';
+translations.en['calc.badge'] = '💡 Price Estimate';
+translations.cs['calc.title'] = 'Interaktivní kalkulačka';
 translations.en['calc.title'] = 'Interactive Calculator';
-translations.cs['calc.desc'] = 'SpoÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­tejte si hrubĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž odhad vaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇeho projektu na mĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ru.';
+translations.cs['calc.desc'] = 'Spočítejte si hrubý odhad vašeho projektu na míru.';
 translations.en['calc.desc'] = 'Calculate a rough estimate for your custom project.';
-translations.cs['calc.pages'] = 'PoÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤et strĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnek/podstrĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnek: ';
+translations.cs['calc.pages'] = 'Počet stránek/podstránek: ';
 translations.en['calc.pages'] = 'Number of pages: ';
-translations.cs['calc.opt_cms'] = 'VlastnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ Administrace (CMS)';
+translations.cs['calc.opt_cms'] = 'Vlastní Administrace (CMS)';
 translations.en['calc.opt_cms'] = 'Custom Admin (CMS)';
 translations.cs['calc.opt_chat'] = 'AI Chatbot Asistent';
 translations.en['calc.opt_chat'] = 'AI Chatbot Assistant';
 translations.cs['calc.opt_eshop'] = 'E-shop Modul (Platby)';
 translations.en['calc.opt_eshop'] = 'E-commerce Module';
-translations.cs['calc.total_est'] = 'OdhadovanĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ cena:';
+translations.cs['calc.total_est'] = 'Odhadovaná cena:';
 translations.en['calc.total_est'] = 'Estimated Price:';
-translations.cs['fab.tooltip'] = 'NapiĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇte nĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇm!';
+translations.cs['fab.tooltip'] = 'Napište nám!';
 translations.en['fab.tooltip'] = 'Message Us!';
 
 
@@ -1311,12 +1309,12 @@ const calculateEta = (days) => {
         if (days === 1) return 'do 24 hodin!';
         if (days === 2) return 'do 48 hodin!';
         if (days > 2 && days <= 4) return `${days} dny`;
-        if (days > 4 && days <= 6) return `${days} dnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­`;
-        if (days > 6 && days <= 10) return '1-2 tĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ždny';
-        if (days > 10 && days <= 14) return '2 tĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ždny';
+        if (days > 4 && days <= 6) return `${days} dní`;
+        if (days > 6 && days <= 10) return '1-2 týdny';
+        if (days > 10 && days <= 14) return '2 týdny';
         let weeks = Math.ceil(days / 7);
-        if (weeks >= 2 && weeks <= 4) return `${weeks} tĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ždny`;
-        return `${weeks} tĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ždnĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»`;
+        if (weeks >= 2 && weeks <= 4) return `${weeks} týdny`;
+        return `${weeks} týdnů`;
     }
 };
 
@@ -1395,25 +1393,23 @@ if(calcAddToCartBtn) {
         cart.push({
             id: 'pkg-calc',
             customPrice: currentCalcTotalRaw,
-            nameCs: 'Projekt na mĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ru (KalkulaÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ka)',
+            nameCs: 'Projekt na míru (Kalkulačka)',
             nameEn: 'Custom Project (Calculator)'
         });
         updateCartUI();
-        if(typeof gtag === 'function') gtag('event', 'add_to_cart');
-    if(typeof gtag === 'function') gtag('event', 'add_to_cart');
-        showToast(currentLang === 'en' ? 'Added to cart!' : 'PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂidĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇno do koĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ku!');
+        showToast(currentLang === 'en' ? 'Added to cart!' : 'Přidáno do košíku!');
         const cartSidebar = document.getElementById('cart-sidebar');
         const cartOverlay = document.getElementById('cart-overlay');
-        if(cartSidebar) cartSidebar.classList.add('open');
+        if(cartSidebar) cartSidebar.classList.add('active');
         if(cartOverlay) cartOverlay.classList.add('active');
       if(document.getElementById('chat-widget')) document.getElementById('chat-widget').style.display = 'none';
       if(document.getElementById('fab-whatsapp')) document.getElementById('fab-whatsapp').style.display = 'none';
     });
 }
 
-translations.cs['calc.eta'] = 'OdhadovanĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤as dodĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­:';
+translations.cs['calc.eta'] = 'Odhadovaný čas dodání:';
 translations.en['calc.eta'] = 'Estimated Delivery Time:';
-translations.cs['calc.add_to_cart'] = '<i class="fa-solid fa-cart-plus"></i> PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âidat do koĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ku';
+translations.cs['calc.add_to_cart'] = '<i class="fa-solid fa-cart-plus"></i> Přidat do košíku';
 translations.en['calc.add_to_cart'] = '<i class="fa-solid fa-cart-plus"></i> Add to Cart';
 
 setTimeout(updateCalculatorWithEta, 100);
@@ -1506,8 +1502,8 @@ window.updateAuthModeUI = () => {
         if(groupPasswordConfirm) groupPasswordConfirm.style.display = 'none';
         document.getElementById('auth-name').removeAttribute('required');
         document.getElementById('auth-password-confirm').removeAttribute('required');
-        authDesc.innerText = currentLang === 'en' ? 'Log in to your account to use loyalty discounts.' : 'PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âihlaste se ke svĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©mu Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤tu pro vyuĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľitĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ vÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźrnostnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch slev.';
-        authSubmitBtn.innerText = currentLang === 'en' ? 'Log In' : 'PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂihlĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇsit se';
+        authDesc.innerText = currentLang === 'en' ? 'Log in to your account to use loyalty discounts.' : 'Přihlaste se ke svému účtu pro využití věrnostních slev.';
+        authSubmitBtn.innerText = currentLang === 'en' ? 'Log In' : 'Přihlásit se';
         if(authOptions) authOptions.style.display = 'flex';
     } else {
         tabRegister.style.borderBottomColor = 'var(--color-primary)';
@@ -1518,8 +1514,8 @@ window.updateAuthModeUI = () => {
         groupPasswordConfirm.style.display = 'block';
         document.getElementById('auth-name').setAttribute('required', 'true');
         document.getElementById('auth-password-confirm').setAttribute('required', 'true');
-        authDesc.innerText = currentLang === 'en' ? 'Create an account and earn Venvio Coins for discounts on your next order.' : 'VytvoĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âte si Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤et a sbĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­rejte Venvio Coins pro slevy na pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇtĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvky.';
-        authSubmitBtn.innerText = currentLang === 'en' ? 'Create Account' : 'VytvoĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âit Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤et';
+        authDesc.innerText = currentLang === 'en' ? 'Create an account and earn Venvio Coins for discounts on your next order.' : 'Vytvořte si účet a sbírejte Venvio Coins pro slevy na příští objednávky.';
+        authSubmitBtn.innerText = currentLang === 'en' ? 'Create Account' : 'Vytvořit účet';
         if(authOptions) authOptions.style.display = 'none';
     }
 };
@@ -1527,7 +1523,7 @@ window.updateAuthModeUI = () => {
 if (tabLogin) tabLogin.addEventListener('click', () => { window.authMode = "login"; updateAuthModeUI(); });
 if (tabRegister) tabRegister.addEventListener('click', () => { window.authMode = "register"; updateAuthModeUI(); });
 
-// Social Login Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„â€ž opens a mini-form inside the modal instead of ugly prompt()
+// Social Login — opens a mini-form inside the modal instead of ugly prompt()
 
 
 
@@ -1570,14 +1566,13 @@ window.updateAuthUI = () => {
         if(applyPointsBtn) applyPointsBtn.style.display = 'block';
     }
     if(typeof updateCartUI === 'function') updateCartUI();
-    if(typeof gtag === 'function') gtag('event', 'add_to_cart');
 };
 
 if (authBtn) {
     authBtn.addEventListener('click', () => {
         authModal.classList.add('active');
         if (window.currentUser) {
-            if(authBodyLogin) authBodyLogin.style.display = 'none';
+            authBodyLogin.style.display = 'none';
             authBodyProfile.style.display = 'block';
             authProfileName.innerText = window.currentUser.name;
             authProfileEmail.innerText = window.currentUser.email;
@@ -1586,14 +1581,14 @@ if (authBtn) {
             // Populate orders
             const ordersList = document.getElementById('dashboard-orders-list');
             if (ordersList) {
-                let allUsers = safeJsonParse(localStorage.getItem('venvioAllUsers'), {});
+                let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
                 let userOrders = [];
                 if (allUsers[window.currentUser.email] && allUsers[window.currentUser.email].orders) {
                     userOrders = allUsers[window.currentUser.email].orders;
                 }
                 
                 if (userOrders.length === 0) {
-                    ordersList.innerHTML = `<p style="color: var(--color-text-muted); font-style: italic; text-align: center; margin-top: 1rem;" data-i18n="dash.no_orders">${currentLang === 'en' ? 'You have no orders yet.' : 'ZatĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m nemĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇte Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇdnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvky.'}</p>`;
+                    ordersList.innerHTML = `<p style="color: var(--color-text-muted); font-style: italic; text-align: center; margin-top: 1rem;" data-i18n="dash.no_orders">${currentLang === 'en' ? 'You have no orders yet.' : 'Zatím nemáte žádné objednávky.'}</p>`;
                 } else {
                     let html = '';
                     userOrders.forEach(o => {
@@ -1604,7 +1599,7 @@ if (authBtn) {
                                 <div style="color: var(--color-text-muted); font-size: 0.8rem; margin-top: 4px;">${o.items}</div>
                             </div>
                             <div style="background: rgba(0, 210, 255, 0.1); color: var(--color-primary); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 800;">
-                                ${currentLang === 'en' ? 'PROCESSING' : 'VE ZPRACOVĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚ÂNĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤'}
+                                ${currentLang === 'en' ? 'PROCESSING' : 'VE ZPRACOVÁNÍ'}
                             </div>
                         </div>`;
                     });
@@ -1614,7 +1609,7 @@ if (authBtn) {
         } else {
             window.authMode = "login";
             updateAuthModeUI();
-            if(authBodyLogin) authBodyLogin.style.display = 'block';
+            authBodyLogin.style.display = 'block';
             authBodyProfile.style.display = 'none';
         }
     });
@@ -1630,14 +1625,13 @@ if (applyPointsBtn) {
             pointsUsed = window.currentUser.points;
             applyPointsBtn.style.display = 'none';
             let formattedPoints = pointsUsed;
-            if (currentCurrency === 'eur') formattedPoints = Math.round(pointsUsed / RATE_EUR) + ' Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬';
-            else if (currentCurrency === 'usd') formattedPoints = '$' + Math.round(pointsUsed / RATE_USD);
-            else formattedPoints += ' KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤';
+            if (currentCurrency === 'eur') formattedPoints = Math.round(pointsUsed / RATE_EUR) + ' €';
+            else if (currentCurrency === 'usd') formattedPoints = '$' + Math.round(pointsUsed / 22);
+            else formattedPoints += ' Kč';
             
-            pointsMsg.innerText = currentLang === 'en' ? `Applied ${formattedPoints} discount!` : `UplatnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźna sleva ${formattedPoints}!`;
+            pointsMsg.innerText = currentLang === 'en' ? `Applied ${formattedPoints} discount!` : `Uplatněna sleva ${formattedPoints}!`;
             pointsMsg.style.display = 'block';
             updateCartUI();
-    if(typeof gtag === 'function') gtag('event', 'add_to_cart');
         }
     });
 }
@@ -1650,30 +1644,30 @@ if (checkoutBtnRef) {
     
     newCheckoutBtn.addEventListener('click', async () => {
         if(cart.length === 0) {
-            window.showToast(currentLang === 'en' ? 'Cart is empty.' : 'KoĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­k je prĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇzdnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ă„Ä…Ă„â€ž.');
+            window.showToast(currentLang === 'en' ? 'Cart is empty.' : 'Košík je prázdný.');
             return;
         }
         
         // Guest checkout allowed
 
         
-        // Dynamicky obnovĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­me stav uĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľivatele z Firebase (pokud zrovna potvrdil e-mail v jinĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â© zĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇloĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľce)
+        // Dynamicky obnovíme stav uživatele z Firebase (pokud zrovna potvrdil e-mail v jiné záložce)
         if (window.currentUser && !window.currentUser.emailVerified && window.firebaseAuth && window.firebaseAuth.currentUser) {
             try {
                 const checkoutSpinner = document.getElementById('preloader');
-                if(checkoutSpinner) checkoutSpinner.classList.remove('fade-out'); // ZobrazĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­me na chvĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­li naÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­tĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­
+                if(checkoutSpinner) checkoutSpinner.classList.remove('fade-out'); // Zobrazíme na chvíli načítání
                 
                 await window.firebaseAuth.currentUser.reload();
                 window.currentUser.emailVerified = window.firebaseAuth.currentUser.emailVerified;
                 
                 if(checkoutSpinner) checkoutSpinner.classList.add('fade-out');
             } catch (e) {
-                console.error("Chyba pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âi obnovÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹź uĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľivatele:", e);
+                console.error("Chyba při obnově uživatele:", e);
             }
         }
         
         if (window.currentUser && !window.currentUser.emailVerified) {
-            alert(currentLang === 'en' ? "Please verify your email address before making a purchase. Check your inbox (or SPAM folder)." : "PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âed nĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇkupem prosĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­m ovÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âte svĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ä‚â€žĂ„â€¦Ä‚â€šĂ‚Â»j e-mail (zkontrolujte doruÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤enou poĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇtu i sloĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľku SPAM). Po potvrzenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ kliknÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźte znovu na PokraÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ovat.");
+            alert(currentLang === 'en' ? "Please verify your email address before making a purchase. Check your inbox (or SPAM folder)." : "Před nákupem prosím ověřte svůj e-mail (zkontrolujte doručenou poštu i složku SPAM). Po potvrzení klikněte znovu na Pokračovat.");
             return;
         }
         
@@ -1689,18 +1683,9 @@ if (checkoutBtnRef) {
         if (window.currentUser && pointsUsed > 0) {
             window.currentUser.points -= pointsUsed;
             pointsUsed = 0;
-            let allUsers = safeJsonParse(localStorage.getItem('venvioAllUsers'), {});
+            let allUsers = JSON.parse(localStorage.getItem('venvioAllUsers')) || {};
             allUsers[window.currentUser.email] = window.currentUser;
             localStorage.setItem('venvioAllUsers', JSON.stringify(allUsers));
-            if (window.firebaseDb) {
-                import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js").then(({ doc, updateDoc }) => {
-                    const userRef = doc(window.firebaseDb, 'users', window.currentUser.uid);
-                    updateDoc(userRef, {
-                        points: window.currentUser.points,
-                        usedCodes: window.currentUser.usedCodes
-                    }).catch(err => console.error("Firestore save error:", err));
-                });
-            }
             localStorage.setItem('venvioUser', JSON.stringify(window.currentUser));
         }
         
@@ -1723,48 +1708,57 @@ if (checkoutBtnRef) {
 setTimeout(updateAuthUI, 100);
 
 // Translation keys
-translations.cs['auth.tab_login'] = 'PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂihlĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇsit se';
+translations.cs['auth.tab_login'] = 'Přihlásit se';
 translations.en['auth.tab_login'] = 'Log In';
 translations.cs['auth.tab_register'] = 'Zaregistrovat';
 translations.en['auth.tab_register'] = 'Register';
-translations.cs['auth.desc_login'] = 'PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âihlaste se ke svĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©mu Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€žĂ„â€¦Ă„Ä…ÄąĹşÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤tu pro vyuĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„ÄľitĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ vÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźrnostnĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ch slev.';
+translations.cs['auth.desc_login'] = 'Přihlaste se ke svému účtu pro využití věrnostních slev.';
 translations.en['auth.desc_login'] = 'Log in to your account to use loyalty discounts.';
-translations.cs['auth.submit_login'] = 'PĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂihlĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇsit se';
+translations.cs['auth.submit_login'] = 'Přihlásit se';
 translations.en['auth.submit_login'] = 'Log In';
-translations.cs['auth.title'] = 'KlientskĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇ sekce';
+translations.cs['auth.title'] = 'Klientská sekce';
 translations.en['auth.title'] = 'Client Area';
-translations.cs['auth.name'] = 'JmĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â©no';
+translations.cs['auth.name'] = 'Jméno';
 translations.en['auth.name'] = 'Name';
 translations.cs['auth.email'] = 'E-mail';
 translations.en['auth.email'] = 'Email';
 translations.cs['auth.points_label'] = 'Venvio Coins';
 translations.en['auth.points_label'] = 'Venvio Coins';
-translations.cs['auth.points_val'] = '1 bod = 1 KÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ sleva';
+translations.cs['auth.points_val'] = '1 bod = 1 Kč sleva';
 translations.en['auth.points_val'] = '1 coin = 1 CZK discount';
-translations.cs['auth.logout'] = 'OdhlĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇsit se';
+translations.cs['auth.logout'] = 'Odhlásit se';
 translations.en['auth.logout'] = 'Log Out';
-translations.cs['auth.remember'] = 'Zapamatovat si mÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹź';
+translations.cs['auth.remember'] = 'Zapamatovat si mě';
 translations.en['auth.remember'] = 'Remember me';
-translations.cs['auth.forgot_pwd'] = 'ZapomnÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźli jste heslo?';
+translations.cs['auth.forgot_pwd'] = 'Zapomněli jste heslo?';
 translations.en['auth.forgot_pwd'] = 'Forgot password?';
 translations.cs['auth.or'] = 'Nebo';
 translations.en['auth.or'] = 'Or';
-translations.cs['auth.google'] = 'PokraÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ovat pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âes Google';
+translations.cs['auth.google'] = 'Pokračovat přes Google';
 translations.en['auth.google'] = 'Continue with Google';
-translations.cs['auth.facebook'] = 'PokraÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤ovat pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âes Facebook';
+translations.cs['auth.facebook'] = 'Pokračovat přes Facebook';
 translations.en['auth.facebook'] = 'Continue with Facebook';
 translations.cs['auth.password'] = 'Heslo';
 translations.en['auth.password'] = 'Password';
-translations.cs['auth.password_ph'] = 'VaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇe heslo';
+translations.cs['auth.password_ph'] = 'Vaše heslo';
 translations.en['auth.password_ph'] = 'Your password';
 translations.cs['auth.password_confirm'] = 'Heslo znovu';
 translations.en['auth.password_confirm'] = 'Confirm password';
 translations.cs['auth.password_confirm_ph'] = 'Zopakujte heslo';
 translations.en['auth.password_confirm_ph'] = 'Repeat your password';
-translations.cs['auth.points_info'] = 'Za kaĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ˘â‚¬ĹľÄ‚â€žĂ„Äľdou dokonÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€žĂ„â€¦Ä‚â€šĂ‚Â¤enou objednĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇvku zĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­skĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇte 1000 Venvio Coins. Body pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚Âipisujeme po ovÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹźĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­.';
+translations.cs['auth.points_info'] = 'Za každou dokončenou objednávku získáte 1000 Venvio Coins. Body připisujeme po ověření.';
 translations.en['auth.points_info'] = 'You earn 1000 Venvio Coins for every completed order. Points are assigned after verification.';
-// Duplicate auth translations removed
-translations.cs['cart.points_avail'] = 'MĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬Ă‹â€ˇte k dispozici:';
+translations.cs['auth.name'] = 'Jméno';
+translations.en['auth.name'] = 'Name';
+translations.cs['auth.email'] = 'E-mail';
+translations.en['auth.email'] = 'Email';
+translations.cs['auth.points_label'] = 'Venvio Coins';
+translations.en['auth.points_label'] = 'Venvio Coins';
+translations.cs['auth.points_val'] = '1 bod = 1 Kč sleva';
+translations.en['auth.points_val'] = '1 coin = 1 CZK discount';
+translations.cs['auth.logout'] = 'Odhlásit se';
+translations.en['auth.logout'] = 'Log out';
+translations.cs['cart.points_avail'] = 'Máte k dispozici:';
 translations.en['cart.points_avail'] = 'You have:';
 translations.cs['cart.use_points'] = 'Uplatnit body jako slevu';
 translations.en['cart.use_points'] = 'Use coins for discount';
@@ -1773,11 +1767,10 @@ translations.en['cart.use_points'] = 'Use coins for discount';
 window.addEventListener('storage', (e) => {
     if (e.key === 'venvioCart') {
         try {
-            const newCart = safeJsonParse(e.newValue, []);
+            const newCart = JSON.parse(e.newValue) || [];
             cart.length = 0;
             cart.push(...newCart);
             updateCartUI();
-    if(typeof gtag === 'function') gtag('event', 'add_to_cart');
         } catch(err) {
             console.error('Error syncing cart:', err);
         }
@@ -1798,7 +1791,7 @@ document.addEventListener('DOMContentLoaded', () => {
             chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
         });
 
-        if(chatClose) chatClose.addEventListener('click', () => {
+        chatClose.addEventListener('click', () => {
             chatWindow.style.display = 'none';
         });
 
@@ -1806,7 +1799,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const text = chatInput.value.trim();
             if (text) {
                 // Add user message to UI
-                const userDiv = document.createElement('div'); userDiv.style.cssText = 'background: var(--color-primary); color: white; padding: 10px; border-radius: 12px 12px 0 12px; max-width: 85%; font-size: 0.9rem; align-self: flex-end; margin-bottom: 5px;'; userDiv.textContent = text; chatMessages.appendChild(userDiv);
+                chatMessages.innerHTML += `
+                <div style="background: var(--color-primary); color: white; padding: 10px; border-radius: 12px 12px 0 12px; max-width: 85%; font-size: 0.9rem; align-self: flex-end; margin-bottom: 5px;">
+                    ${text}
+                </div>`;
                 chatInput.value = '';
                 chatMessages.scrollTop = chatMessages.scrollHeight;
 
@@ -1831,33 +1827,39 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (document.getElementById(loadingId)) document.getElementById(loadingId).remove();
 
                     if (response.ok) {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'purchase', { value: orderTotal, currency: currentCurrency.toUpperCase() });
+                if (typeof generateInvoicePDF === 'function') {
+                    generateInvoicePDF({
+                        name: requestData["Jméno"] || requestData["Name"] || '',
+                        email: requestData.email || '',
+                        items: cart.map(i => i.nameCs || i.nameEn),
+                        total: orderTotal
+                    });
                 }
-                generateInvoicePDF({
-                    name: requestData["JmÄ‚Â©no"] || requestData["Name"] || '',
-                    email: requestData.email || '',
-                    items: cart.map(i => i.nameCs || i.nameEn),
-                    total: orderTotal
-                });
                 if (window.emailjs) {
                     emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
                         to_email: requestData.email,
-                        to_name: requestData["JmĂ„â€šĂ‚Â©no"] || requestData["Name"] || "ZĂ„â€šĂ‹â€ˇkaznĂ„â€šĂ‚Â­ku",
+                        to_name: requestData["Jméno"] || requestData["Name"] || "Zákazníku",
                         order_details: requestData.Zprava || requestData.Message
                     }).catch(e => console.error("EmailJS error:", e));
                 }
+                if (typeof gtag === 'function') gtag('event', 'purchase', { value: orderTotal, currency: currentCurrency.toUpperCase() });
                         const data = await response.json();
                         chatHistory.push({ role: 'assistant', content: data.reply });
                         
-                        const botDiv = document.createElement('div'); botDiv.style.cssText = 'background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem; margin-bottom: 5px;'; botDiv.innerHTML = data.reply.replace(/\n/g, '<br>'); chatMessages.appendChild(botDiv);
+                        chatMessages.innerHTML += `
+                        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem; margin-bottom: 5px;">
+                            ${data.reply.replace(/\n/g, '<br>')}
+                        </div>`;
                     } else {
                         throw new Error('API Error');
                     }
                 } catch (error) {
                     if (document.getElementById(loadingId)) document.getElementById(loadingId).remove();
-                    const errMsg = window.currentLang === 'en' ? "Connection error." : "Chyba pĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąÄľÄ‚â€ąĂ‚ÂipojenĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â­ k serveru.";
-                    const errDiv = document.createElement('div'); errDiv.style.cssText = 'background: rgba(255,50,50,0.1); color: #ff6b6b; padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem; margin-bottom: 5px;'; errDiv.textContent = errMsg; chatMessages.appendChild(errDiv);
+                    const errMsg = window.currentLang === 'en' ? "Connection error." : "Chyba připojení k serveru.";
+                    chatMessages.innerHTML += `
+                    <div style="background: rgba(255,50,50,0.1); color: #ff6b6b; padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem; margin-bottom: 5px;">
+                        ${errMsg}
+                    </div>`;
                 }
             }
         };
@@ -1917,16 +1919,11 @@ if (authBtnMobile) {
     });
 }
 
-
-
-
-
-
 // PWA Service Worker Registration
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js').then(registration => {
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      console.log('ServiceWorker registration successful');
     }, err => {
       console.log('ServiceWorker registration failed: ', err);
     });
@@ -1940,30 +1937,30 @@ function generateInvoicePDF(orderData) {
     const doc = new jsPDF();
     
     doc.setFontSize(22);
-    doc.text("Venvio - ShrnutÄ‚Â­ objednÄ‚Ë‡vky", 20, 20);
+    doc.text("Venvio - Shrnutí objednávky", 20, 20);
     
     doc.setFontSize(12);
-    doc.text(Datum: , 20, 30);
-    doc.text(ZÄ‚Ë‡kaznÄ‚Â­k: , 20, 40);
-    doc.text(E-mail: , 20, 48);
+    doc.text("Datum: " + new Date().toLocaleDateString(), 20, 30);
+    doc.text("Zákazník: " + (orderData.name || ''), 20, 40);
+    doc.text("E-mail: " + (orderData.email || ''), 20, 48);
     
-    doc.text("PoloÄąÄľky:", 20, 60);
+    doc.text("Položky:", 20, 60);
     let y = 70;
     
     if (orderData.items) {
         orderData.items.forEach(item => {
-            doc.text(- , 25, y);
+            doc.text("- " + item, 25, y);
             y += 8;
         });
     }
     
     doc.setFontSize(14);
-    doc.text(Celkem k Ä‚ĹźhradĂ„â€ş:  CZK, 20, y + 10);
+    doc.text("Celkem k úhradě: " + orderData.total + " CZK", 20, y + 10);
     
     doc.setFontSize(10);
     doc.setTextColor(150);
-    doc.text("Venvio.dev | IĂ„ĹšO: 27622444", 20, 280);
-    doc.text("Nejsme plÄ‚Ë‡tci DPH.", 20, 285);
+    doc.text("Venvio.dev | IČO: 27622444", 20, 280);
+    doc.text("Nejsme plátci DPH.", 20, 285);
     
     doc.save("venvio-objednavka.pdf");
 }
