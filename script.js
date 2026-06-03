@@ -506,6 +506,7 @@ const applyTranslations = () => {
     });
 
     updateCartUI(); // Re-render cart with new language & currency
+    if (typeof updateCalculatorWithEta === 'function') updateCalculatorWithEta();
 };
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
