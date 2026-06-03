@@ -1,0 +1,21 @@
+{
+  "name": "Venvio",
+  "short_name": "Venvio",
+  "description": "Tvorba prémiových webových stránek a aplikací.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060B18",
+  "theme_color": "#060B18",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "192x192",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "512x512",
+      "type": "image/x-icon"
+    }
+  ]
+}
