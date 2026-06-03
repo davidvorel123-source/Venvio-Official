@@ -1479,7 +1479,7 @@ if(calcAddToCartBtn) {
         showToast(currentLang === 'en' ? 'Added to cart!' : 'Přidáno do košíku!');
         openCart();
     });
-}
+
 }
 
 translations.cs['calc.eta'] = 'Odhadovaný čas dodání:';
