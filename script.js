@@ -1398,12 +1398,7 @@ if(calcAddToCartBtn) {
         });
         updateCartUI();
         showToast(currentLang === 'en' ? 'Added to cart!' : 'Přidáno do košíku!');
-        const cartSidebar = document.getElementById('cart-sidebar');
-        const cartOverlay = document.getElementById('cart-overlay');
-        if(cartSidebar) cartSidebar.classList.add('active');
-        if(cartOverlay) cartOverlay.classList.add('active');
-      if(document.getElementById('chat-widget')) document.getElementById('chat-widget').style.display = 'none';
-      if(document.getElementById('fab-whatsapp')) document.getElementById('fab-whatsapp').style.display = 'none';
+        openCart();
     });
 }
 
