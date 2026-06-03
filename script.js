@@ -1121,6 +1121,41 @@ const heroContent = document.querySelector('.hero-content');
 const heroBgGlow = document.querySelector('.hero-bg-glow');
 // Listener moved to main scroll handler
 
+// PDF Generation
+function generateInvoicePDF(orderData) {
+    if (!window.jspdf) return;
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    doc.setFontSize(22);
+    doc.text("Venvio - Shrnutí objednávky", 20, 20);
+    
+    doc.setFontSize(12);
+    doc.text("Datum: " + new Date().toLocaleDateString(), 20, 30);
+    doc.text("Zákazník: " + (orderData.name || ''), 20, 40);
+    doc.text("E-mail: " + (orderData.email || ''), 20, 48);
+    
+    doc.text("Položky:", 20, 60);
+    let y = 70;
+    
+    if (orderData.items) {
+        orderData.items.forEach(item => {
+            doc.text("- " + item, 25, y);
+            y += 8;
+        });
+    }
+    
+    doc.setFontSize(14);
+    doc.text("Celkem k úhradě: " + orderData.total + " CZK", 20, y + 10);
+    
+    doc.setFontSize(10);
+    doc.setTextColor(150);
+    doc.text("Venvio.dev | IČO: 27622444", 20, 280);
+    doc.text("Nejsme plátci DPH.", 20, 285);
+    
+    doc.save("venvio-objednavka.pdf");
+}
+
 // === ACTIVE NAV LINK HIGHLIGHTING ===
 const sections = document.querySelectorAll('section[id]');
 const navLinksAll = document.querySelectorAll('.nav-links a[href^="#"]');
