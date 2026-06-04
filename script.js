@@ -2107,10 +2107,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // 1. Initialize Vanilla Tilt for Cards
     if (typeof VanillaTilt !== 'undefined') {
         VanillaTilt.init(document.querySelectorAll(".pricing-card, .feature-card"), {
-            max: 5,
+            max: 15,
             speed: 400,
             glare: true,
-            "max-glare": 0.15
+            "max-glare": 0.3
         });
     }
 
@@ -2224,6 +2224,94 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Need to trigger after translations load, so we call it now and re-call it if language changes
     setTimeout(typeWriterEffect, 100);
+
+    // 9. Scramble Text Effect (Hacker Text)
+    class TextScramble {
+        constructor(el) {
+            this.el = el;
+            this.chars = '!<>-_\\\\/[]{}—=+*^?#_';
+            this.update = this.update.bind(this);
+        }
+        setText(newText) {
+            const oldText = this.el.innerText;
+            const length = Math.max(oldText.length, newText.length);
+            const promise = new Promise((resolve) => this.resolve = resolve);
+            this.queue = [];
+            for (let i = 0; i < length; i++) {
+                const from = oldText[i] || '';
+                const to = newText[i] || '';
+                const start = Math.floor(Math.random() * 40);
+                const end = start + Math.floor(Math.random() * 40);
+                this.queue.push({ from, to, start, end });
+            }
+            cancelAnimationFrame(this.frameRequest);
+            this.frame = 0;
+            this.update();
+            return promise;
+        }
+        update() {
+            let output = '';
+            let complete = 0;
+            for (let i = 0, n = this.queue.length; i < n; i++) {
+                let { from, to, start, end, char } = this.queue[i];
+                if (this.frame >= end) {
+                    complete++;
+                    output += to;
+                } else if (this.frame >= start) {
+                    if (!char || Math.random() < 0.28) {
+                        char = this.randomChar();
+                        this.queue[i].char = char;
+                    }
+                    output += `<span class="dull">${char}</span>`;
+                } else {
+                    output += from;
+                }
+            }
+            this.el.innerHTML = output;
+            if (complete === this.queue.length) {
+                this.resolve();
+            } else {
+                this.frameRequest = requestAnimationFrame(this.update);
+                this.frame++;
+            }
+        }
+        randomChar() {
+            return this.chars[Math.floor(Math.random() * this.chars.length)];
+        }
+    }
+
+    const scrambleElements = document.querySelectorAll('.scramble-text');
+    const scrambleObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const fx = new TextScramble(entry.target);
+                const i18nKey = entry.target.getAttribute("data-i18n");
+                const currentLang = localStorage.getItem("lang") || "cs";
+                let finalString = entry.target.innerText;
+                if(i18nKey && translations[currentLang] && translations[currentLang][i18nKey]) {
+                    finalString = translations[currentLang][i18nKey];
+                }
+                fx.setText(finalString);
+                scrambleObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    scrambleElements.forEach(el => scrambleObserver.observe(el));
+
+    // 10. Neon Ripple Effect na tlačítkách
+    document.querySelectorAll(".btn").forEach(btn => {
+        btn.addEventListener("click", function(e) {
+            const rect = this.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            let y = e.clientY - rect.top;
+            let ripple = document.createElement("span");
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            ripple.classList.add("ripple");
+            this.appendChild(ripple);
+            setTimeout(() => { ripple.remove(); }, 600);
+        });
+    });
 
     // 6. tsParticles Initialization
     if (typeof tsParticles !== 'undefined') {
