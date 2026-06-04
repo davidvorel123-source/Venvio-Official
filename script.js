@@ -89,8 +89,9 @@ const translations = {
         "feature.title": "Naše hlavní výhoda: Web už do 24 hodin",
         "feature.desc": "Víme, že v podnikání rozhoduje rychlost. Zatímco běžné agentury tvoří weby týdny, my díky optimalizovanému vývoji a agilnímu nasazení dodáváme plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.",
         "portfolio.title": "Naše Ukázky",
-        "portfolio.desc": "Podívejte se na ukázkové projekty, které jsme připravili pro naše klienty.",
+        "portfolio.desc": "Podívejte se na ukázkové projekty, které jsme připravili.",
         "portfolio.btn": "Zobrazit web",
+        "portfolio.btn_follower": "Zobrazit",
         "portfolio.p1_desc": "Moderní vícestránkový web pro bistro",
         "portfolio.p2_desc": "Elegantní prezentace kavárny",
         "portfolio.p3_desc": "Luxusní one-page web",
@@ -234,6 +235,7 @@ const translations = {
         "portfolio.title": "Our Work (Concepts)",
         "portfolio.desc": "Take a look at the showcase projects we have prepared for our clients.",
         "portfolio.btn": "View Website",
+        "portfolio.btn_follower": "View",
         "portfolio.p1_desc": "Modern multi-page website for a bistro",
         "portfolio.p2_desc": "Elegant cafe presentation",
         "portfolio.p3_desc": "Luxury one-page website",
@@ -2258,7 +2260,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const portfolioImgs = document.querySelectorAll(".portfolio-img");
     const follower = document.createElement("div");
     follower.classList.add("cursor-follower");
-    follower.innerText = "Zobrazit";
+    follower.setAttribute("data-i18n", "portfolio.btn_follower");
+    const initLang = localStorage.getItem("lang") || "cs";
+    follower.innerText = translations[initLang] && translations[initLang]["portfolio.btn_follower"] ? translations[initLang]["portfolio.btn_follower"] : "Zobrazit";
     document.body.appendChild(follower);
 
     portfolioImgs.forEach(img => {
