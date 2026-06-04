@@ -74,7 +74,7 @@ const updateLegalModalLang = () => {
 const translations = {
     cs: {
         "nav.why_us": "Proč my",
-        "why_us.title": "Proč my?",
+        "feature.main_title": "Proč my?",
         "nav.portfolio": "Reference",
         "nav.pricing": "Ceník",
         "nav.addons": "Doplňky",
@@ -219,7 +219,7 @@ const translations = {
     },
     en: {
         "nav.why_us": "Why Us",
-        "why_us.title": "Why Us?",
+        "feature.main_title": "Why Us?",
         "nav.portfolio": "Portfolio",
         "nav.pricing": "Pricing",
         "nav.addons": "Add-ons",
