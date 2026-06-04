@@ -2252,19 +2252,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 11. Scroll Text Reveal
-    const revealTexts = document.querySelectorAll(".reveal-text");
-    window.addEventListener("scroll", () => {
-        revealTexts.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            if (rect.top < windowHeight && rect.bottom > 0) {
-                let scrollPercent = (windowHeight - rect.top) / windowHeight;
-                scrollPercent = Math.max(0, Math.min(1, scrollPercent * 1.5 - 0.2));
-                el.style.backgroundPosition = `${100 - (scrollPercent * 100)}% 0`;
-            }
-        });
-    });
+    // 11. (Removed Scroll Text Reveal)
 
     // 12. Follower Cursor on Portfolio Images
     const portfolioImgs = document.querySelectorAll(".portfolio-img");
