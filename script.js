@@ -2112,28 +2112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 2. Custom Cursor Logic
-    const cursorDot = document.getElementById("cursor-dot");
-    const cursorOutline = document.getElementById("cursor-outline");
-    
-    if (cursorDot && cursorOutline && window.matchMedia("(min-width: 768px)").matches) {
-        window.addEventListener("mousemove", (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
 
-        const clickables = document.querySelectorAll("a, button, .pricing-card, .feature-card, input, textarea");
-        clickables.forEach((el) => {
-            el.addEventListener("mouseenter", () => cursorOutline.classList.add("hover-active"));
-            el.addEventListener("mouseleave", () => cursorOutline.classList.remove("hover-active"));
-        });
-    }
 
     // 3. Magnetic Buttons
     const magnets = document.querySelectorAll(".btn");
