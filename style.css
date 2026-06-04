@@ -2395,18 +2395,17 @@ body.light-mode .mouse-aura {
 .glass-panel {
     position: relative;
 }
-.glass-panel::before {
-    content: "";
+.spotlight-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 20px;
+    border-radius: inherit;
     background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.06), transparent 40%);
     z-index: 0;
     pointer-events: none;
     transition: opacity 0.3s;
     opacity: 0;
 }
-.glass-panel:hover::before { opacity: 1; }
-body.light-mode .glass-panel::before {
+.glass-panel:hover .spotlight-overlay { opacity: 1; }
+body.light-mode .spotlight-overlay {
     background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(0, 0, 0, 0.05), transparent 40%);
 }
