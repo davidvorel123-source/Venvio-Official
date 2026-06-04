@@ -2409,3 +2409,60 @@ body.light-mode .mouse-aura {
 body.light-mode .spotlight-overlay {
     background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(0, 0, 0, 0.05), transparent 40%);
 }
+
+/* ==========================================================================
+   PHASE 2: EXTREME WOW FACTOR
+   ========================================================================== */
+
+/* 1. Scroll Progress Bar */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--color-primary);
+    box-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-secondary);
+    z-index: 10000;
+    transition: width 0.1s ease-out;
+}
+
+/* 2. Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary);
+}
+
+/* 3. Infinite Marquee Interakce */
+.marquee-section:hover .marquee-content {
+    animation-play-state: paused;
+}
+.marquee-content span {
+    transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
+}
+.marquee-content span:hover {
+    transform: scale(1.1);
+    color: var(--color-primary);
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+}
+
+/* 4. Typewriter Cursor */
+.cursor-blink {
+    animation: blink 1s step-end infinite;
+    color: var(--color-primary);
+    font-weight: bold;
+    margin-left: 2px;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
