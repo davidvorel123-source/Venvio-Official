@@ -2252,6 +2252,64 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // 11. Scroll Text Reveal
+    const revealTexts = document.querySelectorAll(".reveal-text");
+    window.addEventListener("scroll", () => {
+        revealTexts.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            if (rect.top < windowHeight && rect.bottom > 0) {
+                let scrollPercent = (windowHeight - rect.top) / windowHeight;
+                scrollPercent = Math.max(0, Math.min(1, scrollPercent * 1.5 - 0.2));
+                el.style.backgroundPosition = `${100 - (scrollPercent * 100)}% 0`;
+            }
+        });
+    });
+
+    // 12. Follower Cursor on Portfolio Images
+    const portfolioImgs = document.querySelectorAll(".portfolio-img");
+    const follower = document.createElement("div");
+    follower.classList.add("cursor-follower");
+    follower.innerText = "Zobrazit";
+    document.body.appendChild(follower);
+
+    portfolioImgs.forEach(img => {
+        img.addEventListener("mouseenter", () => {
+            follower.style.opacity = "1";
+            follower.style.transform = "scale(1) translate(-50%, -50%)";
+            cursorOutline.style.opacity = "0";
+            cursorDot.style.opacity = "0";
+        });
+        img.addEventListener("mouseleave", () => {
+            follower.style.opacity = "0";
+            follower.style.transform = "scale(0) translate(-50%, -50%)";
+            cursorOutline.style.opacity = "1";
+            cursorDot.style.opacity = "1";
+        });
+        img.addEventListener("mousemove", (e) => {
+            follower.style.left = `${e.clientX}px`;
+            follower.style.top = `${e.clientY}px`;
+        });
+    });
+
+    // 13. Ghost Cursor Trail
+    let lastGhostX = 0, lastGhostY = 0;
+    window.addEventListener("mousemove", (e) => {
+        const dx = e.clientX - lastGhostX;
+        const dy = e.clientY - lastGhostY;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist > 40) {
+            const ghost = document.createElement("div");
+            ghost.classList.add("cursor-ghost");
+            ghost.style.left = `${e.clientX}px`;
+            ghost.style.top = `${e.clientY}px`;
+            document.body.appendChild(ghost);
+            setTimeout(() => ghost.remove(), 500);
+            lastGhostX = e.clientX;
+            lastGhostY = e.clientY;
+        }
+    });
+
     // 6. tsParticles Initialization
     if (typeof tsParticles !== 'undefined') {
         tsParticles.load("particles", {
