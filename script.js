@@ -1133,15 +1133,7 @@ if (mobileToggle && navLinksEl) {
 
 // === PREMIUM FEATURES ===
 
-// Preloader
-document.body.classList.add('loading');
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) preloader.classList.add('hidden');
-        document.body.classList.remove('loading');
-    }, 1400);
-});
+// Preloader (Removed)
 
 // Cursor Glow (desktop only)
 const cursorGlow = document.getElementById('cursor-glow');
@@ -1257,25 +1249,7 @@ if (heroHeader && heroGlow1 && heroGlow2 && window.matchMedia('(hover: hover)').
 // End of script
 
 
-// Preloader Logic
-const hidePreloader = () => {
-    const preloader = document.getElementById('preloader');
-    if(preloader && !preloader.classList.contains('fade-out')) {
-        preloader.classList.add('fade-out');
-        setTimeout(() => {
-            document.body.classList.remove('loading');
-            preloader.style.display = 'none';
-        }, 800);
-    }
-};
-
-if (document.readyState === 'complete') {
-    setTimeout(hidePreloader, 200);
-} else {
-    window.addEventListener('load', () => setTimeout(hidePreloader, 200));
-    // Fallback in case load event gets stuck (e.g., slow image or ad blocker)
-    setTimeout(hidePreloader, 2000);
-}
+// Preloader Logic (Removed)
 
 
 // Easter Egg
@@ -1705,13 +1679,8 @@ if (checkoutBtnRef) {
         // Dynamicky obnovíme stav uživatele z Firebase (pokud zrovna potvrdil e-mail v jiné záložce)
         if (window.currentUser && !window.currentUser.emailVerified && window.firebaseAuth && window.firebaseAuth.currentUser) {
             try {
-                const checkoutSpinner = document.getElementById('preloader');
-                if(checkoutSpinner) checkoutSpinner.classList.remove('fade-out'); // Zobrazíme na chvíli načítání
-                
                 await window.firebaseAuth.currentUser.reload();
                 window.currentUser.emailVerified = window.firebaseAuth.currentUser.emailVerified;
-                
-                if(checkoutSpinner) checkoutSpinner.classList.add('fade-out');
             } catch (e) {
                 console.error("Chyba při obnově uživatele:", e);
             }
