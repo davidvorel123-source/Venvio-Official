@@ -78,7 +78,7 @@ const translations = {
         "nav.pricing": "Ceník",
         "nav.addons": "Doplňky",
         "nav.cart": "Košík",
-        "hero.title": "Tvoříme weby rychlostí<br><span class=\"text-gradient\">vašeho podnikání.</span>",
+        "hero.title": "Tvoříme weby rychlostí<br><span class=\"text-gradient liquid-text\">vašeho podnikání.</span>",
         "hero.desc": "Expressní webová prezentace & marketing. Plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.",
         "hero.btn_pkg": "Vybrat balíček",
         "hero.btn_portfolio": "Ukázky práce",
@@ -220,7 +220,7 @@ const translations = {
         "nav.pricing": "Pricing",
         "nav.addons": "Add-ons",
         "nav.cart": "Cart",
-        "hero.title": "Building websites at the speed of<br><span class=\"text-gradient\">your business.</span>",
+        "hero.title": "Building websites at the speed of<br><span class=\"text-gradient liquid-text\">your business.</span>",
         "hero.desc": "Express web presentation & marketing. Fully functional, modern, and responsive solutions within one day of receiving materials.",
         "hero.btn_pkg": "Choose a Package",
         "hero.btn_portfolio": "Our Work",
@@ -2150,4 +2150,50 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     });
+
+    // 4. Mouse Aura Logic
+    const mouseAura = document.getElementById("mouse-aura");
+    if (mouseAura && window.matchMedia("(min-width: 768px)").matches) {
+        window.addEventListener("mousemove", (e) => {
+            mouseAura.style.left = `${e.clientX}px`;
+            mouseAura.style.top = `${e.clientY}px`;
+        });
+    }
+
+    // 5. Spotlight Card Effect
+    const panels = document.querySelectorAll(".glass-panel");
+    panels.forEach(panel => {
+        panel.addEventListener("mousemove", (e) => {
+            const rect = panel.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            panel.style.setProperty("--mouse-x", `${x}px`);
+            panel.style.setProperty("--mouse-y", `${y}px`);
+        });
+    });
+
+    // 6. tsParticles Initialization
+    if (typeof tsParticles !== 'undefined') {
+        tsParticles.load("particles", {
+            fpsLimit: 60,
+            interactivity: {
+                events: {
+                    onHover: { enable: true, mode: "grab" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, links: { opacity: 0.8 } }
+                }
+            },
+            particles: {
+                color: { value: "#00D2FF" },
+                links: { color: "#7B61FF", distance: 150, enable: true, opacity: 0.3, width: 1 },
+                move: { enable: true, speed: 1 },
+                number: { density: { enable: true, area: 800 }, value: 60 },
+                opacity: { value: 0.5 },
+                size: { value: { min: 1, max: 3 } }
+            },
+            detectRetina: true
+        });
+    }
 });
