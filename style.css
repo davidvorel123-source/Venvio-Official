@@ -2030,8 +2030,10 @@ body.light-mode .pricing-card:hover {
 
 /* Premium Features CSS */
 .marquee-section { overflow: hidden; white-space: nowrap; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.2); }
+body.light-mode .marquee-section { background: rgba(0,0,0,0.03); border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05); }
 .marquee-content { display: inline-block; animation: marquee 30s linear infinite; }
 .marquee-content span { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.2rem; font-weight: 600; color: rgba(255,255,255,0.5); padding: 0 3rem; text-transform: uppercase; letter-spacing: 2px; }
+body.light-mode .marquee-content span { color: rgba(0,0,0,0.6); }
 .marquee-content span i { font-size: 1.5rem; color: var(--color-primary); }
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
