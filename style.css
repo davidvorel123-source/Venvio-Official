@@ -2394,12 +2394,12 @@ body.light-mode .mouse-aura {
 /* Spotlight Card Effect */
 .glass-panel {
     position: relative;
-    overflow: hidden;
 }
 .glass-panel::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 20px;
     background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.06), transparent 40%);
     z-index: 0;
     pointer-events: none;
