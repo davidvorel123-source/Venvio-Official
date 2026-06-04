@@ -426,7 +426,7 @@ a:focus-visible, .btn:focus-visible, .lang-btn:focus-visible, .curr-btn:focus-vi
     color: var(--color-text-muted);
     font-size: 1.2rem;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto 3rem auto;
 }
 
 .section-badge {
