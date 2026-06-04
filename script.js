@@ -2116,8 +2116,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // 3. Magnetic Buttons
-    const magnets = document.querySelectorAll(".btn");
+    // 3. Magnetic Buttons and Nav Links
+    const magnets = document.querySelectorAll(".btn, .nav-links a");
     magnets.forEach((magnet) => {
         if(window.matchMedia("(min-width: 768px)").matches) {
             magnet.addEventListener("mousemove", (e) => {
@@ -2182,6 +2182,48 @@ document.addEventListener("DOMContentLoaded", () => {
             panel.style.setProperty("--mouse-y", `${y}px`);
         });
     });
+
+    // 6. Scroll Progress Bar
+    const scrollProgress = document.getElementById("scroll-progress");
+    if (scrollProgress) {
+        window.addEventListener("scroll", () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + "%";
+        });
+    }
+
+    // 7. Parallax Background
+    const bgGlows = document.querySelectorAll(".hero-bg-glow");
+    if (window.matchMedia("(min-width: 768px)").matches) {
+        window.addEventListener("scroll", () => {
+            const scrolled = window.scrollY;
+            bgGlows.forEach((glow, index) => {
+                const speed = (index + 1) * 0.2;
+                glow.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    }
+
+    // 8. Typewriter Effect for Hero Badge
+    function typeWriterEffect() {
+        const typewriterEl = document.getElementById("typewriter-text");
+        if (!typewriterEl) return;
+        const text = typewriterEl.innerText;
+        typewriterEl.innerText = "";
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                typewriterEl.innerText += text.charAt(i);
+                i++;
+                setTimeout(type, 50);
+            }
+        }
+        setTimeout(type, 1000); // Start after 1s delay
+    }
+    // Need to trigger after translations load, so we call it now and re-call it if language changes
+    setTimeout(typeWriterEffect, 100);
 
     // 6. tsParticles Initialization
     if (typeof tsParticles !== 'undefined') {
