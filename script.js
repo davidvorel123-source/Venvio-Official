@@ -414,6 +414,8 @@ translations.en['cart.guest_info'] = 'Ordering as a guest. Log in to get an inst
 
 translations.cs['checkout.gdpr'] = 'Souhlasím se zpracováním osobních údajů pro účely vyřízení objednávky.';
 translations.en['checkout.gdpr'] = 'I agree to the processing of personal data for the purpose of order fulfillment.';
+translations.cs['footer.branch'] = 'Jsme pobočka <a href="https://www.vidia-design.cz/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">Vidia Design</a>.<br>Sídlíme v Praze.';
+translations.en['footer.branch'] = 'We are a branch of <a href="https://www.vidia-design.cz/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">Vidia Design</a>.<br>Based in Prague.';
 translations.cs['footer.legal'] = 'Právní informace';
 translations.en['footer.legal'] = 'Legal Information';
 translations.cs['footer.terms'] = 'Obchodní podmínky';
