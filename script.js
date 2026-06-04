@@ -2099,3 +2099,55 @@ translations.en['success.paypal_btn'] = 'Go to PayPal';
 if (typeof applyTranslations === 'function') {
     applyTranslations(currentLang);
 }
+
+/* Premium UI Interactions */
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Initialize Vanilla Tilt for Cards
+    if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll(".pricing-card, .feature-card"), {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.15
+        });
+    }
+
+    // 2. Custom Cursor Logic
+    const cursorDot = document.getElementById("cursor-dot");
+    const cursorOutline = document.getElementById("cursor-outline");
+    
+    if (cursorDot && cursorOutline && window.matchMedia("(min-width: 768px)").matches) {
+        window.addEventListener("mousemove", (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        const clickables = document.querySelectorAll("a, button, .pricing-card, .feature-card, input, textarea");
+        clickables.forEach((el) => {
+            el.addEventListener("mouseenter", () => cursorOutline.classList.add("hover-active"));
+            el.addEventListener("mouseleave", () => cursorOutline.classList.remove("hover-active"));
+        });
+    }
+
+    // 3. Magnetic Buttons
+    const magnets = document.querySelectorAll(".btn");
+    magnets.forEach((magnet) => {
+        if(window.matchMedia("(min-width: 768px)").matches) {
+            magnet.addEventListener("mousemove", (e) => {
+                const position = magnet.getBoundingClientRect();
+                const x = e.clientX - position.left - position.width / 2;
+                const y = e.clientY - position.top - position.height / 2;
+                magnet.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+            });
+            magnet.addEventListener("mouseleave", () => {
+                magnet.style.transform = "translate(0px, 0px)";
+            });
+        }
+    });
+});
