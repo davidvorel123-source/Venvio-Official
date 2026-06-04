@@ -2105,40 +2105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 4. Mouse Aura & Custom Cursor Logic
-    const mouseAura = document.getElementById("mouse-aura");
-    const cursorDot = document.getElementById("cursor-dot");
-    const cursorOutline = document.getElementById("cursor-outline");
-
-    if (window.matchMedia("(min-width: 768px)").matches) {
-        // Skrýt výchozí kurzor
-        document.body.style.cursor = "none";
-        document.querySelectorAll("a, button, input, textarea").forEach(el => el.style.cursor = "none");
-
-        window.addEventListener("mousemove", (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            if (mouseAura) {
-                mouseAura.style.left = `${posX}px`;
-                mouseAura.style.top = `${posY}px`;
-            }
-            if (cursorDot && cursorOutline) {
-                cursorDot.style.left = `${posX}px`;
-                cursorDot.style.top = `${posY}px`;
-                cursorOutline.style.left = `${posX}px`;
-                cursorOutline.style.top = `${posY}px`;
-            }
-        });
-
-        if (cursorOutline) {
-            const clickables = document.querySelectorAll("a, button, .pricing-card, .feature-card, input, textarea");
-            clickables.forEach((el) => {
-                el.addEventListener("mouseenter", () => cursorOutline.classList.add("hover-active"));
-                el.addEventListener("mouseleave", () => cursorOutline.classList.remove("hover-active"));
-            });
-        }
-    }
+    // (Cursor Logic removed)
 
     // 5. Spotlight Card Effect
     const panels = document.querySelectorAll(".glass-panel");
@@ -2199,16 +2166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Need to trigger after translations load, so we call it now and re-call it if language changes
     setTimeout(typeWriterEffect, 100);
 
-    // 9. Morphing Cursor Logic
-    const interactiveElements = document.querySelectorAll(".btn, a, .faq-question, .glass-panel");
-    interactiveElements.forEach(el => {
-        el.addEventListener("mouseenter", () => {
-            cursorOutline.classList.add("morph");
-        });
-        el.addEventListener("mouseleave", () => {
-            cursorOutline.classList.remove("morph");
-        });
-    });
+    // 9. (Removed Morphing Cursor Logic)
 
     // 10. Neon Ripple Effect na tlačítkách
     document.querySelectorAll(".btn").forEach(btn => {
@@ -2229,23 +2187,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 12. (Removed Follower Cursor)
 
-    // 13. Ghost Cursor Trail
-    let lastGhostX = 0, lastGhostY = 0;
-    window.addEventListener("mousemove", (e) => {
-        const dx = e.clientX - lastGhostX;
-        const dy = e.clientY - lastGhostY;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist > 40) {
-            const ghost = document.createElement("div");
-            ghost.classList.add("cursor-ghost");
-            ghost.style.left = `${e.clientX}px`;
-            ghost.style.top = `${e.clientY}px`;
-            document.body.appendChild(ghost);
-            setTimeout(() => ghost.remove(), 500);
-            lastGhostX = e.clientX;
-            lastGhostY = e.clientY;
-        }
-    });
+    // 13. (Removed Ghost Cursor Trail)
 
     // 6. tsParticles Initialization
     if (typeof tsParticles !== 'undefined') {
