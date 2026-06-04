@@ -2189,6 +2189,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // 5. Spotlight Card Effect
     const panels = document.querySelectorAll(".glass-panel");
     panels.forEach(panel => {
+        const overlay = document.createElement("div");
+        overlay.classList.add("spotlight-overlay");
+        panel.appendChild(overlay);
+
         panel.addEventListener("mousemove", (e) => {
             const rect = panel.getBoundingClientRect();
             const x = e.clientX - rect.left;
