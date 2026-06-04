@@ -2151,13 +2151,39 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 4. Mouse Aura Logic
+    // 4. Mouse Aura & Custom Cursor Logic
     const mouseAura = document.getElementById("mouse-aura");
-    if (mouseAura && window.matchMedia("(min-width: 768px)").matches) {
+    const cursorDot = document.getElementById("cursor-dot");
+    const cursorOutline = document.getElementById("cursor-outline");
+
+    if (window.matchMedia("(min-width: 768px)").matches) {
+        // Skrýt výchozí kurzor
+        document.body.style.cursor = "none";
+        document.querySelectorAll("a, button, input, textarea").forEach(el => el.style.cursor = "none");
+
         window.addEventListener("mousemove", (e) => {
-            mouseAura.style.left = `${e.clientX}px`;
-            mouseAura.style.top = `${e.clientY}px`;
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            if (mouseAura) {
+                mouseAura.style.left = `${posX}px`;
+                mouseAura.style.top = `${posY}px`;
+            }
+            if (cursorDot && cursorOutline) {
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorOutline.style.left = `${posX}px`;
+                cursorOutline.style.top = `${posY}px`;
+            }
         });
+
+        if (cursorOutline) {
+            const clickables = document.querySelectorAll("a, button, .pricing-card, .feature-card, input, textarea");
+            clickables.forEach((el) => {
+                el.addEventListener("mouseenter", () => cursorOutline.classList.add("hover-active"));
+                el.addEventListener("mouseleave", () => cursorOutline.classList.remove("hover-active"));
+            });
+        }
     }
 
     // 5. Spotlight Card Effect
