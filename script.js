@@ -637,7 +637,7 @@ const updateCartUI = () => {
     let finalTotal = total * discountMultiplier;
     if(typeof pointsUsed !== 'undefined' && pointsUsed > 0) {
         if (currentCurrency === 'eur') finalTotal -= Math.round(pointsUsed / 25);
-        else if (currentCurrency === 'usd') finalTotal -= Math.round(pointsUsed / 22);
+        else if (currentCurrency === 'usd') finalTotal -= Math.round(pointsUsed / RATE_USD);
         else finalTotal -= pointsUsed;
         if (finalTotal < 0) finalTotal = 0;
     }
@@ -698,17 +698,6 @@ if(addToCartBtns) {
     });
 }
 
-// Checkout logic
-if(checkoutBtn) {
-    checkoutBtn.addEventListener('click', () => {
-        if (cart.length === 0) {
-            alert(translations[currentLang]['modal.empty_cart']);
-            return;
-        }
-        closeCartSidebar();
-        checkoutModal.classList.add('active');
-    });
-}
 
 if(closeModal) {
     closeModal.addEventListener('click', () => {
@@ -1232,9 +1221,9 @@ themeToggles.forEach(toggleBtn => {
         let theme = 'dark';
         if (document.body.classList.contains('light-mode')) {
             theme = 'light';
-            themeToggles.forEach(t => t.querySelector('i').classList.replace('fa-moon', 'fa-sun'));
+            themeToggles.forEach(t => { if(t) t.querySelector('i').classList.replace('fa-moon', 'fa-sun'); });
         } else {
-            themeToggles.forEach(t => t.querySelector('i').classList.replace('fa-sun', 'fa-moon'));
+            themeToggles.forEach(t => { if(t) t.querySelector('i').classList.replace('fa-sun', 'fa-moon'); });
         }
         localStorage.setItem('theme', theme);
     });
@@ -1306,24 +1295,7 @@ const calcPagesVal = document.getElementById('calc-pages-val');
 const calcTotal = document.getElementById('calc-total');
 const calcCheckboxes = document.querySelectorAll('.calc-checkboxes input');
 
-const updateCalculator = () => {
-    if(!calcPages || !calcTotal) return;
-    let basePrice = 14900;
-    let pages = parseInt(calcPages.value);
-    calcPagesVal.innerText = pages;
-    let total = basePrice + ((pages - 1) * 1500);
-    calcCheckboxes.forEach(cb => {
-        if(cb.checked) total += parseInt(cb.value);
-    });
-    if(currentCurrency === 'eur') total = Math.round(total / RATE_EUR);
-    if(currentCurrency === 'usd') total = Math.round(total / RATE_USD);
-    calcTotal.innerText = formatPriceDynamic(currentLang === 'en' ? total.toLocaleString('en-US') : total.toLocaleString('cs-CZ'));
-};
-
-if(calcPages) calcPages.addEventListener('input', updateCalculator);
-if(calcCheckboxes) calcCheckboxes.forEach(cb => cb.addEventListener('change', updateCalculator));
-
-// Re-run calc on lang/currency change inside applyTranslations
+// Calculator logic handled by updateCalculatorWithEta below
 
 
 // Calc Translations
@@ -1701,7 +1673,7 @@ if (applyPointsBtn) {
             applyPointsBtn.style.display = 'none';
             let formattedPoints = pointsUsed;
             if (currentCurrency === 'eur') formattedPoints = Math.round(pointsUsed / RATE_EUR) + ' €';
-            else if (currentCurrency === 'usd') formattedPoints = '$' + Math.round(pointsUsed / 22);
+            else if (currentCurrency === 'usd') formattedPoints = '$' + Math.round(pointsUsed / RATE_USD);
             else formattedPoints += ' Kč';
             
             pointsMsg.innerText = currentLang === 'en' ? `Applied ${formattedPoints} discount!` : `Uplatněna sleva ${formattedPoints}!`;
@@ -1865,10 +1837,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const sendMessage = async () => {
             const text = chatInput.value.trim();
             if (text) {
+                // Sanitize user input to prevent XSS
+                const safeText = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
                 // Add user message to UI
                 chatMessages.innerHTML += `
                 <div style="background: var(--color-primary); color: white; padding: 10px; border-radius: 12px 12px 0 12px; max-width: 85%; font-size: 0.9rem; align-self: flex-end; margin-bottom: 5px;">
-                    ${text}
+                    ${safeText}
                 </div>`;
                 chatInput.value = '';
                 chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -1888,28 +1862,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const response = await fetch('/api/chat', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ messages: chatHistory, lang: window.currentLang })
+                        body: JSON.stringify({ messages: chatHistory, lang: currentLang })
                     });
                     
                     if (document.getElementById(loadingId)) document.getElementById(loadingId).remove();
 
                     if (response.ok) {
-                if (typeof generateInvoicePDF === 'function') {
-                    generateInvoicePDF({
-                        name: requestData["Jméno"] || requestData["Name"] || '',
-                        email: requestData.email || '',
-                        items: cart.map(i => i.nameCs || i.nameEn),
-                        total: orderTotal
-                    });
-                }
-                if (window.emailjs) {
-                    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-                        to_email: requestData.email,
-                        to_name: requestData["Jméno"] || requestData["Name"] || "Zákazníku",
-                        order_details: requestData.Zprava || requestData.Message
-                    }).catch(e => console.error("EmailJS error:", e));
-                }
-                if (typeof gtag === 'function') gtag('event', 'purchase', { value: orderTotal, currency: currentCurrency.toUpperCase() });
                         const data = await response.json();
                         chatHistory.push({ role: 'assistant', content: data.reply });
                         
@@ -1922,7 +1880,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 } catch (error) {
                     if (document.getElementById(loadingId)) document.getElementById(loadingId).remove();
-                    const errMsg = window.currentLang === 'en' ? "Connection error." : "Chyba připojení k serveru.";
+                    const errMsg = currentLang === 'en' ? "Connection error." : "Chyba připojení k serveru.";
                     chatMessages.innerHTML += `
                     <div style="background: rgba(255,50,50,0.1); color: #ff6b6b; padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem; margin-bottom: 5px;">
                         ${errMsg}
