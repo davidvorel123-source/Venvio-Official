@@ -2239,62 +2239,7 @@ body.light-mode .pricing-card:hover {
 .navbar, .cart-overlay, .modal-overlay, #toast {
     -webkit-backdrop-filter: blur(10px);
 }
-/* Premium Custom Cursor */
-.cursor-dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--color-primary);
-}
-.cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(0, 210, 255, 0.5);
-    transition: left 0.1s ease-out, top 0.1s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
-}
-.cursor-dot, .cursor-outline {
-    position: fixed;
-    top: 0; left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 9999;
-    pointer-events: none;
-}
-.cursor-outline.hover-active {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(0, 210, 255, 0.1);
-    border-color: var(--color-primary);
-}
-body.light-mode .cursor-outline {
-    border: 2px solid rgba(0, 180, 216, 0.5);
-}
-@media (max-width: 768px) {
-    .cursor-dot, .cursor-outline { display: none !important; }
-}
-
-/* Magnetic Button helper */
-.btn {
-    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
-}
-
-/* WOW Factor Styles */
-.mouse-aura {
-    position: fixed;
-    top: 0; left: 0;
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(0, 210, 255, 0.08) 0%, transparent 60%);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 0;
-}
-body.light-mode .mouse-aura {
-    background: radial-gradient(circle, rgba(0, 180, 216, 0.04) 0%, transparent 60%);
-}
-@media (max-width: 768px) {
-    .mouse-aura { display: none !important; }
-}
+/* Custom Cursor Removed */
 
 /* Liquid Gradient Text */
 .liquid-text {
