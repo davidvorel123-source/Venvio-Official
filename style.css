@@ -2339,3 +2339,74 @@ body.light-mode .cursor-outline {
 .btn {
     transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
 }
+
+/* WOW Factor Styles */
+.mouse-aura {
+    position: fixed;
+    top: 0; left: 0;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(0, 210, 255, 0.08) 0%, transparent 60%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+}
+body.light-mode .mouse-aura {
+    background: radial-gradient(circle, rgba(0, 180, 216, 0.04) 0%, transparent 60%);
+}
+@media (max-width: 768px) {
+    .mouse-aura { display: none !important; }
+}
+
+/* Liquid Gradient Text */
+.liquid-text {
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-primary));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: liquid-gradient 8s ease infinite;
+}
+@keyframes liquid-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glitch Logo */
+.logo {
+    position: relative;
+    display: inline-block;
+}
+.logo:hover {
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
+}
+@keyframes glitch {
+    0% { transform: translate(0) }
+    20% { transform: translate(-2px, 2px) }
+    40% { transform: translate(-2px, -2px) }
+    60% { transform: translate(2px, 2px) }
+    80% { transform: translate(2px, -2px) }
+    100% { transform: translate(0) }
+}
+
+/* Spotlight Card Effect */
+.glass-panel {
+    position: relative;
+    overflow: hidden;
+}
+.glass-panel::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.06), transparent 40%);
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+.glass-panel:hover::before { opacity: 1; }
+body.light-mode .glass-panel::before {
+    background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(0, 0, 0, 0.05), transparent 40%);
+}
