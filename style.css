@@ -1191,13 +1191,208 @@ body.light-mode .mesh-bg {
 }
 
 .faq-answer {
+    background: linear-gradient(135deg, var(--color-text), var(--color-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ideal-for { font-size: 0.9rem; color: var(--color-text-muted); }
+
+.pricing-features {
+    list-style: none;
+    flex-grow: 1;
+    margin-bottom: 2rem;
+}
+
+.pricing-features li {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.8rem;
+    color: var(--color-text-muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.pricing-features li:hover {
+    transform: translateX(5px);
+    color: var(--color-text);
+}
+
+.pricing-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Doplňky */
+.addons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.addon-card {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: var(--transition);
+}
+
+.addon-card:hover {
+    transform: translateX(5px);
+    border-color: rgba(0, 210, 255, 0.3);
+}
+
+.addon-icon {
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(0,210,255,0.15), rgba(123,97,255,0.15));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    border: 1px solid rgba(0,210,255,0.2);
+}
+
+.addon-info { flex: 1; }
+.addon-info h4 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+.addon-info p { color: var(--color-text-muted); font-size: 0.9rem; }
+
+.addon-action {
+    text-align: right;
+    min-width: 180px;
+}
+
+.addon-action .price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+}
+
+.addon-action .price span:not([data-price-target]) {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+/* Testimonials */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.testimonial-card {
+    padding: 2.5rem 2rem;
+    transition: var(--transition);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 210, 255, 0.3);
+}
+
+.testimonial-stars {
+    color: #FFD700;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.testimonial-text {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.testimonial-author strong {
+    display: block;
+    font-size: 1rem;
+}
+
+.testimonial-author span {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+/* FAQ */
+.faq-list {
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-item:hover {
+    border-color: rgba(0, 210, 255, 0.3);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.faq-question::after {
+    display: none;
+}
+
+.faq-item.active .faq-question::after {
+    /* removed */
+}
+
+.faq-answer {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease, padding 0.4s ease;
 }
 
 .faq-item.active .faq-answer {
-    max-height: 200px;
+    max-height: 500px;
 }
 
 .faq-answer p {
@@ -1866,10 +2061,14 @@ body.light-mode .footer {
         border-top: 1px solid rgba(0,0,0,0.1);
     }
 }
+body.light-mode .cart-footer {
+    background: #E2E8F0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+body.light-mode .dark-section {
+    background: rgba(0, 0, 0, 0.02);
+}
 /* Testimonials/Portfolio Carousel */
-/* Disabled carousel to show all items in a grid */
-
-/* Pricing Card Elevation */
 .pricing-card {
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 }
@@ -1913,7 +2112,7 @@ body.light-mode .pricing-card:hover {
 .calc-checkbox-label input { display: none; }
 .custom-checkbox { width: 24px; height: 24px; border: 2px solid rgba(255,255,255,0.2); border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s; position: relative; }
 .calc-checkbox-label input:checked + .custom-checkbox { background: var(--color-primary); border-color: var(--color-primary); }
-.calc-checkbox-label input:checked + .custom-checkbox::after { content: '?'; color: white; position: absolute; font-size: 14px; font-weight: bold; }
+.calc-checkbox-label input:checked + .custom-checkbox::after { content: '✓'; color: white; position: absolute; font-size: 14px; font-weight: bold; }
 .calc-result { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; }
 .calc-result h3 { font-size: 1.2rem; color: var(--color-text-muted); margin-bottom: 0.5rem; }
 .calc-price { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
