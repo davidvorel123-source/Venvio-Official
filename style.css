@@ -861,11 +861,12 @@ body.light-mode .mesh-bg {
 .portfolio-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(6, 11, 24, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
     transition: var(--transition);
-    z-index: 5;
-    cursor: none;
 }
 
 .portfolio-card:hover .portfolio-overlay {
