@@ -2210,12 +2210,13 @@ document.addEventListener("DOMContentLoaded", () => {
     function typeWriterEffect() {
         const typewriterEl = document.getElementById("typewriter-text");
         if (!typewriterEl) return;
-        const text = typewriterEl.innerText;
-        typewriterEl.innerText = "";
+        const text = typewriterEl.getAttribute("data-original-text") || typewriterEl.textContent;
+        typewriterEl.setAttribute("data-original-text", text);
+        typewriterEl.textContent = "";
         let i = 0;
         function type() {
             if (i < text.length) {
-                typewriterEl.innerText += text.charAt(i);
+                typewriterEl.textContent += text.charAt(i);
                 i++;
                 setTimeout(type, 50);
             }
