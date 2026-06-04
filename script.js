@@ -2256,33 +2256,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 11. (Removed Scroll Text Reveal)
 
-    // 12. Follower Cursor on Portfolio Images
-    const portfolioImgs = document.querySelectorAll(".portfolio-img");
-    const follower = document.createElement("div");
-    follower.classList.add("cursor-follower");
-    follower.setAttribute("data-i18n", "portfolio.btn_follower");
-    const initLang = localStorage.getItem("lang") || "cs";
-    follower.innerText = translations[initLang] && translations[initLang]["portfolio.btn_follower"] ? translations[initLang]["portfolio.btn_follower"] : "Zobrazit";
-    document.body.appendChild(follower);
-
-    portfolioImgs.forEach(img => {
-        img.addEventListener("mouseenter", () => {
-            follower.style.opacity = "1";
-            follower.style.transform = "scale(1) translate(-50%, -50%)";
-            cursorOutline.style.opacity = "0";
-            cursorDot.style.opacity = "0";
-        });
-        img.addEventListener("mouseleave", () => {
-            follower.style.opacity = "0";
-            follower.style.transform = "scale(0) translate(-50%, -50%)";
-            cursorOutline.style.opacity = "1";
-            cursorDot.style.opacity = "1";
-        });
-        img.addEventListener("mousemove", (e) => {
-            follower.style.left = `${e.clientX}px`;
-            follower.style.top = `${e.clientY}px`;
-        });
-    });
+    // 12. (Removed Follower Cursor)
 
     // 13. Ghost Cursor Trail
     let lastGhostX = 0, lastGhostY = 0;
