@@ -29,12 +29,17 @@ html {
     font-size: 16px;
 }
 
+html, body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+}
+
 body {
     background-color: var(--color-bg-dark);
     color: var(--color-text);
     font-family: var(--font-body);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 body.loading {
@@ -2110,8 +2115,8 @@ body.light-mode .marquee-content span { color: rgba(0,0,0,0.6); }
     .pricing-grid { padding: 0 1rem; }
     
     /* Fixed Elements */
-    .fab-whatsapp { width: 50px; height: 50px; font-size: 1.5rem; bottom: 1.5rem; right: 1.5rem; }
-    .floating-contact { bottom: 85px; right: 20px; }
+    .fab-whatsapp { width: 45px; height: 45px; font-size: 1.2rem; bottom: 20px; right: 20px; }
+    .floating-contact { bottom: 140px; right: 20px; }
     .floating-contact-btn { width: 45px; height: 45px; font-size: 1.2rem; }
     .back-to-top { bottom: 20px; left: 20px; width: 45px; height: 45px; }
     
@@ -2140,8 +2145,8 @@ body.light-mode .marquee-content span { color: rgba(0,0,0,0.6); }
 @media (max-width: 768px) {
     /* Chat Widget Fixes */
     #chat-widget {
-        right: 15px;
-        bottom: 80px;
+        right: 20px !important;
+        bottom: 80px !important;
     }
     #chat-window {
         width: calc(100vw - 30px);
