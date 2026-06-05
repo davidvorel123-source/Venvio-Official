@@ -2080,7 +2080,7 @@ if (typeof applyTranslations === 'function') {
 /* Premium UI Interactions */
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Initialize Vanilla Tilt for Cards
-    if (typeof VanillaTilt !== 'undefined') {
+    if (typeof VanillaTilt !== 'undefined' && window.matchMedia("(min-width: 768px)").matches) {
         VanillaTilt.init(document.querySelectorAll(".pricing-card, .feature-card"), {
             max: 15,
             speed: 400,
@@ -2208,7 +2208,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 color: { value: "#00D2FF" },
                 links: { color: "#7B61FF", distance: 150, enable: true, opacity: 0.3, width: 1 },
                 move: { enable: true, speed: 1 },
-                number: { density: { enable: true, area: 800 }, value: 60 },
+                number: { density: { enable: true, area: 800 }, value: window.innerWidth < 768 ? 20 : 60 },
                 opacity: { value: 0.5 },
                 size: { value: { min: 1, max: 3 } }
             },
