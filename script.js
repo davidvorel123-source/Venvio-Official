@@ -1929,10 +1929,10 @@ if (authBtnMobile) {
         if (navLinksEl && navLinksEl.classList.contains('mobile-open')) {
             navLinksEl.classList.remove('mobile-open');
         }
-        if (authBtn) {
-            authBtn.click(); // Trigger the desktop button's logic
-        } else {
-            authModal.classList.add('active'); // Fallback
+        if (authModal) {
+            authModal.classList.add('active');
+            window.authMode = "login";
+            if (typeof updateAuthModeUI === 'function') updateAuthModeUI();
         }
     });
 }
