@@ -61,7 +61,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=v32">
+    <link rel="stylesheet" href="style.css?v=v33">
     <style>body { background-color: var(--color-bg-dark, #060B18); }</style>
     <link rel="manifest" href="manifest.json">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -94,6 +94,7 @@
                 <li><a href="#cenik" data-i18n="nav.pricing">Ceník</a></li>
                 <li><a href="#doplnky" data-i18n="nav.addons">Doplňky</a></li>
                 <li><a href="#faq">FAQ</a></li>
+                <li class="mobile-only-link"><a href="#" id="mobile-login-link" style="color: var(--color-primary); font-weight: bold;"><i class="fa-solid fa-user"></i> <span data-i18n="auth.title">Klientská sekce</span></a></li>
                 <li class="mobile-switchers-container">
                     <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; align-items: center; flex-wrap: wrap;">
                         <button id="theme-toggle-mobile" class="btn-icon" aria-label="Toggle Theme" style="background:transparent; border:none; color:var(--color-text); font-size:1.2rem; cursor:pointer;">
@@ -937,10 +938,10 @@
     </div>
 
     <!-- JS -->
-    <script type="module" src="auth.js?v=v32"></script>
+    <script type="module" src="auth.js?v=v33"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({ once: true, offset: 50, duration: 800 });</script>
-    <script src="script.js?v=v32" defer></script>
+    <script src="script.js?v=v33" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
 </body>
