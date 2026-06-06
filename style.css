@@ -2162,15 +2162,15 @@ body.light-mode .marquee-content span { color: rgba(0,0,0,0.6); }
     }
     
     /* Auth Modal Fixes */
+    .btn { white-space: normal; text-align: center; line-height: 1.2; }
+    
     .auth-tabs .btn {
         font-size: 0.8rem;
-        padding: 0.6rem 0.2rem;
-        white-space: nowrap;
+        padding: 0.6rem 0.5rem;
     }
     #btn-google, #btn-facebook {
         font-size: 0.85rem;
         padding: 0.6rem 0.5rem;
-        white-space: nowrap;
         gap: 8px;
     }
     #btn-google svg, #btn-facebook i {
