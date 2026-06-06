@@ -1739,6 +1739,7 @@ body.light-mode .mesh-bg {
     .hero-trust { gap: 1rem; }
     .footer-links-grid { flex-direction: column; gap: 2rem; }
     .cursor-glow { display: none; }
+    .mobile-only-link { display: block; margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; }
 }
 
 /* Utility */
@@ -2289,6 +2290,11 @@ body.light-mode .marquee-content span { color: rgba(0,0,0,0.6); }
 .glass-panel {
     position: relative;
 }
+
+.mobile-only-link {
+    display: none;
+}
+
 .spotlight-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
