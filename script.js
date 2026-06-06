@@ -1923,6 +1923,22 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- MOBILE AUTH FIX ---
+const mobileLoginLink = document.getElementById('mobile-login-link');
+if (mobileLoginLink) {
+    mobileLoginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const navLinksEl = document.getElementById('nav-links');
+        if (navLinksEl && navLinksEl.classList.contains('mobile-open')) {
+            navLinksEl.classList.remove('mobile-open');
+        }
+        if (authModal) {
+            authModal.classList.add('active');
+            window.authMode = "login";
+            if (typeof updateAuthModeUI === 'function') updateAuthModeUI();
+        }
+    });
+}
+
 if (authBtnMobile) {
     authBtnMobile.addEventListener('click', () => {
         const navLinksEl = document.getElementById('nav-links');
