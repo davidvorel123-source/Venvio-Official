@@ -1472,6 +1472,18 @@ const closeAuthModal = document.getElementById('close-auth-modal');
 const authBodyLogin = document.getElementById('auth-body-login');
 const authBodyProfile = document.getElementById('auth-body-profile');
 const authForm = document.getElementById('auth-form');
+
+if (authForm) {
+    authForm.addEventListener('submit', (e) => {
+        // This will be overridden or executed alongside auth.js
+        // If auth.js didn't load, window.isFirebaseConfigured won't be true
+        if (!window.isFirebaseConfigured) {
+            e.preventDefault();
+            alert("Přihlášení není aktuálně dostupné. Zkontrolujte připojení nebo vypněte blokování reklam (AdBlock), které může blokovat přihlašovací systém.");
+        }
+    });
+}
+
 const authProfileName = document.getElementById('auth-profile-name');
 const authProfileEmail = document.getElementById('auth-profile-email');
 const authProfilePoints = document.getElementById('auth-profile-points');
@@ -1530,6 +1542,10 @@ if (togglePasswordBtn) {
 }
 
 window.updateAuthModeUI = () => {
+    if (window.currentUser) {
+        if (typeof updateAuthUI === 'function') updateAuthUI();
+        return;
+    }
     if (!tabLogin) return;
     if (authError) authError.style.display = 'none';
     const authOptions = document.getElementById('auth-options');
