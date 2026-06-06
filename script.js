@@ -759,10 +759,22 @@ if(checkoutForm) {
             }, 0);
             
             let finalCheckoutTotal = rawTotal * discountMultiplier;
+            let pointsDiscount = 0;
+            if (typeof pointsUsed !== "undefined" && pointsUsed > 0) {
+                if (currentCurrency === "czk") pointsDiscount = pointsUsed;
+                else if (currentCurrency === "eur") pointsDiscount = Math.round(pointsUsed / RATE_EUR);
+                else if (currentCurrency === "usd") pointsDiscount = Math.round(pointsUsed / RATE_USD);
+            }
+            finalCheckoutTotal -= pointsDiscount;
+            if (finalCheckoutTotal < 0) finalCheckoutTotal = 0;
+            
             totalString = formatPriceDynamic(finalCheckoutTotal);
             if (discountMultiplier < 1) {
                 const pct = Math.round((1 - discountMultiplier) * 100);
                 totalString += currentLang === 'en' ? ` (Discount ${pct}% applied)` : ` (Sleva ${pct}% uplatněna)`;
+            }
+            if (pointsDiscount > 0) {
+                totalString += `\n[- Venvio Coins: -${formatPriceDynamic(pointsDiscount)}]`;
             }
     
         }
