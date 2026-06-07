@@ -1949,8 +1949,20 @@ if (mobileLoginLink) {
         }
         if (authModal) {
             authModal.classList.add('active');
-            window.authMode = "login";
-            if (typeof updateAuthModeUI === 'function') updateAuthModeUI();
+            if (window.currentUser) {
+                if (authBodyLogin) authBodyLogin.style.display = 'none';
+                if (authBodyProfile) {
+                    authBodyProfile.style.display = 'block';
+                    if (authProfileName) authProfileName.innerText = window.currentUser.name;
+                    if (authProfileEmail) authProfileEmail.innerText = window.currentUser.email;
+                    if (authProfilePoints) authProfilePoints.innerText = window.currentUser.points;
+                }
+            } else {
+                window.authMode = "login";
+                if (typeof updateAuthModeUI === 'function') updateAuthModeUI();
+                if (authBodyLogin) authBodyLogin.style.display = 'block';
+                if (authBodyProfile) authBodyProfile.style.display = 'none';
+            }
         }
     });
 }
@@ -1963,8 +1975,20 @@ if (authBtnMobile) {
         }
         if (authModal) {
             authModal.classList.add('active');
-            window.authMode = "login";
-            if (typeof updateAuthModeUI === 'function') updateAuthModeUI();
+            if (window.currentUser) {
+                if (authBodyLogin) authBodyLogin.style.display = 'none';
+                if (authBodyProfile) {
+                    authBodyProfile.style.display = 'block';
+                    if (authProfileName) authProfileName.innerText = window.currentUser.name;
+                    if (authProfileEmail) authProfileEmail.innerText = window.currentUser.email;
+                    if (authProfilePoints) authProfilePoints.innerText = window.currentUser.points;
+                }
+            } else {
+                window.authMode = "login";
+                if (typeof updateAuthModeUI === 'function') updateAuthModeUI();
+                if (authBodyLogin) authBodyLogin.style.display = 'block';
+                if (authBodyProfile) authBodyProfile.style.display = 'none';
+            }
         }
     });
 }
