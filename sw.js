@@ -1,4 +1,4 @@
-const CACHE_NAME = 'venvio-cache-v35';
+const CACHE_NAME = 'venvio-cache-v36';
 const urlsToCache = [
   '/',
   '/index.html',
