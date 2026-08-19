@@ -61,19 +61,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=v36">
+    <link rel="stylesheet" href="style.css?v=v37">
     <style>body { background-color: var(--color-bg-dark, #060B18); }</style>
     <link rel="manifest" href="manifest.json">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>if(window.emailjs){ emailjs.init("YOUR_PUBLIC_KEY"); }</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body class="dark-theme">
     <!-- Noise Overlay -->
     <div class="noise-overlay"></div>
-    <!-- Scroll Progress -->
-    <div id="scroll-progress"></div>
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scroll-progress"></div>
 
@@ -193,7 +189,7 @@
                 <div class="stat-item glass-panel fade-in-up">
                     <div class="stat-number" data-count="50">0</div>
                     <div class="stat-plus">+</div>
-                    <div class="stat-label" data-i18n="stats.projects">Spokojenost klientů</div>
+                    <div class="stat-label" data-i18n="stats.projects">Dokončených projektů</div>
                 </div>
                 <div class="stat-item glass-panel fade-in-up delay-1">
                     <div class="stat-number" data-count="24">0</div>
@@ -552,7 +548,7 @@
                         <p data-i18n="addon3.desc">Návrh minimalistického loga a definice firemních barev.</p>
                     </div>
                     <div class="addon-action">
-                        <div class="price" data-price-target="add-identity">2 500 Kč</div>
+                        <div class="price" data-price-target="add-identity">8 900 Kč</div>
                         <button class="btn btn-outline add-to-cart" data-id="add-identity" data-name-cs="Vizuální identita" data-name-en="Visual Identity" data-i18n="addon.btn_add">Přidat</button>
                     </div>
                 </div>
@@ -877,6 +873,18 @@
         </div>
     </div>
 
+    <!-- Legal Modal (Terms & Privacy) -->
+    <div class="modal-overlay" id="legal-modal">
+        <div class="modal glass-panel fade-in-up" style="max-width: 680px; max-height: 80vh; overflow-y: auto;">
+            <div class="modal-header" style="position: sticky; top: 0; background: var(--color-bg-panel); backdrop-filter: blur(20px); z-index: 1; padding: 1.5rem; border-bottom: 1px solid var(--color-border);">
+                <h2 id="legal-title">Obchodní podmínky</h2>
+                <button class="close-modal" id="close-legal-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="legal-content" style="padding: 1.5rem; line-height: 1.8; color: var(--color-text-muted);">
+            </div>
+        </div>
+    </div>
+
     <!-- Back to Top -->
     <button class="back-to-top" id="back-to-top" aria-label="Zpět nahoru">
         <i class="fa-solid fa-arrow-up"></i>
@@ -938,10 +946,10 @@
     </div>
 
     <!-- JS -->
-    <script type="module" src="auth.js?v=v36"></script>
+    <script type="module" src="auth.js?v=v37"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({ once: true, offset: 50, duration: 800 });</script>
-    <script src="script.js?v=v36" defer></script>
+    <script src="script.js?v=v37" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
 </body>

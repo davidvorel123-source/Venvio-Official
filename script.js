@@ -1,3 +1,8 @@
+// Helper: Safe JSON parse with fallback
+const safeJsonParse = (str, fallback) => {
+    try { return JSON.parse(str) || fallback; } catch(e) { return fallback; }
+};
+
 let pointsUsed = 0;
 
 // Legal Modal
@@ -32,26 +37,35 @@ const legalTexts = {
 let currentModalType = null;
 
 if (legalModal) {
-    document.querySelector('a[data-i18n="footer.terms"]').addEventListener('click', (e) => {
-        e.preventDefault();
-        currentModalType = 'terms';
-        legalTitle.innerText = legalTexts.terms[currentLang].title;
-        legalContent.innerHTML = legalTexts.terms[currentLang].content;
-        legalModal.classList.add('active');
-    });
+    const termsLink = document.querySelector('a[data-i18n="footer.terms"]');
+    const privacyLink = document.querySelector('a[data-i18n="footer.privacy"]');
 
-    document.querySelector('a[data-i18n="footer.privacy"]').addEventListener('click', (e) => {
-        e.preventDefault();
-        currentModalType = 'privacy';
-        legalTitle.innerText = legalTexts.privacy[currentLang].title;
-        legalContent.innerHTML = legalTexts.privacy[currentLang].content;
-        legalModal.classList.add('active');
-    });
+    if (termsLink) {
+        termsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentModalType = 'terms';
+            legalTitle.innerText = legalTexts.terms[currentLang].title;
+            legalContent.innerHTML = legalTexts.terms[currentLang].content;
+            legalModal.classList.add('active');
+        });
+    }
 
-    closeLegalModal.addEventListener('click', () => {
-        legalModal.classList.remove('active');
-        currentModalType = null;
-    });
+    if (privacyLink) {
+        privacyLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentModalType = 'privacy';
+            legalTitle.innerText = legalTexts.privacy[currentLang].title;
+            legalContent.innerHTML = legalTexts.privacy[currentLang].content;
+            legalModal.classList.add('active');
+        });
+    }
+
+    if (closeLegalModal) {
+        closeLegalModal.addEventListener('click', () => {
+            legalModal.classList.remove('active');
+            currentModalType = null;
+        });
+    }
     
     // Close on click outside
     legalModal.addEventListener('click', (e) => {
@@ -713,6 +727,25 @@ if(closeModal) {
     });
 }
 
+// Close checkout modal on overlay click
+if(checkoutModal) {
+    checkoutModal.addEventListener('click', (e) => {
+        if (e.target === checkoutModal) {
+            checkoutModal.classList.remove('active');
+        }
+    });
+}
+
+// Close auth modal on overlay click
+const authModalEl = document.getElementById('auth-modal');
+if (authModalEl) {
+    authModalEl.addEventListener('click', (e) => {
+        if (e.target === authModalEl) {
+            authModalEl.classList.remove('active');
+        }
+    });
+}
+
 if(checkoutForm) {
     checkoutForm.addEventListener('submit', async (e) => {
         e.preventDefault(); // Zabrání výchozímu odeslání stránky
@@ -841,13 +874,7 @@ if(checkoutForm) {
                         total: orderTotal
                     });
                 }
-                if (window.emailjs) {
-                    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-                        to_email: requestData.email,
-                        to_name: requestData["Jméno Klienta"] || requestData["Name"] || "Zákazníku",
-                        order_details: requestData.Zprava || requestData.Message
-                    }).catch(e => console.error("EmailJS error:", e));
-                }
+                // EmailJS autoresponder – not configured, skipped
                 if (typeof gtag === 'function') gtag('event', 'purchase', { value: orderTotal, currency: currentCurrency.toUpperCase() });
                 localStorage.setItem('venvioLastOrderTime', Date.now().toString());
                 if (window.currentUser) {
@@ -922,17 +949,6 @@ translations.en['dash.orders'] = "Order History";
 translations.cs['dash.no_orders'] = "Zatím nemáte žádné objednávky.";
 translations.en['dash.no_orders'] = "You have no orders yet.";
 
-
-translations.cs['chat.tooltip'] = "Chatujte s naší AI";
-translations.en['chat.tooltip'] = "Chat with our AI";
-translations.cs['chat.header_title'] = "Venvio Podpora";
-translations.en['chat.header_title'] = "Venvio Support";
-translations.cs['chat.header_desc'] = "Odpovídáme ihned";
-translations.en['chat.header_desc'] = "Replies instantly";
-translations.cs['chat.welcome'] = "Dobrý den! 👋 Jak vám můžeme pomoci s vaším webem?";
-translations.en['chat.welcome'] = "Hello! 👋 How can we help you with your website?";
-translations.cs['chat.placeholder'] = "Napište zprávu...";
-translations.en['chat.placeholder'] = "Type a message...";
 
 // Translations Dictionary (update modal submit text)
 translations.cs['modal.submit'] = "Odeslat objednávku";
@@ -1792,20 +1808,6 @@ translations.cs['auth.password_confirm_ph'] = 'Zopakujte heslo';
 translations.en['auth.password_confirm_ph'] = 'Repeat your password';
 translations.cs['auth.points_info'] = 'Za každou dokončenou objednávku získáte 1000 Venvio Coins. Body připisujeme po ověření.';
 translations.en['auth.points_info'] = 'You earn 1000 Venvio Coins for every completed order. Points are assigned after verification.';
-translations.cs['auth.name'] = 'Jméno';
-translations.en['auth.name'] = 'Name';
-translations.cs['auth.email'] = 'E-mail';
-translations.en['auth.email'] = 'Email';
-translations.cs['auth.points_label'] = 'Venvio Coins';
-translations.en['auth.points_label'] = 'Venvio Coins';
-translations.cs['auth.points_val'] = '1 bod = 1 Kč sleva';
-translations.en['auth.points_val'] = '1 coin = 1 CZK discount';
-translations.cs['auth.logout'] = 'Odhlásit se';
-translations.en['auth.logout'] = 'Log out';
-translations.cs['cart.points_avail'] = 'Máte k dispozici:';
-translations.en['cart.points_avail'] = 'You have:';
-translations.cs['cart.use_points'] = 'Uplatnit body jako slevu';
-translations.en['cart.use_points'] = 'Use coins for discount';
 
 // Sync cart across multiple tabs
 window.addEventListener('storage', (e) => {
@@ -1885,9 +1887,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 } catch (error) {
                     if (document.getElementById(loadingId)) document.getElementById(loadingId).remove();
-                    const errMsg = currentLang === 'en' ? "Connection error." : "Chyba připojení k serveru.";
+                    const whatsappUrl = currentLang === 'en'
+                        ? 'https://wa.me/420775104206?text=Hello,%20I%20am%20interested%20in%20a%20new%20website.'
+                        : 'https://wa.me/420775104206?text=Dobrý%20den,%20mám%20zájem%20o%20nový%20web.';
+                    const errMsg = currentLang === 'en'
+                        ? `For a quick response, contact us directly on <a href="${whatsappUrl}" target="_blank" rel="noopener" style="color: #00D2FF; text-decoration: underline;">WhatsApp</a> or write to <a href="mailto:info@venvio.dev" style="color: #00D2FF;">info@venvio.dev</a>.`
+                        : `Pro rychlou odpověď nás kontaktujte přímo na <a href="${whatsappUrl}" target="_blank" rel="noopener" style="color: #00D2FF; text-decoration: underline;">WhatsApp</a> nebo napište na <a href="mailto:info@venvio.dev" style="color: #00D2FF;">info@venvio.dev</a>.`;
                     chatMessages.innerHTML += `
-                    <div style="background: rgba(255,50,50,0.1); color: #ff6b6b; padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem; margin-bottom: 5px;">
+                    <div style="background: rgba(0,210,255,0.07); padding: 10px; border-radius: 12px 12px 12px 0; max-width: 95%; font-size: 0.9rem; margin-bottom: 5px; border: 1px solid rgba(0,210,255,0.2);">
                         ${errMsg}
                     </div>`;
                 }
@@ -2198,27 +2205,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 6. Scroll Progress Bar
-    const scrollProgress = document.getElementById("scroll-progress");
-    if (scrollProgress) {
-        window.addEventListener("scroll", () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.body.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            scrollProgress.style.width = scrollPercent + "%";
-        });
-    }
+    // (Scroll progress & parallax handled by top-level listeners above)
 
-    // 7. Parallax Background
-    const bgGlows = document.querySelectorAll(".hero-bg-glow");
-    if (window.matchMedia("(min-width: 768px)").matches) {
-        window.addEventListener("scroll", () => {
-            const scrolled = window.scrollY;
-            bgGlows.forEach((glow, index) => {
-                const speed = (index + 1) * 0.2;
-                glow.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-    }
+    // 7. (Parallax managed by top-level scroll listener)
 
     // 8. Typewriter Effect for Hero Badge
     function typeWriterEffect() {
