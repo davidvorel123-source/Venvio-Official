@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+    <meta charset="UTF-8">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S7HKBTYMQ7"></script>
     <script>
@@ -10,7 +11,6 @@
 
       gtag('config', 'G-S7HKBTYMQ7');
     </script>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#060B18" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#F1F5F9" media="(prefers-color-scheme: light)">
@@ -18,6 +18,9 @@
     <!-- Basic SEO Meta Tags -->
     <title>Tvorba webových stránek na míru do 24 hodin | Venvio</title>
     <link rel="canonical" href="https://venvio.dev/">
+    <link rel="alternate" hreflang="cs" href="https://venvio.dev/">
+    <link rel="alternate" hreflang="en" href="https://venvio.dev/?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://venvio.dev/">
     <meta name="description" content="Venvio – Expressní tvorba profesionálních webových stránek pro firmy a živnostníky. Moderní, responzivní web za skvělou cenu hotový do 24 hodin.">
     <meta name="keywords" content="tvorba webu, webové stránky, tvorba e-shopu, webdesign, levné weby, weby pro živnostníky, vytvoření webu, rychlý web, Venvio">
     <meta name="author" content="Venvio">
@@ -28,13 +31,17 @@
     <meta property="og:title" content="Tvorba webových stránek na míru do 24 hodin | Venvio">
     <meta property="og:description" content="Expressní tvorba profesionálních webových stránek. Moderní, responzivní web za skvělou cenu hotový do 24 hodin.">
     <meta property="og:image" content="https://venvio.dev/og-image.png">
+    <meta property="og:site_name" content="Venvio">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://venvio.dev/">
-    <meta property="twitter:title" content="Tvorba webových stránek na míru do 24 hodin | Venvio">
-    <meta property="twitter:description" content="Expressní tvorba profesionálních webových stránek. Moderní, responzivní web za skvělou cenu hotový do 24 hodin.">
-    <meta property="twitter:image" content="https://venvio.dev/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://venvio.dev/">
+    <meta name="twitter:title" content="Tvorba webových stránek na míru do 24 hodin | Venvio">
+    <meta name="twitter:description" content="Expressní tvorba profesionálních webových stránek. Moderní, responzivní web za skvělou cenu hotový do 24 hodin.">
+    <meta name="twitter:image" content="https://venvio.dev/og-image.png">
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -45,13 +52,54 @@
       "image": "https://venvio.dev/og-image.png",
       "@id": "https://venvio.dev/",
       "url": "https://venvio.dev/",
-      "telephone": "",
+      "telephone": "+420 775 104 206",
       "priceRange": "14990 Kč - 29990 Kč",
       "address": {
         "@type": "PostalAddress",
-        "addressCountry": "CZ"
+        "addressCountry": "CZ",
+        "addressLocality": "Praha"
       },
       "description": "Expressní tvorba profesionálních webových stránek, vývoj webových aplikací (SaaS), integrace AI chatbotů a automatizace firemních procesů."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Opravdu dostanu web do 24 hodin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ano! Jakmile obdržíme všechny potřebné podklady (texty, obrázky, logo), začneme okamžitě pracovat. V naprosté většině případů je web hotový a nasazený online do 24 hodin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co když s webem nebudu spokojen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vaše spokojenost je pro nás prioritou. Provádíme bezplatné revize a úpravy, dokud nebudete s výsledkem naprosto spokojeni."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jaké podklady od mě budete potřebovat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stačí nám texty, které chcete na webu zobrazit, fotky (produkty, interiér, tým), logo (pokud máte) a vaše barevné preference. S čímkoli dalším vám rádi pomůžeme."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Budu moct web sám upravovat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ano, předáme vám kompletní přístupy. Pro rozsáhlejší úpravy doporučujeme naši měsíční správu nebo hodinovou sazbu."
+          }
+        }
+      ]
     }
     </script>
 
@@ -64,8 +112,6 @@
     <link rel="stylesheet" href="style.css?v=v37">
     <style>body { background-color: var(--color-bg-dark, #060B18); }</style>
     <link rel="manifest" href="manifest.json">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body class="dark-theme">
     <!-- Noise Overlay -->
@@ -97,8 +143,8 @@
                             <i class="fa-solid fa-moon"></i>
                         </button>
                         <div class="lang-switcher">
-                            <button class="lang-btn active" data-lang="cs"><img src="https://flagcdn.com/w20/cz.png" alt="CZ" style="vertical-align: middle; margin-right: 5px;">CZ</button>
-                            <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="EN" style="vertical-align: middle; margin-right: 5px;">EN</button>
+                            <button class="lang-btn active" data-lang="cs"><img src="https://flagcdn.com/w20/cz.png" alt="" style="vertical-align: middle; margin-right: 5px;">CZ</button>
+                            <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="" style="vertical-align: middle; margin-right: 5px;">EN</button>
                         </div>
                         <div class="lang-switcher">
                             <button class="curr-btn active" data-curr="czk">Kč</button>
@@ -117,8 +163,8 @@
                           <i class="fa-solid fa-moon"></i>
                       </button>
                       <div class="lang-switcher">
-                        <button class="lang-btn active" data-lang="cs"><img src="https://flagcdn.com/w20/cz.png" alt="CZ" style="vertical-align: middle; margin-right: 5px;">CZ</button>
-                        <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="EN" style="vertical-align: middle; margin-right: 5px;">EN</button>
+                        <button class="lang-btn active" data-lang="cs"><img src="https://flagcdn.com/w20/cz.png" alt="" style="vertical-align: middle; margin-right: 5px;">CZ</button>
+                        <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="" style="vertical-align: middle; margin-right: 5px;">EN</button>
                     </div>
                     <div class="lang-switcher">
                         <button class="curr-btn active" data-curr="czk">Kč</button>
@@ -182,6 +228,7 @@
         </div>
     </div>
 
+    <main id="main-content">
     <!-- Stats Counter -->
     <section class="stats-section">
         <div class="container">
@@ -344,7 +391,7 @@
                 <!-- Projekt 1 -->
                 <div class="portfolio-card glass-panel fade-in-up delay-1" data-aos="fade-up">
                     <div class="portfolio-img">
-                        <img loading="lazy" src="assets/crush-burger.jpg" alt="Crush Burger">
+                        <img loading="lazy" src="assets/crush-burger.jpg" alt="Crush Burger" width="600" height="400">
                         <div class="portfolio-overlay">
                             <a href="https://venvio-crush-burger.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="portfolio.btn">Zobrazit web</span></a>
                         </div>
@@ -359,7 +406,7 @@
                 <!-- Projekt 2 -->
                 <div class="portfolio-card glass-panel fade-in-up delay-2" data-aos="fade-up">
                     <div class="portfolio-img">
-                        <img loading="lazy" src="assets/lumiere-cafe.jpg" alt="Lumiere Cafe">
+                        <img loading="lazy" src="assets/lumiere-cafe.jpg" alt="Lumiere Cafe" width="600" height="400">
                         <div class="portfolio-overlay">
                             <a href="https://venvio-lumiere-cafe.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="portfolio.btn">Zobrazit web</span></a>
                         </div>
@@ -374,7 +421,7 @@
                 <!-- Projekt 3 -->
                 <div class="portfolio-card glass-panel fade-in-up delay-3" data-aos="fade-up">
                     <div class="portfolio-img">
-                        <img loading="lazy" src="assets/aura-dining.jpg" alt="Aura Fine Dining">
+                        <img loading="lazy" src="assets/aura-dining.jpg" alt="Aura Fine Dining" width="600" height="400">
                         <div class="portfolio-overlay">
                             <a href="https://venvio-aura-fine-dinings.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="portfolio.btn">Zobrazit web</span></a>
                         </div>
@@ -518,7 +565,7 @@
                 <div class="addon-card glass-panel fade-in-up delay-1">
                     <div class="addon-icon"><i class="fa-solid fa-globe"></i></div>
                     <div class="addon-info">
-                        <h4 data-i18n="addon1.title">Vlastní doména (.cz, .com)</h4>
+                        <h3 data-i18n="addon1.title">Vlastní doména (.cz, .com)</h3>
                         <p data-i18n="addon1.desc">Zajištění prémiové domény pro vaši značku na 1 rok včetně SSL certifikátu.</p>
                     </div>
                     <div class="addon-action">
@@ -531,7 +578,7 @@
                 <div class="addon-card glass-panel fade-in-up delay-2">
                     <div class="addon-icon"><i class="fa-solid fa-wrench"></i></div>
                     <div class="addon-info">
-                        <h4 data-i18n="addon2.title">Měsíční správa a podpora</h4>
+                        <h3 data-i18n="addon2.title">Měsíční správa a podpora</h3>
                         <p data-i18n="addon2.desc">Pravidelné zálohování webu, aktualizace systému, zabezpečení a drobné úpravy obsahu na přání.</p>
                     </div>
                     <div class="addon-action">
@@ -544,7 +591,7 @@
                 <div class="addon-card glass-panel fade-in-up delay-3">
                     <div class="addon-icon"><i class="fa-solid fa-palette"></i></div>
                     <div class="addon-info">
-                        <h4 data-i18n="addon3.title">Tvorba vizuální identity</h4>
+                        <h3 data-i18n="addon3.title">Tvorba vizuální identity</h3>
                         <p data-i18n="addon3.desc">Návrh minimalistického loga a definice firemních barev.</p>
                     </div>
                     <div class="addon-action">
@@ -557,7 +604,7 @@
                 <div class="addon-card glass-panel fade-in-up delay-4">
                     <div class="addon-icon"><i class="fa-solid fa-clock"></i></div>
                     <div class="addon-info">
-                        <h4 data-i18n="addon4.title">Hodinová sazba (Vícepráce)</h4>
+                        <h3 data-i18n="addon4.title">Hodinová sazba (Vícepráce)</h3>
                         <p data-i18n="addon4.desc">Práce nad rámec balíčků (rozšiřování webu, specifické animace a kódování). Uveďte počet hodin v košíku.</p>
                     </div>
                     <div class="addon-action">
@@ -661,18 +708,19 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h2><span class="logo-icon"><i class="fa-solid fa-bolt"></i></span> VENVIO</h2>
+                    <div class="footer-brand-title" style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;"><span class="logo-icon"><i class="fa-solid fa-bolt"></i></span> VENVIO</div>
                     <p data-i18n="footer.desc">Expressní webová prezentace & marketing.</p>
                 </div>
                 <div class="footer-links-grid">
                     <div>
-                        <h4 data-i18n="footer.nav_title">Navigace</h4>
+                        <h3 data-i18n="footer.nav_title">Navigace</h3>
                         <ul>
                             <li><a href="#vyhody" data-i18n="nav.why_us">Proč my</a></li>
                             <li><a href="#sluzby" data-i18n="nav.services">Služby</a></li>
@@ -682,16 +730,16 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="scramble-text" data-i18n="footer.contact_title">Kontakt</h4>
+                        <h3 class="scramble-text" data-i18n="footer.contact_title">Kontakt</h3>
                         <ul>
-                            <li><a href="tel:+420733175958" style="color: inherit; text-decoration: none;"><i class="fa-solid fa-phone"></i> +420 733 175 958</a></li>
+                            <li><a href="tel:+420775104206" style="color: inherit; text-decoration: none;"><i class="fa-solid fa-phone"></i> +420 775 104 206</a></li>
                             <li><a href="mailto:info@venvio.dev" style="color: inherit; text-decoration: none;"><i class="fa-solid fa-envelope"></i> info@venvio.dev</a></li>
                             <li><a href="https://venvio.dev" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;"><i class="fa-solid fa-globe"></i> venvio.dev</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4 data-i18n="footer.legal">Právní informace</h4>
+                    <h3 data-i18n="footer.legal">Právní informace</h3>
                     <p style="color: var(--color-text-muted); font-size: 0.9rem;">
                         <span data-i18n="footer.branch">Jsme pobočka <a href="https://www.vidia-design.cz/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">Vidia Design</a>.<br>Sídlíme v Praze.</span><br><br>
                         <a href="#" style="color: var(--color-text-muted); text-decoration: none;" data-i18n="footer.terms">Obchodní podmínky</a><br>
@@ -711,7 +759,7 @@
     <aside class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
             <h2><i class="fa-solid fa-bag-shopping"></i> <span data-i18n="cart.title">Váš Košík</span></h2>
-            <button class="close-cart" id="close-cart">&times;</button>
+            <button class="close-cart" id="close-cart" aria-label="Zavřít košík">&times;</button>
         </div>
         <div class="cart-body" id="cart-items-container"></div>
         <div class="cart-footer">
@@ -745,7 +793,7 @@
         <div class="modal glass-panel fade-in-up" style="max-width: 400px;">
             <div class="modal-header">
                 <h2 data-i18n="auth.title" id="auth-title">Klientská sekce</h2>
-                <button class="close-modal" id="close-auth-modal">&times;</button>
+                <button class="close-modal" id="close-auth-modal" aria-label="Zavřít dialog">&times;</button>
             </div>
             <div class="modal-body" id="auth-body-login">
                 <!-- Social Login Buttons First -->
@@ -786,7 +834,7 @@
                         <label data-i18n="auth.password">Heslo</label>
                         <div style="position: relative;">
                             <input type="password" id="auth-password" required data-i18n-ph="auth.password_ph" placeholder="Vaše heslo" minlength="6" style="padding-right: 3rem;">
-                            <button type="button" id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--color-text-muted); cursor: pointer; font-size: 1rem;">
+                            <button type="button" id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--color-text-muted); cursor: pointer; font-size: 1rem;" aria-label="Zobrazit heslo">
                                 <i class="fa-regular fa-eye"></i>
                             </button>
                         </div>
@@ -804,7 +852,7 @@
                         <a href="#" id="auth-forgot-pwd" style="color: var(--color-primary); text-decoration: none;" data-i18n="auth.forgot_pwd">Zapomněli jste heslo?</a>
                     </div>
 
-                    <div id="auth-error" style="display: none; color: #FF6B6B; font-size: 0.85rem; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,107,107,0.1); border-radius: 8px; text-align: center;"></div>
+                    <div id="auth-error" style="display: none; color: #FF6B6B; font-size: 0.85rem; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,107,107,0.1); border-radius: 8px; text-align: center;" role="alert" aria-live="assertive"></div>
                     <button type="submit" id="auth-submit-btn" class="btn btn-primary btn-block">Přihlásit se</button>
                 </form>
             </div>
@@ -846,26 +894,33 @@
         <div class="modal glass-panel fade-in-up">
             <div class="modal-header">
                 <h2 data-i18n="modal.title">Dokončení objednávky</h2>
-                <button class="close-modal" id="close-modal">&times;</button>
+                <button class="close-modal" id="close-modal" aria-label="Zavřít dialog">&times;</button>
             </div>
             <div class="modal-body">
-                <form id="checkout-form">
+                <form id="checkout-form" method="POST" action="#">
                     <div class="form-group">
-                        <label data-i18n="modal.name">Jméno a Příjmení / Firma</label>
-                        <input type="text" name="Jmeno" required placeholder="Např. Jan Novák" data-i18n-ph="modal.name_ph">
+                        <label for="checkout-name" data-i18n="modal.name">Jméno a Příjmení / Firma</label>
+                        <input type="text" id="checkout-name" name="Jmeno" required placeholder="Např. Jan Novák" data-i18n-ph="modal.name_ph" autocomplete="name">
                     </div>
                     <div class="form-group">
-                        <label>E-mail</label>
-                        <input type="email" name="Email" required placeholder="vas@email.cz">
+                        <label for="checkout-email">E-mail</label>
+                        <input type="email" id="checkout-email" name="Email" required placeholder="vas@email.cz" autocomplete="email">
                     </div>
                     <div class="form-group">
-                        <label data-i18n="modal.phone">Telefon (volitelné)</label>
-                        <input type="tel" name="Telefon" placeholder="+420 123 456 789">
+                        <label for="checkout-phone" data-i18n="modal.phone">Telefon (volitelné)</label>
+                        <input type="tel" id="checkout-phone" name="Telefon" placeholder="+420 123 456 789" autocomplete="tel">
                     </div>
                     <input type="text" name="_honey" style="display:none">
                     <div class="form-group">
-                        <label data-i18n="modal.msg">Zpráva / Vaše představa o webu</label>
-                        <textarea name="Zprava" rows="4" placeholder="Zde nám můžete popsat, co od webu očekáváte..." data-i18n-ph="modal.msg_ph"></textarea>
+                        <label for="checkout-message" data-i18n="modal.msg">Zpráva / Vaše představa o webu</label>
+                        <textarea id="checkout-message" name="Zprava" rows="4" placeholder="Zde nám můžete popsat, co od webu očekáváte..." data-i18n-ph="modal.msg_ph"></textarea>
+                    </div>
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label class="calc-checkbox-label" style="font-size: 0.85rem; color: var(--color-text-muted);">
+                            <input type="checkbox" id="gdpr-consent" required>
+                            <span class="custom-checkbox"></span>
+                            <span data-i18n="checkout.gdpr">Souhlasím se zpracováním osobních údajů a obchodními podmínkami.</span>
+                        </label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block" data-i18n="modal.submit">Odeslat objednávku</button>
                 </form>
@@ -878,7 +933,7 @@
         <div class="modal glass-panel fade-in-up" style="max-width: 680px; max-height: 80vh; overflow-y: auto;">
             <div class="modal-header" style="position: sticky; top: 0; background: var(--color-bg-panel); backdrop-filter: blur(20px); z-index: 1; padding: 1.5rem; border-bottom: 1px solid var(--color-border);">
                 <h2 id="legal-title">Obchodní podmínky</h2>
-                <button class="close-modal" id="close-legal-modal">&times;</button>
+                <button class="close-modal" id="close-legal-modal" aria-label="Zavřít dialog">&times;</button>
             </div>
             <div class="modal-body" id="legal-content" style="padding: 1.5rem; line-height: 1.8; color: var(--color-text-muted);">
             </div>
@@ -891,14 +946,14 @@
     </button>
 
     <!-- Notification Toast -->
-    <div class="toast" id="toast">
+    <div class="toast" id="toast" role="status" aria-live="polite">
         <i class="fa-solid fa-check-circle"></i>
         <span id="toast-message">Přidáno do košíku!</span>
         <div class="toast-progress"></div>
     </div>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/420775104206?text=Dobrý%20den,%20mám%20zájem%20o%20nový%20web." target="_blank" rel="noopener noreferrer" class="fab-whatsapp" id="fab-whatsapp">
+    <a href="https://wa.me/420775104206?text=Dobrý%20den,%20mám%20zájem%20o%20nový%20web." target="_blank" rel="noopener noreferrer" class="fab-whatsapp" id="fab-whatsapp" aria-label="Kontaktovat přes WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
         <span class="fab-tooltip" data-i18n="fab.tooltip">Napište nám!</span>
     </a>
@@ -907,7 +962,7 @@
     <!-- Live Chat Mockup -->
     <div id="chat-widget" style="position: fixed; bottom: 110px; right: 20px; z-index: 9999;">
         <!-- Chat Button -->
-        <button id="chat-toggle" class="fab-chat" style="background: var(--color-primary); color: #fff; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4); display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;">
+        <button id="chat-toggle" class="fab-chat" style="background: var(--color-primary); color: #fff; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4); display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;" aria-label="Otevřít chat">
             <i class="fa-solid fa-comment-dots"></i>
             <span class="fab-tooltip" data-i18n="chat.tooltip">Chatujte s naší AI</span>
         </button>
@@ -925,7 +980,7 @@
                         <div style="font-size: 0.75rem; color: rgba(255,255,255,0.8);" data-i18n="chat.header_desc">Odpovídáme ihned</div>
                     </div>
                 </div>
-                <button id="chat-close" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;">&times;</button>
+                <button id="chat-close" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;" aria-label="Zavřít chat">&times;</button>
             </div>
             
             <!-- Messages -->
@@ -938,7 +993,7 @@
             <!-- Input -->
             <div style="padding: 10px; background: #0f1628; border-top: 1px solid rgba(255,255,255,0.05); display: flex; gap: 10px;">
                 <input type="text" id="chat-input" placeholder="Napište zprávu..." data-i18n-ph="chat.placeholder" style="flex: 1; padding: 8px 12px; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; background: #1e293b; color: #fff; outline: none; font-size: 0.9rem;">
-                <button id="chat-send" style="background: var(--color-primary); color: #fff; border: none; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                <button id="chat-send" style="background: var(--color-primary); color: #fff; border: none; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; cursor: pointer;" aria-label="Odeslat zprávu">
                     <i class="fa-solid fa-paper-plane" style="font-size: 0.8rem;"></i>
                 </button>
             </div>
@@ -952,6 +1007,8 @@
     <script src="script.js?v=v37" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
 </body>
 </html>
 

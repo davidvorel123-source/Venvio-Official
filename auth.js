@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { 
     getAuth, 
-    signInWithPopup, signInWithRedirect, 
+    signInWithPopup, signInWithRedirect, getRedirectResult, 
     GoogleAuthProvider, 
     FacebookAuthProvider, 
     createUserWithEmailAndPassword, 
@@ -42,6 +42,19 @@ if (isFirebaseConfigured) {
 window.firebaseAuth = auth;
 window.firebaseDb = db;
 window.isFirebaseConfigured = isFirebaseConfigured;
+
+if (isFirebaseConfigured) {
+    getRedirectResult(auth).then((result) => {
+        if (result) {
+            // Redirect sign-in succeeded, onAuthStateChanged will handle the rest
+        }
+    }).catch((error) => {
+        console.error('Redirect sign-in error:', error);
+        if (typeof window.showToast === 'function') {
+            window.showToast(window.currentLang === 'en' ? 'Sign-in failed. Please try again.' : 'Přihlášení selhalo. Zkuste to znovu.', 'error');
+        }
+    });
+}
 
 // UI Elements
 const btnGoogle = document.getElementById('btn-google');
@@ -122,7 +135,7 @@ if (authForm) {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 await sendEmailVerification(userCredential.user);
                 if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? "Registration successful. Please verify your email (check SPAM folder) to complete purchases!" : "Registrace úspěšná. Potvrďte svůj e-mail (zkontrolujte i složku SPAM) pro dokončení nákupů!");
-                await signOut(auth); setTimeout(() => window.isRegistering = false, 1000);
+                await signOut(auth);
             } else {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 if (!userCredential.user.emailVerified) {
@@ -143,6 +156,8 @@ if (authForm) {
             if (error.code === 'auth/wrong-password') msg = window.currentLang === 'en' ? "Wrong password." : "Špatné heslo.";
             
             showError(msg);
+        } finally {
+            window.isRegistering = false;
         }
     });
 }
@@ -154,8 +169,12 @@ if (authLogoutBtn) {
             window.updateAuthUI();
             return;
         }
-        await signOut(auth);
-        if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? 'You have been logged out.' : 'Byli jste odhlášeni.');
+        try {
+            await signOut(auth);
+            if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? 'You have been logged out.' : 'Byli jste odhlášeni.');
+        } catch (error) {
+            console.error("Sign out error:", error);
+        }
     });
 }
 
@@ -173,10 +192,8 @@ if (forgotPwdBtn) {
             if(typeof window.showToast === 'function') window.showToast(window.currentLang === 'en' ? "Password reset link sent to your email." : "Odkaz pro obnovu hesla byl odeslán na váš e-mail.");
             authError.style.display = 'none';
         } catch (error) {
-            let msg = "Chyba: " + error.message;
-            if (error.code === 'auth/user-not-found') msg = window.currentLang === 'en' ? 'Account not found.' : 'Účet s tímto e-mailem neexistuje.';
-            if (error.code === 'auth/invalid-email') msg = window.currentLang === 'en' ? 'Invalid email format.' : 'Neplatný formát e-mailu.';
-            showError(msg);
+            showError(window.currentLang === 'en' ? 'If an account exists, a password reset link has been sent.' : 'Pokud účet existuje, odkaz pro reset hesla byl odeslán.');
+            console.error("Password reset error:", error);
         }
     });
 }
@@ -192,7 +209,6 @@ if (isFirebaseConfigured) {
             
             if (window.firebaseDb) {
                 try {
-                    const { doc, getDoc, setDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
                     const userRef = doc(window.firebaseDb, 'users', user.uid);
                     const userSnap = await getDoc(userRef);
                     if (userSnap.exists()) {

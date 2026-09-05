@@ -76,13 +76,7 @@ if (legalModal) {
     });
 }
 
-// Ensure open modal translates when language changes
-const updateLegalModalLang = () => {
-    if (legalModal && legalModal.classList.contains('active') && currentModalType) {
-        legalTitle.innerText = legalTexts[currentModalType][currentLang].title;
-        legalContent.innerHTML = legalTexts[currentModalType][currentLang].content;
-    }
-};
+
 
 // Translations Dictionary
 const translations = {
@@ -481,7 +475,7 @@ const applyTranslations = () => {
     if (toastMsg) {
         if (toastMsg.innerHTML.includes('Secret') || toastMsg.innerHTML.includes('Tajná sleva') || toastMsg.innerHTML.includes('Tajn')) {
             toastMsg.innerHTML = currentLang === 'en' ? 'Secret found! Promo code: VENVIO10' : 'Tajná sleva 10%! Kód: VENVIO10';
-        } else if (toastMsg.innerHTML.includes('Přidáno') || toastMsg.innerHTML.includes('Ptidno') || toastMsg.innerHTML.includes('Added')) {
+        } else if (toastMsg.innerHTML.includes('Přidáno') || toastMsg.innerHTML.includes('Přidáno') || toastMsg.innerHTML.includes('Added')) {
             toastMsg.innerHTML = translations[currentLang]['toast.added'] || 'Přidáno do košíku!';
         }
     }
@@ -575,8 +569,18 @@ const discountMsg = document.getElementById('discount-msg');
 if (applyDiscountBtn) {
     applyDiscountBtn.addEventListener('click', () => {
         const code = discountCodeInput.value.trim().toUpperCase();
+        
+        // Guest check
+        let isGuestUsed = false;
+        if (!window.currentUser) {
+            const guestUsedCodes = safeJsonParse(localStorage.getItem('venvioGuestCodes'), []) || [];
+            if (guestUsedCodes.includes(code)) {
+                isGuestUsed = true;
+            }
+        }
+        
         if (code === 'VENVIO10') {
-            if (typeof window.currentUser !== 'undefined' && window.currentUser && window.currentUser.usedCodes.includes(code)) {
+            if (isGuestUsed || (typeof window.currentUser !== 'undefined' && window.currentUser && window.currentUser.usedCodes.includes(code))) {
                 discountMultiplier = 1;
                 discountMsg.innerText = currentLang === 'en' ? 'Code already used!' : 'Tento kód jste již využili!';
                 discountMsg.style.color = '#FF6B6B';
@@ -586,10 +590,15 @@ if (applyDiscountBtn) {
                 discountMsg.innerText = currentLang === 'en' ? 'Discount 10% applied!' : 'Sleva 10% uplatněna!';
                 discountMsg.style.color = '#00D2FF';
                 discountMsg.style.display = 'block';
+                if (!window.currentUser) {
+                    const guestUsedCodes = safeJsonParse(localStorage.getItem('venvioGuestCodes'), []) || [];
+                    guestUsedCodes.push(code);
+                    localStorage.setItem('venvioGuestCodes', JSON.stringify(guestUsedCodes));
+                }
             }
             updateCartUI();
         } else if (code === 'VENVIO-50-VIP-X72Q') {
-            if (typeof window.currentUser !== 'undefined' && window.currentUser && window.currentUser.usedCodes.includes(code)) {
+            if (isGuestUsed || (typeof window.currentUser !== 'undefined' && window.currentUser && window.currentUser.usedCodes.includes(code))) {
                 discountMultiplier = 1;
                 discountMsg.innerText = currentLang === 'en' ? 'Code already used!' : 'Tento kód jste již využili!';
                 discountMsg.style.color = '#FF6B6B';
@@ -599,6 +608,11 @@ if (applyDiscountBtn) {
                 discountMsg.innerText = currentLang === 'en' ? 'VIP Discount 50% applied!' : 'VIP Sleva 50% uplatněna!';
                 discountMsg.style.color = '#00D2FF';
                 discountMsg.style.display = 'block';
+                if (!window.currentUser) {
+                    const guestUsedCodes = safeJsonParse(localStorage.getItem('venvioGuestCodes'), []) || [];
+                    guestUsedCodes.push(code);
+                    localStorage.setItem('venvioGuestCodes', JSON.stringify(guestUsedCodes));
+                }
             }
             updateCartUI();
         } else {
@@ -620,13 +634,14 @@ const formatPriceDynamic = (priceVal) => {
 };
 
 // Update UI
-const updateCartUI = () => {
+const updateCartUI = (skipStorage = false) => {
     if (!cartCount) return; 
     cartCount.innerText = cart.length;
     
     if (cart.length === 0) {
         cartContainer.innerHTML = `<div class="empty-cart-msg">${translations[currentLang]['cart.empty']}</div>`;
         cartTotalPrice.innerText = '0';
+        if (!skipStorage) localStorage.setItem('venvioCart', JSON.stringify(cart));
         return;
     }
 
@@ -658,7 +673,7 @@ const updateCartUI = () => {
 
     let finalTotal = total * discountMultiplier;
     if(typeof pointsUsed !== 'undefined' && pointsUsed > 0) {
-        if (currentCurrency === 'eur') finalTotal -= Math.round(pointsUsed / 25);
+        if (currentCurrency === 'eur') finalTotal -= Math.round(pointsUsed / RATE_EUR);
         else if (currentCurrency === 'usd') finalTotal -= Math.round(pointsUsed / RATE_USD);
         else finalTotal -= pointsUsed;
         if (finalTotal < 0) finalTotal = 0;
@@ -670,7 +685,9 @@ const updateCartUI = () => {
         cartTotalPrice.innerText = formatPriceDynamic(finalTotal);
     }
     
-    localStorage.setItem('venvioCart', JSON.stringify(cart));
+    if (!skipStorage) {
+        localStorage.setItem('venvioCart', JSON.stringify(cart));
+    }
 };
 
 const addToCart = (id, nameCs, nameEn) => {
@@ -791,7 +808,7 @@ if(checkoutForm) {
                 return sum + p;
             }, 0);
             
-            let finalCheckoutTotal = rawTotal * discountMultiplier;
+            let finalCheckoutTotal = Math.round(rawTotal * discountMultiplier);
             let pointsDiscount = 0;
             if (typeof pointsUsed !== "undefined" && pointsUsed > 0) {
                 if (currentCurrency === "czk") pointsDiscount = pointsUsed;
@@ -863,16 +880,20 @@ if(checkoutForm) {
                     else if (currentCurrency === "usd") pointsDiscount = Math.round(pointsUsed / RATE_USD);
                 }
                 let discountMultiplierVal = typeof discountMultiplier !== "undefined" ? discountMultiplier : 1;
-                let orderTotal = (baseTotal * discountMultiplierVal) - pointsDiscount;
+                let orderTotal = Math.round(baseTotal * discountMultiplierVal) - pointsDiscount;
                 if (orderTotal < 0) orderTotal = 0;
 
                 if (typeof generateInvoicePDF === 'function') {
-                    generateInvoicePDF({
-                        name: requestData["Jméno Klienta"] || requestData["Name"] || '',
-                        email: requestData.email || '',
-                        items: cart.map(i => i.nameCs || i.nameEn),
-                        total: orderTotal
-                    });
+                    try {
+                        await generateInvoicePDF({
+                            name: requestData["Jméno Klienta"] || requestData["Name"] || '',
+                            email: requestData.email || '',
+                            items: cart.map(i => i.nameCs || i.nameEn),
+                            total: orderTotal
+                        });
+                    } catch (e) {
+                        console.error('PDF generation failed:', e);
+                    }
                 }
                 // EmailJS autoresponder – not configured, skipped
                 if (typeof gtag === 'function') gtag('event', 'purchase', { value: orderTotal, currency: currentCurrency.toUpperCase() });
@@ -1020,21 +1041,7 @@ document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 
 // === NEW INTERACTIVE FEATURES ===
 
-// Floating Particles
-const particlesContainer = document.getElementById('particles');
-if (particlesContainer) {
-    for (let i = 0; i < 30; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.width = (Math.random() * 3 + 1) + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
-        particle.style.animationDelay = (Math.random() * 10) + 's';
-        particle.style.opacity = Math.random() * 0.5 + 0.1;
-        particlesContainer.appendChild(particle);
-    }
-}
+
 
 // Navbar scroll effect + smart hide/show
 const navbar = document.getElementById('navbar');
@@ -1150,7 +1157,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
         // Close mobile menu if open
         const navLinks = document.getElementById('nav-links');
-        if (navLinks) navLinks.classList.remove('mobile-open');
+        const mobileToggleBtn = document.getElementById('mobile-menu-toggle');
+        if (navLinks) {
+            navLinks.classList.remove('mobile-open');
+            if (mobileToggleBtn) mobileToggleBtn.setAttribute('aria-expanded', 'false');
+        }
     });
 });
 
@@ -1160,6 +1171,8 @@ const navLinksEl = document.getElementById('nav-links');
 if (mobileToggle && navLinksEl) {
     mobileToggle.addEventListener('click', () => {
         navLinksEl.classList.toggle('mobile-open');
+        const isOpen = navLinksEl.classList.contains('mobile-open');
+        mobileToggle.setAttribute('aria-expanded', isOpen);
     });
 }
 
@@ -1186,27 +1199,41 @@ if (backToTopBtn) {
 
 // === SCROLL PROGRESS BAR ===
 const scrollProgress = document.getElementById('scroll-progress');
+let isProgressTicking = false;
 if (scrollProgress) {
     window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        scrollProgress.style.width = scrollPercent + '%';
+        if (!isProgressTicking) {
+            window.requestAnimationFrame(() => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                scrollProgress.style.width = scrollPercent + '%';
+                isProgressTicking = false;
+            });
+            isProgressTicking = true;
+        }
     }, { passive: true });
 }
 
 // === PARALLAX HERO ===
 const heroContent = document.querySelector('.hero-content');
 const heroBgGlow = document.querySelector('.hero-bg-glow');
+let isParallaxTicking = false;
 if (heroContent && window.matchMedia('(hover: hover)').matches) {
     window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        if (scrollY < window.innerHeight) {
-            heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
-            heroContent.style.opacity = 1 - (scrollY / (window.innerHeight * 0.8));
-            if (heroBgGlow) {
-                heroBgGlow.style.transform = `translate(-50%, -50%) scale(${1 + scrollY * 0.001})`;
-            }
+        if (!isParallaxTicking) {
+            window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+                if (scrollY < window.innerHeight) {
+                    heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
+                    heroContent.style.opacity = 1 - (scrollY / (window.innerHeight * 0.8));
+                    if (heroBgGlow) {
+                        heroBgGlow.style.transform = `translate(-50%, -50%) scale(${1 + scrollY * 0.001})`;
+                    }
+                }
+                isParallaxTicking = false;
+            });
+            isParallaxTicking = true;
         }
     }, { passive: true });
 }
@@ -1356,7 +1383,9 @@ const calculateEta = (days) => {
 };
 
 let previousCalcTotalRaw = 0;
+let calcAnimationFrame = null;
 const animateValue = (obj, start, end, duration) => {
+    if (calcAnimationFrame) cancelAnimationFrame(calcAnimationFrame);
     let startTimestamp = null;
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
@@ -1366,10 +1395,10 @@ const animateValue = (obj, start, end, duration) => {
         let val = Math.floor(easeProgress * (end - start) + start);
         obj.innerText = formatPriceDynamic(currentLang === 'en' ? val.toLocaleString('en-US') : val.toLocaleString('cs-CZ'));
         if (progress < 1) {
-            window.requestAnimationFrame(step);
+            calcAnimationFrame = window.requestAnimationFrame(step);
         }
     };
-    window.requestAnimationFrame(step);
+    calcAnimationFrame = window.requestAnimationFrame(step);
 };
 
 const updateCalculatorWithEta = () => {
@@ -1503,7 +1532,7 @@ if (authForm) {
 const authProfileName = document.getElementById('auth-profile-name');
 const authProfileEmail = document.getElementById('auth-profile-email');
 const authProfilePoints = document.getElementById('auth-profile-points');
-const authLogoutBtn = document.getElementById('auth-logout-btn');
+
 
 const cartPointsSection = document.getElementById('cart-points-section');
 const cartAvailPoints = document.getElementById('cart-avail-points');
@@ -1520,19 +1549,8 @@ const authSubmitBtn = document.getElementById('auth-submit-btn');
 const authError = document.getElementById('auth-error');
 const togglePasswordBtn = document.getElementById('toggle-password');
 
-const btnGoogle = document.getElementById('btn-google');
-const btnFacebook = document.getElementById('btn-facebook');
 
-// Simple hash function for passwords (client-side only)
-const simpleHash = (str) => {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-        const char = str.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash = hash & hash;
-    }
-    return 'h' + Math.abs(hash).toString(36);
-};
+
 
 const showAuthError = (msg) => {
     if (authError) {
@@ -1816,7 +1834,7 @@ window.addEventListener('storage', (e) => {
             const newCart = JSON.parse(e.newValue) || [];
             cart.length = 0;
             cart.push(...newCart);
-            updateCartUI();
+            updateCartUI(true);
         } catch(err) {
             console.error('Error syncing cart:', err);
         }
@@ -1847,10 +1865,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Sanitize user input to prevent XSS
                 const safeText = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
                 // Add user message to UI
-                chatMessages.innerHTML += `
-                <div style="background: var(--color-primary); color: white; padding: 10px; border-radius: 12px 12px 0 12px; max-width: 85%; font-size: 0.9rem; align-self: flex-end; margin-bottom: 5px;">
-                    ${safeText}
-                </div>`;
+                const userDiv = document.createElement('div');
+                userDiv.style.cssText = 'background: var(--color-primary); color: white; padding: 10px; border-radius: 12px 12px 0 12px; max-width: 85%; font-size: 0.9rem; align-self: flex-end; margin-bottom: 5px;';
+                userDiv.textContent = text;
+                chatMessages.appendChild(userDiv);
                 chatInput.value = '';
                 chatMessages.scrollTop = chatMessages.scrollHeight;
 
@@ -1878,10 +1896,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         const data = await response.json();
                         chatHistory.push({ role: 'assistant', content: data.reply });
                         
-                        chatMessages.innerHTML += `
-                        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem; margin-bottom: 5px;">
-                            ${data.reply.replace(/\n/g, '<br>')}
-                        </div>`;
+                        const replyDiv = document.createElement('div');
+                        replyDiv.style.cssText = 'background: rgba(255,255,255,0.05); padding: 10px; border-radius: 12px 12px 12px 0; max-width: 85%; font-size: 0.9rem; margin-bottom: 5px; white-space: pre-wrap;';
+                        replyDiv.textContent = data.reply;
+                        chatMessages.appendChild(replyDiv);
                     } else {
                         throw new Error('API Error');
                     }
@@ -2048,11 +2066,28 @@ function generateInvoicePDF(orderData) {
     customerInfo.style.padding = '20px';
     customerInfo.style.backgroundColor = '#f8f9fa';
     customerInfo.style.borderRadius = '8px';
-    customerInfo.innerHTML = `
-        <h3 style="margin-top: 0; margin-bottom: 15px; color: #111; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">Údaje zákazníka</h3>
-        <p style="margin: 5px 0; font-size: 15px;"><strong>Jméno / Firma:</strong> ` + (orderData.name || 'Nezadáno') + `</p>
-        <p style="margin: 5px 0; font-size: 15px;"><strong>E-mail:</strong> ` + (orderData.email || 'Nezadáno') + `</p>
-    `;
+    
+    const h3 = document.createElement('h3');
+    h3.style.cssText = 'margin-top: 0; margin-bottom: 15px; color: #111; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;';
+    h3.textContent = 'Údaje zákazníka';
+    
+    const pName = document.createElement('p');
+    pName.style.cssText = 'margin: 5px 0; font-size: 15px;';
+    const strongName = document.createElement('strong');
+    strongName.textContent = 'Jméno / Firma: ';
+    pName.appendChild(strongName);
+    pName.appendChild(document.createTextNode(orderData.name || 'Nezadáno'));
+    
+    const pEmail = document.createElement('p');
+    pEmail.style.cssText = 'margin: 5px 0; font-size: 15px;';
+    const strongEmail = document.createElement('strong');
+    strongEmail.textContent = 'E-mail: ';
+    pEmail.appendChild(strongEmail);
+    pEmail.appendChild(document.createTextNode(orderData.email || 'Nezadáno'));
+    
+    customerInfo.appendChild(h3);
+    customerInfo.appendChild(pName);
+    customerInfo.appendChild(pEmail);
     
     const table = document.createElement('table');
     table.style.width = '100%';
@@ -2074,10 +2109,17 @@ function generateInvoicePDF(orderData) {
             const tr = document.createElement('tr');
             tr.style.borderBottom = '1px solid #eee';
             if (index % 2 === 0) tr.style.backgroundColor = '#fdfdfd';
-            tr.innerHTML = `
-                <td style="padding: 15px; text-align: left; font-size: 15px;">` + item + `</td>
-                <td style="padding: 15px; text-align: right; font-size: 15px; font-weight: 600;">1</td>
-            `;
+            
+            const td1 = document.createElement('td');
+            td1.style.cssText = 'padding: 15px; text-align: left; font-size: 15px;';
+            td1.textContent = item;
+            
+            const td2 = document.createElement('td');
+            td2.style.cssText = 'padding: 15px; text-align: right; font-size: 15px; font-weight: 600;';
+            td2.textContent = '1';
+            
+            tr.appendChild(td1);
+            tr.appendChild(td2);
             tbody.appendChild(tr);
         });
     }
@@ -2129,8 +2171,7 @@ function generateInvoicePDF(orderData) {
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
     
-    html2pdf().set(opt).from(invoiceWrapper).save();
-
+    return html2pdf().set(opt).from(invoiceWrapper).save();
 }
 
 // Dynamic additions for success.html

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'venvio-cache-v36';
+const CACHE_NAME = 'venvio-cache-v37';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -29,7 +29,8 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    fetch(event.request).catch(() => caches.match(event.request, { ignoreSearch: true }))
   );
 });
