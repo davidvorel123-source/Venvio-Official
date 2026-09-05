@@ -2201,7 +2201,7 @@ if (typeof applyTranslations === 'function') {
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Initialize Vanilla Tilt for Cards
     if (typeof VanillaTilt !== 'undefined' && window.matchMedia("(min-width: 768px)").matches) {
-        VanillaTilt.init(document.querySelectorAll(".pricing-card, .feature-card"), {
+        VanillaTilt.init(document.querySelectorAll(".pricing-card, .feature-card, .portfolio-card"), {
             max: 15,
             speed: 400,
             glare: true,

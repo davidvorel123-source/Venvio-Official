@@ -2210,3 +2210,127 @@ html {
   75% { transform: scale3d(1.05, 0.95, 1); }
   100% { transform: scale3d(1, 1, 1); }
 }
+
+/* ========================================= */
+/* VIZUÁLNÍ VYLEPŠENÍ - PREMIUM UI/UX UPGRADE */
+/* ========================================= */
+
+/* 1. Animovaný textový gradient pro hlavní nadpis */
+.hero h1 {
+    background: linear-gradient(270deg, var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-primary));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-text-flow 8s ease infinite;
+}
+
+/* 2. Zlepšený Glassmorphism a svítící karty */
+.pricing-card, .feature-card, .portfolio-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(15, 22, 40, 0.5) !important;
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+body.light-mode .pricing-card, 
+body.light-mode .feature-card, 
+body.light-mode .portfolio-card {
+    background: rgba(255, 255, 255, 0.65) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Rotující okraj pøi hoveru */
+.pricing-card::before, .feature-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    background: conic-gradient(from 0deg, transparent 70%, var(--color-primary) 80%, var(--color-secondary) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: spin 3s linear infinite;
+    border-radius: inherit;
+}
+
+.pricing-card:hover::before, .feature-card:hover::before {
+    opacity: 1;
+}
+
+/* Krycí vrstva pro rotující okraj */
+.pricing-card::after, .feature-card::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    background: var(--color-bg-dark);
+    border-radius: inherit;
+    transition: background 0.3s ease;
+}
+
+body.light-mode .pricing-card::after, 
+body.light-mode .feature-card::after {
+    background: #F1F5F9;
+}
+
+.pricing-card:hover::after, .feature-card:hover::after {
+    background: rgba(10, 15, 30, 0.85);
+}
+
+body.light-mode .pricing-card:hover::after, 
+body.light-mode .feature-card:hover::after {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 3. Vylepšení Reference / Portfolio Overlay */
+.portfolio-overlay {
+    background: rgba(6, 11, 24, 0.65) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.portfolio-img:hover img {
+    transform: scale(1.08); /* 3D hloubka */
+}
+
+/* 4. Oživení Hero sekce (pulzující Mesh) */
+.mesh-bg {
+    filter: blur(70px);
+    opacity: 0.8;
+    animation: pulse-glow 8s ease-in-out infinite alternate;
+}
+
+/* 5. Magnetická tlaèítka (smooth transition fix) */
+.btn-primary, .btn-outline {
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), background-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* 6. Stylový custom scrollbar pro celou stránku */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+body.light-mode ::-webkit-scrollbar-track {
+    background: #F1F5F9;
+}
+body.light-mode ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+}
+
