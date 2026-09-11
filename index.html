@@ -53,7 +53,7 @@
       "@id": "https://venvio.dev/",
       "url": "https://venvio.dev/",
       "telephone": "+420 775 104 206",
-      "priceRange": "14990 Kč - 29990 Kč",
+      "priceRange": "14900 Kč - 99000 Kč",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "CZ",
@@ -194,7 +194,7 @@
             <span class="hero-badge fade-in-up" style="display: inline-flex; align-items: center;"><span class="hero-badge-pulse"></span><span id="typewriter-text" data-i18n="hero.badge">⚡ Express webové řešení</span><span class="cursor-blink">_</span></span>
             <h1 class="fade-in-up" data-aos="fade-up" data-i18n="hero.title">Tvorba webů, které <br> <span class="liquid-text">vydělávají</span></h1>
             <p class="fade-in-up delay-2" data-i18n="hero.desc">Expressní webová prezentace & marketing. Plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.</p>
-            <div class="hero-buttons fade-in-up delay-3">
+            <div class="hero-actions fade-in-up delay-3">
                 <a href="#cenik" class="btn btn-primary btn-glow"><i class="fa-solid fa-rocket"></i> <span data-i18n="hero.btn_pkg">Vybrat balíček</span></a>
                 <a href="#portfolio" class="btn btn-outline"><i class="fa-solid fa-eye"></i> <span data-i18n="hero.btn_portfolio">Ukázky práce</span></a>
             </div>
@@ -348,7 +348,7 @@
                     <h3 data-i18n="svc1.title">Webové Aplikace & SaaS</h3>
                     <p data-i18n="svc1.desc" style="flex-grow: 1;">Vývoj plnohodnotných aplikací (React, Node.js), rezervačních systémů a klientských portálů na míru.</p>
                     <div class="feature-price" data-price-target="svc-webapp">Od 99 000 Kč</div>
-                    <button class="btn btn-outline btn-block add-to-cart" style="margin-top: 1.5rem;" data-id="svc-webapp" data-name-cs="Webové Aplikace & SaaS" data-name-en="Web Applications & SaaS" data-i18n="pkg.btn_add">Přidat do košíku</button>
+                    <a href="mailto:info@venvio.dev?subject=Poptávka:%20Webové%20aplikace%20a%20SaaS" class="btn btn-outline btn-block" style="margin-top: 1.5rem;" data-i18n="pkg.btn_consult">Nezávazná konzultace</a>
                 </div>
                 <!-- Service 2 -->
                 <div class="feature-card glass-panel fade-in-up delay-2" style="display: flex; flex-direction: column;" data-aos="fade-up">
@@ -473,7 +473,7 @@
                     <div class="calc-price" id="calc-total">14 900 Kč</div>
                     <div class="calc-eta" style="margin-top: 1rem; color: var(--color-text-muted); font-size: 0.95rem;">
                         <i class="fa-solid fa-clock" style="color: var(--color-primary); margin-right: 5px;"></i>
-                        <span data-i18n="calc.eta">Odhadovaný čas dodání:</span> <strong id="calc-eta-val" style="color: #fff;">1-2 týdny</strong>
+                            <span><i class="fa-regular fa-clock"></i> <span data-i18n="calc.eta">Odhad dodání:</span> <strong id="calc-eta-val">1-2 týdny</strong></span>
                     </div>
                     <button class="btn btn-primary" id="calc-add-to-cart" style="margin-top: 1.5rem; width: 100%; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);" data-i18n="calc.add_to_cart">
                         <i class="fa-solid fa-cart-plus"></i> Přidat do košíku
@@ -917,9 +917,9 @@
                     </div>
                     <div class="form-group" style="margin-top: 1rem;">
                         <label class="calc-checkbox-label" style="font-size: 0.85rem; color: var(--color-text-muted);">
-                            <input type="checkbox" id="gdpr-consent" required>
+                            <input type="checkbox" id="gdpr-consent" name="gdpr" required>
                             <span class="custom-checkbox"></span>
-                            <span data-i18n="checkout.gdpr">Souhlasím se zpracováním osobních údajů a obchodními podmínkami.</span>
+                            <span data-i18n="checkout.gdpr">Souhlasím se <a href="#" onclick="document.getElementById('legal-modal').classList.add('show'); event.preventDefault();" style="color:var(--color-primary);text-decoration:underline;">zpracováním osobních údajů</a> a <a href="#" onclick="document.getElementById('legal-modal').classList.add('show'); event.preventDefault();" style="color:var(--color-primary);text-decoration:underline;">obchodními podmínkami</a>.</span>
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block" data-i18n="modal.submit">Odeslat objednávku</button>

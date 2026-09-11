@@ -1,4 +1,4 @@
-/* --- VENVIO Design System v2 ‚Äî Premium Edition --- */
+/* --- VENVIO Design System v2 √¢‚Ç¨‚Äù Premium Edition --- */
 :root {
     --color-bg-dark: #060B18;
     --color-bg-panel: rgba(15, 22, 40, 0.65);
@@ -840,7 +840,7 @@ body.light-mode .mesh-bg {
     color: var(--color-text-muted);
 }
 
-/* Cen√≠k */
+/* CenƒÇ¬≠k */
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -966,7 +966,7 @@ body.light-mode .mesh-bg {
 }
 
 .pricing-features li::before {
-    content: '‚úì';
+    content: '√¢≈õ‚Äú';
     position: absolute;
     left: 0;
     color: var(--color-primary);
@@ -974,7 +974,7 @@ body.light-mode .mesh-bg {
     font-size: 1.1rem;
 }
 
-/* Dopl≈àky */
+/* Doplƒπ¬àky */
 .addons-list {
     display: flex;
     flex-direction: column;
@@ -1878,7 +1878,7 @@ body.light-mode .marquee-content span { color: rgba(0,0,0,0.6); }
 }
 .custom-checkbox { width: 24px; height: 24px; border: 2px solid rgba(255,255,255,0.2); border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s; position: relative; }
 .calc-checkbox-label input:checked + .custom-checkbox { background: var(--color-primary); border-color: var(--color-primary); }
-.calc-checkbox-label input:checked + .custom-checkbox::after { content: '‚úì'; color: white; position: absolute; font-size: 14px; font-weight: bold; }
+.calc-checkbox-label input:checked + .custom-checkbox::after { content: '√¢≈õ‚Äú'; color: white; position: absolute; font-size: 14px; font-weight: bold; }
 .calc-result { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; }
 .calc-result h3 { font-size: 1.2rem; color: var(--color-text-muted); margin-bottom: 0.5rem; }
 .calc-price { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -2212,11 +2212,11 @@ html {
 }
 
 /* ========================================= */
-/* VIZU¡LNÕ VYLEPäENÕ - PREMIUM UI/UX UPGRADE */
+/* VIZU√ÅLN√ç VYLEP≈†EN√ç - PREMIUM UI/UX UPGRADE */
 /* ========================================= */
 
-/* 1. Animovan˝ textov˝ gradient pro hlavnÌ nadpis */
-.hero h1 {
+/* 1. Animovan√Ω textov√Ω gradient pro hlavn√≠ nadpis */
+.liquid-text {
     background: linear-gradient(270deg, var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-primary));
     background-size: 300% 300%;
     -webkit-background-clip: text;
@@ -2224,16 +2224,14 @@ html {
     animation: gradient-text-flow 8s ease infinite;
 }
 
-/* 2. Zlepöen˝ Glassmorphism a svÌtÌcÌ karty */
+/* 2. Zlep≈°en√Ω Glassmorphism a st√≠ny */
 .pricing-card, .feature-card, .portfolio-card {
-    position: relative;
-    overflow: hidden;
-    background: rgba(15, 22, 40, 0.5) !important;
+    background: rgba(15, 22, 40, 0.4) !important;
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    z-index: 1;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 body.light-mode .pricing-card, 
@@ -2244,54 +2242,18 @@ body.light-mode .portfolio-card {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
 }
 
-/* RotujÌcÌ okraj p¯i hoveru */
-.pricing-card::before, .feature-card::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    z-index: -1;
-    background: conic-gradient(from 0deg, transparent 70%, var(--color-primary) 80%, var(--color-secondary) 100%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    animation: spin 3s linear infinite;
-    border-radius: inherit;
+.pricing-card:hover, .feature-card:hover {
+    border-color: rgba(0, 210, 255, 0.4);
+    box-shadow: 0 10px 40px 0 rgba(0, 210, 255, 0.15);
 }
 
-.pricing-card:hover::before, .feature-card:hover::before {
-    opacity: 1;
+body.light-mode .pricing-card:hover, 
+body.light-mode .feature-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.1);
 }
 
-/* KrycÌ vrstva pro rotujÌcÌ okraj */
-.pricing-card::after, .feature-card::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: -1;
-    background: var(--color-bg-dark);
-    border-radius: inherit;
-    transition: background 0.3s ease;
-}
-
-body.light-mode .pricing-card::after, 
-body.light-mode .feature-card::after {
-    background: #F1F5F9;
-}
-
-.pricing-card:hover::after, .feature-card:hover::after {
-    background: rgba(10, 15, 30, 0.85);
-}
-
-body.light-mode .pricing-card:hover::after, 
-body.light-mode .feature-card:hover::after {
-    background: rgba(255, 255, 255, 0.95);
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* 3. VylepöenÌ Reference / Portfolio Overlay */
+/* 3. Vylep≈°en√≠ Reference / Portfolio Overlay */
 .portfolio-overlay {
     background: rgba(6, 11, 24, 0.65) !important;
     backdrop-filter: blur(8px);
@@ -2301,19 +2263,19 @@ body.light-mode .feature-card:hover::after {
     transform: scale(1.08); /* 3D hloubka */
 }
 
-/* 4. OûivenÌ Hero sekce (pulzujÌcÌ Mesh) */
+/* 4. O≈æiven√≠ Hero sekce (pulzuj√≠c√≠ Mesh) */
 .mesh-bg {
     filter: blur(70px);
     opacity: 0.8;
     animation: pulse-glow 8s ease-in-out infinite alternate;
 }
 
-/* 5. Magnetick· tlaËÌtka (smooth transition fix) */
+/* 5. Magnetick√° tlaƒç√≠tka (smooth transition fix) */
 .btn-primary, .btn-outline {
     transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), background-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-/* 6. Stylov˝ custom scrollbar pro celou str·nku */
+/* 6. Stylov√Ω custom scrollbar pro celou str√°nku */
 ::-webkit-scrollbar {
     width: 8px;
 }

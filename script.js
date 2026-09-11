@@ -395,6 +395,7 @@ const productPrices = {
 // Current State
 let currentLang = localStorage.getItem('venvioLang');
 if (currentLang !== 'cs' && currentLang !== 'en') currentLang = 'cs';
+window.currentLang = currentLang;
 let currentCurrency = localStorage.getItem('venvioCurr');
 if (currentCurrency !== 'czk' && currentCurrency !== 'eur' && currentCurrency !== 'usd') currentCurrency = 'czk';
 let discountMultiplier = 1;
@@ -529,8 +530,10 @@ const applyTranslations = () => {
 document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         currentLang = e.currentTarget.getAttribute('data-lang');
+        window.currentLang = currentLang;
         localStorage.setItem('venvioLang', currentLang);
         applyTranslations();
+        if (typeof typeWriterEffect === 'function') typeWriterEffect(true);
     });
 });
 
@@ -590,11 +593,6 @@ if (applyDiscountBtn) {
                 discountMsg.innerText = currentLang === 'en' ? 'Discount 10% applied!' : 'Sleva 10% uplatněna!';
                 discountMsg.style.color = '#00D2FF';
                 discountMsg.style.display = 'block';
-                if (!window.currentUser) {
-                    const guestUsedCodes = safeJsonParse(localStorage.getItem('venvioGuestCodes'), []) || [];
-                    guestUsedCodes.push(code);
-                    localStorage.setItem('venvioGuestCodes', JSON.stringify(guestUsedCodes));
-                }
             }
             updateCartUI();
         } else if (code === 'VENVIO-50-VIP-X72Q') {
@@ -608,11 +606,6 @@ if (applyDiscountBtn) {
                 discountMsg.innerText = currentLang === 'en' ? 'VIP Discount 50% applied!' : 'VIP Sleva 50% uplatněna!';
                 discountMsg.style.color = '#00D2FF';
                 discountMsg.style.display = 'block';
-                if (!window.currentUser) {
-                    const guestUsedCodes = safeJsonParse(localStorage.getItem('venvioGuestCodes'), []) || [];
-                    guestUsedCodes.push(code);
-                    localStorage.setItem('venvioGuestCodes', JSON.stringify(guestUsedCodes));
-                }
             }
             updateCartUI();
         } else {
@@ -640,7 +633,13 @@ const updateCartUI = (skipStorage = false) => {
     
     if (cart.length === 0) {
         cartContainer.innerHTML = `<div class="empty-cart-msg">${translations[currentLang]['cart.empty']}</div>`;
-        cartTotalPrice.innerText = '0';
+        discountMultiplier = 1;
+        pointsUsed = 0;
+        const discMsg = document.getElementById('discount-msg');
+        if (discMsg) discMsg.style.display = 'none';
+        const ptsMsg = document.getElementById('points-msg');
+        if (ptsMsg) ptsMsg.style.display = 'none';
+        cartTotalPrice.innerText = formatPriceDynamic(0);
         if (!skipStorage) localStorage.setItem('venvioCart', JSON.stringify(cart));
         return;
     }
@@ -926,10 +925,29 @@ if(checkoutForm) {
                                     fbOrders.push(newOrder);
                                     let newPoints = (d.points !== undefined ? d.points : 500) - ptsUsed;
                                     if(newPoints < 0) newPoints = 0;
-                                    updateDoc(userRef, { orders: fbOrders, points: newPoints }).catch(e => console.error("Firestore order update err:", e));
+                                    
+                                    const codeInput = document.getElementById('discount-code');
+                                    const usedCode = codeInput ? codeInput.value.trim().toUpperCase() : '';
+                                    let fbUsedCodes = d.usedCodes || [];
+                                    if (discountMultiplier < 1 && usedCode && !fbUsedCodes.includes(usedCode)) {
+                                        fbUsedCodes.push(usedCode);
+                                    }
+                                    
+                                    updateDoc(userRef, { orders: fbOrders, points: newPoints, usedCodes: fbUsedCodes }).catch(e => console.error("Firestore order update err:", e));
                                 }
                             });
                         }).catch(err => console.error("Firestore module load err:", err));
+                    }
+                }
+                if (discountMultiplier < 1) {
+                    const codeInput = document.getElementById('discount-code');
+                    const usedCode = codeInput ? codeInput.value.trim().toUpperCase() : '';
+                    if (usedCode && !window.currentUser) {
+                        const guestUsedCodes = safeJsonParse(localStorage.getItem('venvioGuestCodes'), []) || [];
+                        if (!guestUsedCodes.includes(usedCode)) {
+                            guestUsedCodes.push(usedCode);
+                            localStorage.setItem('venvioGuestCodes', JSON.stringify(guestUsedCodes));
+                        }
                     }
                 }
                 localStorage.removeItem('venvioCart');
@@ -1648,7 +1666,7 @@ window.updateAuthUI = () => {
             authIconMobile.className = 'fa-regular fa-user';
             authIconMobile.style.color = 'var(--color-text)';
         }
-        if(document.getElementById('guest-discount-info')) document.getElementById('guest-discount-info').style.display = 'none';
+        if(document.getElementById('guest-discount-info')) document.getElementById('guest-discount-info').style.display = 'block';
           if(cartPointsSection) {
             cartPointsSection.style.display = 'none';
         }
@@ -1757,13 +1775,7 @@ if (checkoutBtnRef) {
             return;
         }
         
-        // Save used discount code
-        if (window.currentUser && discountMultiplier < 1) {
-            const code = document.getElementById('discount-code') ? document.getElementById('discount-code').value.trim().toUpperCase() : '';
-            if (code && !window.currentUser.usedCodes.includes(code)) {
-                window.currentUser.usedCodes.push(code);
-            }
-        }
+        // Promo kód se bude ukládat až po úspěšném odeslání objednávky
         
 
         
