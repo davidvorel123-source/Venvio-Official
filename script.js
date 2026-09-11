@@ -2397,7 +2397,7 @@ translations.en['contact.ph_msg'] = 'What project do you have in mind?';
 translations.en['contact.submit'] = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
 translations.cs['nav.compare'] = 'Srovnání';
 translations.en['nav.compare'] = 'Compare';
-translations.cs['nav.team'] = 'Náš Tým';
+translations.cs['nav.team'] = 'Tým';
 translations.en['nav.team'] = 'Team';
 translations.cs['nav.contact'] = 'Kontakt';
 translations.en['nav.contact'] = 'Contact';
