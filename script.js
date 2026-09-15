@@ -2044,105 +2044,9 @@ if ('serviceWorker' in navigator) {
 // PDF Generation
 function generateInvoicePDF(orderData) {
     if (!window.html2pdf) {
-        console.error("html2pdf nenalezen, použijte prosím podporovaný prohlížeč.");
+        console.error("html2pdf nenalezen.");
         return;
     }
-    
-    const invoiceWrapper = document.createElement('div');
-    invoiceWrapper.style.position = 'absolute';
-    invoiceWrapper.style.left = '-9999px';
-    invoiceWrapper.style.top = '0';
-    invoiceWrapper.style.padding = '40px';
-    invoiceWrapper.style.fontFamily = "'Inter', sans-serif";
-    invoiceWrapper.style.color = '#333';
-    invoiceWrapper.style.backgroundColor = '#fff';
-    invoiceWrapper.style.width = '800px'; 
-    
-    const header = document.createElement('div');
-    header.style.display = 'flex';
-    header.style.justifyContent = 'space-between';
-    header.style.alignItems = 'center';
-    header.style.borderBottom = '2px solid #0070ba';
-    header.style.paddingBottom = '20px';
-    header.style.marginBottom = '30px';
-    
-    const logoDiv = document.createElement('div');
-    logoDiv.innerHTML = `<h1 style="margin: 0; color: #0070ba; font-size: 32px; font-weight: 800; letter-spacing: -1px;">Venvio<span style="color:#00d2ff;">.</span></h1><p style="margin: 5px 0 0; font-size: 14px; color: #666;">Profesionální weby na míru</p>`;
-    
-    const invoiceDetails = document.createElement('div');
-    invoiceDetails.style.textAlign = 'right';
-    invoiceDetails.innerHTML = `<h2 style="margin: 0; font-size: 24px; color: #111;">Shrnutí objednávky</h2><p style="margin: 5px 0 0; font-size: 14px; color: #666;">Datum: ` + new Date().toLocaleDateString() + `</p>`;
-    
-    header.appendChild(logoDiv);
-    header.appendChild(invoiceDetails);
-    
-    const customerInfo = document.createElement('div');
-    customerInfo.style.marginBottom = '40px';
-    customerInfo.style.padding = '20px';
-    customerInfo.style.backgroundColor = '#f8f9fa';
-    customerInfo.style.borderRadius = '8px';
-    
-    const h3 = document.createElement('h3');
-    h3.style.cssText = 'margin-top: 0; margin-bottom: 15px; color: #111; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;';
-    h3.textContent = 'Údaje zákazníka';
-    
-    const pName = document.createElement('p');
-    pName.style.cssText = 'margin: 5px 0; font-size: 15px;';
-    const strongName = document.createElement('strong');
-    strongName.textContent = 'Jméno / Firma: ';
-    pName.appendChild(strongName);
-    pName.appendChild(document.createTextNode(orderData.name || 'Nezadáno'));
-    
-    const pEmail = document.createElement('p');
-    pEmail.style.cssText = 'margin: 5px 0; font-size: 15px;';
-    const strongEmail = document.createElement('strong');
-    strongEmail.textContent = 'E-mail: ';
-    pEmail.appendChild(strongEmail);
-    pEmail.appendChild(document.createTextNode(orderData.email || 'Nezadáno'));
-    
-    customerInfo.appendChild(h3);
-    customerInfo.appendChild(pName);
-    customerInfo.appendChild(pEmail);
-    
-    const table = document.createElement('table');
-    table.style.width = '100%';
-    table.style.borderCollapse = 'collapse';
-    table.style.marginBottom = '40px';
-    
-    const thead = document.createElement('thead');
-    thead.innerHTML = `
-        <tr style="background-color: #0070ba; color: white;">
-            <th style="padding: 12px 15px; text-align: left; border-radius: 8px 0 0 0;">Položka</th>
-            <th style="padding: 12px 15px; text-align: right; border-radius: 0 8px 0 0;">Množství</th>
-        </tr>
-    `;
-    table.appendChild(thead);
-    
-    const tbody = document.createElement('tbody');
-    if (orderData.items) {
-        orderData.items.forEach((item, index) => {
-            const tr = document.createElement('tr');
-            tr.style.borderBottom = '1px solid #eee';
-            if (index % 2 === 0) tr.style.backgroundColor = '#fdfdfd';
-            
-            const td1 = document.createElement('td');
-            td1.style.cssText = 'padding: 15px; text-align: left; font-size: 15px;';
-            td1.textContent = item;
-            
-            const td2 = document.createElement('td');
-            td2.style.cssText = 'padding: 15px; text-align: right; font-size: 15px; font-weight: 600;';
-            td2.textContent = '1';
-            
-            tr.appendChild(td1);
-            tr.appendChild(td2);
-            tbody.appendChild(tr);
-        });
-    }
-    table.appendChild(tbody);
-    
-    const totalDiv = document.createElement('div');
-    totalDiv.style.textAlign = 'right';
-    totalDiv.style.marginBottom = '50px';
     
     let formattedTotal = orderData.total;
     if (typeof currentCurrency !== 'undefined') {
@@ -2152,33 +2056,63 @@ function generateInvoicePDF(orderData) {
     } else {
         formattedTotal += ' CZK';
     }
-    
-    totalDiv.innerHTML = `
-        <div style="display: inline-block; padding: 20px 40px; background: linear-gradient(135deg, #0070ba 0%, #00d2ff 100%); color: white; border-radius: 12px; box-shadow: 0 10px 20px rgba(0, 112, 186, 0.2);">
-            <p style="margin: 0; font-size: 14px; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px;">Celková cena</p>
-            <h2 style="margin: 5px 0 0; font-size: 32px; font-weight: 800;">` + formattedTotal + `</h2>
+
+    let itemsHtml = '';
+    if (orderData.items) {
+        orderData.items.forEach((item, i) => {
+            itemsHtml += `
+            <tr style="border-bottom: 1px solid #eee; background-color: ${i%2===0 ? '#fdfdfd' : '#fff'};">
+                <td style="padding: 15px; text-align: left; font-size: 15px;">${item}</td>
+                <td style="padding: 15px; text-align: right; font-size: 15px; font-weight: 600;">1</td>
+            </tr>`;
+        });
+    }
+
+    const htmlString = `
+    <div style="padding: 40px; font-family: 'Inter', sans-serif; color: #333; background-color: #fff; width: 800px; box-sizing: border-box;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0070ba; padding-bottom: 20px; margin-bottom: 30px;">
+            <div>
+                <h1 style="margin: 0; color: #0070ba; font-size: 32px; font-weight: 800; letter-spacing: -1px;">Venvio<span style="color:#00d2ff;">.</span></h1>
+                <p style="margin: 5px 0 0; font-size: 14px; color: #666;">Profesionální weby na míru</p>
+            </div>
+            <div style="text-align: right;">
+                <h2 style="margin: 0; font-size: 24px; color: #111;">Shrnutí objednávky</h2>
+                <p style="margin: 5px 0 0; font-size: 14px; color: #666;">Datum: ${new Date().toLocaleDateString()}</p>
+            </div>
         </div>
+        
+        <div style="margin-bottom: 40px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+            <h3 style="margin-top: 0; margin-bottom: 15px; color: #111; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">Údaje zákazníka</h3>
+            <p style="margin: 5px 0; font-size: 15px;"><strong>Jméno / Firma: </strong>${orderData.name || 'Nezadáno'}</p>
+            <p style="margin: 5px 0; font-size: 15px;"><strong>E-mail: </strong>${orderData.email || 'Nezadáno'}</p>
+        </div>
+        
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 40px;">
+            <thead>
+                <tr style="background-color: #0070ba; color: white;">
+                    <th style="padding: 12px 15px; text-align: left; border-radius: 8px 0 0 0;">Položka</th>
+                    <th style="padding: 12px 15px; text-align: right; border-radius: 0 8px 0 0;">Množství</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${itemsHtml}
+            </tbody>
+        </table>
+        
+        <div style="text-align: right; margin-bottom: 50px;">
+            <div style="display: inline-block; padding: 20px 40px; background: linear-gradient(135deg, #0070ba 0%, #00d2ff 100%); color: white; border-radius: 12px; box-shadow: 0 10px 20px rgba(0, 112, 186, 0.2);">
+                <p style="margin: 0; font-size: 14px; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px;">Celková cena</p>
+                <h2 style="margin: 5px 0 0; font-size: 32px; font-weight: 800;">${formattedTotal}</h2>
+            </div>
+        </div>
+        
+        <div style="border-top: 1px solid #eee; padding-top: 20px; text-align: center; font-size: 12px; color: #888;">
+            <p style="margin: 5px 0;"><strong>Venvio.dev</strong> | Tvoříme weby, které prodávají</p>
+            <p style="margin: 5px 0;">IČO: 27622444 | Nejsme plátci DPH.</p>
+            <p style="margin: 5px 0;">Toto je pouze informativní shrnutí objednávky, neslouží jako daňový doklad.</p>
+        </div>
+    </div>
     `;
-    
-    const footer = document.createElement('div');
-    footer.style.borderTop = '1px solid #eee';
-    footer.style.paddingTop = '20px';
-    footer.style.textAlign = 'center';
-    footer.style.fontSize = '12px';
-    footer.style.color = '#888';
-    footer.innerHTML = `
-        <p style="margin: 5px 0;"><strong>Venvio.dev</strong> | Tvoříme weby, které prodávají</p>
-        <p style="margin: 5px 0;">IČO: 27622444 | Nejsme plátci DPH.</p>
-        <p style="margin: 5px 0;">Toto je pouze informativní shrnutí objednávky, neslouží jako daňový doklad.</p>
-    `;
-    
-    invoiceWrapper.appendChild(header);
-    invoiceWrapper.appendChild(customerInfo);
-    invoiceWrapper.appendChild(table);
-    invoiceWrapper.appendChild(totalDiv);
-    invoiceWrapper.appendChild(footer);
-    
-    document.body.appendChild(invoiceWrapper);
     
     const opt = {
         margin:       10,
@@ -2188,9 +2122,7 @@ function generateInvoicePDF(orderData) {
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
     
-    return html2pdf().set(opt).from(invoiceWrapper).save().then(() => {
-        document.body.removeChild(invoiceWrapper);
-    });
+    return html2pdf().set(opt).from(htmlString).save();
 }
 
 // Dynamic additions for success.html
