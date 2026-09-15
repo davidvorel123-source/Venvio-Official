@@ -2043,83 +2043,105 @@ if ('serviceWorker' in navigator) {
 
 // PDF Generation
 function generateInvoicePDF(orderData) {
-    if (!window.html2pdf) {
-        console.error("html2pdf nenalezen.");
+    if (!window.jspdf || !window.jspdf.jsPDF) {
+        console.error("jsPDF nenalezen.");
         return;
     }
     
+    // Pomocná funkce pro odstranění diakritiky (nativní jsPDF font nepodporuje české znaky)
+    const removeDiacritics = (str) => {
+        if (!str) return "";
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    };
+
     let formattedTotal = orderData.total;
     if (typeof currentCurrency !== 'undefined') {
-        if (currentCurrency === 'czk') formattedTotal = formattedTotal.toLocaleString('cs-CZ') + ' Kč';
-        else if (currentCurrency === 'eur') formattedTotal = formattedTotal.toLocaleString('en-US') + ' €';
+        if (currentCurrency === 'czk') formattedTotal = formattedTotal.toLocaleString('cs-CZ') + ' CZK';
+        else if (currentCurrency === 'eur') formattedTotal = formattedTotal.toLocaleString('en-US') + ' EUR';
         else if (currentCurrency === 'usd') formattedTotal = '$' + formattedTotal.toLocaleString('en-US');
     } else {
         formattedTotal += ' CZK';
     }
 
-    let itemsHtml = '';
-    if (orderData.items) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Font
+    doc.setFont("helvetica");
+    
+    // Hlavička
+    doc.setFontSize(28);
+    doc.setTextColor(0, 112, 186);
+    doc.text("Venvio.", 20, 30);
+    
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text("Profesionalni weby na miru", 20, 38);
+    
+    // Nadpis objednávky
+    doc.setFontSize(18);
+    doc.setTextColor(0, 0, 0);
+    doc.text("Shrnuti objednavky", 130, 30);
+    
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text("Datum: " + new Date().toLocaleDateString(), 130, 38);
+    
+    // Čára
+    doc.setDrawColor(0, 112, 186);
+    doc.setLineWidth(0.5);
+    doc.line(20, 45, 190, 45);
+    
+    // Údaje zákazníka
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text("Udaje zakaznika:", 20, 60);
+    
+    doc.setFontSize(11);
+    doc.setTextColor(50, 50, 50);
+    doc.text("Jmeno / Firma: " + removeDiacritics(orderData.name || "Nezadano"), 20, 68);
+    doc.text("E-mail: " + removeDiacritics(orderData.email || "Nezadano"), 20, 75);
+    
+    // Tabulka hlavička
+    doc.setFillColor(0, 112, 186);
+    doc.rect(20, 90, 170, 10, "F");
+    
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(11);
+    doc.text("Polozka", 25, 97);
+    doc.text("Mnozstvi", 165, 97);
+    
+    // Položky
+    doc.setTextColor(0, 0, 0);
+    let startY = 110;
+    if (orderData.items && orderData.items.length > 0) {
         orderData.items.forEach((item) => {
-            itemsHtml += `
-            <tr style="border-bottom: 1px solid #ddd;">
-                <td style="padding: 12px; text-align: left;">${item}</td>
-                <td style="padding: 12px; text-align: right; font-weight: bold;">1</td>
-            </tr>`;
+            doc.text(removeDiacritics(item), 25, startY);
+            doc.text("1", 170, startY);
+            
+            // Linka pod položkou
+            doc.setDrawColor(220, 220, 220);
+            doc.line(20, startY + 5, 190, startY + 5);
+            
+            startY += 15;
         });
+    } else {
+        doc.text("Zadne polozky", 25, startY);
+        startY += 15;
     }
-
-    const htmlString = `
-    <div style="background-color: #ffffff; color: #000000; padding: 40px; font-family: Arial, sans-serif; width: 700px;">
-        <h1 style="color: #0070ba; margin-bottom: 5px; font-size: 32px;">Venvio.</h1>
-        <p style="color: #555; margin-top: 0; font-size: 14px;">Profesionální weby na míru</p>
-        
-        <h2 style="border-bottom: 2px solid #0070ba; padding-bottom: 10px; margin-top: 40px; font-size: 24px;">Shrnutí objednávky</h2>
-        
-        <div style="margin-bottom: 30px; margin-top: 20px;">
-            <p style="margin: 5px 0;"><strong>Datum:</strong> ${new Date().toLocaleDateString()}</p>
-            <p style="margin: 5px 0;"><strong>Jméno / Firma:</strong> ${orderData.name || 'Nezadáno'}</p>
-            <p style="margin: 5px 0;"><strong>E-mail:</strong> ${orderData.email || 'Nezadáno'}</p>
-        </div>
-        
-        <h3 style="margin-top: 40px; margin-bottom: 15px; font-size: 18px;">Položky</h3>
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 40px;">
-            <tr style="background-color: #0070ba; color: #ffffff;">
-                <th style="padding: 12px; text-align: left;">Název položky</th>
-                <th style="padding: 12px; text-align: right;">Množství</th>
-            </tr>
-            ${itemsHtml}
-        </table>
-        
-        <h2 style="text-align: right; color: #0070ba; font-size: 28px; margin-top: 40px;">Celková cena: ${formattedTotal}</h2>
-        
-        <div style="margin-top: 80px; font-size: 12px; color: #777; text-align: center; border-top: 1px solid #ddd; padding-top: 20px;">
-            <p style="margin: 4px 0;"><strong>Venvio.dev</strong> | IČO: 27622444 | Nejsme plátci DPH.</p>
-            <p style="margin: 4px 0;">Toto je pouze informativní shrnutí objednávky, neslouží jako daňový doklad.</p>
-        </div>
-    </div>
-    `;
     
-    const wrapper = document.createElement('div');
-    wrapper.innerHTML = htmlString;
-    wrapper.style.position = 'absolute';
-    wrapper.style.top = '0';
-    wrapper.style.left = '0';
-    wrapper.style.zIndex = '-9999';
-    wrapper.style.width = '800px';
-    wrapper.style.backgroundColor = '#ffffff';
-    document.body.appendChild(wrapper);
-
-    const opt = {
-        margin:       10,
-        filename:     'venvio-objednavka.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true, scrollY: 0, scrollX: 0, backgroundColor: '#ffffff', windowWidth: 800 },
-        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
+    // Celková cena
+    doc.setFontSize(16);
+    doc.setTextColor(0, 112, 186);
+    doc.text("Celkova cena: " + formattedTotal, 115, startY + 20);
     
-    return html2pdf().set(opt).from(wrapper).save().then(() => {
-        document.body.removeChild(wrapper);
-    });
+    // Patička
+    doc.setFontSize(9);
+    doc.setTextColor(150, 150, 150);
+    doc.text("Venvio.dev | ICO: 27622444 | Nejsme platci DPH.", 105, 270, { align: "center" });
+    doc.text("Toto je pouze informativni shrnuti objednavky, neslouzi jako danovy doklad.", 105, 275, { align: "center" });
+    
+    doc.save("venvio-objednavka.pdf");
 }
 
 // Dynamic additions for success.html
