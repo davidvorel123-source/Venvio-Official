@@ -2059,57 +2059,42 @@ function generateInvoicePDF(orderData) {
 
     let itemsHtml = '';
     if (orderData.items) {
-        orderData.items.forEach((item, i) => {
+        orderData.items.forEach((item) => {
             itemsHtml += `
-            <tr style="border-bottom: 1px solid #eee; background-color: ${i%2===0 ? '#fdfdfd' : '#fff'};">
-                <td style="padding: 15px; text-align: left; font-size: 15px;">${item}</td>
-                <td style="padding: 15px; text-align: right; font-size: 15px; font-weight: 600;">1</td>
+            <tr style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 12px; text-align: left;">${item}</td>
+                <td style="padding: 12px; text-align: right; font-weight: bold;">1</td>
             </tr>`;
         });
     }
 
     const htmlString = `
-    <div style="padding: 40px; font-family: 'Inter', sans-serif; color: #333; background-color: #fff; width: 800px; box-sizing: border-box;">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0070ba; padding-bottom: 20px; margin-bottom: 30px;">
-            <div>
-                <h1 style="margin: 0; color: #0070ba; font-size: 32px; font-weight: 800; letter-spacing: -1px;">Venvio<span style="color:#00d2ff;">.</span></h1>
-                <p style="margin: 5px 0 0; font-size: 14px; color: #666;">Profesionální weby na míru</p>
-            </div>
-            <div style="text-align: right;">
-                <h2 style="margin: 0; font-size: 24px; color: #111;">Shrnutí objednávky</h2>
-                <p style="margin: 5px 0 0; font-size: 14px; color: #666;">Datum: ${new Date().toLocaleDateString()}</p>
-            </div>
+    <div style="background-color: #ffffff; color: #000000; padding: 40px; font-family: Arial, sans-serif; width: 700px;">
+        <h1 style="color: #0070ba; margin-bottom: 5px; font-size: 32px;">Venvio.</h1>
+        <p style="color: #555; margin-top: 0; font-size: 14px;">Profesionální weby na míru</p>
+        
+        <h2 style="border-bottom: 2px solid #0070ba; padding-bottom: 10px; margin-top: 40px; font-size: 24px;">Shrnutí objednávky</h2>
+        
+        <div style="margin-bottom: 30px; margin-top: 20px;">
+            <p style="margin: 5px 0;"><strong>Datum:</strong> ${new Date().toLocaleDateString()}</p>
+            <p style="margin: 5px 0;"><strong>Jméno / Firma:</strong> ${orderData.name || 'Nezadáno'}</p>
+            <p style="margin: 5px 0;"><strong>E-mail:</strong> ${orderData.email || 'Nezadáno'}</p>
         </div>
         
-        <div style="margin-bottom: 40px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
-            <h3 style="margin-top: 0; margin-bottom: 15px; color: #111; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">Údaje zákazníka</h3>
-            <p style="margin: 5px 0; font-size: 15px;"><strong>Jméno / Firma: </strong>${orderData.name || 'Nezadáno'}</p>
-            <p style="margin: 5px 0; font-size: 15px;"><strong>E-mail: </strong>${orderData.email || 'Nezadáno'}</p>
-        </div>
-        
+        <h3 style="margin-top: 40px; margin-bottom: 15px; font-size: 18px;">Položky</h3>
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 40px;">
-            <thead>
-                <tr style="background-color: #0070ba; color: white;">
-                    <th style="padding: 12px 15px; text-align: left; border-radius: 8px 0 0 0;">Položka</th>
-                    <th style="padding: 12px 15px; text-align: right; border-radius: 0 8px 0 0;">Množství</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${itemsHtml}
-            </tbody>
+            <tr style="background-color: #0070ba; color: #ffffff;">
+                <th style="padding: 12px; text-align: left;">Název položky</th>
+                <th style="padding: 12px; text-align: right;">Množství</th>
+            </tr>
+            ${itemsHtml}
         </table>
         
-        <div style="text-align: right; margin-bottom: 50px;">
-            <div style="display: inline-block; padding: 20px 40px; background: linear-gradient(135deg, #0070ba 0%, #00d2ff 100%); color: white; border-radius: 12px; box-shadow: 0 10px 20px rgba(0, 112, 186, 0.2);">
-                <p style="margin: 0; font-size: 14px; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px;">Celková cena</p>
-                <h2 style="margin: 5px 0 0; font-size: 32px; font-weight: 800;">${formattedTotal}</h2>
-            </div>
-        </div>
+        <h2 style="text-align: right; color: #0070ba; font-size: 28px; margin-top: 40px;">Celková cena: ${formattedTotal}</h2>
         
-        <div style="border-top: 1px solid #eee; padding-top: 20px; text-align: center; font-size: 12px; color: #888;">
-            <p style="margin: 5px 0;"><strong>Venvio.dev</strong> | Tvoříme weby, které prodávají</p>
-            <p style="margin: 5px 0;">IČO: 27622444 | Nejsme plátci DPH.</p>
-            <p style="margin: 5px 0;">Toto je pouze informativní shrnutí objednávky, neslouží jako daňový doklad.</p>
+        <div style="margin-top: 80px; font-size: 12px; color: #777; text-align: center; border-top: 1px solid #ddd; padding-top: 20px;">
+            <p style="margin: 4px 0;"><strong>Venvio.dev</strong> | IČO: 27622444 | Nejsme plátci DPH.</p>
+            <p style="margin: 4px 0;">Toto je pouze informativní shrnutí objednávky, neslouží jako daňový doklad.</p>
         </div>
     </div>
     `;
@@ -2121,13 +2106,14 @@ function generateInvoicePDF(orderData) {
     wrapper.style.left = '0';
     wrapper.style.zIndex = '-9999';
     wrapper.style.width = '800px';
+    wrapper.style.backgroundColor = '#ffffff';
     document.body.appendChild(wrapper);
 
     const opt = {
         margin:       10,
         filename:     'venvio-objednavka.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true, scrollY: 0, scrollX: 0, windowWidth: 800 },
+        html2canvas:  { scale: 2, useCORS: true, scrollY: 0, scrollX: 0, backgroundColor: '#ffffff', windowWidth: 800 },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
     
