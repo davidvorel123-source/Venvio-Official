@@ -2049,6 +2049,9 @@ function generateInvoicePDF(orderData) {
     }
     
     const invoiceWrapper = document.createElement('div');
+    invoiceWrapper.style.position = 'absolute';
+    invoiceWrapper.style.left = '-9999px';
+    invoiceWrapper.style.top = '0';
     invoiceWrapper.style.padding = '40px';
     invoiceWrapper.style.fontFamily = "'Inter', sans-serif";
     invoiceWrapper.style.color = '#333';
@@ -2175,6 +2178,8 @@ function generateInvoicePDF(orderData) {
     invoiceWrapper.appendChild(totalDiv);
     invoiceWrapper.appendChild(footer);
     
+    document.body.appendChild(invoiceWrapper);
+    
     const opt = {
         margin:       10,
         filename:     'venvio-objednavka.pdf',
@@ -2183,7 +2188,9 @@ function generateInvoicePDF(orderData) {
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
     
-    return html2pdf().set(opt).from(invoiceWrapper).save();
+    return html2pdf().set(opt).from(invoiceWrapper).save().then(() => {
+        document.body.removeChild(invoiceWrapper);
+    });
 }
 
 // Dynamic additions for success.html
