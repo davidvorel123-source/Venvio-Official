@@ -1,4 +1,4 @@
-// Helper: Safe JSON parse with fallback
+﻿// Helper: Safe JSON parse with fallback
 const safeJsonParse = (str, fallback) => {
     try { return JSON.parse(str) || fallback; } catch(e) { return fallback; }
 };
@@ -207,7 +207,7 @@ const translations = {
         "testimonial.t2_name": "Jana P.",
         "testimonial.t2_role": "Kavárnice",
         "testimonial.t3_text": "\"Nechali jsme si udělat dynamický herní web s temným designem pro náš E-sport tým a výsledek předčil očekávání! Vypadá to brutálně a funguje bezchybně.\"",
-        "testimonial.t3_name": "Goats CZ",
+        "testimonial.t3_name": "vinfo esports",
         "testimonial.t3_role": "E-sports Tým",
         "testimonial.t3_link": "Zobrazit web",
         "faq.title": "Často kladené otázky",
@@ -353,7 +353,7 @@ const translations = {
         "testimonial.t2_name": "Jana P.",
         "testimonial.t2_role": "Cafe Owner",
         "testimonial.t3_text": "\"We had a dynamic gaming website built with a dark design for our E-sports team and the result exceeded expectations! It looks brutal and works flawlessly.\"",
-        "testimonial.t3_name": "Goats CZ",
+        "testimonial.t3_name": "vinfo esports",
         "testimonial.t3_role": "E-sports Team",
         "testimonial.t3_link": "View Website",
         "faq.title": "Frequently Asked Questions",
