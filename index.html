@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
@@ -55,16 +55,43 @@
       "image": "https://venvio.dev/og-image.png",
       "@id": "https://venvio.dev/",
       "url": "https://venvio.dev/",
-      "telephone": "+420 775 104 206",
+      "telephone": "+420775104206",
+      "email": "info@venvio.dev",
       "priceRange": "14900 Kč - 99000 Kč",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "CZ",
         "addressLocality": "Praha"
       },
-      "description": "Expressní tvorba profesionálních webových stránek, vývoj webových aplikací (SaaS), integrace AI chatbotů a automatizace firemních procesů."
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      },
+      "sameAs": ["https://wa.me/420775104206"],
+      "description": "Expresní tvorba profesionálních webových stránek, vývoj webových aplikací (SaaS), integrace AI chatbotů a automatizace firemních procesů.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "24"
+      }
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://venvio.dev/",
+      "name": "Venvio",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://venvio.dev/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -866,7 +893,7 @@
                 <div class="footer-col">
                     <h3 data-i18n="footer.legal">Právní informace</h3>
                     <p style="color: var(--color-text-muted); font-size: 0.9rem;">
-                        <span data-i18n="footer.branch">Jsme pobočka <a href="https://www.vidia-design.cz/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">Vidia Design</a>.<br>Sídlíme v Praze.</span><br><br>
+                        <span data-i18n="footer.branch"><strong>VIDIA-DESIGN s.r.o.</strong><br>Sídlo: Praha<br>IČO: 27622444<br>Spisová značka: C 119565, Městský soud v Praze</span><br><br>
                         <a href="#" style="color: var(--color-text-muted); text-decoration: none;" data-i18n="footer.terms">Obchodní podmínky</a><br>
                         <a href="#" style="color: var(--color-text-muted); text-decoration: none;" data-i18n="footer.privacy">Ochrana osobních údajů</a>
                     </p>

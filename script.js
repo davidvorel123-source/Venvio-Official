@@ -1,4 +1,4 @@
-﻿// Helper: Safe JSON parse with fallback
+// Helper: Safe JSON parse with fallback
 const safeJsonParse = (str, fallback) => {
     try { return JSON.parse(str) || fallback; } catch(e) { return fallback; }
 };
@@ -421,10 +421,10 @@ translations.en['modal.submit'] = "Submit Order";
 translations.cs['cart.guest_info'] = 'Objednáváte jako host. Přihlaste se a získejte okamžitou slevu 500 Kč!';
 translations.en['cart.guest_info'] = 'Ordering as a guest. Log in to get an instant 500 CZK discount!';
 
-translations.cs['checkout.gdpr'] = 'Souhlasím se zpracováním osobních údajů pro účely vyřízení objednávky.';
-translations.en['checkout.gdpr'] = 'I agree to the processing of personal data for the purpose of order fulfillment.';
-translations.cs['footer.branch'] = 'Jsme pobočka <a href="https://www.vidia-design.cz/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">Vidia Design</a>.<br>Sídlíme v Praze.';
-translations.en['footer.branch'] = 'We are a branch of <a href="https://www.vidia-design.cz/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">Vidia Design</a>.<br>Based in Prague.';
+translations.cs['checkout.gdpr'] = 'Souhlasím se <a href="#" onclick="document.getElementById(\'legal-modal\').classList.add(\'active\'); event.preventDefault();" style="color:var(--color-primary);text-decoration:underline;">zpracováním osobních údajů</a> a <a href="#" onclick="document.getElementById(\'legal-modal\').classList.add(\'active\'); event.preventDefault();" style="color:var(--color-primary);text-decoration:underline;">obchodními podmínkami</a>.';
+translations.en['checkout.gdpr'] = 'I agree to the <a href="#" onclick="document.getElementById(\'legal-modal\').classList.add(\'active\'); event.preventDefault();" style="color:var(--color-primary);text-decoration:underline;">processing of personal data</a> and <a href="#" onclick="document.getElementById(\'legal-modal\').classList.add(\'active\'); event.preventDefault();" style="color:var(--color-primary);text-decoration:underline;">terms of service</a>.';
+translations.cs['footer.branch'] = '<strong>VIDIA-DESIGN s.r.o.</strong><br>Sídlo: Praha<br>IČO: 27622444<br>Spisová značka: C 119565, Městský soud v Praze';
+translations.en['footer.branch'] = '<strong>VIDIA-DESIGN s.r.o.</strong><br>Based in: Prague<br>Company ID (IČO): 27622444<br>File ref: C 119565, Municipal Court in Prague';
 translations.cs['footer.legal'] = 'Právní informace';
 translations.en['footer.legal'] = 'Legal Information';
 translations.cs['footer.terms'] = 'Obchodní podmínky';
