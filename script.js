@@ -2114,15 +2114,26 @@ function generateInvoicePDF(orderData) {
     </div>
     `;
     
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = htmlString;
+    wrapper.style.position = 'absolute';
+    wrapper.style.top = '0';
+    wrapper.style.left = '0';
+    wrapper.style.zIndex = '-9999';
+    wrapper.style.width = '800px';
+    document.body.appendChild(wrapper);
+
     const opt = {
         margin:       10,
         filename:     'venvio-objednavka.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true },
+        html2canvas:  { scale: 2, useCORS: true, scrollY: 0, scrollX: 0, windowWidth: 800 },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
     
-    return html2pdf().set(opt).from(htmlString).save();
+    return html2pdf().set(opt).from(wrapper).save().then(() => {
+        document.body.removeChild(wrapper);
+    });
 }
 
 // Dynamic additions for success.html
