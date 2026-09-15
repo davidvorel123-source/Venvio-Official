@@ -22,6 +22,7 @@
     <link rel="alternate" hreflang="en" href="https://venvio.dev/?lang=en">
     <link rel="alternate" hreflang="x-default" href="https://venvio.dev/">
     <meta name="description" content="Venvio – Expressní tvorba profesionálních webových stránek pro firmy a živnostníky. Moderní, responzivní web za skvělou cenu hotový do 24 hodin.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="keywords" content="tvorba webu, webové stránky, tvorba e-shopu, webdesign, levné weby, weby pro živnostníky, vytvoření webu, rychlý web, Venvio">
     <meta name="author" content="Venvio">
     
@@ -35,6 +36,7 @@
     <meta property="og:locale" content="cs_CZ">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Venvio - Expresní tvorba webových stránek">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -42,6 +44,7 @@
     <meta name="twitter:title" content="Tvorba webových stránek na míru do 24 hodin | Venvio">
     <meta name="twitter:description" content="Expressní tvorba profesionálních webových stránek. Moderní, responzivní web za skvělou cenu hotový do 24 hodin.">
     <meta name="twitter:image" content="https://venvio.dev/og-image.png">
+    <meta name="twitter:image:alt" content="Venvio - Express web solutions">
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -109,11 +112,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=v38">
+    <link rel="stylesheet" href="style.css?v=v39">
     <style>body { background-color: var(--color-bg-dark, #060B18); }</style>
     <link rel="manifest" href="manifest.json">
 </head>
 <body class="dark-theme">
+    <a href="#main-content" class="skip-link">Přeskočit na obsah</a>
     <!-- Noise Overlay -->
     <div class="noise-overlay"></div>
     <!-- Scroll Progress Bar -->
@@ -382,39 +386,39 @@
 
     <!-- Porovnani -->
     <section id="porovnani" class="section dark-section">
-        <div class="content-wrapper">
+        <div class="container">
             <div class="section-header fade-in-up" data-aos="fade-up">
                 <h2 data-i18n="compare.title">Proč si vybrat <span class="gradient-text">Venvio</span>?</h2>
                 <p data-i18n="compare.desc">Podívejte se, jaký je rozdíl mezi námi a běžnou agenturou nebo freelancerem.</p>
             </div>
             
             <div class="comparison-table-wrapper fade-in-up delay-1" data-aos="fade-up">
-                <table class="comparison-table">
+                <table class="comparison-table" aria-label="Srovnání Venvio vs. běžná agentura">
                     <thead>
                         <tr>
-                            <th data-i18n="compare.th_feature">Vlastnost</th>
-                            <th class="highlight-col"><strong>Venvio</strong></th>
-                            <th data-i18n="compare.th_others">Běžná agentura</th>
+                            <th scope="col" data-i18n="compare.th_feature">Vlastnost</th>
+                            <th scope="col" class="highlight-col"><strong>Venvio</strong></th>
+                            <th scope="col" data-i18n="compare.th_others">Běžná agentura</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td data-i18n="compare.speed">Rychlost dodání</td>
+                            <th scope="row" data-i18n="compare.speed">Rychlost dodání</th>
                             <td class="highlight-col" data-i18n="compare.speed_us"><strong>Do 24 hodin</strong></td>
                             <td data-i18n="compare.speed_them">4 - 8 týdnů</td>
                         </tr>
                         <tr>
-                            <td data-i18n="compare.price">Cena a rozpočet</td>
+                            <th scope="row" data-i18n="compare.price">Cena a rozpočet</th>
                             <td class="highlight-col" data-i18n="compare.price_us"><strong>Pevná a transparentní</strong></td>
                             <td data-i18n="compare.price_them">Hodinová sazba, vícepráce</td>
                         </tr>
                         <tr>
-                            <td data-i18n="compare.seo">Základní SEO a Rychlost</td>
+                            <th scope="row" data-i18n="compare.seo">Základní SEO a Rychlost</th>
                             <td class="highlight-col" data-i18n="compare.seo_us"><i class="fa-solid fa-check" style="color: #2ed573;"></i> <strong>V ceně balíčku</strong></td>
                             <td data-i18n="compare.seo_them"><i class="fa-solid fa-xmark" style="color: #ff4757;"></i> Často za příplatek</td>
                         </tr>
                         <tr>
-                            <td data-i18n="compare.support">Technická podpora</td>
+                            <th scope="row" data-i18n="compare.support">Technická podpora</th>
                             <td class="highlight-col" data-i18n="compare.support_us"><strong>VIP podpora (i o víkendu)</strong></td>
                             <td data-i18n="compare.support_them">Pouze v pracovní dny</td>
                         </tr>
@@ -671,7 +675,7 @@
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card glass-panel fade-in-up delay-1" data-aos="fade-up">
-                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-stars" role="img" aria-label="Hodnocení: 5 z 5 hvězdiček">★★★★★</div>
                     <p class="testimonial-text" data-i18n="testimonial.t1_text">"Web byl hotový za pouhý jeden den, přesně jak slíbili. Profesionální přístup a moderní design. Jedině doporučit!"</p>
                     <div class="testimonial-author">
                         <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
@@ -682,8 +686,8 @@
                     </div>
                 </div>
                 <div class="testimonial-card glass-panel fade-in-up delay-2" data-aos="fade-up">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text" data-i18n="testimonial.t2_text">"Nejrychlejší a nejprofesionálnější webovka, kterou jsem kdy objednal. Zákazníci nás díky ní konečně najdou online."</p>
+                    <div class="testimonial-stars" role="img" aria-label="Hodnocení: 5 z 5 hvězdiček">★★★★★</div>
+                    <p class="testimonial-text" data-i18n="testimonial.t2_text">"Nejrychlejší a nejprofesionálnější webovka, kterou jsem kdy objednala. Zákazníci nás díky ní konečně najdou online."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
                         <div>
@@ -693,7 +697,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card glass-panel fade-in-up delay-3" data-aos="fade-up">
-                    <div class="testimonial-stars">★★★★★</div>
+                    <div class="testimonial-stars" role="img" aria-label="Hodnocení: 5 z 5 hvězdiček">★★★★★</div>
                     <p class="testimonial-text" data-i18n="testimonial.t3_text">"Skvělá komunikace, přesně pochopili, co jsme potřebovali. Web vypadá luxusně a funguje bezchybně i na mobilu."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
@@ -710,14 +714,14 @@
 
     <!-- Tym -->
     <section id="tym" class="section dark-section">
-        <div class="content-wrapper">
+        <div class="container">
             <div class="section-header fade-in-up" data-aos="fade-up">
                 <h2 data-i18n="team.title">Kdo za tím <span class="gradient-text">stojí</span>?</h2>
                 <p data-i18n="team.desc">Jsme malý tým nadšenců, kteří věří, že kvalitní web nemusí stát statisíce a trvat měsíce.</p>
             </div>
             <div class="team-grid fade-in-up delay-1" data-aos="fade-up">
                 <div class="team-member glass-panel">
-                    <img src="https://ui-avatars.com/api/?name=David+Vorel&background=00D2FF&color=fff&size=120" alt="David Vorel">
+                    <img src="https://ui-avatars.com/api/?name=David+Vorel&background=00D2FF&color=fff&size=120" alt="David Vorel" width="120" height="120" loading="lazy">
                     <h3>David Vorel</h3>
                     <div class="role" data-i18n="team.role1">Zakladatel & Lead Developer</div>
                     <p data-i18n="team.bio1">Specialista na moderní webové technologie. "Mým cílem je, aby si každý podnikatel mohl dovolit rychlý a perfektně optimalizovaný web."</p>
@@ -728,7 +732,7 @@
 
     <!-- Kontakt -->
     <section id="kontakt" class="section">
-        <div class="content-wrapper">
+        <div class="container">
             <div class="section-header fade-in-up" data-aos="fade-up">
                 <h2 data-i18n="contact.title">Ozvěte se <span class="gradient-text">nám</span></h2>
                 <p data-i18n="contact.desc">Napište nám, nebo si rovnou zarezervujte termín hovoru.</p>
@@ -754,7 +758,7 @@
                         <i class="fa-brands fa-whatsapp"></i>
                         <div>
                             <div style="font-size:0.9rem; color:var(--color-text-muted);" data-i18n="contact.wa">WhatsApp 24/7</div>
-                            <a href="https://wa.me/420775104206" style="color:var(--color-primary); font-weight:bold;" target="_blank" rel="noopener">Napsat zprávu</a>
+                            <a href="https://wa.me/420775104206" style="color:var(--color-primary); font-weight:bold;" target="_blank" rel="noopener" data-i18n="contact.wa_btn">Napsat zprávu</a>
                         </div>
                     </div>
                 </div>
@@ -765,10 +769,14 @@
                         <input type="hidden" name="subject" value="Nová poptávka z Venvio.dev - Kontakt">
                         <input type="hidden" name="redirect" value="https://venvio.dev/success.html">
                         
-                        <input type="text" name="name" class="form-control" placeholder="Vaše jméno" required data-i18n="contact.ph_name">
-                        <input type="email" name="email" class="form-control" placeholder="Váš e-mail" required data-i18n="contact.ph_email">
-                        <textarea name="message" class="form-control" rows="4" placeholder="Jaký projekt máte v plánu?" required data-i18n="contact.ph_msg"></textarea>
+                        <label for="contact-name" class="sr-only">Jméno</label>
+                        <input type="text" id="contact-name" name="name" class="form-control" placeholder="Vaše jméno" required data-i18n-ph="contact.ph_name">
+                        <label for="contact-email" class="sr-only">E-mail</label>
+                        <input type="email" id="contact-email" name="email" class="form-control" placeholder="Váš e-mail" required data-i18n-ph="contact.ph_email">
+                        <label for="contact-message" class="sr-only">Zpráva</label>
+                        <textarea id="contact-message" name="message" class="form-control" rows="4" placeholder="Jaký projekt máte v plánu?" required data-i18n-ph="contact.ph_msg"></textarea>
                         
+                        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" aria-hidden="true">
                         <button type="submit" class="btn btn-primary" data-i18n="contact.submit">Odeslat zprávu <i class="fa-solid fa-paper-plane"></i></button>
                     </form>
                 </div>
@@ -835,7 +843,7 @@
                 <div class="footer-links-grid">
                     <div>
                         <h3 data-i18n="footer.nav_title">Navigace</h3>
-                        <ul id="nav-links">
+                        <ul id="footer-nav-links">
                             <li><a href="#vyhody" data-i18n="nav.why_us">Proč my</a></li>
                             <li><a href="#sluzby" data-i18n="nav.services">Služby</a></li>
                             <li><a href="#porovnani" data-i18n="nav.compare">Srovnání</a></li>
@@ -1118,10 +1126,10 @@
     </div>
 
     <!-- JS -->
-    <script type="module" src="auth.js?v=v38"></script>
+    <script type="module" src="auth.js?v=v39"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({ once: true, offset: 50, duration: 800 });</script>
-    <script src="script.js?v=v38" defer></script>
+    <script src="script.js?v=v39" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>

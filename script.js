@@ -1,4 +1,4 @@
-// Helper: Safe JSON parse with fallback
+﻿// Helper: Safe JSON parse with fallback
 const safeJsonParse = (str, fallback) => {
     try { return JSON.parse(str) || fallback; } catch(e) { return fallback; }
 };
@@ -2206,6 +2206,78 @@ translations.cs['success.paypal_btn'] = 'Přejít na PayPal';
 translations.en['success.paypal_btn'] = 'Go to PayPal';
 
 if (typeof applyTranslations === 'function') {
+// --- Nove preklady ---
+translations.cs['compare.title'] = 'Proč si vybrat <span class="gradient-text">Venvio</span>?';
+translations.cs['compare.desc'] = 'Podívejte se, jaký je rozdíl mezi námi a běžnou agenturou nebo freelancerem.';
+translations.cs['compare.th_feature'] = 'Vlastnost';
+translations.cs['compare.th_others'] = 'Běžná agentura';
+translations.cs['compare.speed'] = 'Rychlost dodání';
+translations.cs['compare.speed_us'] = '<strong>Do 24 hodin</strong>';
+translations.cs['compare.speed_them'] = '4 - 8 týdnů';
+translations.cs['compare.price'] = 'Cena a rozpočet';
+translations.cs['compare.price_us'] = '<strong>Pevná, transparentní</strong>';
+translations.cs['compare.price_them'] = 'Hodinová sazba, vícepráce';
+translations.cs['compare.seo'] = 'Základní SEO & Rychlost';
+translations.cs['compare.seo_us'] = '<i class="fa-solid fa-check text-success"></i> <strong>V ceně balíčku</strong>';
+translations.cs['compare.seo_them'] = '<i class="fa-solid fa-xmark text-danger"></i> Často za příplatek';
+translations.cs['compare.support'] = 'Technická podpora';
+translations.cs['compare.support_us'] = '<strong>VIP podpora (i o víkendu)</strong>';
+translations.cs['compare.support_them'] = 'Pouze v pracovní dny';
+
+translations.en['compare.title'] = 'Why choose <span class="gradient-text">Venvio</span>?';
+translations.en['compare.desc'] = 'See the difference between us and a regular agency or freelancer.';
+translations.en['compare.th_feature'] = 'Feature';
+translations.en['compare.th_others'] = 'Regular Agency';
+translations.en['compare.speed'] = 'Delivery Speed';
+translations.en['compare.speed_us'] = '<strong>Under 24 hours</strong>';
+translations.en['compare.speed_them'] = '4 - 8 weeks';
+translations.en['compare.price'] = 'Price & Budget';
+translations.en['compare.price_us'] = '<strong>Fixed, transparent</strong>';
+translations.en['compare.price_them'] = 'Hourly rate, extra costs';
+translations.en['compare.seo'] = 'Basic SEO & Speed';
+translations.en['compare.seo_us'] = '<i class="fa-solid fa-check text-success"></i> <strong>Included</strong>';
+translations.en['compare.seo_them'] = '<i class="fa-solid fa-xmark text-danger"></i> Often costs extra';
+translations.en['compare.support'] = 'Tech Support';
+translations.en['compare.support_us'] = '<strong>VIP support (incl. weekends)</strong>';
+translations.en['compare.support_them'] = 'Workdays only';
+
+translations.cs['team.title'] = 'Kdo za tím <span class="gradient-text">stojí</span>?';
+translations.cs['team.desc'] = 'Jsme malý tým nadšenců, kteří věří, že kvalitní web nemusí stát statisíce a trvat měsíce.';
+translations.cs['team.role1'] = 'Zakladatel & Lead Developer';
+translations.cs['team.bio1'] = 'Specialista na moderní webové technologie. "Mým cílem je, aby si každý podnikatel mohl dovolit rychlý a perfektně optimalizovaný web."';
+
+translations.en['team.title'] = 'Who is <span class="gradient-text">behind</span> this?';
+translations.en['team.desc'] = 'We are a small team of enthusiasts who believe a great website shouldn\'t cost a fortune and take months to build.';
+translations.en['team.role1'] = 'Founder & Lead Developer';
+translations.en['team.bio1'] = 'Specialist in modern web technologies. "My goal is to make fast and perfectly optimized websites accessible to every business owner."';
+
+translations.cs['contact.title'] = 'Ozvěte se <span class="gradient-text">nám</span>';
+translations.cs['contact.desc'] = 'Napište nám, nebo si rovnou zarezervujte termín hovoru.';
+translations.cs['contact.phone'] = 'Telefon (Po-Pá 9-17)';
+translations.cs['contact.email'] = 'E-mail';
+translations.cs['contact.wa'] = 'WhatsApp 24/7';
+translations.cs['contact.ph_name'] = 'Vaše jméno';
+translations.cs['contact.ph_email'] = 'Váš e-mail';
+translations.cs['contact.ph_msg'] = 'Jaký projekt máte v plánu?';
+translations.cs['contact.submit'] = 'Odeslat zprávu <i class="fa-solid fa-paper-plane"></i>';
+
+translations.en['contact.title'] = 'Get in <span class="gradient-text">touch</span>';
+translations.en['contact.desc'] = 'Write to us or book a call right away.';
+translations.en['contact.phone'] = 'Phone (Mon-Fri 9-17)';
+translations.en['contact.email'] = 'E-mail';
+translations.en['contact.wa'] = 'WhatsApp 24/7';
+translations.en['contact.ph_name'] = 'Your Name';
+translations.en['contact.ph_email'] = 'Your E-mail';
+translations.en['contact.ph_msg'] = 'What project do you have in mind?';
+translations.en['contact.submit'] = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+translations.cs['nav.compare'] = 'Srovnání';
+translations.en['nav.compare'] = 'Compare';
+translations.cs['nav.team'] = 'Tým';
+translations.en['nav.team'] = 'Team';
+translations.cs['nav.contact'] = 'Kontakt';
+translations.en['nav.contact'] = 'Contact';
+translations.cs['contact.wa_btn'] = 'Napsat zprávu';
+translations.en['contact.wa_btn'] = 'Send a message';
     applyTranslations(currentLang);
 }
 
@@ -2331,73 +2403,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// --- Nove preklady ---
-translations.cs['compare.title'] = 'Proč si vybrat <span class="gradient-text">Venvio</span>?';
-translations.cs['compare.desc'] = 'Podívejte se, jaký je rozdíl mezi námi a běžnou agenturou nebo freelancerem.';
-translations.cs['compare.th_feature'] = 'Vlastnost';
-translations.cs['compare.th_others'] = 'Běžná agentura';
-translations.cs['compare.speed'] = 'Rychlost dodání';
-translations.cs['compare.speed_us'] = '<strong>Do 24 hodin</strong>';
-translations.cs['compare.speed_them'] = '4 - 8 týdnů';
-translations.cs['compare.price'] = 'Cena a rozpočet';
-translations.cs['compare.price_us'] = '<strong>Pevná, transparentní</strong>';
-translations.cs['compare.price_them'] = 'Hodinová sazba, vícepráce';
-translations.cs['compare.seo'] = 'Základní SEO & Rychlost';
-translations.cs['compare.seo_us'] = '<i class="fa-solid fa-check text-success"></i> <strong>V ceně balíčku</strong>';
-translations.cs['compare.seo_them'] = '<i class="fa-solid fa-xmark text-danger"></i> Často za příplatek';
-translations.cs['compare.support'] = 'Technická podpora';
-translations.cs['compare.support_us'] = '<strong>VIP podpora (i o víkendu)</strong>';
-translations.cs['compare.support_them'] = 'Pouze v pracovní dny';
-
-translations.en['compare.title'] = 'Why choose <span class="gradient-text">Venvio</span>?';
-translations.en['compare.desc'] = 'See the difference between us and a regular agency or freelancer.';
-translations.en['compare.th_feature'] = 'Feature';
-translations.en['compare.th_others'] = 'Regular Agency';
-translations.en['compare.speed'] = 'Delivery Speed';
-translations.en['compare.speed_us'] = '<strong>Under 24 hours</strong>';
-translations.en['compare.speed_them'] = '4 - 8 weeks';
-translations.en['compare.price'] = 'Price & Budget';
-translations.en['compare.price_us'] = '<strong>Fixed, transparent</strong>';
-translations.en['compare.price_them'] = 'Hourly rate, extra costs';
-translations.en['compare.seo'] = 'Basic SEO & Speed';
-translations.en['compare.seo_us'] = '<i class="fa-solid fa-check text-success"></i> <strong>Included</strong>';
-translations.en['compare.seo_them'] = '<i class="fa-solid fa-xmark text-danger"></i> Often costs extra';
-translations.en['compare.support'] = 'Tech Support';
-translations.en['compare.support_us'] = '<strong>VIP support (incl. weekends)</strong>';
-translations.en['compare.support_them'] = 'Workdays only';
-
-translations.cs['team.title'] = 'Kdo za tím <span class="gradient-text">stojí</span>?';
-translations.cs['team.desc'] = 'Jsme malý tým nadšenců, kteří věří, že kvalitní web nemusí stát statisíce a trvat měsíce.';
-translations.cs['team.role1'] = 'Zakladatel & Lead Developer';
-translations.cs['team.bio1'] = 'Specialista na moderní webové technologie. "Mým cílem je, aby si každý podnikatel mohl dovolit rychlý a perfektně optimalizovaný web."';
-
-translations.en['team.title'] = 'Who is <span class="gradient-text">behind</span> this?';
-translations.en['team.desc'] = 'We are a small team of enthusiasts who believe a great website shouldn\'t cost a fortune and take months to build.';
-translations.en['team.role1'] = 'Founder & Lead Developer';
-translations.en['team.bio1'] = 'Specialist in modern web technologies. "My goal is to make fast and perfectly optimized websites accessible to every business owner."';
-
-translations.cs['contact.title'] = 'Ozvěte se <span class="gradient-text">nám</span>';
-translations.cs['contact.desc'] = 'Napište nám, nebo si rovnou zarezervujte termín hovoru.';
-translations.cs['contact.phone'] = 'Telefon (Po-Pá 9-17)';
-translations.cs['contact.email'] = 'E-mail';
-translations.cs['contact.wa'] = 'WhatsApp 24/7';
-translations.cs['contact.ph_name'] = 'Vaše jméno';
-translations.cs['contact.ph_email'] = 'Váš e-mail';
-translations.cs['contact.ph_msg'] = 'Jaký projekt máte v plánu?';
-translations.cs['contact.submit'] = 'Odeslat zprávu <i class="fa-solid fa-paper-plane"></i>';
-
-translations.en['contact.title'] = 'Get in <span class="gradient-text">touch</span>';
-translations.en['contact.desc'] = 'Write to us or book a call right away.';
-translations.en['contact.phone'] = 'Phone (Mon-Fri 9-17)';
-translations.en['contact.email'] = 'E-mail';
-translations.en['contact.wa'] = 'WhatsApp 24/7';
-translations.en['contact.ph_name'] = 'Your Name';
-translations.en['contact.ph_email'] = 'Your E-mail';
-translations.en['contact.ph_msg'] = 'What project do you have in mind?';
-translations.en['contact.submit'] = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
-translations.cs['nav.compare'] = 'Srovnání';
-translations.en['nav.compare'] = 'Compare';
-translations.cs['nav.team'] = 'Tým';
-translations.en['nav.team'] = 'Team';
-translations.cs['nav.contact'] = 'Kontakt';
-translations.en['nav.contact'] = 'Contact';
