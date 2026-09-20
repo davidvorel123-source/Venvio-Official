@@ -1,4 +1,4 @@
-/* --- VENVIO Design System v2 â€” Premium Edition --- */
+﻿/* --- VENVIO Design System v2 â€” Premium Edition --- */
 :root {
     --color-bg-dark: #060B18;
     --color-bg-panel: rgba(15, 22, 40, 0.65);
@@ -2415,6 +2415,14 @@ body.light-mode .contact-method {
 }
 
 /* --- Contact Form Styling --- */
+.contact-form select.form-control option {
+    background-color: var(--color-bg, #0b0f19);
+    color: var(--color-text, #ffffff);
+}
+body.light-mode .contact-form select.form-control option {
+    background-color: #ffffff;
+    color: #1a1a2e;
+}
 .contact-form .form-control {
     width: 100%;
     padding: 0.8rem 1.2rem;
