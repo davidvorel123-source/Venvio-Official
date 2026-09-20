@@ -79,7 +79,7 @@ if (legalModal) {
 
 
 // Translations Dictionary
-const newTranslations = {
+const translations = {
     cs: {
         "nav.services": "Služby",
         "nav.portfolio": "Reference",

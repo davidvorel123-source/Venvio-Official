@@ -516,49 +516,6 @@
     </section>
 
     <!-- Kalkulacka -->
-    <section id="kalkulacka" class="section" style="padding-bottom: 2rem;">
-        <div class="container">
-            <div class="section-header fade-in-up" data-aos="fade-right">
-                <span class="section-badge" data-i18n="calc.badge">💡 Odhad ceny</span>
-                <h2 data-i18n="calc.title">Kalkulačka ceny</h2>
-                <p data-i18n="calc.desc">Spočítejte si hrubý odhad vašeho projektu na míru.</p>
-            </div>
-            <div class="calc-container glass-panel fade-in-up delay-1" data-aos="fade-up">
-                <div class="calc-group">
-                    <label><span data-i18n="calc.pages">Počet stránek/podstránek:</span> <span id="calc-pages-val" style="color: var(--color-primary); font-weight: 700;">1</span></label>
-                    <input type="range" id="calc-pages" min="1" max="20" value="1" class="calc-range">
-                </div>
-                <div class="calc-checkboxes">
-                    <label class="calc-checkbox-label">
-                        <input type="checkbox" id="calc-cms" value="15000">
-                        <span class="custom-checkbox"></span>
-                        <span data-i18n="calc.opt_cms">Vlastní Administrace (CMS)</span>
-                    </label>
-                    <label class="calc-checkbox-label">
-                        <input type="checkbox" id="calc-chat" value="8000">
-                        <span class="custom-checkbox"></span>
-                        <span data-i18n="calc.opt_chat">AI Chatbot Asistent</span>
-                    </label>
-                    <label class="calc-checkbox-label">
-                        <input type="checkbox" id="calc-eshop" value="25000">
-                        <span class="custom-checkbox"></span>
-                        <span data-i18n="calc.opt_eshop">E-shop Modul (Platby)</span>
-                    </label>
-                </div>
-                <div class="calc-result">
-                    <h3 data-i18n="calc.total_est">Odhadovaná cena:</h3>
-                    <div class="calc-price" id="calc-total">14 900 Kč</div>
-                    <div class="calc-eta" style="margin-top: 1rem; color: var(--color-text-muted); font-size: 0.95rem;">
-                        <i class="fa-solid fa-clock" style="color: var(--color-primary); margin-right: 5px;"></i>
-                            <span><i class="fa-regular fa-clock"></i> <span data-i18n="calc.eta">Odhad dodání:</span> <strong id="calc-eta-val">1-2 týdny</strong></span>
-                    </div>
-                    <button class="btn btn-primary" id="calc-add-to-cart" style="margin-top: 1.5rem; width: 100%; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);" data-i18n="calc.add_to_cart">
-                        <i class="fa-solid fa-cart-plus"></i> Přidat do košíku
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Ceník -->
     <section id="cenik" class="section dark-section">
@@ -585,7 +542,7 @@
                         <li data-i18n="pkg.start.f4">Základní technické SEO</li>
                         <li data-i18n="pkg.start.f5">Spuštění projektu do 24 hodin od podkladů</li>
                     </ul>
-                    <button class="btn btn-primary btn-block add-to-cart" data-id="pkg-start" data-name-cs="Express Start" data-name-en="Express Start" data-i18n="pkg.btn_add">Přidat do košíku</button>
+                    <a href="#kontakt" class="btn btn-primary btn-block" onclick="document.getElementById('service-type').value = 'web';" style="display: flex; justify-content: center;" data-i18n="pkg.btn_add">Mám zájem</a>
                 </div>
 
                 <!-- Standard -->
@@ -604,7 +561,7 @@
                         <li data-i18n="pkg.std.f4">Nasazení analytických nástrojů (Google Analytics)</li>
                         <li data-i18n="pkg.std.f5">Kompletní realizace a spuštění do 48 hodin</li>
                     </ul>
-                    <button class="btn btn-primary btn-block add-to-cart" data-id="pkg-standard" data-name-cs="Express Standard" data-name-en="Express Standard" data-i18n="pkg.btn_add">Přidat do košíku</button>
+                    <a href="#kontakt" class="btn btn-primary btn-block" onclick="document.getElementById('service-type').value = 'web';" style="display: flex; justify-content: center;" data-i18n="pkg.btn_add">Mám zájem</a>
                 </div>
 
                 <!-- Premium -->
@@ -612,7 +569,7 @@
                     <div class="pricing-header">
                         <span class="badge" data-i18n="pricing.badge_ind">INDIVIDUÁLNÍ</span>
                         <h3>Express Premium</h3>
-                        <div class="price" data-price-target="pkg-premium">od 49 900 Kč</div>
+                        <div class="price" data-price-target="pkg-premium">od 29 900 Kč</div>
                         <p class="ideal-for" data-i18n="pkg.prem.ideal">Ideální pro: Náročnější klienty, kteří vyžadují neomezený rozsah obsahu a nadstandardní interaktivní funkce.</p>
                     </div>
                     <ul class="pricing-features">
@@ -622,7 +579,7 @@
                         <li data-i18n="pkg.prem.f4">Plné využití moderních technologií pro rychlost</li>
                         <li data-i18n="pkg.prem.f5">Rozšířená technická podpora a prioritní úpravy</li>
                     </ul>
-                    <button class="btn btn-outline btn-block add-to-cart" data-id="pkg-premium" data-name-cs="Express Premium" data-name-en="Express Premium" data-i18n="pkg.btn_add">Přidat do košíku</button>
+                    <a href="#kontakt" class="btn btn-primary btn-block" onclick="document.getElementById('service-type').value = 'web';" style="display: flex; justify-content: center;" data-i18n="pkg.btn_add">Mám zájem</a>
                 </div>
             </div>
         </div>
@@ -637,7 +594,7 @@
                 <p data-i18n="advanced.desc">Kromě rychlých webů dodáváme i technologicky náročná řešení pro rostoucí firmy.</p>
             </div>
 
-            <div class="grid grid-2">
+            <div class="features-grid">
                 <div class="feature-card glass-panel fade-in-up" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-icon-box"><i class="fa-solid fa-code"></i></div>
                     <h3 data-i18n="advanced.app_title">Webové aplikace</h3>
