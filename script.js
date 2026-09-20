@@ -1338,16 +1338,7 @@ const updateCalculatorWithEta = () => {
     let basePrice = 0;
     let days = 0;
     
-    if (pages === 1) {
-        basePrice = 14900;
-        days = 1;
-    } else if (pages <= 5) {
-        basePrice = 29900;
-        days = 2;
-    } else {
-        basePrice = 49900 + ((pages - 6) * 2000);
-        days = 5 + (pages - 5);
-    }
+    if (pages === 1) { basePrice = 9900; days = 1; } else if (pages <= 5) { basePrice = 19900; days = 2; } else { basePrice = 29900 + ((pages - 5) * 2000); days = 5 + (pages - 5); }
     
     let total = basePrice;
     
