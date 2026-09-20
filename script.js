@@ -287,9 +287,9 @@ const RATE_EUR = 25;
 const RATE_USD = 23;
 
 const productPrices = {
-    'pkg-start': { czk: { val: 14900, str: '14 900 Kč' }, eur: { val: 590, str: '590 €' }, usd: { val: 650, str: '$650' } },
-    'pkg-standard': { czk: { val: 29900, str: '29 900 Kč' }, eur: { val: 1190, str: '1190 €' }, usd: { val: 1290, str: '$1290' } },
-    'pkg-premium': { czk: { val: 49900, str: 'od 49 900 Kč' }, eur: { val: 1990, str: 'from 1990 €' }, usd: { val: 2190, str: 'from $2190' } },
+    'pkg-start': { czk: { val: 9900, str: '9 900 Kč' }, eur: { val: 390, str: '390 €' }, usd: { val: 440, str: '$440' } }
+    'pkg-standard': { czk: { val: 19900, str: '19 900 Kč' }, eur: { val: 790, str: '790 €' }, usd: { val: 890, str: '$890' } }
+    'pkg-premium': { czk: { val: 29900, str: 'od 29 900 Kč' }, eur: { val: 1190, str: 'from 1190 €' }, usd: { val: 1290, str: 'from $1290' } }
     'add-domain': { czk: { val: 490, str: '490 Kč' }, eur: { val: 20, str: '20 €' }, usd: { val: 22, str: '$22' } },
     'add-support': { czk: { val: 1500, str: '1 500 Kč' }, eur: { val: 60, str: '60 €' }, usd: { val: 65, str: '$65' } },
     'add-identity': { czk: { val: 8900, str: '8 900 Kč' }, eur: { val: 350, str: '350 €' }, usd: { val: 390, str: '$390' } },
