@@ -516,6 +516,52 @@
     </section>
 
     <!-- Kalkulacka -->
+    <section id="kalkulacka" class="section" style="padding-bottom: 2rem; position: relative; overflow: hidden;">
+        <div class="hero-bg-glow" style="top: 20%; left: 10%; opacity: 0.3;"></div><div class="hero-bg-glow hero-bg-glow-2" style="bottom: 20%; right: 10%; opacity: 0.3;"></div>
+        <div class="container">
+            <div class="section-header fade-in-up" data-aos="fade-right">
+                <span class="section-badge" data-i18n="calc.badge">💡 Odhad ceny</span>
+                <h2 data-i18n="calc.title">Kalkulačka ceny</h2>
+                <p data-i18n="calc.desc">Spočítejte si hrubý odhad vašeho projektu na míru.</p>
+            </div>
+            <div class="calc-container glass-panel fade-in-up delay-1" data-aos="fade-up">
+                <div class="calc-group">
+                    <label><span data-i18n="calc.pages">Počet stránek/podstránek:</span> <span id="calc-pages-val" style="color: var(--color-primary); font-weight: 700;">1</span></label>
+                    <input type="range" id="calc-pages" min="1" max="20" value="1" class="calc-range">
+                </div>
+                <div class="calc-checkboxes">
+                    <label class="calc-checkbox-label">
+                        <input type="checkbox" id="calc-cms" value="15000">
+                        <span class="custom-checkbox"></span>
+                        <span data-i18n="calc.opt_cms">Vlastní Administrace (CMS)</span>
+                    </label>
+                    <label class="calc-checkbox-label">
+                        <input type="checkbox" id="calc-chat" value="8000">
+                        <span class="custom-checkbox"></span>
+                        <span data-i18n="calc.opt_chat">AI Chatbot Asistent</span>
+                    </label>
+                    <label class="calc-checkbox-label">
+                        <input type="checkbox" id="calc-eshop" value="25000">
+                        <span class="custom-checkbox"></span>
+                        <span data-i18n="calc.opt_eshop">E-shop Modul (Platby)</span>
+                    </label>
+                </div>
+                <div class="calc-result">
+                    <h3 data-i18n="calc.total_est">Odhadovaná cena:</h3>
+                    <div class="calc-price" id="calc-total">14 900 Kč</div>
+                    <div class="calc-eta" style="margin-top: 1rem; color: var(--color-text-muted); font-size: 0.95rem;">
+                        <i class="fa-solid fa-clock" style="color: var(--color-primary); margin-right: 5px;"></i>
+                            <span><i class="fa-regular fa-clock"></i> <span data-i18n="calc.eta">Odhad dodání:</span> <strong id="calc-eta-val">1-2 týdny</strong></span>
+                    </div>
+                    <button class="btn btn-primary" id="calc-add-to-cart" style="margin-top: 1.5rem; width: 100%; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);" data-i18n="calc.add_to_cart">
+                        <i class="fa-solid fa-cart-plus"></i> Přidat do košíku
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
 
     <!-- Ceník -->
     <section id="cenik" class="section dark-section">
