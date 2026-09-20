@@ -161,14 +161,13 @@
                 VENVIO
             </a>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#vyhody" data-i18n="nav.why_us">Proč my</a></li>
                 <li><a href="#sluzby" data-i18n="nav.services">Služby</a></li>
-                <li><a href="#porovnani" data-i18n="nav.compare">Srovnání</a></li>
                 <li><a href="#portfolio" data-i18n="nav.portfolio">Reference</a></li>
                 <li><a href="#cenik" data-i18n="nav.pricing">Ceník</a></li>
-                <li><a href="#tym" data-i18n="nav.team">Tým</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#jak-to-funguje" data-i18n="nav.how">Jak to funguje</a></li>
+                <li><a href="#o-nas" data-i18n="nav.about">O nás</a></li>
                 <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
+                <li class="desktop-only"><a href="#kontakt" class="btn btn-primary btn-glow" style="padding: 0.5rem 1.2rem; font-size: 0.9rem; margin-left: 1rem;"><i class="fa-solid fa-paper-plane"></i> <span data-i18n="nav.cta">Poptat projekt</span></a></li>
                 <li class="mobile-only-link"><a href="#" id="mobile-login-link" style="color: var(--color-primary); font-weight: bold;"><i class="fa-solid fa-user"></i> <span data-i18n="auth.title">Klientská sekce</span></a></li>
                 <li class="mobile-switchers-container">
                     <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; align-items: center; flex-wrap: wrap;">
@@ -208,7 +207,7 @@
                         <i class="fa-regular fa-user" id="auth-icon"></i>
                     </button>
                 </div>
-                <button id="cart-btn" class="cart-btn">
+                <button id="cart-btn" class="cart-btn" style="display:none;">
                     <i class="fa-solid fa-bag-shopping"></i>
                     <span data-i18n="nav.cart">Košík</span> <span id="cart-count" class="cart-badge">0</span>
                 </button>
@@ -225,16 +224,16 @@
         <div class="hero-bg-glow hero-bg-glow-2"></div>
         <div class="container hero-content">
             <span class="hero-badge fade-in-up" style="display: inline-flex; align-items: center;"><span class="hero-badge-pulse"></span><span id="typewriter-text" data-i18n="hero.badge">⚡ Express webové řešení</span><span class="cursor-blink">_</span></span>
-            <h1 class="fade-in-up" data-aos="fade-up" data-i18n="hero.title">Tvorba webů, které <br> <span class="liquid-text">vydělávají</span></h1>
-            <p class="fade-in-up delay-2" data-i18n="hero.desc">Expressní webová prezentace & marketing. Plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.</p>
+            <h1 class="fade-in-up" data-aos="fade-up" data-i18n="hero.title">Profesionální web pro vaši firmu. <br> <span class="liquid-text">Hotový už do 24 hodin.</span></h1>
+            <p class="fade-in-up delay-2" data-i18n="hero.desc">Moderní webové stránky s pevnou cenou, rychlým dodáním a kompletním spuštěním.</p>
             <div class="hero-actions fade-in-up delay-3">
-                <a href="#cenik" class="btn btn-primary btn-glow"><i class="fa-solid fa-rocket"></i> <span data-i18n="hero.btn_pkg">Vybrat balíček</span></a>
-                <a href="#portfolio" class="btn btn-outline"><i class="fa-solid fa-eye"></i> <span data-i18n="hero.btn_portfolio">Ukázky práce</span></a>
+                <a href="#rozcestnik" class="btn btn-primary btn-glow"><i class="fa-solid fa-rocket"></i> <span data-i18n="hero.btn_pkg">Chci nový web</span></a>
+                <a href="#portfolio" class="btn btn-outline"><i class="fa-solid fa-eye"></i> <span data-i18n="hero.btn_portfolio">Prohlédnout reference</span></a>
             </div>
             <div class="hero-trust fade-in-up delay-4">
-                <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="hero.trust1">SSL Zabezpečení</span></div>
-                <div class="trust-item"><i class="fa-solid fa-mobile-screen-button"></i> <span data-i18n="hero.trust2">100% Responzivní</span></div>
-                <div class="trust-item"><i class="fa-solid fa-gauge-high"></i> <span data-i18n="hero.trust3">Rychlé načítání</span></div>
+                <div class="trust-item"><i class="fa-solid fa-tag"></i> <span data-i18n="hero.trust1">Od 9 900 Kč</span></div>
+                <div class="trust-item"><i class="fa-solid fa-bolt"></i> <span data-i18n="hero.trust2">Dodání od 24 hodin</span></div>
+                <div class="trust-item"><i class="fa-solid fa-check-double"></i> <span data-i18n="hero.trust3">Kompletně na klíč</span></div>
             </div>
         </div>
         <div class="hero-scroll-indicator">
@@ -287,126 +286,112 @@
                     <div class="stat-label" data-i18n="stats.years">Roky zkušeností</div>
                 </div>
             </div>
+
+    <!-- Rozcestník / Vyberte si řešení -->
+    <section id="sluzby" class="section">
+        <div class="container">
+            <div class="section-header text-center fade-in-up" data-aos="fade-up">
+                <h2 data-i18n="rozcestnik.title">Vyberte si řešení</h2>
+                <p data-i18n="rozcestnik.desc">Hned na začátku vás nasměrujeme přesně tam, kam potřebujete.</p>
+            </div>
+            <div class="grid grid-3">
+                <!-- Web -->
+                <div class="service-card fade-in-up" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3 data-i18n="rozcestnik.web_title">Potřebuji nový web</h3>
+                    <p data-i18n="rozcestnik.web_desc" style="flex-grow: 1;">Pro živnostníky, restaurace, služby a menší firmy.</p>
+                    <div style="margin-top: 1.5rem; font-weight: bold; color: var(--color-text); margin-bottom: 1rem;" data-i18n="rozcestnik.web_price">Web od 9 900 Kč</div>
+                    <a href="#cenik" class="btn btn-outline" style="width: 100%; display: flex; justify-content: center;" data-i18n="rozcestnik.web_btn">Prohlédnout webové stránky <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                </div>
+                <!-- App -->
+                <div class="service-card fade-in-up" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <h3 data-i18n="rozcestnik.app_title">Potřebuji aplikaci</h3>
+                    <p data-i18n="rozcestnik.app_desc" style="flex-grow: 1;">Portál, rezervační systém nebo interní aplikace vytvořená na míru.</p>
+                    <div style="margin-top: 1.5rem; font-weight: bold; color: var(--color-text); margin-bottom: 1rem;" data-i18n="rozcestnik.app_price">Vývoj od 49 900 Kč</div>
+                    <a href="#dalsi-sluzby" class="btn btn-outline" style="width: 100%; display: flex; justify-content: center;" data-i18n="rozcestnik.app_btn">Webové aplikace <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                </div>
+                <!-- Automation -->
+                <div class="service-card fade-in-up" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3 data-i18n="rozcestnik.auto_title">Chci automatizovat firmu</h3>
+                    <p data-i18n="rozcestnik.auto_desc" style="flex-grow: 1;">AI asistenti, propojení systémů a automatizace opakovaných procesů.</p>
+                    <div style="margin-top: 1.5rem; font-weight: bold; color: var(--color-text); margin-bottom: 1rem;" data-i18n="rozcestnik.auto_price">Řešení od 4 900 Kč</div>
+                    <a href="#dalsi-sluzby" class="btn btn-outline" style="width: 100%; display: flex; justify-content: center;" data-i18n="rozcestnik.auto_btn">AI a automatizace <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                </div>
+            </div>
         </div>
     </section>
-
+        </div>
+    </section>
     <!-- Naše hlavní výhoda -->
     <section id="vyhody" class="section">
         <div class="container">
             <div class="section-header fade-in-up" data-aos="fade-right">
-                <span class="section-badge" data-i18n="feature.badge">⚡ Naše výhoda</span>
-                <h2 data-i18n="feature.main_title">Proč my?</h2>
-                <p data-i18n="feature.desc">Víme, že v podnikání rozhoduje rychlost. Zatímco běžné agentury tvoří weby týdny, my díky optimalizovanému vývoji a agilnímu nasazení dodáváme plně funkční, moderní a responzivní řešení do jednoho dne od dodání podkladů.</p>
+                <span class="section-badge" data-i18n="feature.badge">💡 Proč Venvio</span>
+                <h2 data-i18n="feature.main_title">Proč si vybrat nás?</h2>
             </div>
 
             <div class="features-grid">
                 <div class="feature-card glass-panel fade-in-up delay-1" data-aos="fade-up">
                     <div class="feature-icon-box"><i class="fa-solid fa-bolt"></i></div>
-                    <h3 data-i18n="feature.speed_title">Bleskové dodání</h3>
-                    <p data-i18n="feature.speed_desc">Váš web bude online už do 24 hodin od dodání podkladů.</p>
+                    <h3 data-i18n="feature.speed_title">Rychlé dodání</h3>
+                    <p data-i18n="feature.speed_desc">Web může být spuštěný již do 24 hodin od předání podkladů.</p>
                 </div>
                 <div class="feature-card glass-panel fade-in-up delay-2" data-aos="fade-up">
-                    <div class="feature-icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                    <h3 data-i18n="feature.responsive_title">Plně responzivní</h3>
-                    <p data-i18n="feature.responsive_desc">Perfektní zobrazení na všech zařízeních – mobil, tablet, desktop.</p>
+                    <div class="feature-icon-box"><i class="fa-solid fa-tag"></i></div>
+                    <h3 data-i18n="feature.price_title">Pevná cena</h3>
+                    <p data-i18n="feature.price_desc">Předem víte, kolik bude projekt stát. Žádné skryté poplatky.</p>
                 </div>
                 <div class="feature-card glass-panel fade-in-up delay-3" data-aos="fade-up">
-                    <div class="feature-icon-box"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                    <h3 data-i18n="feature.seo_title">SEO optimalizace</h3>
-                    <p data-i18n="feature.seo_desc">Váš web bude viditelný v Google díky moderním SEO technikám.</p>
+                    <div class="feature-icon-box"><i class="fa-solid fa-cubes"></i></div>
+                    <h3 data-i18n="feature.complete_title">Kompletní realizace</h3>
+                    <p data-i18n="feature.complete_desc">Design, vývoj, responzivita, základní SEO i spuštění na klíč.</p>
                 </div>
                 <div class="feature-card glass-panel fade-in-up delay-4" data-aos="fade-up">
                     <div class="feature-icon-box"><i class="fa-solid fa-headset"></i></div>
-                    <h3 data-i18n="feature.support_title">Podpora</h3>
-                    <p data-i18n="feature.support_desc">Profesionální zákaznická podpora a pravidelné aktualizace.</p>
+                    <h3 data-i18n="feature.support_title">Podpora po spuštění</h3>
+                    <p data-i18n="feature.support_desc">Webem spolupráce nekončí. Jsme tu pro vás i s úpravami.</p>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Jak to funguje (Process) -->
-    <section class="section dark-section">
+    <section id="jak-to-funguje" class="section dark-section">
         <div class="container">
             <div class="section-header fade-in-up" data-aos="zoom-in">
                 <span class="section-badge" data-i18n="process.badge">🛠️ Postup</span>
-                <h2 data-i18n="process.title">Jak to funguje</h2>
-                <p data-i18n="process.desc">Jednoduché 4 kroky k vašemu novému webu.</p>
+                <h2 data-i18n="process.title">Jak spolupráce probíhá</h2>
             </div>
             <div class="process-timeline">
                 <div class="process-step fade-in-up delay-1" data-aos="fade-up">
                     <div class="step-number" data-aos="fade-up">01</div>
                     <div class="step-content glass-panel" data-aos="fade-up">
-                        <h3 data-i18n="process.s1_title">Výběr balíčku</h3>
-                        <p data-i18n="process.s1_desc">Vyberte si z našich balíčků ten, který nejlépe odpovídá vašim potřebám a rozpočtu.</p>
+                        <h3 data-i18n="process.s1_title">Vyberete řešení</h3>
                     </div>
                 </div>
                 <div class="process-step fade-in-up delay-2" data-aos="fade-up">
                     <div class="step-number" data-aos="fade-up">02</div>
                     <div class="step-content glass-panel" data-aos="fade-up">
-                        <h3 data-i18n="process.s2_title">Zaslání podkladů</h3>
-                        <p data-i18n="process.s2_desc">Pošlete nám texty, obrázky a představu o vašem budoucím webu.</p>
+                        <h3 data-i18n="process.s2_title">Pošlete nám podklady</h3>
                     </div>
                 </div>
                 <div class="process-step fade-in-up delay-3" data-aos="fade-up">
                     <div class="step-number" data-aos="fade-up">03</div>
                     <div class="step-content glass-panel" data-aos="fade-up">
-                        <h3 data-i18n="process.s3_title">Tvorba webu</h3>
-                        <p data-i18n="process.s3_desc">Náš tým okamžitě začne pracovat na vašem profesionálním webu.</p>
+                        <h3 data-i18n="process.s3_title">Připravíme web</h3>
                     </div>
                 </div>
                 <div class="process-step fade-in-up delay-4" data-aos="fade-up">
                     <div class="step-number" data-aos="fade-up">04</div>
                     <div class="step-content glass-panel" data-aos="fade-up">
-                        <h3 data-i18n="process.s4_title">Spuštění</h3>
-                        <p data-i18n="process.s4_desc">Váš web nasadíme online a předáme vám přístupy. Vše do 24 hodin!</p>
+                        <h3 data-i18n="process.s4_title">Schválíte a spustíme</h3>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Pokročilé Služby -->
-    <section id="sluzby" class="section">
-        <div class="container">
-            <div class="section-header fade-in-up" data-aos="fade-right">
-                <span class="section-badge" data-i18n="services.badge">💎 Premium</span>
-                <h2 data-i18n="services.title">Naše Služby</h2>
-                <p data-i18n="services.desc">Od jednoduchých webů po komplexní interní systémy a umělou inteligenci.</p>
-            </div>
-
-            <div class="features-grid" style="margin-top: 3rem;">
-                <!-- Service 1 -->
-                <div class="feature-card glass-panel fade-in-up delay-1" style="display: flex; flex-direction: column;" data-aos="fade-up">
-                    <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
-                    <h3 data-i18n="svc1.title">Webové Aplikace & SaaS</h3>
-                    <p data-i18n="svc1.desc" style="flex-grow: 1;">Vývoj plnohodnotných aplikací (React, Node.js), rezervačních systémů a klientských portálů na míru.</p>
-                    <div class="feature-price" data-price-target="svc-webapp">Od 99 000 Kč</div>
-                    <a href="mailto:info@venvio.dev?subject=Poptávka:%20Webové%20aplikace%20a%20SaaS" class="btn btn-outline btn-block" style="margin-top: 1.5rem;" data-i18n="pkg.btn_consult">Nezávazná konzultace</a>
-                </div>
-                <!-- Service 2 -->
-                <div class="feature-card glass-panel fade-in-up delay-2" style="display: flex; flex-direction: column;" data-aos="fade-up">
-                    <div class="feature-icon" style="color: #FF6B6B;"><i class="fa-solid fa-robot"></i></div>
-                    <h3 data-i18n="svc2.title">Inteligentní AI Chatboti</h3>
-                    <p data-i18n="svc2.desc" style="flex-grow: 1;">Chytrý asistent napojený na ChatGPT, který zná vaše produkty, odpovídá 24/7 a zvyšuje prodeje.</p>
-                    <div class="feature-price" data-price-target="svc-ai">Od 24 900 Kč</div>
-                    <button class="btn btn-outline btn-block add-to-cart" style="margin-top: 1.5rem;" data-id="svc-ai" data-name-cs="Inteligentní AI Chatboti" data-name-en="Intelligent AI Chatbots" data-i18n="pkg.btn_add">Přidat do košíku</button>
-                </div>
-                <!-- Service 3 -->
-                <div class="feature-card glass-panel fade-in-up delay-3" style="display: flex; flex-direction: column;" data-aos="fade-up">
-                    <div class="feature-icon" style="color: #7B61FF;"><i class="fa-solid fa-gears"></i></div>
-                    <h3 data-i18n="svc3.title">Automatizace Procesů</h3>
-                    <p data-i18n="svc3.desc" style="flex-grow: 1;">Propojení systémů přes API (účetnictví, e-shopy). Zbavíme vás rutinní ruční práce a ušetříme čas.</p>
-                    <div class="feature-price" data-price-target="svc-automation">Od 9 900 Kč</div>
-                    <button class="btn btn-outline btn-block add-to-cart" style="margin-top: 1.5rem;" data-id="svc-automation" data-name-cs="Automatizace Procesů" data-name-en="Process Automation" data-i18n="pkg.btn_add">Přidat do košíku</button>
-                </div>
-                <!-- Service 4 -->
-                <div class="feature-card glass-panel fade-in-up delay-4" style="display: flex; flex-direction: column;" data-aos="fade-up">
-                    <div class="feature-icon" style="color: #F1C40F;"><i class="fa-brands fa-chrome"></i></div>
-                    <h3 data-i18n="svc4.title">Chrome Doplňky</h3>
-                    <p data-i18n="svc4.desc" style="flex-grow: 1;">Vývoj privátních rozšíření do prohlížeče pro usnadnění práce vašich obchodníků a zaměstnanců.</p>
-                    <div class="feature-price" data-price-target="svc-chrome">Od 14 900 Kč</div>
-                    <button class="btn btn-outline btn-block add-to-cart" style="margin-top: 1.5rem;" data-id="svc-chrome" data-name-cs="Chrome Doplňky" data-name-en="Chrome Extensions" data-i18n="pkg.btn_add">Přidat do košíku</button>
-                </div>
+            <div style="text-align: center; margin-top: 3rem;" class="fade-in-up delay-4">
+                <p style="margin-bottom: 1rem; color: var(--color-text-muted);" data-i18n="process.help_desc">Nevíte, který balíček potřebujete?</p>
+                <a href="#kontakt" class="btn btn-outline" data-i18n="process.help_btn">Nezávazně se poradit</a>
             </div>
         </div>
     </section>
@@ -476,7 +461,12 @@
                     </div>
                     <div class="portfolio-info">
                         <h3>CRUSH Burger</h3>
-                        <p data-i18n="portfolio.p1_desc">Moderní vícestránkový web pro bistro</p>
+                        <p data-i18n="portfolio.p1_desc">Firemní web pro moderní burger restauraci</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem; color: var(--color-text-muted); font-size: 0.9rem;">
+                            <li style="margin-bottom: 0.3rem"><i class="fa-solid fa-check" style="color: var(--color-primary); margin-right: 5px;"></i> <span data-i18n="portfolio.p1_f1">Web na míru</span></li>
+                            <li style="margin-bottom: 0.3rem"><i class="fa-solid fa-check" style="color: var(--color-primary); margin-right: 5px;"></i> <span data-i18n="portfolio.p1_f2">5 podstránek</span></li>
+                            <li style="margin-bottom: 0.3rem"><i class="fa-solid fa-check" style="color: var(--color-primary); margin-right: 5px;"></i> <span data-i18n="portfolio.p1_f3">Responzivní design</span></li>
+                        </ul>
                     </div>
                 </div>
 
@@ -491,7 +481,12 @@
                     </div>
                     <div class="portfolio-info">
                         <h3>Lumière Cafe</h3>
-                        <p data-i18n="portfolio.p2_desc">Elegantní prezentace kavárny</p>
+                        <p data-i18n="portfolio.p2_desc">Elegantní prezentace prémiové kavárny</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem; color: var(--color-text-muted); font-size: 0.9rem;">
+                            <li style="margin-bottom: 0.3rem"><i class="fa-solid fa-check" style="color: var(--color-primary); margin-right: 5px;"></i> <span data-i18n="portfolio.p2_f1">Jednostránkový web (One-page)</span></li>
+                            <li style="margin-bottom: 0.3rem"><i class="fa-solid fa-check" style="color: var(--color-primary); margin-right: 5px;"></i> <span data-i18n="portfolio.p2_f2">Nápojový lístek</span></li>
+                            <li style="margin-bottom: 0.3rem"><i class="fa-solid fa-check" style="color: var(--color-primary); margin-right: 5px;"></i> <span data-i18n="portfolio.p2_f3">Google Mapy</span></li>
+                        </ul>
                     </div>
                 </div>
 
@@ -506,7 +501,12 @@
                     </div>
                     <div class="portfolio-info">
                         <h3>Aura Fine Dining</h3>
-                        <p data-i18n="portfolio.p3_desc">Luxusní one-page (jednostránkový) web</p>
+                        <p data-i18n="portfolio.p3_desc">Luxusní web s rezervačním systémem</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem; color: var(--color-text-muted); font-size: 0.9rem;">
+                            <li style="margin-bottom: 0.3rem"><i class="fa-solid fa-check" style="color: var(--color-primary); margin-right: 5px;"></i> <span data-i18n="portfolio.p3_f1">Web na míru</span></li>
+                            <li style="margin-bottom: 0.3rem"><i class="fa-solid fa-check" style="color: var(--color-primary); margin-right: 5px;"></i> <span data-i18n="portfolio.p3_f2">Rezervační systém</span></li>
+                            <li style="margin-bottom: 0.3rem"><i class="fa-solid fa-check" style="color: var(--color-primary); margin-right: 5px;"></i> <span data-i18n="portfolio.p3_f3">SEO optimalizace</span></li>
+                        </ul>
                     </div>
                 </div>
 
@@ -575,7 +575,7 @@
                     <div class="pricing-header">
                         <span class="badge" data-i18n="pricing.badge_24">DO 24 HODIN</span>
                         <h3>Express Start</h3>
-                        <div class="price" data-price-target="pkg-start">14 900 Kč</div>
+                        <div class="price" data-price-target="pkg-start">9 900 Kč</div>
                         <p class="ideal-for" data-i18n="pkg.start.ideal">Ideální pro: Restaurace, kavárny, řemeslníky a lokální služby, které potřebují okamžitou vizitku na internetu.</p>
                     </div>
                     <ul class="pricing-features">
@@ -594,7 +594,7 @@
                     <div class="pricing-header">
                         <span class="badge" data-i18n="pricing.badge_48">DO 48 HODIN</span>
                         <h3>Express Standard</h3>
-                        <div class="price" data-price-target="pkg-standard">29 900 Kč</div>
+                        <div class="price" data-price-target="pkg-standard">19 900 Kč</div>
                         <p class="ideal-for" data-i18n="pkg.std.ideal">Ideální pro: Rostoucí firmy a živnostníky, kteří chtějí detailně prezentovat více služeb nebo své reference.</p>
                     </div>
                     <ul class="pricing-features">
@@ -628,67 +628,40 @@
         </div>
     </section>
 
-    <!-- Doplňkové služby -->
-    <section id="doplnky" class="section">
+    <!-- Další možnosti -->
+    <section id="dalsi-sluzby" class="section dark-section">
         <div class="container">
-            <div class="section-header fade-in-up" data-aos="fade-right">
-                <span class="section-badge" data-i18n="addons.badge">🔧 Doplňky</span>
-                <h2 data-i18n="addons.title">Doplňky</h2>
-                <p data-i18n="addons.desc">Přizpůsobte si projekt svým potřebám.</p>
+            <div class="section-header fade-in-up" data-aos="fade-up">
+                <span class="section-badge" data-i18n="advanced.badge">💡 Další služby</span>
+                <h2 data-i18n="advanced.title">Potřebujete něco pokročilejšího?</h2>
+                <p data-i18n="advanced.desc">Kromě rychlých webů dodáváme i technologicky náročná řešení pro rostoucí firmy.</p>
             </div>
 
-            <div class="addons-list">
-                <!-- Addon 1 -->
-                <div class="addon-card glass-panel fade-in-up delay-1">
-                    <div class="addon-icon"><i class="fa-solid fa-globe"></i></div>
-                    <div class="addon-info">
-                        <h3 data-i18n="addon1.title">Vlastní doména (.cz, .com)</h3>
-                        <p data-i18n="addon1.desc">Zajištění prémiové domény pro vaši značku na 1 rok včetně SSL certifikátu.</p>
-                    </div>
-                    <div class="addon-action">
-                        <div class="price"><span data-price-target="add-domain">490 Kč</span> <span data-i18n="addon.per_year">/ rok</span></div>
-                        <button class="btn btn-outline add-to-cart" data-id="add-domain" data-name-cs="Vlastní doména" data-name-en="Custom Domain" data-i18n="addon.btn_add">Přidat</button>
-                    </div>
+            <div class="grid grid-2">
+                <div class="feature-card glass-panel fade-in-up" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon-box"><i class="fa-solid fa-code"></i></div>
+                    <h3 data-i18n="advanced.app_title">Webové aplikace</h3>
+                    <p data-i18n="advanced.app_desc">Portály, rezervační systémy a SaaS platformy vyvíjené na míru ve Vue/React.</p>
                 </div>
-
-                <!-- Addon 2 -->
-                <div class="addon-card glass-panel fade-in-up delay-2">
-                    <div class="addon-icon"><i class="fa-solid fa-wrench"></i></div>
-                    <div class="addon-info">
-                        <h3 data-i18n="addon2.title">Měsíční správa a podpora</h3>
-                        <p data-i18n="addon2.desc">Pravidelné zálohování webu, aktualizace systému, zabezpečení a drobné úpravy obsahu na přání.</p>
-                    </div>
-                    <div class="addon-action">
-                        <div class="price"><span data-price-target="add-support">1 500 Kč</span> <span data-i18n="addon.per_month">/ měsíc</span></div>
-                        <button class="btn btn-outline add-to-cart" data-id="add-support" data-name-cs="Měsíční správa" data-name-en="Monthly Support" data-i18n="addon.btn_add">Přidat</button>
-                    </div>
+                <div class="feature-card glass-panel fade-in-up" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon-box"><i class="fa-solid fa-robot"></i></div>
+                    <h3 data-i18n="advanced.ai_title">AI asistenti</h3>
+                    <p data-i18n="advanced.ai_desc">Chatboti napojení na vaše data, kteří odpovídají zákazníkům 24/7 a řeší support.</p>
                 </div>
-
-                <!-- Addon 3 -->
-                <div class="addon-card glass-panel fade-in-up delay-3">
-                    <div class="addon-icon"><i class="fa-solid fa-palette"></i></div>
-                    <div class="addon-info">
-                        <h3 data-i18n="addon3.title">Tvorba vizuální identity</h3>
-                        <p data-i18n="addon3.desc">Návrh minimalistického loga a definice firemních barev.</p>
-                    </div>
-                    <div class="addon-action">
-                        <div class="price" data-price-target="add-identity">8 900 Kč</div>
-                        <button class="btn btn-outline add-to-cart" data-id="add-identity" data-name-cs="Vizuální identita" data-name-en="Visual Identity" data-i18n="addon.btn_add">Přidat</button>
-                    </div>
+                <div class="feature-card glass-panel fade-in-up" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon-box"><i class="fa-solid fa-gears"></i></div>
+                    <h3 data-i18n="advanced.auto_title">Automatizace</h3>
+                    <p data-i18n="advanced.auto_desc">Propojení firemních systémů (Make, Zapier) a odstranění manuální a zdlouhavé práce.</p>
                 </div>
-                
-                <!-- Addon 4 -->
-                <div class="addon-card glass-panel fade-in-up delay-4">
-                    <div class="addon-icon"><i class="fa-solid fa-clock"></i></div>
-                    <div class="addon-info">
-                        <h3 data-i18n="addon4.title">Hodinová sazba (Vícepráce)</h3>
-                        <p data-i18n="addon4.desc">Práce nad rámec balíčků (rozšiřování webu, specifické animace a kódování). Uveďte počet hodin v košíku.</p>
-                    </div>
-                    <div class="addon-action">
-                        <div class="price"><span data-price-target="add-hourly">1 200 Kč</span> <span data-i18n="addon.per_hour">/ hod</span></div>
-                        <button class="btn btn-outline add-to-cart" data-id="add-hourly" data-name-cs="Vícepráce (1h)" data-name-en="Hourly Rate (1h)" data-i18n="addon.btn_add">Přidat</button>
-                    </div>
+                <div class="feature-card glass-panel fade-in-up" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon-box"><i class="fa-solid fa-plug"></i></div>
+                    <h3 data-i18n="advanced.api_title">Integrace a rozšíření</h3>
+                    <p data-i18n="advanced.api_desc">Napojení na API, tvorba vlastních Chrome doplňků a speciálních firemních nástrojů.</p>
                 </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#kontakt" class="btn btn-outline btn-glow" onclick="document.getElementById('service-type').value = 'other';" data-i18n="advanced.cta">Poptat pokročilé řešení</a>
             </div>
         </div>
     </section>
@@ -738,20 +711,29 @@
             </div>
         </div>
     </section>
-
-    <!-- Tym -->
-    <section id="tym" class="section dark-section">
+    <!-- O nás -->
+    <section id="o-nas" class="section">
         <div class="container">
             <div class="section-header fade-in-up" data-aos="fade-up">
-                <h2 data-i18n="team.title">Kdo za tím <span class="gradient-text">stojí</span>?</h2>
-                <p data-i18n="team.desc">Jsme malý tým nadšenců, kteří věří, že kvalitní web nemusí stát statisíce a trvat měsíce.</p>
+                <span class="section-badge" data-i18n="about.badge">👋 O nás</span>
+                <h2 data-i18n="about.title">Kdo za tím stojí</h2>
+                <p data-i18n="about.desc" style="font-size: 1.1rem; max-width: 700px; margin: 1rem auto 0; text-align: center;">Venvio vzniklo jako specializovaná služba týmu <strong>Vidia Design</strong> zaměřená na rychlou tvorbu webových stránek a digitálních řešení.</p>
             </div>
-            <div class="team-grid fade-in-up delay-1" data-aos="fade-up">
-                <div class="team-member glass-panel">
-                    <img src="https://ui-avatars.com/api/?name=David+Vorel&background=00D2FF&color=fff&size=120" alt="David Vorel" width="120" height="120" loading="lazy">
-                    <h3>David Vorel</h3>
-                    <div class="role" data-i18n="team.role1">Zakladatel & Lead Developer</div>
-                    <p data-i18n="team.bio1">Specialista na moderní webové technologie. "Mým cílem je, aby si každý podnikatel mohl dovolit rychlý a perfektně optimalizovaný web."</p>
+
+            <div class="team-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <!-- Member 1 -->
+                <div class="team-card glass-panel fade-in-up" data-aos="fade-up" data-aos-delay="100" style="text-align: center; padding: 2rem; border-radius: 12px;">
+                    <img loading="lazy" src="https://ui-avatars.com/api/?name=David+V&background=0D8ABC&color=fff&size=150" alt="David" width="120" height="120" style="border-radius: 50%; margin: 0 auto 1rem; border: 3px solid var(--color-primary);">
+                    <h3 style="margin-bottom: 0.2rem;">David</h3>
+                    <p style="color: var(--color-primary); font-size: 0.9rem; margin-bottom: 1rem; font-weight: bold;" data-i18n="about.role1">Lead Developer</p>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted);" data-i18n="about.bio1">Specialista na vývoj moderních webů, aplikací a automatizace.</p>
+                </div>
+                <!-- Member 2 -->
+                <div class="team-card glass-panel fade-in-up" data-aos="fade-up" data-aos-delay="200" style="text-align: center; padding: 2rem; border-radius: 12px;">
+                    <img loading="lazy" src="https://ui-avatars.com/api/?name=Alex+M&background=00d2ff&color=fff&size=150" alt="Alex" width="120" height="120" style="border-radius: 50%; margin: 0 auto 1rem; border: 3px solid var(--color-primary);">
+                    <h3 style="margin-bottom: 0.2rem;">Kreativní Tým</h3>
+                    <p style="color: var(--color-primary); font-size: 0.9rem; margin-bottom: 1rem; font-weight: bold;" data-i18n="about.role2">UX/UI & Design</p>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted);" data-i18n="about.bio2">Navrhujeme čistá rozhraní a vizuální identity, které vaši značku prodají.</p>
                 </div>
             </div>
         </div>
@@ -792,20 +774,29 @@
                 
                 <div class="glass-panel fade-in-up delay-2" data-aos="fade-left" style="padding: 2rem;">
                     <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
-                        <input type="hidden" name="access_key" value="8d52594c-6265-48a0-a197-909feda1667f">
-                        <input type="hidden" name="subject" value="Nová poptávka z Venvio.dev - Kontakt">
-                        <input type="hidden" name="redirect" value="https://venvio.dev/success.html">
-                        
-                        <label for="contact-name" class="sr-only">Jméno</label>
-                        <input type="text" id="contact-name" name="name" class="form-control" placeholder="Vaše jméno" required data-i18n-ph="contact.ph_name">
-                        <label for="contact-email" class="sr-only">E-mail</label>
-                        <input type="email" id="contact-email" name="email" class="form-control" placeholder="Váš e-mail" required data-i18n-ph="contact.ph_email">
-                        <label for="contact-message" class="sr-only">Zpráva</label>
-                        <textarea id="contact-message" name="message" class="form-control" rows="4" placeholder="Jaký projekt máte v plánu?" required data-i18n-ph="contact.ph_msg"></textarea>
-                        
-                        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" aria-hidden="true">
-                        <button type="submit" class="btn btn-primary" data-i18n="contact.submit">Odeslat zprávu <i class="fa-solid fa-paper-plane"></i></button>
-                    </form>
+                          <input type="hidden" name="access_key" value="8d52594c-6265-48a0-a197-909feda1667f">
+                          <input type="hidden" name="subject" value="Nová poptávka z Venvio.dev">
+                          <input type="hidden" name="redirect" value="https://venvio.dev/success.html">
+                          
+                          <select id="service-type" name="service-type" class="form-control" style="margin-bottom: 1.5rem; background: var(--color-bg); color: var(--color-text); border: 1px solid rgba(255, 255, 255, 0.1);">
+                              <option value="" disabled selected data-i18n="contact.opt_default">Co potřebujete?</option>
+                              <option value="web" data-i18n="contact.opt_web">Nový web</option>
+                              <option value="edit" data-i18n="contact.opt_edit">Úpravu současného webu</option>
+                              <option value="app" data-i18n="contact.opt_app">Webovou aplikaci</option>
+                              <option value="ai" data-i18n="contact.opt_ai">AI / automatizaci</option>
+                              <option value="other" data-i18n="contact.opt_other">Nevím – potřebuji poradit</option>
+                          </select>
+
+                          <input type="text" id="contact-name" name="name" class="form-control" placeholder="Vaše jméno" required data-i18n-ph="contact.ph_name">
+                          <input type="text" id="contact-company" name="company" class="form-control" placeholder="Firma (volitelně)">
+                          <input type="email" id="contact-email" name="email" class="form-control" placeholder="Váš e-mail" required data-i18n-ph="contact.ph_email">
+                          <input type="tel" id="contact-phone" name="phone" class="form-control" placeholder="Telefon (volitelně)">
+                          
+                          <textarea id="contact-message" name="message" class="form-control" rows="4" placeholder="Krátce popište projekt..." required data-i18n-ph="contact.ph_msg"></textarea>
+                          
+                          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" aria-hidden="true">
+                          <button type="submit" class="btn btn-primary" data-i18n="contact.submit">Odeslat nezávaznou poptávku <i class="fa-solid fa-paper-plane"></i></button>
+                      </form>
                 </div>
             </div>
         </div>
@@ -871,13 +862,11 @@
                     <div>
                         <h3 data-i18n="footer.nav_title">Navigace</h3>
                         <ul id="footer-nav-links">
-                            <li><a href="#vyhody" data-i18n="nav.why_us">Proč my</a></li>
                             <li><a href="#sluzby" data-i18n="nav.services">Služby</a></li>
-                            <li><a href="#porovnani" data-i18n="nav.compare">Srovnání</a></li>
-                            <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                            <li><a href="#portfolio" data-i18n="nav.portfolio">Reference</a></li>
                             <li><a href="#cenik" data-i18n="nav.pricing">Ceník</a></li>
-                            <li><a href="#tym" data-i18n="nav.team">Náš tým</a></li>
-                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="#jak-to-funguje" data-i18n="nav.how">Jak to funguje</a></li>
+                            <li><a href="#o-nas" data-i18n="nav.about">O nás</a></li>
                             <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
                         </ul>
                     </div>
