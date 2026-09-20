@@ -1252,6 +1252,7 @@ window.revealSecret = () => {
 };
 
 
+document.addEventListener('DOMContentLoaded', () => {
 // Calculator Logic
 const calcPages = document.getElementById('calc-pages');
 const calcPagesVal = document.getElementById('calc-pages-val');
@@ -1373,49 +1374,8 @@ if(document.getElementById('calc-pages')) {
 }
 document.querySelectorAll('.calc-checkboxes input').forEach(cb => cb.addEventListener('change', updateCalculatorWithEta));
 
-if(calcAddToCartBtn) {
-    calcAddToCartBtn.addEventListener('click', () => {
-        let pages = document.getElementById('calc-pages') ? document.getElementById('calc-pages').value : 1;
-        let featuresCs = [];
-        let featuresEn = [];
-        document.querySelectorAll('.calc-checkboxes input').forEach(cb => {
-            if (cb.checked) {
-                if (cb.id === 'calc-cms') { featuresCs.push('CMS'); featuresEn.push('CMS'); }
-                if (cb.id === 'calc-eshop') { featuresCs.push('E-shop'); featuresEn.push('E-shop'); }
-                if (cb.id === 'calc-chat') { featuresCs.push('Live Chat'); featuresEn.push('Live Chat'); }
-            }
-        });
-        
-        let detailsStrCs = '(' + pages + ' stránek';
-        let detailsStrEn = '(' + pages + ' pages';
-        if (featuresCs.length > 0) {
-            detailsStrCs += ', ' + featuresCs.join(', ');
-            detailsStrEn += ', ' + featuresEn.join(', ');
-        }
-        detailsStrCs += ')';
-        detailsStrEn += ')';
-
-        cart.push({
-            id: 'pkg-calc',
-            customPrice: currentCalcTotalRaw,
-            nameCs: 'Projekt na míru (Kalkulačka)',
-            nameEn: 'Custom Project (Calculator)',
-            detailsCs: detailsStrCs,
-            detailsEn: detailsStrEn
-        });
-        updateCartUI();
-        showToast(currentLang === 'en' ? 'Added to cart!' : 'Přidáno do košíku!');
-        openCart();
-    });
-
-}
-
-translations.cs['calc.eta'] = 'Odhadovaný čas dodání:';
-translations.en['calc.eta'] = 'Estimated Delivery Time:';
-translations.cs['calc.add_to_cart'] = '<i class="fa-solid fa-cart-plus"></i> Přidat do košíku';
-translations.en['calc.add_to_cart'] = '<i class="fa-solid fa-cart-plus"></i> Add to Cart';
-
 setTimeout(updateCalculatorWithEta, 100);
+});
 
 // ==========================================
 // Auth & Points System
