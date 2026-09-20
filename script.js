@@ -2238,7 +2238,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (typeof tsParticles !== 'undefined') {
         tsParticles.load("particles", {
             fpsLimit: 60,
-            interactivity: {
+            interactivity: { detectsOn: "window",
                 events: {
                     onHover: { enable: true, mode: "grab" },
                     resize: true
