@@ -1057,24 +1057,25 @@ window.showToast = (customMsg) => {
 };
 
 // Smooth Anchor Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        if (href === '#') return;
+document.body.addEventListener('click', function (e) {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (anchor) {
+        const href = anchor.getAttribute('href');
+        if (href === '#' || href === '#main-content') return;
         
         const target = document.querySelector(href);
         if (target) {
+            e.preventDefault();
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            const navLinks = document.getElementById('nav-links');
+            const mobileToggleBtn = document.getElementById('mobile-menu-toggle');
+            if (navLinks) {
+                navLinks.classList.remove('mobile-open');
+                if (mobileToggleBtn) mobileToggleBtn.setAttribute('aria-expanded', 'false');
+            }
         }
-        // Close mobile menu if open
-        const navLinks = document.getElementById('nav-links');
-        const mobileToggleBtn = document.getElementById('mobile-menu-toggle');
-        if (navLinks) {
-            navLinks.classList.remove('mobile-open');
-            if (mobileToggleBtn) mobileToggleBtn.setAttribute('aria-expanded', 'false');
-        }
-    });
+    }
 });
 
 // Mobile Menu Toggle
