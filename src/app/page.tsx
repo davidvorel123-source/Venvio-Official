@@ -1,7 +1,15 @@
 ﻿"use client";
 // @ts-nocheck
 import AIOnboarding from "@/components/AIOnboarding";
+import { useEffect } from 'react';
 export default function Home() {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.AOS) {
+      window.AOS.init({ once: true, offset: 50, duration: 800 });
+    } else {
+      setTimeout(() => { if (typeof window !== 'undefined' && window.AOS) window.AOS.init({ once: true, offset: 50, duration: 800 }); }, 1000);
+    }
+  }, []);
   return (
     <main>
 
