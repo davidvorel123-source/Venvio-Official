@@ -2,6 +2,7 @@
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import "./style.css";
+import Background3D from "@/components/Background3D";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -27,7 +28,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs" className={`${outfit.variable} ${inter.variable}`}>
-      <body>{children}`n      <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>`n      <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>`n      <script src="/script.js" defer></script>`n      <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js" defer></script></body>
+      <body>
+      <Background3D />
+      {children}
+      <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+      <script src="/script.js" defer></script>
+      </body>
     </html>
   );
 }
