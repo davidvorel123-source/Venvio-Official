@@ -1188,7 +1188,7 @@ sections.forEach(s => navObserver.observe(s));
 const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
 const currentTheme = localStorage.getItem('theme') || 'dark';
 
-if (currentTheme === 'light') {
+if (false) {
     document.body.classList.add('light-mode');
     themeToggles.forEach(t => {
         if(t) t.querySelector('i').classList.replace('fa-moon', 'fa-sun');
