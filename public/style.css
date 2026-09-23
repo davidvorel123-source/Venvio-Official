@@ -281,6 +281,19 @@ a:focus-visible, .btn:focus-visible, .lang-btn:focus-visible, .curr-btn:focus-vi
     font-weight: 500;
     font-size: 0.95rem;
     color: var(--color-text-muted);
+    position: relative;
+}
+.nav-links a.btn-primary {
+    color: #fff !important;
+}
+.nav-links a.btn-primary::after {
+    display: none;
+}
+/* hide the original nav-links a rule since I duplicated it above */
+.nav-links-fake-class {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
     transition: var(--transition);
     position: relative;
 }
