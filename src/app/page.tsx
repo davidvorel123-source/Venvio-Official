@@ -644,9 +644,9 @@ export default function Home() {
                 
                 <div className="glass-panel fade-in-up delay-2" data-aos="fade-left" style={{"padding":"2rem"}}>
                     <form action="https://api.web3forms.com/submit" method="POST" className="contact-form">
-                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
-                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
-                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
+                          <input type="hidden" name="subject" defaultValue="Nová poptávka z Venvio.dev" />
+                          <input type="hidden" name="redirect" defaultValue="https://venvio.dev/success.html" />
+                          <input type="text" id="contact-name" name="name" className="form-control" placeholder="Vaše jméno" required data-i18n-ph="contact.ph_name" />
                           
                           <select id="service-type" name="service-type" className="form-control" style={{"marginBottom":"1.5rem","background":"var(--color-bg-dark)","color":"var(--color-text)","border":"1px solid rgba(255, 255, 255, 0.1)"}}>
                               <option value="" disabled selected data-i18n="contact.opt_default">Co potřebujete?</option>
@@ -657,14 +657,14 @@ export default function Home() {
                               <option value="other" data-i18n="contact.opt_other">Nevím – potřebuji poradit</option>
                           </select>
 
-                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
-                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
-                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
-                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
+                          <input type="text" id="contact-company" name="company" className="form-control" placeholder="Firma (volitelné)" />
+                          <input type="email" id="contact-email" name="email" className="form-control" placeholder="Váš e-mail" required data-i18n-ph="contact.ph_email" />
+                          <input type="tel" id="contact-phone" name="phone" className="form-control" placeholder="Telefon (volitelné)" />
+                          <input type="checkbox" name="botcheck" style={{display:"none"}} tabIndex={-1} autoComplete="off" aria-hidden="true" />
                           
                           <textarea id="contact-message" name="message" className="form-control" rows={4} placeholder="Krátce popište projekt..." required data-i18n-ph="contact.ph_msg"></textarea>
                           
-                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
+                          <input type="text" id="discount-code" placeholder="Slevový kód..." data-i18n-ph="cart.discount_ph" style={{flexGrow: 1, padding: "0.5rem 1rem", borderRadius: "8px", border: "1px solid var(--color-border)", background: "rgba(0,0,0,0.2)", color: "#fff", fontFamily: "var(--font-body)", fontSize: "0.9rem"}} />
                           <button type="submit" className="btn btn-primary" data-i18n="contact.submit">Odeslat nezávaznou poptávku <i className="fa-solid fa-paper-plane"></i></button>
                       </form>
                 </div>
