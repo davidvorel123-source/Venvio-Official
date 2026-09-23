@@ -435,23 +435,9 @@ const applyTranslations = () => {
     if (triggerCalc) triggerCalc.dispatchEvent(new Event('input'));
 };
 
-document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        currentLang = e.currentTarget.getAttribute('data-lang');
-        window.currentLang = currentLang;
-        localStorage.setItem('venvioLang', currentLang);
-        applyTranslations();
-        if (typeof typeWriterEffect === 'function') typeWriterEffect(true);
-    });
-});
+document.body.addEventListener('click', (e) => { const btn = e.target.closest('.lang-btn'); if(btn) { currentLang = btn.getAttribute('data-lang'); window.currentLang = currentLang; localStorage.setItem('venvioLang', currentLang); applyTranslations(); if(typeof typeWriterEffect === 'function') typeWriterEffect(true); } });
 
-document.querySelectorAll('.curr-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        currentCurrency = e.currentTarget.getAttribute('data-curr');
-        localStorage.setItem('venvioCurr', currentCurrency);
-        applyTranslations();
-    });
-});
+document.body.addEventListener('click', (e) => { const btn = e.target.closest('.curr-btn'); if(btn) { currentCurrency = btn.getAttribute('data-curr'); localStorage.setItem('venvioCurr', currentCurrency); applyTranslations(); } });
 
 let cart = [];
 try {
