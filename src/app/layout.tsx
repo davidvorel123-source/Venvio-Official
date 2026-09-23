@@ -35,7 +35,7 @@ export default function RootLayout({
       {children}
       <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
-      <script src="/script.js" defer></script>
+      <script src="/script.js?v=2.0.1" defer></script>
       </body>
     </html>
   );
