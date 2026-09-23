@@ -44,8 +44,8 @@ export default function Home() {
                             <i className="fa-solid fa-moon"></i>
                         </button>
                         <div className="lang-switcher">
-                            <button className="lang-btn active" data-lang="cs"><img />CZ</button>
-                            <button className="lang-btn" data-lang="en"><img />EN</button>
+                            <button className="lang-btn active" data-lang="cs"><img src="https://flagcdn.com/w20/cz.png" alt="" style={{verticalAlign: "middle", marginRight: "5px"}} />CZ</button>
+                            <button className="lang-btn" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="" style={{verticalAlign: "middle", marginRight: "5px"}} />EN</button>
                         </div>
                         <div className="lang-switcher">
                             <button className="curr-btn active" data-curr="czk">Kč</button>
@@ -64,8 +64,8 @@ export default function Home() {
                           <i className="fa-solid fa-moon"></i>
                       </button>
                       <div className="lang-switcher">
-                        <button className="lang-btn active" data-lang="cs"><img />CZ</button>
-                        <button className="lang-btn" data-lang="en"><img />EN</button>
+                        <button className="lang-btn active" data-lang="cs"><img src="https://flagcdn.com/w20/cz.png" alt="" style={{verticalAlign: "middle", marginRight: "5px"}} />CZ</button>
+                        <button className="lang-btn" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="" style={{verticalAlign: "middle", marginRight: "5px"}} />EN</button>
                     </div>
                     <div className="lang-switcher">
                         <button className="curr-btn active" data-curr="czk">Kč</button>
@@ -322,7 +322,7 @@ export default function Home() {
                 {/*  */}
                 <div className="portfolio-card glass-panel fade-in-up delay-1" data-aos="fade-up">
                     <div className="portfolio-img">
-                        <img />
+                        <img loading="lazy" src="/assets/crush-burger.jpg" alt="Crush Burger" width="600" height="400" />
                         <div className="portfolio-overlay">
                             <a href="https://venvio-crush-burger.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm"><i className="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="portfolio.btn">Zobrazit web</span></a>
                         </div>
@@ -342,7 +342,7 @@ export default function Home() {
                 {/*  */}
                 <div className="portfolio-card glass-panel fade-in-up delay-2" data-aos="fade-up">
                     <div className="portfolio-img">
-                        <img />
+                        <img loading="lazy" src="/assets/lumiere-cafe.jpg" alt="Lumiere Cafe" width="600" height="400" />
                         <div className="portfolio-overlay">
                             <a href="https://venvio-lumiere-cafe.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm"><i className="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="portfolio.btn">Zobrazit web</span></a>
                         </div>
@@ -362,7 +362,7 @@ export default function Home() {
                 {/*  */}
                 <div className="portfolio-card glass-panel fade-in-up delay-3" data-aos="fade-up">
                     <div className="portfolio-img">
-                        <img />
+                        <img loading="lazy" src="/assets/aura-dining.jpg" alt="Aura Fine Dining" width="600" height="400" />
                         <div className="portfolio-overlay">
                             <a href="https://venvio-aura-fine-dinings.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm"><i className="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="portfolio.btn">Zobrazit web</span></a>
                         </div>
@@ -593,14 +593,14 @@ export default function Home() {
             <div className="team-grid" style={{"display":"grid","gridTemplateColumns":"repeat(auto-fit, minmax(250px, 1fr))","gap":"2rem","marginTop":"3rem"}}>
                 {/*  */}
                 <div className="team-card glass-panel fade-in-up" data-aos="fade-up" data-aos-delay="100" style={{"textAlign":"center","padding":"2rem","borderRadius":"12px"}}>
-                    <img />
+                    <img loading="lazy" src="https://ui-avatars.com/api/?name=David+V&amp;background=0D8ABC&amp;color=fff&amp;size=150" alt="David" width="120" height="120" style={{borderRadius: "50%", margin: "0 auto 1rem", border: "3px solid var(--color-primary)"}} />
                     <h3 style={{"marginBottom":"0.2rem"}}>David</h3>
                     <p style={{"color":"var(--color-primary)","fontSize":"0.9rem","marginBottom":"1rem","fontWeight":"bold"}} data-i18n="about.role1">Lead Developer</p>
                     <p style={{"fontSize":"0.9rem","color":"var(--color-text-muted)"}} data-i18n="about.bio1">Specialista na vývoj moderních webů, aplikací a automatizace.</p>
                 </div>
                 {/*  */}
                 <div className="team-card glass-panel fade-in-up" data-aos="fade-up" data-aos-delay="200" style={{"textAlign":"center","padding":"2rem","borderRadius":"12px"}}>
-                    <img />
+                    <img loading="lazy" src="https://ui-avatars.com/api/?name=David+V&amp;background=0D8ABC&amp;color=fff&amp;size=150" alt="David" width="120" height="120" style={{borderRadius: "50%", margin: "0 auto 1rem", border: "3px solid var(--color-primary)"}} />
                     <h3 style={{"marginBottom":"0.2rem"}}>Kreativní Tým</h3>
                     <p style={{"color":"var(--color-primary)","fontSize":"0.9rem","marginBottom":"1rem","fontWeight":"bold"}} data-i18n="about.role2">UX/UI & Design</p>
                     <p style={{"fontSize":"0.9rem","color":"var(--color-text-muted)"}} data-i18n="about.bio2">Navrhujeme čistá rozhraní a vizuální identity, které vaši značku prodají.</p>
