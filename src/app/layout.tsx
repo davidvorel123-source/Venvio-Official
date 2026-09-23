@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="cs" className={`${outfit.variable} ${inter.variable}`}>
       <body>
-      <Background3D />
+      <Background3D />`n      <a href="/dashboard" style={{position:"fixed",top:"1rem",right:"1rem",zIndex:1000,background:"rgba(15,22,40,0.8)",border:"1px solid rgba(255,255,255,0.1)",padding:"0.5rem 1rem",borderRadius:"8px",color:"#00D2FF",textDecoration:"none",fontSize:"0.9rem"}}>Klientská zóna</a>
       {children}
       <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
