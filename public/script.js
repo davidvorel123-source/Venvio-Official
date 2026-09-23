@@ -435,9 +435,9 @@ const applyTranslations = () => {
     if (triggerCalc) triggerCalc.dispatchEvent(new Event('input'));
 };
 
-document.body.addEventListener('click', (e) => { const btn = e.target.closest('.lang-btn'); if(btn) { currentLang = btn.getAttribute('data-lang'); window.currentLang = currentLang; localStorage.setItem('venvioLang', currentLang); applyTranslations(); if(typeof typeWriterEffect === 'function') typeWriterEffect(true); } });
+document.body.addEventListener('click', (e) => { const btn = e.target.closest('.lang-btn'); if(btn) { currentLang = btn.getAttribute('data-lang'); window.currentLang = currentLang; localStorage.setItem('venvioLang', currentLang); document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === currentLang)); applyTranslations(); if(typeof typeWriterEffect === 'function') typeWriterEffect(true); } });
 
-document.body.addEventListener('click', (e) => { const btn = e.target.closest('.curr-btn'); if(btn) { currentCurrency = btn.getAttribute('data-curr'); localStorage.setItem('venvioCurr', currentCurrency); applyTranslations(); } });
+document.body.addEventListener('click', (e) => { const btn = e.target.closest('.curr-btn'); if(btn) { currentCurrency = btn.getAttribute('data-curr'); localStorage.setItem('venvioCurr', currentCurrency); document.querySelectorAll('.curr-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-curr') === currentCurrency)); applyTranslations(); } });
 
 let cart = [];
 try {
