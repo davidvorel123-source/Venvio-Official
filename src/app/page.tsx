@@ -396,21 +396,21 @@ export default function Home() {
             <div className="calc-container glass-panel fade-in-up delay-1" data-aos="fade-up" style={{"backdropFilter":"none","background":"rgba(15, 22, 40, 0.1)","border":"1px solid rgba(0, 210, 255, 0.3)","boxShadow":"0 0 30px rgba(0, 210, 255, 0.1)"}}>
                 <div className="calc-group">
                     <label><span data-i18n="calc.pages">Počet stránek/podstránek:</span> <span id="calc-pages-val" style={{"color":"var(--color-primary)","fontWeight":"700"}}>1</span></label>
-                    <input />
+                    <input type="range" id="calc-pages" min="1" max="20" defaultValue="1" className="calc-range" />
                 </div>
                 <div className="calc-checkboxes">
                     <label className="calc-checkbox-label">
-                        <input />
+                        <input type="checkbox" id="calc-cms" defaultValue="15000" />
                         <span className="custom-checkbox"></span>
                         <span data-i18n="calc.opt_cms">Vlastní Administrace (CMS)</span>
                     </label>
                     <label className="calc-checkbox-label">
-                        <input />
+                        <input type="checkbox" id="calc-chat" defaultValue="8000" />
                         <span className="custom-checkbox"></span>
                         <span data-i18n="calc.opt_chat">AI Chatbot Asistent</span>
                     </label>
                     <label className="calc-checkbox-label">
-                        <input />
+                        <input type="checkbox" id="calc-eshop" defaultValue="25000" />
                         <span className="custom-checkbox"></span>
                         <span data-i18n="calc.opt_eshop">E-shop Modul (Platby)</span>
                     </label>
@@ -644,9 +644,9 @@ export default function Home() {
                 
                 <div className="glass-panel fade-in-up delay-2" data-aos="fade-left" style={{"padding":"2rem"}}>
                     <form action="https://api.web3forms.com/submit" method="POST" className="contact-form">
-                          <input />
-                          <input />
-                          <input />
+                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
+                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
+                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
                           
                           <select id="service-type" name="service-type" className="form-control" style={{"marginBottom":"1.5rem","background":"var(--color-bg-dark)","color":"var(--color-text)","border":"1px solid rgba(255, 255, 255, 0.1)"}}>
                               <option value="" disabled selected data-i18n="contact.opt_default">Co potřebujete?</option>
@@ -657,14 +657,14 @@ export default function Home() {
                               <option value="other" data-i18n="contact.opt_other">Nevím – potřebuji poradit</option>
                           </select>
 
-                          <input />
-                          <input />
-                          <input />
-                          <input />
+                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
+                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
+                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
+                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
                           
                           <textarea id="contact-message" name="message" className="form-control" rows={4} placeholder="Krátce popište projekt..." required data-i18n-ph="contact.ph_msg"></textarea>
                           
-                          <input />
+                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
                           <button type="submit" className="btn btn-primary" data-i18n="contact.submit">Odeslat nezávaznou poptávku <i className="fa-solid fa-paper-plane"></i></button>
                       </form>
                 </div>
@@ -775,7 +775,7 @@ export default function Home() {
         <div className="cart-body" id="cart-items-container"></div>
         <div className="cart-footer">
             <div className="discount-container" style={{"display":"flex","gap":"0.5rem","marginBottom":"1rem","alignItems":"center"}}>
-                <input />
+                <input type="hidden" name="subject" defaultValue="Nová poptávka z Venvio.dev" />
                 <button className="btn btn-outline" id="apply-discount-btn" style={{"padding":"0.5rem 1rem","fontSize":"0.9rem"}}>Použít</button>
             </div>
             <div id="discount-msg" style={{"fontSize":"0.85rem","marginBottom":"0.8rem","display":"none"}}></div>
@@ -835,16 +835,16 @@ export default function Home() {
                 <form id="auth-form">
                     <div className="form-group" id="group-name" style={{"display":"none"}}>
                         <label data-i18n="auth.name">Jméno</label>
-                        <input />
+                        <input type="hidden" name="redirect" defaultValue="https://venvio.dev/success.html" />
                     </div>
                     <div className="form-group">
                         <label data-i18n="auth.email">E-mail</label>
-                        <input />
+                        <input type="text" id="contact-name" name="name" className="form-control" placeholder="Vaše jméno" required data-i18n-ph="contact.ph_name" />
                     </div>
                     <div className="form-group">
                         <label data-i18n="auth.password">Heslo</label>
                         <div style={{"position":"relative"}}>
-                            <input />
+                            <input type="text" id="contact-company" name="company" className="form-control" placeholder="Firma (volitelné)" />
                             <button type="button" id="toggle-password" style={{"position":"absolute","right":"10px","top":"50%","transform":"translateY(-50%)","background":"none","border":"none","color":"var(--color-text-muted)","cursor":"pointer","fontSize":"1rem"}} aria-label="Zobrazit heslo">
                                 <i className="fa-regular fa-eye"></i>
                             </button>
@@ -852,12 +852,12 @@ export default function Home() {
                     </div>
                     <div className="form-group" id="group-password-confirm" style={{"display":"none"}}>
                         <label data-i18n="auth.password_confirm">Heslo znovu</label>
-                        <input />
+                        <input type="email" id="contact-email" name="email" className="form-control" placeholder="Váš e-mail" required data-i18n-ph="contact.ph_email" />
                     </div>
 
                     <div id="auth-options" style={{"display":"flex","justifyContent":"space-between","alignItems":"center","marginBottom":"1rem","fontSize":"0.85rem"}}>
                         <label style={{"display":"flex","alignItems":"center","cursor":"pointer","color":"var(--color-text-muted)","fontWeight":"normal","margin":"0"}}>
-                            <input />
+                            <input type="tel" id="contact-phone" name="phone" className="form-control" placeholder="Telefon (volitelné)" />
                             <span data-i18n="auth.remember">Zapamatovat si mě</span>
                         </label>
                         <a href="#" id="auth-forgot-pwd" style={{"color":"var(--color-primary)","textDecoration":"none"}} data-i18n="auth.forgot_pwd">Zapomněli jste heslo?</a>
@@ -911,24 +911,24 @@ export default function Home() {
                 <form id="checkout-form" method="POST" action="#">
                     <div className="form-group">
                         <label htmlFor="checkout-name" data-i18n="modal.name">Jméno a Příjmení / Firma</label>
-                        <input />
+                        <input type="checkbox" name="botcheck" style={{display:"none"}} tabIndex={-1} autoComplete="off" aria-hidden="true" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="checkout-email">E-mail</label>
-                        <input />
+                        <input type="text" id="discount-code" placeholder="Slevový kód..." data-i18n-ph="cart.discount_ph" style={{flexGrow: 1, padding: "0.5rem 1rem", borderRadius: "8px", border: "1px solid var(--color-border)", background: "rgba(0,0,0,0.2)", color: "#fff", fontFamily: "var(--font-body)", fontSize: "0.9rem"}} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="checkout-phone" data-i18n="modal.phone">Telefon (volitelné)</label>
-                        <input />
+                        <input type="text" id="auth-name" data-i18n-ph="auth.name_ph" placeholder="Vaše jméno" />
                     </div>
-                    <input />
+                    <input type="email" id="auth-email" required data-i18n-ph="auth.email_ph" placeholder="vas@email.cz" />
                     <div className="form-group">
                         <label htmlFor="checkout-message" data-i18n="modal.msg">Zpráva / Vaše představa o webu</label>
                         <textarea id="checkout-message" name="Zprava" rows={4} placeholder="Zde nám můžete popsat, co od webu očekáváte..." data-i18n-ph="modal.msg_ph"></textarea>
                     </div>
                     <div className="form-group" style={{"marginTop":"1rem"}}>
                         <label className="calc-checkbox-label" style={{"fontSize":"0.85rem","color":"var(--color-text-muted)"}}>
-                            <input />
+                            <input type="password" id="auth-password" required data-i18n-ph="auth.password_ph" placeholder="Vaše heslo" minLength={6} style={{paddingRight: "3rem"}} />
                             <span className="custom-checkbox"></span>
                             <span data-i18n="checkout.gdpr">Souhlasím se <a href="#" onClick={() => {}} style={{"color":"var(--color-primary)","textDecoration":"underline"}}>zpracováním osobních údajů</a> a <a href="#" onClick={() => {}} style={{"color":"var(--color-primary)","textDecoration":"underline"}}>obchodními podmínkami</a>.</span>
                         </label>
@@ -1003,7 +1003,7 @@ export default function Home() {
 
             {/*  */}
             <div style={{"padding":"10px","background":"#0f1628","borderTop":"1px solid rgba(255,255,255,0.05)","display":"flex","gap":"10px"}}>
-                <input />
+                <input type="password" id="auth-password-confirm" data-i18n-ph="auth.password_confirm_ph" placeholder="Zopakujte heslo" minLength={6} />
                 <button id="chat-send" style={{"background":"var(--color-primary)","color":"#fff","border":"none","borderRadius":"50%","width":"35px","height":"35px","display":"flex","alignItems":"center","justifyContent":"center","cursor":"pointer"}} aria-label="Odeslat zprávu">
                     <i className="fa-solid fa-paper-plane" style={{"fontSize":"0.8rem"}}></i>
                 </button>
