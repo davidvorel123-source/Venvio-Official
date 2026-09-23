@@ -1,5 +1,6 @@
-"use client";
+﻿"use client";
 // @ts-nocheck
+import AIOnboarding from "@/components/AIOnboarding";
 export default function Home() {
   return (
     <main>
@@ -148,7 +149,7 @@ export default function Home() {
             </div>
 
     {/*  */}
-    <section id="sluzby" className="section">
+    <AIOnboarding />`n      <section id="sluzby" className="section">
         <div className="container">
             <div className="section-header text-center fade-in-up" data-aos="fade-up">
                 <h2 data-i18n="rozcestnik.title">Vyberte si řešení</h2>
@@ -1015,3 +1016,4 @@ export default function Home() {
     </main>
   );
 }
+
