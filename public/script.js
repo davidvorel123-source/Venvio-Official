@@ -2230,3 +2230,11 @@ document.body.addEventListener('click', (e) => {
         }
     }
 });
+document.body.addEventListener('click', (e) => {
+    if (e.target.closest('#close-legal-modal') || e.target.id === 'legal-modal') {
+        const legalModal = document.getElementById('legal-modal');
+        if (legalModal) {
+            legalModal.classList.remove('active');
+        }
+    }
+});
