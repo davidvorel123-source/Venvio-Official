@@ -4,10 +4,10 @@ import AIOnboarding from "@/components/AIOnboarding";
 import { useEffect } from 'react';
 export default function Home() {
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.AOS) {
-      window.AOS.init({ once: true, offset: 50, duration: 800 });
+    if (typeof window !== 'undefined' && (window as any).AOS) {
+      (window as any).AOS.init({ once: true, offset: 50, duration: 800 });
     } else {
-      setTimeout(() => { if (typeof window !== 'undefined' && window.AOS) window.AOS.init({ once: true, offset: 50, duration: 800 }); }, 1000);
+      setTimeout(() => { if (typeof window !== 'undefined' && (window as any).AOS) (window as any).AOS.init({ once: true, offset: 50, duration: 800 }); }, 1000);
     }
   }, []);
   return (
@@ -645,7 +645,7 @@ export default function Home() {
                 <div className="glass-panel fade-in-up delay-2" data-aos="fade-left" style={{"padding":"2rem"}}>
                     <form className="contact-form" onSubmit={async (e) => {
                           e.preventDefault();
-                          const btn = e.currentTarget.querySelector('button[type="submit"]');
+                          const btn = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
                           const originalText = btn.innerHTML;
                           btn.innerHTML = 'Odesílám...';
                           btn.disabled = true;
