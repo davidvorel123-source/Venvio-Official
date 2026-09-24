@@ -798,7 +798,7 @@ export default function Home() {
             </div>
 <div className="footer-bottom">
                     <p data-i18n="footer.tax">Ceny jsou konečné. Nejsme plátci DPH.</p>
-                    <p>&copy; 2026 Venvio. <span data-i18n="footer.rights">Všechna práva vyhrazena.</span><span onClick={() => {}} style={{"opacity":"0.3","cursor":"pointer","marginLeft":"8px","fontSize":"0.9rem","display":"inline-block","transition":"opacity 0.3s"}} onMouseOver={() => {}} onMouseOut={() => {}} title="Máme pro vás dárek!">🎁</span></p>
+                    <p>&copy; 2026 Venvio. <span data-i18n="footer.rights">Všechna práva vyhrazena.</span><span onClick={() => { if(typeof window !== "undefined" && (window as any).revealSecret) (window as any).revealSecret(); }} style={{"opacity":"0.3","cursor":"pointer","marginLeft":"8px","fontSize":"0.9rem","display":"inline-block","transition":"opacity 0.3s"}} onMouseOver={(e) => { e.currentTarget.style.opacity = "1"; }} onMouseOut={(e) => { e.currentTarget.style.opacity = "0.3"; }} title="Máme pro vás dárek!">🎁</span></p>
                 </div>
         </div>
     </footer>
