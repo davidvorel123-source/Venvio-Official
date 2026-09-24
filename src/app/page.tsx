@@ -9,6 +9,16 @@ export default function Home() {
     } else {
       setTimeout(() => { if (typeof window !== 'undefined' && (window as any).AOS) (window as any).AOS.init({ once: true, offset: 50, duration: 800 }); }, 1000);
     }
+
+    // Add IntersectionObserver for .fade-in-up elements because React hydration destroys script.js observers
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
   }, []);
   return (
     <main>

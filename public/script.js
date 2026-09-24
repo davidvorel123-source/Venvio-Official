@@ -941,12 +941,7 @@ translations.en['svc4.price'] = 'From 14,900 CZK';
 applyTranslations();
 
 // Scroll Animations (Intersection Observer)
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
+/* IntersectionObserver removed */
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
