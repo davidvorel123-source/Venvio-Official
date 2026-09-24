@@ -2209,3 +2209,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener('DOMContentLoaded', () => { if(typeof AOS !== 'undefined') AOS.init({ once: true, offset: 50, duration: 800 }); });
+
+
+document.addEventListener('submit', async (e) => {
+    if (e.target.matches('.contact-form')) {
+        e.preventDefault();
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Odesílám...';
+        btn.disabled = true;
+        
+        try {
+            const formData = new FormData(form);
+            if (!formData.has('access_key')) {
+                formData.append('access_key', '8d52594c-6265-48a0-a197-909feda1667f');
+            }
+            
+            const res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await res.json();
+            if (data.success) {
+                window.location.href = '/success.html';
+            } else {
+                alert('Chyba při odesílání: ' + data.message);
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        } catch (err) {
+            alert('Nastala chyba při komunikaci se serverem.');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    }
+});

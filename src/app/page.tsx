@@ -644,9 +644,9 @@ export default function Home() {
                 
                 <div className="glass-panel fade-in-up delay-2" data-aos="fade-left" style={{"padding":"2rem"}}>
                     <form action="https://api.web3forms.com/submit" method="POST" className="contact-form">
-                          <input type="hidden" name="access_key" defaultValue="8d52594c-6265-48a0-a197-909feda1667f" />
-                          <input type="hidden" name="subject" defaultValue="Nová poptávka z Venvio.dev" />
-                          <input type="hidden" name="redirect" defaultValue="https://venvio.dev/success.html" />
+                          <input type="hidden" name="access_key" value="8d52594c-6265-48a0-a197-909feda1667f" />
+                          <input type="hidden" name="subject" value="Nová poptávka z Venvio.dev" />
+                          <input type="hidden" name="redirect" value="https://venvio.dev/success.html" />
                           
                           <select id="service-type" name="service-type" className="form-control" style={{"marginBottom":"1.5rem","background":"var(--color-bg-dark)","color":"var(--color-text)","border":"1px solid rgba(255, 255, 255, 0.1)"}}>
                               <option value="" disabled selected data-i18n="contact.opt_default">Co potřebujete?</option>
