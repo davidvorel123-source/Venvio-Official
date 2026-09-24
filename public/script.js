@@ -942,9 +942,7 @@ applyTranslations();
 
 // Scroll Animations (Intersection Observer)
 /* IntersectionObserver removed */
-}, { threshold: 0.1 });
 
-document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 
 // === NEW INTERACTIVE FEATURES ===
 
@@ -2206,20 +2204,4 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('DOMContentLoaded', () => { if(typeof AOS !== 'undefined') AOS.init({ once: true, offset: 50, duration: 800 }); });
 
 
-/* removed contact form handler */
-            
-            const data = await res.json();
-            if (data.success) {
-                window.location.href = '/success.html';
-            } else {
-                alert('Chyba při odesílání: ' + data.message);
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
-        } catch (err) {
-            alert('Nastala chyba při komunikaci se serverem.');
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-        }
-    }
-});
+/* removed contact form handler completely */
