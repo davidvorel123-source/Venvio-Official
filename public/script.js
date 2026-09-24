@@ -2205,3 +2205,28 @@ document.addEventListener('DOMContentLoaded', () => { if(typeof AOS !== 'undefin
 
 
 /* removed contact form handler completely */
+
+document.body.addEventListener('click', (e) => {
+    const termsLink = e.target.closest('a[data-i18n="footer.terms"]');
+    const privacyLink = e.target.closest('a[data-i18n="footer.privacy"]');
+    
+    if (termsLink) {
+        e.preventDefault();
+        const legalModal = document.getElementById('legal-modal');
+        if (legalModal) {
+            document.getElementById('legal-title').innerText = legalTexts.terms[window.currentLang || 'cs'].title;
+            document.getElementById('legal-content').innerHTML = legalTexts.terms[window.currentLang || 'cs'].content;
+            legalModal.classList.add('active');
+        }
+    }
+    
+    if (privacyLink) {
+        e.preventDefault();
+        const legalModal = document.getElementById('legal-modal');
+        if (legalModal) {
+            document.getElementById('legal-title').innerText = legalTexts.privacy[window.currentLang || 'cs'].title;
+            document.getElementById('legal-content').innerHTML = legalTexts.privacy[window.currentLang || 'cs'].content;
+            legalModal.classList.add('active');
+        }
+    }
+});
