@@ -19,6 +19,29 @@ export default function Home() {
         });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+    // Stats Counter Observer
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                if (el.getAttribute('data-animated')) return;
+                el.setAttribute('data-animated', 'true');
+                const target = parseInt(el.getAttribute('data-count'));
+                let current = 0;
+                const increment = target / 60;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    el.innerText = Math.floor(current);
+                }, 25);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.stat-number').forEach(num => statsObserver.observe(num));
   }, []);
   return (
     <main>
